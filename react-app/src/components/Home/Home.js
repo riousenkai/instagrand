@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findFollows } from "../../store/follow";
-import { findFollowingPosts, findPosts } from "../../store/post";
+import { findFollowingPosts, findPosts, submitComment } from "../../store/post";
 import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
@@ -84,6 +84,19 @@ const Home = () => {
     // setInputs(arr);
   };
 
+  const newComment = (index, postId) => {
+
+    const obj = {
+      user_id: +user.id,
+      post_id: +postId,
+      description: inputs[index],
+    };
+
+    console.log(obj)
+
+    dispatch(submitComment(obj));
+  };
+
   return (
     <div className="home-main">
       <div className="home-left">
@@ -139,16 +152,27 @@ const Home = () => {
                 </div>
                 <div className="post-desc">{post.post.description}</div>
               </div>
-              <div className="post-comment-count">{post.comments?.length > 1 ? `View all ${post.comments.length} comments` : null}</div>
-              <div className="post-comments">
-                {post.comments.length > 0 && post.comments.slice(0,1).map(comment => (
-                  <>
-                <div className="post-commenter-name">{comment.user.username}</div>
-                <div className="post-comment">{comment.comment.description}</div>
-                  </>
-                ))}
+              <div className="post-comment-count">
+                {post.comments?.length > 1
+                  ? `View all ${post.comments.length} comments`
+                  : null}
               </div>
-              <div className="post-time">{post.post.createdAt.split(' ').slice(1, 4).join(' ')}</div>
+              <div className="post-comments">
+                {post.comments.length > 0 &&
+                  post.comments.slice(0, 1).map((comment) => (
+                    <>
+                      <div className="post-commenter-name">
+                        {comment.user.username}
+                      </div>
+                      <div className="post-comment">
+                        {comment.comment.description}
+                      </div>
+                    </>
+                  ))}
+              </div>
+              <div className="post-time">
+                {post.post.createdAt.split(" ").slice(1, 4).join(" ")}
+              </div>
               <div className="comment-input">
                 <div className="emoji-wordcount-2">
                   <div className="emoji-post2">
@@ -177,6 +201,9 @@ const Home = () => {
                   </div>
                 </div>
                 <input
+                  onKeyPress={(e) =>
+                    e.key === "Enter" && newComment(i, post.post.id)
+                  }
                   placeholder="Add a comment..."
                   className="post-comment-input"
                   value={inputs[i]}

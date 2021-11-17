@@ -28,7 +28,7 @@ def following_posts():
         posts = Post.query.filter_by(user_id=follow.following_id).all()
         for post in posts:
             user = User.query.get(post.user_id)
-            comments = Comment.query.filter_by(post_id=post.id).all()
+            comments = Comment.query.filter_by(post_id=post.id).order_by(Comment.id.desc()).all()
             for comment in comments:
                 comment_user = User.query.get(comment.user_id)
                 complete_comments.append({'comment': comment.to_dict(), 'user': comment_user.to_dict()})
@@ -38,7 +38,7 @@ def following_posts():
     user_posts = Post.query.filter_by(user_id=current_user.id).all()
 
     for post in user_posts:
-        comments2 = Comment.query.filter_by(post_id=post.id).all()
+        comments2 = Comment.query.filter_by(post_id=post.id).order_by(Comment.id.desc()).all()
         for comment2 in comments2:
             comment_user2 = User.query.get(comment2.user_id)
             complete_comments2.append({'comment': comment2.to_dict(), 'user': comment_user2.to_dict()})

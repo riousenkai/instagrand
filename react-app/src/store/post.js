@@ -12,6 +12,18 @@ const getPosts = (posts, userId) => ({
   userId,
 });
 
+export const submitComment = (obj) => async (dispatch) => {
+  const res = await fetch(`/api/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+  const data = await res.json();
+  dispatch(getFollowingPosts(data));
+};
+
 export const editPost = (obj, id) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}`, {
     method: "PUT",

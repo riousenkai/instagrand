@@ -1,17 +1,17 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Comment, User, Post
+from app.models import Comment, User, Post, db
 from .post_routes import following_posts
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route('/', methods=['POST'])
-@login_required
-def create_comment():
+@comment_routes.route('/', methods=['POST'], strict_slashes=False)
+# @login_required
+def make_comment():
 
-    data = request.json
+    new_comment = request.json
 
-    comment = Comment(user_id=data['user_id'], post_id=data['post_id'], description=data['description'])
+    comment = Comment(user_id=new_comment['user_id'], post_id=new_comment['post_id'], description=new_comment['description'])
 
     db.session.add(comment)
     db.session.commit()
