@@ -92,11 +92,6 @@ const Options = ({ post }) => {
       </div>
       <div className="edit-it hidden">
         <div className="edit-it-top">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="edit-it-input"
-          />
           <div className="emoji-post">
             <img
               onClick={() => emoji.current.classList.remove("hidden")}
@@ -114,6 +109,11 @@ const Options = ({ post }) => {
                 }}
               />
             </div>
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="edit-it-input"
+            />
           </div>
         </div>
       </div>
