@@ -92,10 +92,10 @@ const Options = ({ post }) => {
       </div>
       <div className="edit-it hidden">
         <div className="edit-it-top">
-          <div className="emoji-post">
+          <div className="emoji-post-3">
             <img
               onClick={() => emoji.current.classList.remove("hidden")}
-              className="emoji-btn"
+              className="emoji-btn editb"
               src="https://img.icons8.com/ios/50/000000/smiling.png"
             />
             <div className="picker hidden" ref={emoji}>
@@ -105,16 +105,21 @@ const Options = ({ post }) => {
                 pickerStyle={{
                   position: "absolute",
                   width: "15vw",
-                  marginLeft: "-12px",
+                  marginLeft: "-20px",
+                  top: "110px",
                 }}
               />
             </div>
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="edit-it-input"
-            />
           </div>
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="edit-it-input"
+          />
+        </div>
+        <div className="submit-edit">Submit</div>
+        <div className="goto-post" onClick={() => setPostId(0)}>
+          Cancel
         </div>
       </div>
     </div>

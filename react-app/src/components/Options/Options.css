@@ -74,3 +74,45 @@
 .del-desc {
   color: #8e8e8e;
 }
+
+.edit-it-top {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  border-bottom: 0.5px solid #dbdbdb;
+  padding: 16px 16px;
+}
+
+.emoji-post-3 {
+  position: relative;
+  display: flex;
+}
+
+.edit-it-input {
+  resize: none;
+  height: 100px;
+  width: 365px;
+  border: none;
+  padding: 16px 16px;
+  font-size: 14px;
+}
+
+.edit-it-input {
+  outline: none;
+}
+
+.emoji-btn.editb {
+  margin-top: auto;
+}
+
+.submit-edit {
+  width: 100%;
+  text-align: center;
+  color: #0095f6;
+  padding: 16px 16px;
+  height: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}
