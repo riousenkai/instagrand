@@ -4,17 +4,17 @@ import { useModal } from "../../context/UseModal";
 import CommentSettings from "./CommentSettings";
 import './CommentSettings.css'
 
-const OptionsModal = ({ comment }) => {
+const CommentModal = ({ comment }) => {
   const { commentId, setCommentId } = useModal();
 
   return (
     <>
       <img
         className="comment-options"
-        onClick={() => setCommenttId(post.post.id)}
-        src="https://img.icons8.com/material-two-tone/24/000000/more.png"
+        onClick={() => setCommentId(comment.comment.id)}
+        src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/000000/external-delete-miscellaneous-kiranshastry-solid-kiranshastry.png"
       />
-      {commentId === comment.id && (
+      {commentId === comment.comment.id && (
         <Modal onClose={() => setCommentId(0)}>
           <CommentSettings comment={comment} />
         </Modal>
@@ -23,4 +23,4 @@ const OptionsModal = ({ comment }) => {
   );
 };
 
-export default OptionsModal;
+export default CommentModal;

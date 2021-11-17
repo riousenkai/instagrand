@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
 import OptionsModal from "../Options/OptionsModal";
+import CommentModal from "../CommentModal/CommentModal";
 
 const Home = () => {
   const history = useHistory();
@@ -85,14 +86,13 @@ const Home = () => {
   };
 
   const newComment = (index, postId) => {
-
     const obj = {
       user_id: +user.id,
       post_id: +postId,
       description: inputs[index],
     };
 
-    console.log(obj)
+    console.log(obj);
 
     dispatch(submitComment(obj));
   };
@@ -167,6 +167,7 @@ const Home = () => {
                       <div className="post-comment">
                         {comment.comment.description}
                       </div>
+                      <CommentModal comment={comment} />
                     </>
                   ))}
               </div>
@@ -209,7 +210,12 @@ const Home = () => {
                   value={inputs[i]}
                   onChange={(e) => update(e, i)}
                 />
-                <div className="post-submit-comment">Post</div>
+                <div
+                  className="post-submit-comment"
+                  onClick={(e) => newComment(i, post.post.id)}
+                >
+                  Post
+                </div>
               </div>
             </div>
           ))}

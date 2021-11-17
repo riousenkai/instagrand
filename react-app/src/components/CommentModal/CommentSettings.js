@@ -1,4 +1,4 @@
-const CommentSettings = () => {
+const CommentSettings = ({ comment }) => {
     return (
         <div>
             <div>test</div>
