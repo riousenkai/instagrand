@@ -141,9 +141,14 @@ const Home = () => {
               </div>
               <div className="post-comment-count">{post.comments?.length > 1 ? `View all ${post.comments.length} comments` : null}</div>
               <div className="post-comments">
-                <div className="post-commenter-name">username</div>
-                <div className="post-comment">comment</div>
+                {post.comments.length > 0 && post.comments.slice(0,1).map(comment => (
+                  <>
+                <div className="post-commenter-name">{comment.user.username}</div>
+                <div className="post-comment">{comment.comment.description}</div>
+                  </>
+                ))}
               </div>
+              <div className="post-time">{post.post.createdAt.split(' ').slice(1, 4).join(' ')}</div>
               <div className="comment-input">
                 <div className="emoji-wordcount-2">
                   <div className="emoji-post2">

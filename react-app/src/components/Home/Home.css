@@ -18,7 +18,6 @@
 
 .post-card {
   width: 615px;
-  height: 900px;
   border: 0.5px solid #dbdbdb;
   display: flex;
   flex-direction: column;
@@ -127,7 +126,6 @@
 }
 
 .post-user {
-  background-color: #ffffff;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
@@ -146,7 +144,7 @@
 .post-comment-count {
   color: #8e8e8e;
   font-size: 14px;
-  margin: 0px 4px 10px 16px;
+  margin: 0px 4px 5px 16px;
   cursor: pointer;
   background-color: #ffffff;
 }
@@ -164,6 +162,8 @@
   margin-left: 16px;
   gap: 5px;
   background-color: #ffffff;
+  align-items: flex-end;
+  margin-bottom: 5px;
 }
 
 .post-comment {
@@ -220,4 +220,11 @@
 
 .emoji-post2 {
   position: relative;
+}
+
+.post-time {
+  padding: 0px 16px 0px 16px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #8e8e8e;
 }

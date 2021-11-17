@@ -40,7 +40,6 @@ def following_posts():
     for post in user_posts:
         comments2 = Comment.query.filter_by(post_id=post.id).all()
         for comment2 in comments2:
-            print(f'\n\n\n{comment2}\n\n\n')
             comment_user2 = User.query.get(comment2.user_id)
             complete_comments2.append({'comment': comment2.to_dict(), 'user': comment_user2.to_dict()})
         all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2})
