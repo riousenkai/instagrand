@@ -14,6 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [comment, setComment] = useState("");
+  const [hidden, setHidden] = useState(true);
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -160,15 +161,23 @@ const Home = () => {
               <div className="post-comments">
                 {post.comments.length > 0 &&
                   post.comments.slice(0, 1).map((comment) => (
-                    <>
+                    <div
+                      classname="post-test"
+                      onMouseEnter={
+                        comment.user.id === user?.id
+                          ? () => setHidden(false)
+                          : null
+                      }
+                      onMouseLeave={() => setHidden(true)}
+                    >
                       <div className="post-commenter-name">
                         {comment.user.username}
                       </div>
                       <div className="post-comment">
                         {comment.comment.description}
                       </div>
-                      <CommentModal comment={comment} />
-                    </>
+                      <CommentModal comment={comment} hidden={hidden} />
+                    </div>
                   ))}
               </div>
               <div className="post-time">

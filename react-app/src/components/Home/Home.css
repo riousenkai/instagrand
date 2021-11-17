@@ -161,11 +161,24 @@
 .post-comments {
   font-size: 14px;
   display: flex;
+  flex-direction: column;
   margin-left: 16px;
   gap: 5px;
   background-color: #ffffff;
-  align-items: flex-end;
+  justify-content: center;
   margin-bottom: 5px;
+  width: 600px;
+}
+
+.post-test {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 16px;
+  background-color: #ffffff;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 600px;
 }
 
 .post-comment {

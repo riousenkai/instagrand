@@ -1,4 +1,6 @@
 .comment-options {
     height: 14px;
     width: 14px;
+    cursor: pointer;
+    margin-bottom: 2px;
 }
