@@ -1,4 +1,4 @@
-## [Instabrand](https://github.com/riousenkai/instabrand)
+## [Instagrand](https://github.com/riousenkai/instabrand)
 
 (Best viewed in 1920 x 1080 resolution)
 
