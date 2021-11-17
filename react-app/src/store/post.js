@@ -12,12 +12,13 @@ const getPosts = (posts, userId) => ({
   userId,
 });
 
-export const editPost = (id) => async (dispatch) => {
+export const editPost = (obj, id) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify(obj)
   })
 }
 

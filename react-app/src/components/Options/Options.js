@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import { deletePost } from "../../store/post";
+import { deletePost, editPost } from "../../store/post";
 import Picker from "emoji-picker-react";
 import "./Options.css";
 
@@ -51,6 +51,15 @@ const Options = ({ post }) => {
   const edit = () => {
     document.querySelector(".hide-options").classList.add("hidden");
     document.querySelector(".edit-it").classList.remove("hidden");
+  };
+
+  const submitEdit = () => {
+    const obj = {
+      description: input,
+    };
+
+    dispatch(editPost(obj, post.post.id));
+    setPostId(0);
   };
 
   return (
@@ -117,7 +126,9 @@ const Options = ({ post }) => {
             className="edit-it-input"
           />
         </div>
-        <div className="submit-edit">Submit</div>
+        <div className="submit-edit" onClick={submitEdit}>
+          Submit
+        </div>
         <div className="goto-post" onClick={() => setPostId(0)}>
           Cancel
         </div>

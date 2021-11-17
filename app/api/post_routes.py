@@ -56,3 +56,17 @@ def delete_posts(post_id):
     db.session.commit()
 
     return following_posts()
+
+@post_routes.route('/<int:post_id>', methods=['PUT'])
+@login_required
+def edit_post(post_id):
+
+    data = request.json
+
+    post = Post.query.get(post_id)
+
+    post.description = request.json['description']
+
+    db.session.commit()
+
+    return {'msg': 'ok'}
