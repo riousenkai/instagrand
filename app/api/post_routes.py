@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Post, Follow, User, db
+from app.models import Post, Follow, User, db, Comment
 from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
@@ -24,11 +24,15 @@ def following_posts():
         posts = Post.query.filter_by(user_id=follow.following_id).all()
         for post in posts:
             user = User.query.get(post.user_id)
-            all_posts.append({'post': post.to_dict(), 'user': user.to_dict()})
+            comments = Comment.query.filter_by(post_id=post.id).all()
+            complete_comments = [comment.to_dict() for comment in comments]
+            all_posts.append({'post': post.to_dict(), 'user': user.to_dict(), 'comments': complete_comments})
 
     user_posts = Post.query.filter_by(user_id=current_user.id).all()
     for post in user_posts:
-        all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict()})
+        comments2 = Comment.query.filter_by(post_id=post.id).all()
+        complete_comments2 = [comment.to_dict() for comment in comments2]
+        all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2})
 
     sort = sorted(all_posts, key=lambda x:x['post']['id'], reverse=True)
 
