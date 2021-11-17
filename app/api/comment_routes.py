@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Comment, User, Post
-from post_routes import following_posts
+from .post_routes import following_posts
 
 comment_routes = Blueprint('comments', __name__)
 
