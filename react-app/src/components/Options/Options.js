@@ -71,7 +71,7 @@ const Options = ({ post }) => {
               Delete post
             </div>
             <div className="edit-post" onClick={edit}>
-              Edit post
+              Edit caption
             </div>
           </>
         ) : (

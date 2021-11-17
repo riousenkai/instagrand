@@ -69,4 +69,4 @@ def edit_post(post_id):
 
     db.session.commit()
 
-    return {'msg': 'ok'}
+    return following_posts()
