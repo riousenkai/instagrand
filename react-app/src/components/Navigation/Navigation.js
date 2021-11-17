@@ -27,7 +27,7 @@ const Navigation = () => {
       <img
         className="nav-img"
         onClick={() => history.push("/")}
-        src="https://fontmeme.com/permalink/211116/82a5cf307c43b1eba481bf18e3124894.png"
+        src="https://fontmeme.com/permalink/211117/be912bd83fb2b6a44d50d0b7b4562822.png"
         alt="grand-hotel-font"
         border="0"
       />

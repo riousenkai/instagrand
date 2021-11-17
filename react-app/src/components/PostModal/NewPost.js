@@ -10,7 +10,7 @@ const NewPost = () => {
   const dispatch = useDispatch();
   const emoji = useRef(null);
   const { num, setNum } = useModal();
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState('');
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);

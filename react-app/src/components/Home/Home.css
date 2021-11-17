@@ -3,6 +3,7 @@
   flex-direction: row;
   width: 100%;
   margin-bottom: 40px;
+  padding-top: 50px;
 }
 
 .home-left {
@@ -72,6 +73,7 @@
   min-height: 600px;
   width: 100%;
   object-fit: cover;
+  user-select: none;
 }
 
 .post-img-loading {
