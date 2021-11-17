@@ -139,7 +139,7 @@ const Home = () => {
                 </div>
                 <div className="post-desc">{post.post.description}</div>
               </div>
-              <div className="post-comment-count">View all 5 comments</div>
+              <div className="post-comment-count">{post.comments?.length > 1 ? `View all ${post.comments.length} comments` : null}</div>
               <div className="post-comments">
                 <div className="post-commenter-name">username</div>
                 <div className="post-comment">comment</div>

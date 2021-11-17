@@ -20,19 +20,31 @@ def following_posts():
 
     all_posts = []
 
+    complete_comments = []
+
+    complete_comments2 = []
+
     for follow in following:
         posts = Post.query.filter_by(user_id=follow.following_id).all()
         for post in posts:
             user = User.query.get(post.user_id)
             comments = Comment.query.filter_by(post_id=post.id).all()
-            complete_comments = [comment.to_dict() for comment in comments]
+            for comment in comments:
+                comment_user = User.query.get(comment.user_id)
+                complete_comments.append({'comment': comment.to_dict(), 'user': comment_user.to_dict()})
             all_posts.append({'post': post.to_dict(), 'user': user.to_dict(), 'comments': complete_comments})
+            complete_comments = []
 
     user_posts = Post.query.filter_by(user_id=current_user.id).all()
+
     for post in user_posts:
         comments2 = Comment.query.filter_by(post_id=post.id).all()
-        complete_comments2 = [comment.to_dict() for comment in comments2]
+        for comment2 in comments2:
+            print(f'\n\n\n{comment2}\n\n\n')
+            comment_user2 = User.query.get(comment2.user_id)
+            complete_comments2.append({'comment': comment2.to_dict(), 'user': comment_user2.to_dict()})
         all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2})
+        complete_comments2 = []
 
     sort = sorted(all_posts, key=lambda x:x['post']['id'], reverse=True)
 
