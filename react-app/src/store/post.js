@@ -12,6 +12,15 @@ const getPosts = (posts, userId) => ({
   userId,
 });
 
+export const editPost = (id) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
 export const deletePost = (id) => async (dispatch) => {
     const res = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
