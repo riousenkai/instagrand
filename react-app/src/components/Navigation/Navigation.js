@@ -24,6 +24,21 @@ const Navigation = () => {
     }
   }, [input]);
 
+  const show = () => {
+    document.querySelector(".search-results").classList.remove("hidden");
+  };
+
+  const hide = (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      document.querySelector(".search-results").classList.add("hidden");
+    }
+  };
+
+  const reset = () => {
+    document.querySelector(".search-results").classList.add("hidden");
+    setInput("");
+  };
+
   return (
     <div className="nav-main">
       <img
@@ -33,28 +48,29 @@ const Navigation = () => {
         alt="grand-hotel-font"
         border="0"
       />
-      <div classname="search-container">
+      <div classname="search-container" onBlur={(e) => hide(e)}>
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onFocus={() =>
-            document.querySelector(".search-results").classList.remove("hidden")
-          }
-          onBlur={() =>
-            document.querySelector(".search-results").classList.add("hidden")
-          }
+          onFocus={() => show()}
           className="search-bar"
           placeholder="Search"
         />
         <div className="search-results hidden">
-          {results?.length > 0 &&
-            input.length > 0 ?
+          {results?.length > 0 && input.length > 0 ? (
             results.map((res) => (
-              <NavLink className="search-card" to={`/users/${res.id}`}>
+              <NavLink
+                className="search-card"
+                onClick={reset}
+                to={`/users/${res.id}`}
+              >
                 <img className="search-prof" src={res.image_url} />
                 <div className="search-name">{res.username}</div>
               </NavLink>
-            )) : <div className="search-none">No results</div>}
+            ))
+          ) : (
+            <div className="search-none">No results</div>
+          )}
         </div>
       </div>
       <div className="nav-right">
