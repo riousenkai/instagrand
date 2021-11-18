@@ -5,6 +5,29 @@ from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
+@post_routes.route('/id/<int:id>')
+@login_required
+def spec_posts(id):
+    post = Post.query.get(id)
+
+    likes_comp = []
+    comment_comp = []
+    fin = []
+
+    likes = Like.query.filter_by(post_id=post.id).all()
+    for like in likes:
+        user = User.query.filter_by(id=like.user_id).first()
+        likes_comp.append(user.to_dict())
+
+    comments = Comment.query.filter_by(user_id=post.user_id, post_id=post.id).all()
+    for comment in comments:
+        user = User.query.filter_by(id=comment.user_id).first()
+        comment_comp.append(user.to_dict())
+
+    fin.append({'post': post.to_dict(), 'likes': likes_comp, 'comments': comment_comp})
+
+    return {'specific': [f for f in fin]}
+
 @post_routes.route('/<int:id>')
 @login_required
 def posts(id):

@@ -1,4 +1,5 @@
 const GET_POSTS = "post/GET_POSTS";
+const GET_SINGLE_POST = "post/GET_SINGLE_POST";
 const GET_FOLLOWING_POSTS = "post/GET_FOLLOWER_POSTS";
 
 const getFollowingPosts = (posts) => ({
@@ -10,6 +11,11 @@ const getPosts = (posts, userId) => ({
   type: GET_POSTS,
   payload: posts,
   userId,
+});
+
+const getInfo = (posts) => ({
+  type: GET_SINGLE_POST,
+  payload: posts,
 });
 
 
@@ -80,6 +86,14 @@ export const createPost = (post) => async (dispatch) => {
   });
 };
 
+export const postInfo = (postId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/id/${postId}`);
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(getInfo(data));
+  }
+};
+
 export const findPosts = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}`);
   const data = await res.json();
@@ -87,6 +101,7 @@ export const findPosts = (userId) => async (dispatch) => {
     dispatch(getPosts(data, userId));
   }
 };
+
 
 export const findFollowingPosts = () => async (dispatch) => {
   const res = await fetch(`/api/posts/following`);
@@ -104,6 +119,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, [action.userId]: action.payload };
     case GET_FOLLOWING_POSTS:
       return { ...state, following: action.payload.following };
+    case GET_SINGLE_POST:
+      return { ...state, ...action.payload}
     default:
       return state;
   }
