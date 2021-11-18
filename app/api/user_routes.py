@@ -17,3 +17,13 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/search', methods=['PUT'])
+@login_required
+def search():
+
+    data = request.json
+
+    users = User.query.filter(User.username.ilike(f'%{data}%')).all()
+
+    return {'users': [user.to_dict() for user in users]}

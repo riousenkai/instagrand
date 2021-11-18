@@ -108,12 +108,14 @@
 .p-hover {
   position: absolute;
   grid-area: 1 / 1;
+  z-index: -1;
 }
 
 .p-img-loading,
 .p-hover {
   position: absolute;
   grid-area: 1 / 1;
+  z-index: -1;
 }
 
 .p-hover {
@@ -125,6 +127,7 @@
   align-content: center;
   justify-content: center;
   color: white;
+  z-index: -1;
 }
 
 .post-c:hover > .p-hover {

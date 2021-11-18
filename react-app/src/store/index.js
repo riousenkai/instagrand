@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import follow from "./follow";
 import post from "./post";
+import search from "./search"
 
 const rootReducer = combineReducers({
   session,
   follow,
   post,
+  search
 });
 
 let enhancer;

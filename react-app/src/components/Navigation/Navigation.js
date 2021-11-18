@@ -8,19 +8,12 @@ import PostModal from "../PostModal/PostModal";
 
 const Navigation = () => {
   const [input, useInput] = useState();
-  const {num, setNum} = useModal()
+  const [hidden, setHidden] = useState(true);
+  const { num, setNum } = useModal();
   const path = window.location.pathname;
   const border = useRef(null);
   const user = useSelector((state) => state.session.user);
   const history = useHistory();
-
-  const addBorder = () => {
-    if (border.current.style.border === "1px solid white") {
-      border.current.style.border = "1px solid black";
-    } else {
-      border.current.style.border = "1px solid white";
-    }
-  };
 
   return (
     <div className="nav-main">
@@ -34,14 +27,14 @@ const Navigation = () => {
       <div classname="search-container">
         <input value={input} className="search-bar" placeholder="Search" />
         <div className="search-results hidden">
-            <NavLink to={`/users/${1}`}>
-                <img className="nav-prof" src={user.image_url} />
-                {user.name}
-            </NavLink>
+          <NavLink className="search-card" to={`/users/${1}`}>
+            <img className="search-prof" src={user.image_url} />
+            <div className="search-name">{user.username}</div>
+          </NavLink>
         </div>
       </div>
       <div className="nav-right">
-        {(path === "/" && num === 0) ? (
+        {path === "/" && num === 0 ? (
           <img
             onClick={() => history.push("/")}
             className="nav-icons"
@@ -57,8 +50,22 @@ const Navigation = () => {
           />
         )}
         <PostModal />
-        <div className="nav-prof-border" ref={border}>
-          <img className="nav-prof" onClick={addBorder} src={user.image_url} />
+        <div
+          className="nav-prof-border"
+          ref={border}
+          style={{
+            visibility:
+              hidden === true && path !== `/users/${user.id}`
+                ? "hidden"
+                : "visible",
+          }}
+        >
+          <img
+            className="nav-prof"
+            onClick={() => setHidden((old) => !old)}
+            src={user.image_url}
+            style={{ visibility: "visible" }}
+          />
         </div>
       </div>
     </div>
