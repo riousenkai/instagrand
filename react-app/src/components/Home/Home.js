@@ -165,16 +165,21 @@ const Home = () => {
                   {post.likes.length === 1 ? "like" : "likes"}
                 </div>
               ) : null}
-              <div className="post-u-d">
-                <div
-                  onClick={() => history.push(`/users/${post.user.id}`)}
-                  className="post-user"
-                >
-                  {post.user.username}
+              {post.post.description.length > 0 ? (
+                <div className="post-u-d">
+                  <div
+                    onClick={() => history.push(`/users/${post.user.id}`)}
+                    className="post-user"
+                  >
+                    {post.user.username}
+                  </div>
+                  <div className="post-desc">{post.post.description}</div>
                 </div>
-                <div className="post-desc">{post.post.description}</div>
-              </div>
-              <div className="post-comment-count">
+              ) : null}
+              <div
+                className="post-comment-count"
+                onClick={() => history.push(`/posts/${post.post.id}`)}
+              >
                 {post.comments?.length > 1
                   ? `View all ${post.comments.length} comments`
                   : null}
