@@ -42,6 +42,8 @@ const UserProfile = () => {
     const result = followers?.find((f) => f.id === main?.id);
     if (result) {
       setFollowing(true);
+    } else {
+      setFollowing(false)
     }
   }, [userId, user, follows]);
 
