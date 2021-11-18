@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Follow, User
 
 follow_routes = Blueprint('follows', __name__)
@@ -23,3 +23,14 @@ def user(id):
 
 
     return {'following': fin_following, 'followers': fin_followers}
+
+@follow_routes.route('/<int:id>', methods=['POST'])
+@login_required
+def follow(id):
+
+    const follow = Follow(follower_id=current_user.id, following_id=id)
+
+    db.session.add(follow)
+    db.session.commit
+
+    return user(id)

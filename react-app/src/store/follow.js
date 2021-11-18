@@ -14,6 +14,18 @@ export const findFollows = (userId) => async (dispatch) => {
   }
 };
 
+export const followUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/follows/${userId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.ok) {
+    dispatch(getFollows(data, userId));
+  }
+};
+
 const initialState = { users: null };
 
 export default function reducer(state = initialState, action) {
