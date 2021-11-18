@@ -43,7 +43,7 @@ const UserProfile = () => {
     if (result) {
       setFollowing(true);
     } else {
-      setFollowing(false)
+      setFollowing(false);
     }
   }, [userId, user, follows]);
 
@@ -105,7 +105,7 @@ const UserProfile = () => {
           ? posts[+userId]?.posts.map((post, i) => (
               <div
                 className="post-c"
-                onClick={() => history.push(`/posts/${post.id}`)}
+                onClick={() => history.push(`/posts/${post.post.id}`)}
               >
                 <img
                   className={`p-img-loading pl-img-${i} `}
@@ -114,7 +114,7 @@ const UserProfile = () => {
                 <img
                   className={`p-img p-img-${i} hidden`}
                   onLoad={() => loadIt(i)}
-                  src={post.media_url}
+                  src={post.post.media_url}
                 />
                 <div className="p-hover">
                   <div className="p-likes">
@@ -122,14 +122,14 @@ const UserProfile = () => {
                       className="p-icons"
                       src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
                     />
-                    <div className="p-like-ct">0</div>
+                    <div className="p-like-ct">{post.likes.length}</div>
                   </div>
                   <div className="p-comments">
                     <img
                       className="p-icons"
                       src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
                     />
-                    <div className="p-like-ct">0</div>
+                    <div className="p-like-ct">{post.comments.length}</div>
                   </div>
                 </div>
               </div>
