@@ -15,7 +15,7 @@ def posts(id):
     fin = []
 
     for post in posts:
-        likes = Like.query.filter_by(user_id=id, post_id=post.id).all()
+        likes = Like.query.filter_by(post_id=post.id).all()
         for like in likes:
             user = User.query.filter_by(id=like.user_id).first()
             likes_comp.append(user.to_dict())
@@ -43,6 +43,7 @@ def following_posts():
     complete_comments = []
 
     complete_comments2 = []
+    likes_comp2 = []
 
     for follow in following:
         posts = Post.query.filter_by(user_id=follow.following_id).all()
@@ -52,7 +53,7 @@ def following_posts():
             for comment in comments:
                 comment_user = User.query.get(comment.user_id)
                 complete_comments.append({'comment': comment.to_dict(), 'user': comment_user.to_dict()})
-            likes = Like.query.filter_by(user_id=post.user_id, post_id=post.id).all()
+            likes = Like.query.filter_by(post_id=post.id).all()
             for like in likes:
                 user = User.query.filter_by(id=like.user_id).first()
                 likes_comp.append(user.to_dict())
@@ -67,8 +68,13 @@ def following_posts():
         for comment2 in comments2:
             comment_user2 = User.query.get(comment2.user_id)
             complete_comments2.append({'comment': comment2.to_dict(), 'user': comment_user2.to_dict()})
-        all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2})
+        likes = Like.query.filter_by(post_id=post.id).all()
+        for like in likes:
+            user = User.query.filter_by(id=like.user_id).first()
+            likes_comp2.append(user.to_dict())
+        all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2, 'likes': likes_comp2})
         complete_comments2 = []
+        likes_comp2 = []
 
     sort = sorted(all_posts, key=lambda x:x['post']['id'], reverse=True)
 

@@ -142,7 +142,12 @@ const Home = () => {
                   src="https://img.icons8.com/material-outlined/24/000000/speech-bubble--v1.png"
                 />
               </div>
-              <div className="post-likes">15 likes</div>
+              {post.likes.length > 0 ? (
+                <div className="post-likes">
+                  {post.likes.length}{" "}
+                  {post.likes.length === 1 ? "like" : "likes"}
+                </div>
+              ) : null}
               <div className="post-u-d">
                 <div
                   onClick={() => history.push(`/users/${post.user.id}`)}
