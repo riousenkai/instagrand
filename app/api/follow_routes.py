@@ -39,7 +39,7 @@ def follow(id):
 @login_required
 def unfollow(id):
 
-    follow = Follow.query.filter_by(follower_id=current_user.id, following_id=id)
+    follow = Follow.query.filter_by(follower_id=current_user.id, following_id=id).first()
 
     db.session.delete(follow)
     db.session.commit()
