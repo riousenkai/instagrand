@@ -22,9 +22,23 @@ export const followUser = (userId) => async (dispatch) => {
     },
   });
   if (res.ok) {
+    const data = await res.json();
     dispatch(getFollows(data, userId));
   }
 };
+
+export const unFollowUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/follows/${userId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(getFollows(data, userId));
+  }
+}
 
 const initialState = { users: null };
 

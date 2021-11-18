@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 import { findPosts } from "../../store/post";
-import { findFollows } from "../../store/follow";
+import { findFollows, followUser } from "../../store/follow";
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -44,6 +44,10 @@ const UserProfile = () => {
     }
   }, [userId, user, follows]);
 
+  const follow = () => {
+    dispatch(followUser(userId));
+  };
+
   return (
     <div className="prof-main">
       <div className="prof-top">
@@ -56,9 +60,16 @@ const UserProfile = () => {
                 <button className="prof-edit">Edit Profile</button>
               </>
             ) : following === true ? (
-              <button className="prof-following"><img className="prof-f-img" src="https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"/></button>
+              <button className="prof-following">
+                <img
+                  className="prof-f-img"
+                  src="https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"
+                />
+              </button>
             ) : (
-              <button className="prof-follow">Follow</button>
+              <button className="prof-follow" onClick={follow}>
+                Follow
+              </button>
             )}
           </div>
           <div className="prof-count">
