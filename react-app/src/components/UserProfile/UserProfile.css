@@ -115,9 +115,36 @@
   height: 293px;
   width: 293px;
   margin: 0 auto;
-  display:none;
+  display: none;
+  align-content: center;
+  justify-content: center;
+  color: white;
 }
 
 .post-c:hover > .p-hover {
-    display: grid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-icons {
+  width: 24px;
+  height: 24px;
+}
+
+.p-likes {
+  display: flex;
+  gap: 4px;
+  margin-right: 30px;
+}
+
+.p-like-ct {
+  color: white !important;
+  font-size: 20px;
+}
+
+.p-comments {
+  display: flex;
+  gap: 4px;
 }

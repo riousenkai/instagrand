@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { findPosts } from "../../store/post";
 import { findFollows } from "../../store/follow";
 import "./UserProfile.css";
 
 const UserProfile = () => {
+    const history = useHistory()
   const main = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
@@ -73,12 +74,29 @@ const UserProfile = () => {
         </div>
       </div>
       <div className="prof-bot">
-                {posts[+userId]?.posts.length > 0 ? posts[+userId]?.posts.map(post => (
-                    <div className="post-c">
-                        <img className="p-img" src={post.media_url} />
-                        <div className="p-hover">D</div>
-                    </div>
-                )) : null}
+        {posts[+userId]?.posts.length > 0
+          ? posts[+userId]?.posts.map((post) => (
+              <div className="post-c" onClick={() => history.push(`/posts/${post.id}`)}>
+                <img className="p-img" src={post.media_url} />
+                <div className="p-hover">
+                  <div className="p-likes">
+                    <img
+                      className="p-icons"
+                      src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
+                    />
+                    <div className="p-like-ct">0</div>
+                  </div>
+                  <div className="p-comments">
+                    <img
+                      className="p-icons"
+                      src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
+                    />
+                    <div className="p-like-ct">0</div>
+                  </div>
+                </div>
+              </div>
+            ))
+          : null}
       </div>
     </div>
   );
