@@ -13,7 +13,6 @@ const Home = () => {
   const emojis = useRef([]);
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
-  const [comment, setComment] = useState("");
   const [hidden, setHidden] = useState(true);
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);

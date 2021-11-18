@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteComment } from "../../store/comment";
+import { deleteComment } from "../../store/post";
 import { useModal } from "../../context/UseModal";
 
 const CommentSettings = ({ comment }) => {
@@ -8,6 +8,7 @@ const CommentSettings = ({ comment }) => {
 
   const del = () => {
     dispatch(deleteComment(comment.comment.id));
+    setCommentId(0);
   };
 
   return (

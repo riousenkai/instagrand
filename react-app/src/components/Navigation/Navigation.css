@@ -13,6 +13,7 @@
 }
 
 .nav-img {
+  margin-top: 10px;
   max-width: 103px;
   cursor: pointer;
   background-color: #ffffff;

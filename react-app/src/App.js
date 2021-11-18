@@ -6,7 +6,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import Navigation from "./components/Navigation/Navigation";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User";
+import UserProfile from "./components/UserProfile/UserProfile";
 import Home from "./components/Home/Home";
 import { authenticate } from "./store/session";
 
@@ -39,7 +39,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <Navigation />
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <Navigation />

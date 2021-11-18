@@ -1,0 +1,19 @@
+.prof-main {
+    padding-top: 90px;
+    margin: 0 auto;
+    padding-right: 25%;
+    padding-left: 25%;
+}
+
+.prof-top {
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.prof-img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    padding-right: 50px;
+}

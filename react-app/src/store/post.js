@@ -12,6 +12,17 @@ const getPosts = (posts, userId) => ({
   userId,
 });
 
+export const deleteComment = (id) => async (dispatch) => {
+  const res = await fetch(`/api/comments/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  dispatch(getFollowingPosts(data));
+};
+
 export const submitComment = (obj) => async (dispatch) => {
   const res = await fetch(`/api/comments`, {
     method: "POST",
