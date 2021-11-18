@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findFollows } from "../../store/follow";
-import { findFollowingPosts, findPosts, submitComment, likePost } from "../../store/post";
+import {
+  findFollowingPosts,
+  findPosts,
+  submitComment,
+  likePost,
+} from "../../store/post";
 import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
 import OptionsModal from "../Options/OptionsModal";
 import CommentModal from "../CommentModal/CommentModal";
+import { icon1, icon2, icon3 } from "./icons";
 
 const Home = () => {
   const history = useHistory();
@@ -98,8 +104,8 @@ const Home = () => {
   };
 
   const like = (id) => {
-    dispatch(likePost(id))
-  }
+    dispatch(likePost(id));
+  };
 
   return (
     <div className="home-main">
@@ -137,15 +143,21 @@ const Home = () => {
                 src={post.post.media_url}
               />
               <div className="post-icons">
-                <img
+                {post.likes.find((p) => p.id === user.id) !== undefined ? (
+                  <div className="post-icon" onClick={() => like(post.post.id)}>
+                    {icon2}
+                  </div>
+                ) : (
+                  <div className="post-icon" onClick={() => like(post.post.id)}>
+                    {icon1}
+                  </div>
+                )}
+                <div
                   className="post-icon"
-                  onClick={() => like(post.post.id)}
-                  src="https://img.icons8.com/material-outlined/30/000000/like.png"
-                />
-                <img
-                  className="post-icon"
-                  src="https://img.icons8.com/material-outlined/24/000000/speech-bubble--v1.png"
-                />
+                  onClick={() => history.push(`/posts/${post.post.id}`)}
+                >
+                  {icon3}
+                </div>
               </div>
               {post.likes.length > 0 ? (
                 <div className="post-likes">
