@@ -91,7 +91,7 @@ const Navigation = () => {
           />
         )}
         <PostModal />
-        <NavModal user={user} path={path}  />
+        <NavModal user={user} path={path} />
       </div>
     </div>
   );
