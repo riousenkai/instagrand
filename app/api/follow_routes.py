@@ -34,3 +34,14 @@ def follow(id):
     db.session.commit()
 
     return user(id)
+
+@follow_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def unfollow(id):
+
+    follow = Follow.query.filter_by(follower_id=current_user.id, following_id=id)
+
+    db.session.delete(follow)
+    db.session.commit()
+
+    return user(id)

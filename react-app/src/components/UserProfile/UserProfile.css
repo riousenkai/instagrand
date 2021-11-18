@@ -192,3 +192,65 @@
   border: 0.5px solid #dbdbdb;
   border-radius: 4px;
 }
+
+.prof-following:active,
+.prof-follow:active {
+  opacity: 0.7;
+}
+
+.unfollow-img {
+  width: 90px;
+  height: 90px;
+  clip-path: circle();
+  object-fit: cover;
+  border-top: 40px;
+  user-select: none;
+}
+
+.unfollow-img-c {
+  height: 90px;
+  margin: 32px 16px 16px;
+}
+
+.unfollow-settings {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popup 400ms forwards;
+  height: 293px;
+}
+
+.unfollow-desc {
+  width: 400px;
+  color: #262626;
+  font-size: 14px;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  border-bottom: 0.5px solid #dbdbdb;
+  text-align: center;
+  cursor: default;
+}
+
+.unfollow-p {
+  width: 100%;
+  text-align: center;
+  color: #ed4956;
+  padding: 16px 16px;
+  height: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}
+
+.unfollow-cancel {
+  width: 100%;
+  height: 48px;
+  padding: 16px 16px;
+  cursor: pointer;
+  text-align: center;
+  color: #262626;
+}

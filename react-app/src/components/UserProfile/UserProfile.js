@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router";
 import { findPosts } from "../../store/post";
 import { findFollows, followUser } from "../../store/follow";
 import "./UserProfile.css";
+import UserModal from "./UserModal";
 
 const UserProfile = () => {
   const history = useHistory();
@@ -60,12 +61,7 @@ const UserProfile = () => {
                 <button className="prof-edit">Edit Profile</button>
               </>
             ) : following === true ? (
-              <button className="prof-following">
-                <img
-                  className="prof-f-img"
-                  src="https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"
-                />
-              </button>
+              <UserModal user={user}></UserModal>
             ) : (
               <button className="prof-follow" onClick={follow}>
                 Follow
