@@ -20,11 +20,11 @@ def make_comment():
 
 @comment_routes.route('/<int:comment_id>', methods=['DELETE'])
 @login_required
-def make_comment(comment_id):
+def delete_comment(comment_id):
 
     comment = Comment.query.get(comment_id)
 
     db.session.delete(comment)
-    db.session.commit(comment)
+    db.session.commit()
 
     return following_posts()

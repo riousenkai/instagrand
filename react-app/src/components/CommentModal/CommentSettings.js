@@ -1,15 +1,22 @@
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../../store/comment";
 import { useModal } from "../../context/UseModal";
 
 const CommentSettings = ({ comment }) => {
+  const dispatch = useDispatch();
   const { setCommentId } = useModal();
 
-  const del = () => {};
+  const del = () => {
+    dispatch(deleteComment(comment.comment.id));
+  };
 
   return (
     <div className="delete-conf-settings">
       <div className="del-conf-top">
         <p className="del-title">Delete Comment?</p>
-        <p className="del-desc">Are you sure you want to delete this comment?</p>
+        <p className="del-desc">
+          Are you sure you want to delete this comment?
+        </p>
       </div>
       <div className="delete-post" onClick={del}>
         Delete

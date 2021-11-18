@@ -1,5 +1,4 @@
-import React, { useState} from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
 import CommentSettings from "./CommentSettings";
@@ -7,7 +6,6 @@ import "./CommentSettings.css";
 
 const CommentModal = ({ comment, hidden }) => {
   const { commentId, setCommentId } = useModal();
-  const user = useSelector((state) => state.session.user);
 
   return (
     <>
