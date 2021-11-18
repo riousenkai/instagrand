@@ -169,11 +169,18 @@ const Home = () => {
                       }
                       onMouseLeave={() => setHidden(true)}
                     >
-                      <div className="post-commenter-name">
+                      <div
+                        className="post-commenter-name"
+                        onClick={() =>
+                          history.push(`/users/${comment.user.id}`)
+                        }
+                      >
                         {comment.user.username}
                       </div>
                       <div className="post-comment">
-                        {comment.comment.description?.length > 35 ? comment.comment.description.slice(0, 35) + "..." : comment.comment.description}
+                        {comment.comment.description?.length > 35
+                          ? comment.comment.description.slice(0, 35) + "..."
+                          : comment.comment.description}
                       </div>
                       <CommentModal comment={comment} hidden={hidden} />
                     </div>

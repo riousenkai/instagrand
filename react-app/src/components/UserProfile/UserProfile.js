@@ -39,8 +39,6 @@ const UserProfile = () => {
   useEffect(() => {
     const followers = follows[+userId]?.followers;
     const result = followers?.find((f) => f.id === main?.id);
-    console.log(follows[+userId]?.followers);
-    console.log(result);
     if (result) {
       setFollowing(true);
     }
@@ -58,9 +56,9 @@ const UserProfile = () => {
                 <button className="prof-edit">Edit Profile</button>
               </>
             ) : following === true ? (
-              <button className="prof-following">Following</button>
+              <button className="prof-following"><img className="prof-f-img" src="https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"/></button>
             ) : (
-              <button className="prof-following">Follow</button>
+              <button className="prof-follow">Follow</button>
             )}
           </div>
           <div className="prof-count">
