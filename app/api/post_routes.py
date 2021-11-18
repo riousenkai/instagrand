@@ -8,7 +8,7 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/<int:id>')
 @login_required
 def posts(id):
-    posts = Post.query.filter_by(user_id=id).all()
+    posts = Post.query.filter_by(user_id=id).order_by(Post.id.desc()).all()
 
     return {'posts': [post.to_dict() for post in posts]}
 

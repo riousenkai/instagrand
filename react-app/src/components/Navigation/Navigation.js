@@ -69,7 +69,7 @@ const Navigation = () => {
               </NavLink>
             ))
           ) : (
-            <div className="search-none">No results</div>
+            <div className="search-none">No results.</div>
           )}
         </div>
       </div>

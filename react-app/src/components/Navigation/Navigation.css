@@ -111,3 +111,10 @@
   color: #262626;
   font-weight: 400;
 }
+
+.search-none {
+  margin-top: 187.5px;
+  align-self: center;
+  text-align: center;
+  color: #8e8e8e;
+}
