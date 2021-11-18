@@ -37,11 +37,14 @@ const UserProfile = () => {
   };
 
   useEffect(() => {
-    const find = follows[+userId]?.followers.filter((f) => f.id === user?.id);
-    if (find?.length > 0) {
+    const followers = follows[+userId]?.followers;
+    const result = followers?.find((f) => f.id === main?.id);
+    console.log(follows[+userId]?.followers);
+    console.log(result);
+    if (result) {
       setFollowing(true);
     }
-  }, [userId, follows]);
+  }, [userId, user, follows]);
 
   return (
     <div className="prof-main">
@@ -54,7 +57,11 @@ const UserProfile = () => {
               <>
                 <button className="prof-edit">Edit Profile</button>
               </>
-            ) : null}
+            ) : following === true ? (
+              <button className="prof-following">Following</button>
+            ) : (
+              <button className="prof-following">Follow</button>
+            )}
           </div>
           <div className="prof-count">
             <div className="prof-posts">
