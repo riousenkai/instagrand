@@ -12,7 +12,8 @@ def spec_posts(id):
 
     likes_comp = []
     comment_comp = []
-    fin = []
+
+    user = User.query.filter_by(id=post.user_id).first()
 
     likes = Like.query.filter_by(post_id=post.id).all()
     for like in likes:
@@ -24,9 +25,7 @@ def spec_posts(id):
         user = User.query.filter_by(id=comment.user_id).first()
         comment_comp.append(user.to_dict())
 
-    fin.append({'post': post.to_dict(), 'likes': likes_comp, 'comments': comment_comp})
-
-    return {'specific': [f for f in fin]}
+    return {'specific': {'post': post.to_dict(), 'likes': likes_comp, 'comments': comment_comp, 'user': user.to_dict()}}
 
 @post_routes.route('/<int:id>')
 @login_required

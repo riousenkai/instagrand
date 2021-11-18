@@ -7,6 +7,40 @@
 .p-card {
   margin-top: 40px;
   width: 812px;
-  height: 597.5;
+  height: 597.5px;
   border: 0.5px solid #efefef;
+  display: flex;
+}
+
+.pp-img {
+    width: 478px;
+    height: 597.5px;
+    object-fit: cover;
+}
+
+.pp-top-right {
+    padding: 14px 4px 14px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.pp-user-img {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+
+.pp-user {
+    font-size: 14px;
+    color: #262626;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pp-user:hover {
+    text-decoration: underline;
 }
