@@ -12,6 +12,18 @@ const getPosts = (posts, userId) => ({
   userId,
 });
 
+
+export const likePost = (postId) => async (dispatch) => {
+  const res = await fetch(`/api/likes/${postId}`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+  })
+  const data = await res.json()
+  dispatch(getFollowingPosts(data))
+}
+
 export const deleteComment = (id) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}`, {
     method: "DELETE",

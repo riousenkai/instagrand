@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findFollows } from "../../store/follow";
-import { findFollowingPosts, findPosts, submitComment } from "../../store/post";
+import { findFollowingPosts, findPosts, submitComment, likePost } from "../../store/post";
 import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
@@ -97,6 +97,10 @@ const Home = () => {
     dispatch(submitComment(obj));
   };
 
+  const like = (id) => {
+    dispatch(likePost(id))
+  }
+
   return (
     <div className="home-main">
       <div className="home-left">
@@ -135,6 +139,7 @@ const Home = () => {
               <div className="post-icons">
                 <img
                   className="post-icon"
+                  onClick={() => like(post.post.id)}
                   src="https://img.icons8.com/material-outlined/30/000000/like.png"
                 />
                 <img
