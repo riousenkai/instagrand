@@ -74,8 +74,9 @@ const UserProfile = () => {
       </div>
       <div className="prof-bot">
                 {posts[+userId]?.posts.length > 0 ? posts[+userId]?.posts.map(post => (
-                    <div className="post-card">
+                    <div className="post-c">
                         <img className="p-img" src={post.media_url} />
+                        <div className="p-hover">D</div>
                     </div>
                 )) : null}
       </div>

@@ -70,24 +70,54 @@
 }
 
 .prof-desc {
-    color: #262626;
-    font-size: 16px;
-    word-wrap: break-word;
+  color: #262626;
+  font-size: 16px;
+  word-wrap: break-word;
 }
 
-.post-card {
-    width: 293px;
-    height: 293px;
+.post-c {
+  width: 293px;
+  height: 293px;
+  cursor: pointer;
 }
+
+/* .prof-bot {
+  display: inline-block;
+  gap: 40px;
+  width: 700px;
+} */
 
 .prof-bot {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .p-img {
-    height: 293px;
-    width: 293px;
-    object-fit: cover;
+  height: 293px;
+  width: 293px;
+  object-fit: cover;
+  user-select: none;
+}
+
+.p-img,
+.p-hover {
+  position: absolute;
+  grid-area: 1 / 1;
+}
+
+.p-hover {
+  background-color: rgba(0, 0, 0, 0.342);
+  height: 293px;
+  width: 293px;
+  margin: 0 auto;
+  display:none;
+}
+
+.post-c:hover > .p-hover {
+    display: grid;
 }
