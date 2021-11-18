@@ -1,9 +1,24 @@
-const CommentSettings = ({ comment }) => {
-    return (
-        <div>
-            <div>test</div>
-        </div>
-    )
-}
+import { useModal } from "../../context/UseModal";
 
-export default CommentSettings
+const CommentSettings = ({ comment }) => {
+  const { setCommentId } = useModal();
+
+  const del = () => {};
+
+  return (
+    <div className="delete-conf-settings">
+      <div className="del-conf-top">
+        <p className="del-title">Delete Comment?</p>
+        <p className="del-desc">Are you sure you want to delete this comment?</p>
+      </div>
+      <div className="delete-post" onClick={del}>
+        Delete
+      </div>
+      <div className="goto-post" onClick={() => setCommentId(0)}>
+        Cancel
+      </div>
+    </div>
+  );
+};
+
+export default CommentSettings;

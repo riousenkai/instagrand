@@ -166,21 +166,22 @@
   gap: 5px;
   justify-content: center;
   margin-bottom: 5px;
-  width: 500px;
 }
 
 .post-test {
   font-size: 14px;
   display: flex;
-  flex-direction: row;
-  padding-left: 16px;
+  flex-direction: row !important;
   align-items: center;
   padding-bottom: 5px;
-  width: 500px;
+  max-width: 550px;
+  gap: 5px;
 }
 
 .post-comment {
   background-color: #ffffff;
+  overflow: hidden;
+
 }
 
 .comment-input {

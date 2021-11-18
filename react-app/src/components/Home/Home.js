@@ -162,7 +162,7 @@ const Home = () => {
                 {post.comments.length > 0 &&
                   post.comments.slice(0, 1).map((comment) => (
                     <div
-                      classname="post-test"
+                      className="post-test"
                       onMouseEnter={
                         comment.user.id === user?.id
                           ? () => setHidden(false)
@@ -174,7 +174,7 @@ const Home = () => {
                         {comment.user.username}
                       </div>
                       <div className="post-comment">
-                        {comment.comment.description}
+                        {comment.comment.description?.length > 35 ? comment.comment.description.slice(0, 35) + "..." : comment.comment.description}
                       </div>
                       <CommentModal comment={comment} hidden={hidden} />
                     </div>

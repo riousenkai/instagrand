@@ -6,7 +6,7 @@ from .post_routes import following_posts
 comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/', methods=['POST'], strict_slashes=False)
-# @login_required
+@login_required
 def make_comment():
 
     new_comment = request.json
@@ -15,5 +15,16 @@ def make_comment():
 
     db.session.add(comment)
     db.session.commit()
+
+    return following_posts()
+
+@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
+@login_required
+def make_comment(comment_id):
+
+    comment = Comment.query.get(comment_id)
+
+    db.session.delete(comment)
+    db.session.commit(comment)
 
     return following_posts()
