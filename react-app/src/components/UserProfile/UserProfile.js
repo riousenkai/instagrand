@@ -11,6 +11,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const [user, setUser] = useState();
+  const [following, setFollowing] = useState(false);
   const posts = useSelector((state) => state.post);
   const follows = useSelector((state) => state.follow);
 
@@ -34,6 +35,13 @@ const UserProfile = () => {
     document.querySelector(`.pl-img-${i}`).classList.add("hidden");
     document.querySelector(`.p-img-${i}`).classList.remove("hidden");
   };
+
+  useEffect(() => {
+    const find = follows[+userId]?.followers.filter((f) => f.id === user?.id);
+    if (find?.length > 0) {
+      setFollowing(true);
+    }
+  }, [userId, follows]);
 
   return (
     <div className="prof-main">
