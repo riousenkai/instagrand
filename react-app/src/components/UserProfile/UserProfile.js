@@ -6,7 +6,7 @@ import { findFollows } from "../../store/follow";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-    const history = useHistory()
+  const history = useHistory();
   const main = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
@@ -29,6 +29,11 @@ const UserProfile = () => {
     dispatch(findFollows(+userId));
     dispatch(findPosts(+userId));
   }, [userId]);
+
+  const loadIt = (i) => {
+    document.querySelector(`.pl-img-${i}`).classList.add("hidden");
+    document.querySelector(`.p-img-${i}`).classList.remove("hidden");
+  };
 
   return (
     <div className="prof-main">
@@ -75,9 +80,20 @@ const UserProfile = () => {
       </div>
       <div className="prof-bot">
         {posts[+userId]?.posts.length > 0
-          ? posts[+userId]?.posts.map((post) => (
-              <div className="post-c" onClick={() => history.push(`/posts/${post.id}`)}>
-                <img className="p-img" src={post.media_url} />
+          ? posts[+userId]?.posts.map((post, i) => (
+              <div
+                className="post-c"
+                onClick={() => history.push(`/posts/${post.id}`)}
+              >
+                <img
+                  className={`p-img-loading pl-img-${i} `}
+                  src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                />
+                <img
+                  className={`p-img p-img-${i} hidden`}
+                  onLoad={() => loadIt(i)}
+                  src={post.media_url}
+                />
                 <div className="p-hover">
                   <div className="p-likes">
                     <img

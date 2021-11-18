@@ -110,6 +110,12 @@
   grid-area: 1 / 1;
 }
 
+.p-img-loading,
+.p-hover {
+  position: absolute;
+  grid-area: 1 / 1;
+}
+
 .p-hover {
   background-color: rgba(0, 0, 0, 0.342);
   height: 293px;
@@ -147,4 +153,10 @@
 .p-comments {
   display: flex;
   gap: 4px;
+}
+
+.p-img-loading {
+  height: 293px;
+  width: 293px;
+  object-fit: cover;
 }
