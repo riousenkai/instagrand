@@ -38,6 +38,7 @@ def following_posts():
     following = Follow.query.filter_by(follower_id=current_user.id).all()
 
     all_posts = []
+    likes_comp = []
 
     complete_comments = []
 
@@ -51,8 +52,13 @@ def following_posts():
             for comment in comments:
                 comment_user = User.query.get(comment.user_id)
                 complete_comments.append({'comment': comment.to_dict(), 'user': comment_user.to_dict()})
-            all_posts.append({'post': post.to_dict(), 'user': user.to_dict(), 'comments': complete_comments})
+            likes = Like.query.filter_by(user_id=post.user_id, post_id=post.id).all()
+            for like in likes:
+                user = User.query.filter_by(id=like.user_id).first()
+                likes_comp.append(user.to_dict())
+            all_posts.append({'post': post.to_dict(), 'user': user.to_dict(), 'comments': complete_comments, 'likes': likes_comp})
             complete_comments = []
+            likes_comp = []
 
     user_posts = Post.query.filter_by(user_id=current_user.id).all()
 
