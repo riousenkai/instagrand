@@ -164,21 +164,19 @@
   flex-direction: column;
   margin-left: 16px;
   gap: 5px;
-  background-color: #ffffff;
   justify-content: center;
   margin-bottom: 5px;
-  width: 600px;
+  width: 500px;
 }
 
 .post-test {
   font-size: 14px;
   display: flex;
   flex-direction: row;
-  margin-left: 16px;
-  background-color: #ffffff;
+  padding-left: 16px;
   align-items: center;
-  margin-bottom: 5px;
-  width: 600px;
+  padding-bottom: 5px;
+  width: 500px;
 }
 
 .post-comment {
