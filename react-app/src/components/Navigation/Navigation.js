@@ -1,19 +1,28 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import "./Navigation.css";
+import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
 
 const Navigation = () => {
-  const [input, useInput] = useState();
+  const dispatch = useDispatch();
+  const [input, setInput] = useState("");
   const [hidden, setHidden] = useState(true);
   const { num, setNum } = useModal();
   const path = window.location.pathname;
   const border = useRef(null);
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session?.user);
   const history = useHistory();
+  const results = useSelector((state) => state.search?.users);
+
+  useEffect(() => {
+    if (input?.length > 0) {
+      dispatch(searchUsers(input));
+    }
+  }, [input]);
 
   return (
     <div className="nav-main">
@@ -25,12 +34,27 @@ const Navigation = () => {
         border="0"
       />
       <div classname="search-container">
-        <input value={input} className="search-bar" placeholder="Search" />
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onFocus={() =>
+            document.querySelector(".search-results").classList.remove("hidden")
+          }
+          onBlur={() =>
+            document.querySelector(".search-results").classList.add("hidden")
+          }
+          className="search-bar"
+          placeholder="Search"
+        />
         <div className="search-results hidden">
-          <NavLink className="search-card" to={`/users/${1}`}>
-            <img className="search-prof" src={user.image_url} />
-            <div className="search-name">{user.username}</div>
-          </NavLink>
+          {results?.length > 0 &&
+            input.length > 0 ?
+            results.map((res) => (
+              <NavLink className="search-card" to={`/users/${res.id}`}>
+                <img className="search-prof" src={res.image_url} />
+                <div className="search-name">{res.username}</div>
+              </NavLink>
+            )) : <div className="search-none">No results</div>}
         </div>
       </div>
       <div className="nav-right">

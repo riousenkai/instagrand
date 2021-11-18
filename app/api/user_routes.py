@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User
 
@@ -22,7 +22,7 @@ def user(id):
 @login_required
 def search():
 
-    data = request.json
+    data = request.json['input']
 
     users = User.query.filter(User.username.ilike(f'%{data}%')).all()
 
