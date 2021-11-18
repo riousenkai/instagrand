@@ -10,8 +10,8 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const [user, setUser] = useState();
-  const posts = useSelector(state => state.post)
-  const follows = useSelector(state => state.follow)
+  const posts = useSelector((state) => state.post);
+  const follows = useSelector((state) => state.follow);
 
   useEffect(() => {
     if (!userId) {
@@ -43,11 +43,41 @@ const UserProfile = () => {
             ) : null}
           </div>
           <div className="prof-count">
-              <div className="prof-posts"><span className="p-ct-bold">{posts[+userId]?.posts.length}</span> {posts[+userId]?.posts.length !== 1 ? "posts" : "post"}</div>
-              <div className="prof-posts"><span className="p-ct-bold">{follows[+userId]?.followers.length}</span> {follows[+userId]?.followers.length !== 1 ? "followers" : "follower"}</div>
-              <div className="prof-posts"><span className="p-ct-bold">{follows[+userId]?.following.length}</span> following</div>
+            <div className="prof-posts">
+              <span className="p-ct-bold">{posts[+userId]?.posts.length}</span>{" "}
+              {posts[+userId]?.posts.length !== 1 ? "posts" : "post"}
+            </div>
+            <div className="prof-posts">
+              <span className="p-ct-bold">
+                {follows[+userId]?.followers.length}
+              </span>{" "}
+              {follows[+userId]?.followers.length !== 1
+                ? "followers"
+                : "follower"}
+            </div>
+            <div className="prof-posts">
+              <span className="p-ct-bold">
+                {follows[+userId]?.following.length}
+              </span>{" "}
+              following
+            </div>
+          </div>
+          <div className="prof-desc">
+            {user?.description.split("\n").map((sentence) => (
+              <>
+                {sentence}
+                <br />
+              </>
+            ))}
           </div>
         </div>
+      </div>
+      <div className="prof-bot">
+                {posts[+userId]?.posts.length > 0 ? posts[+userId]?.posts.map(post => (
+                    <div className="post-card">
+                        <img className="p-img" src={post.media_url} />
+                    </div>
+                )) : null}
       </div>
     </div>
   );
