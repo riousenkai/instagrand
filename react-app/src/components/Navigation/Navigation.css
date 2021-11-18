@@ -26,11 +26,12 @@
   background-color: #fafafa;
   border-radius: 3px;
   border: solid 1px #dbdbdb;
-  color: rgb(38, 38, 38);
+  color: #8e8e8e;
 }
 
 .search-bar:focus {
   outline: 0;
+  color: rgb(38, 38, 38);
 }
 
 .nav-right {
@@ -104,7 +105,7 @@
 }
 
 .search-card:hover {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .search-name {

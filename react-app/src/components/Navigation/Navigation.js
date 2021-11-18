@@ -6,6 +6,7 @@ import { useModal } from "../../context/UseModal";
 import "./Navigation.css";
 import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
+import NavModal from "../NavModal/NavModal";
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -90,23 +91,7 @@ const Navigation = () => {
           />
         )}
         <PostModal />
-        <div
-          className="nav-prof-border"
-          ref={border}
-          style={{
-            visibility:
-              hidden === true && path !== `/users/${user.id}`
-                ? "hidden"
-                : "visible",
-          }}
-        >
-          <img
-            className="nav-prof"
-            onClick={() => setHidden((old) => !old)}
-            src={user.image_url}
-            style={{ visibility: "visible" }}
-          />
-        </div>
+        <NavModal user={user} path={path}  />
       </div>
     </div>
   );

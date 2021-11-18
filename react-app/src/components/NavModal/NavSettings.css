@@ -1,0 +1,30 @@
+.profile-info {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile-info:hover, .profile-info2:hover {
+  background-color: #fafafa;
+}
+
+.info-title {
+  color: #262626;
+}
+
+.profile-info2 {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  cursor: pointer;
+  border-top: solid 1px #dbdbdb;
+}
+
+.info-logout {
+  margin: 0 0 4px;
+}
