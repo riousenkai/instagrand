@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { useModal } from '../../context/UseModal';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
+  const {setNum} = useModal()
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -27,6 +29,7 @@ const LoginForm = () => {
   };
 
   if (user) {
+    setNum(0)
     return <Redirect to='/' />;
   }
 
