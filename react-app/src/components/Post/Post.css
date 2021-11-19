@@ -22,6 +22,10 @@
   object-fit: cover;
 }
 
+.pp-img-load {
+    object-fit: cover;
+}
+
 .pp-top-right {
   padding: 14px 4px 14px 16px;
   display: flex;

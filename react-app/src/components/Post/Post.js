@@ -118,10 +118,19 @@ const Post = () => {
     setHidden(arr);
   };
 
+  const loadIt = () => {
+    document.querySelector(".pp-img-load").classList.add("hidden");
+    document.querySelector(".pp-img").classList.remove("hidden");
+  };
+
   return (
     <div className="post-main">
       <div className="p-card">
-        <img className="pp-img" src={post?.post?.media_url} />
+        <img
+          className="pp-img-load"
+          src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+        />
+        <img className="pp-img hidden" onLoad={loadIt} src={post?.post?.media_url} />
         <div className="pp-right">
           <div className="pp-top-right">
             <img
@@ -226,7 +235,15 @@ const Post = () => {
               className="post-icon"
               onClick={() => history.push(`/posts/${post.post.id}`)}
             >
-              {focus === true ? icon4 : <span onClick={() => document.querySelector('.pp-input').focus()}>{icon3}</span>}
+              {focus === true ? (
+                icon4
+              ) : (
+                <span
+                  onClick={() => document.querySelector(".pp-input").focus()}
+                >
+                  {icon3}
+                </span>
+              )}
             </div>
           </div>
           {post?.likes?.length > 0 ? (
