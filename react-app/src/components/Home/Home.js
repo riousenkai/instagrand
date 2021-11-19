@@ -11,15 +11,14 @@ import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
 import OptionsModal from "../Options/OptionsModal";
-import CommentModal from "../CommentModal/CommentModal";
 import { icon1, icon2, icon3 } from "./icons";
 
 const Home = () => {
   const history = useHistory();
   const emojis = useRef([]);
   const dispatch = useDispatch();
-  const [users, setUsers] = useState([]);
   const [currEmoji, setCurrEmoji] = useState("");
+  const [open, setOpen] = useState(0);
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -39,22 +38,25 @@ const Home = () => {
   }, [user]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const data = await response.json();
-      setUsers(data);
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     setInputs(new Array(followingPosts?.length).fill(""));
     setLoaded(new Array(followingPosts?.length).fill(false));
   }, [followingPosts]);
 
+  const updateInput = (index) => {
+    let arr = [...inputs];
+    arr[index] += currEmoji;
+    setInputs(arr);
+  };
+
   const RemoveOutside = (ref) => {
     useEffect(() => {
       const handleClick = (e) => {
+        if (
+          !e?.target?.classList?.contains("emoji-btn2") &&
+          !e?.target?.nextElementSibling?.classList.contains("hidden")
+        ) {
+          setOpen(0);
+        }
         ref.current.forEach((r, i) => {
           if (ref.current[i] && !ref.current[i].contains(e.target)) {
             emojis.current[i].classList.add("hidden");
@@ -88,6 +90,15 @@ const Home = () => {
   const onEmojiClick = (event, emojiObject) => {
     setCurrEmoji(emojiObject.emoji);
   };
+
+  const show = (i) => {
+    if (open === 0) {
+    emojis.current[i].classList.remove("hidden")
+    setOpen(1)
+    } else {
+      setOpen(0)
+    }
+  }
 
   const newComment = (index, postId) => {
     if (inputs[index].length < 1) {
@@ -211,15 +222,14 @@ const Home = () => {
                 <div className="emoji-wordcount-2">
                   <div className="emoji-post2">
                     <img
-                      onClick={() =>
-                        emojis.current[post.post.id].classList.remove("hidden")
-                      }
+                      onClick={() => show(post.post.id)}
                       className="emoji-btn2"
                       src="https://img.icons8.com/ios/50/000000/smiling.png"
                     />
                     <div
                       className="picker hidden"
                       ref={(el) => (emojis.current[post.post.id] = el)}
+                      onMouseUp={() => updateInput(i)}
                     >
                       <Picker
                         native={true}
