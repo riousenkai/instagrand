@@ -175,7 +175,7 @@ const Post = () => {
             </div>
             <div className="pp-mid">
               <div className="pp-com">
-                {post?.post?.description !== '' ? (
+                {post?.post?.description !== "" ? (
                   <>
                     <div className="pp-com-info">
                       <img
@@ -320,53 +320,55 @@ const Post = () => {
           </div>
         </div>
       </div>
-      <div className="p-bot">
-        <div className="p-bot-desc">
-          More posts from{" "}
-          <span
-            className="pp-like-me"
-            onClick={() => history.push(`/users/${user.id}`)}
-          >
-            {post?.user?.username}
-          </span>
-        </div>
-        <div className="pp-prof-bot">
-          {userPosts?.length > 0
-            ? userPosts?.slice(0, 6).map((post, i) => (
-                <div
-                  className="post-c"
-                  onClick={() => history.push(`/posts/${post.post.id}`)}
-                >
-                  <img
-                    className={`p-img-loading pl-img-${i} `}
-                    src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
-                  />
-                  <img
-                    className={`p-img p-img-${i} hidden`}
-                    onLoad={() => loadIt(i)}
-                    src={post.post.media_url}
-                  />
-                  <div className="p-hover">
-                    <div className="p-likes">
-                      <img
-                        className="p-icons"
-                        src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
-                      />
-                      <div className="p-like-ct">{post.likes.length}</div>
-                    </div>
-                    <div className="p-comments">
-                      <img
-                        className="p-icons"
-                        src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
-                      />
-                      <div className="p-like-ct">{post.comments.length}</div>
+      {post?.user?.id !== user?.id || userPosts?.length > 1 ? (
+        <div className="p-bot">
+          <div className="p-bot-desc">
+            More posts from{" "}
+            <span
+              className="pp-like-me"
+              onClick={() => history.push(`/users/${user.id}`)}
+            >
+              {post?.user?.username}
+            </span>
+          </div>
+          <div className="pp-prof-bot">
+            {userPosts?.length > 0
+              ? userPosts?.slice(0, 6).map((post, i) => (
+                  <div
+                    className="post-c"
+                    onClick={() => history.push(`/posts/${post.post.id}`)}
+                  >
+                    <img
+                      className={`p-img-loading pl-img-${i} `}
+                      src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                    />
+                    <img
+                      className={`p-img p-img-${i} hidden`}
+                      onLoad={() => loadIt(i)}
+                      src={post.post.media_url}
+                    />
+                    <div className="p-hover">
+                      <div className="p-likes">
+                        <img
+                          className="p-icons"
+                          src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
+                        />
+                        <div className="p-like-ct">{post.likes.length}</div>
+                      </div>
+                      <div className="p-comments">
+                        <img
+                          className="p-icons"
+                          src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
+                        />
+                        <div className="p-like-ct">{post.comments.length}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            : null}
+                ))
+              : null}
+          </div>
         </div>
-      </div>
+      ) : null}
       {num === 8 && (
         <Modal onClose={() => setNum(0)}>
           <Unfollow user={post?.user} />
