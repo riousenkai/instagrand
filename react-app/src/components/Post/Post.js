@@ -89,6 +89,7 @@ const Post = () => {
     };
 
     dispatch(submitComment(obj));
+    setInput("");
   };
 
   return (
@@ -233,9 +234,7 @@ const Post = () => {
             </div>
             <textarea
               className="pp-input"
-              onKeyPress={(e) =>
-                e.key === "Enter" && newComment(post?.post?.id)
-              }
+              onKeyUp={(e) => e.key === "Enter" && newComment(post?.post?.id)}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
