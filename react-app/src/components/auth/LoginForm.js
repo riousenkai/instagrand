@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useModal } from "../../context/UseModal";
 import { login } from "../../store/session";
+import { icon1 } from "./authicons";
 import "./Login.css";
 
 const LoginForm = () => {
@@ -81,7 +82,6 @@ const LoginForm = () => {
             <div className="login-line"></div>
           </div>
           <div className="demo-login">
-            <img className="demo-img" src="https://img.icons8.com/color/48/000000/user-location.png" />
             <div className="demo-link">Login as Demo User</div>
           </div>
         </div>
