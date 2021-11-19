@@ -23,6 +23,14 @@
   user-select: none;
 }
 
+.prof-img-loading {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  user-select: none;
+}
+
 .prof-top-right {
   width: 613px;
   display: flex;

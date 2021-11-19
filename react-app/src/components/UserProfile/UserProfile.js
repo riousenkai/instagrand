@@ -37,6 +37,11 @@ const UserProfile = () => {
     document.querySelector(`.p-img-${i}`).classList.remove("hidden");
   };
 
+  const loadProfImg = () => {
+    document.querySelector(`.prof-img-loading`).classList.add("hidden");
+    document.querySelector(`.prof-img`).classList.remove("hidden");
+  };
+
   useEffect(() => {
     const followers = follows[+userId]?.followers;
     const result = followers?.find((f) => f.id === main?.id);
@@ -54,7 +59,15 @@ const UserProfile = () => {
   return (
     <div className="prof-main">
       <div className="prof-top">
-        <img className="prof-img" src={user?.image_url} />
+        <img
+          className="prof-img-loading"
+          src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+        />
+        <img
+          className="prof-img hidden"
+          onLoad={loadProfImg}
+          src={user?.image_url}
+        />
         <div className="prof-top-right">
           <div className="prof-top-top">
             <div className="prof-name">{user?.username}</div>

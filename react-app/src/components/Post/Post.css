@@ -2,6 +2,12 @@
   padding-top: 50px;
   padding-right: 25%;
   padding-left: 25%;
+  margin-bottom: 40px;
+}
+
+.p-main-top {
+    padding-bottom: 50px;
+    border-bottom: 0.5px solid #dbdbdb;
 }
 
 .p-card {
@@ -23,7 +29,7 @@
 }
 
 .pp-img-load {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .pp-top-right {
@@ -145,6 +151,7 @@
   font-size: 14px;
   color: #262626;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .pp-like-me {
@@ -193,4 +200,13 @@
   color: #0095f6;
   cursor: pointer;
   font-weight: 500;
+}
+
+.p-bot {
+    padding-top: 50px;
+}
+
+.p-bot-desc {
+    font-size: 14px;
+    color: #8e8e8e;
 }
