@@ -77,8 +77,8 @@ def following_posts():
                 complete_comments.append({'comment': comment.to_dict(), 'user': comment_user.to_dict()})
             likes = Like.query.filter_by(post_id=post.id).all()
             for like in likes:
-                user = User.query.filter_by(id=like.user_id).first()
-                likes_comp.append(user.to_dict())
+                user6 = User.query.filter_by(id=like.user_id).first()
+                likes_comp.append(user6.to_dict())
             all_posts.append({'post': post.to_dict(), 'user': user.to_dict(), 'comments': complete_comments, 'likes': likes_comp})
             complete_comments = []
             likes_comp = []
@@ -92,8 +92,8 @@ def following_posts():
             complete_comments2.append({'comment': comment2.to_dict(), 'user': comment_user2.to_dict()})
         likes = Like.query.filter_by(post_id=post.id).all()
         for like in likes:
-            user = User.query.filter_by(id=like.user_id).first()
-            likes_comp2.append(user.to_dict())
+            user5 = User.query.filter_by(id=like.user_id).first()
+            likes_comp2.append(user5.to_dict())
         all_posts.append({'post': post.to_dict(), 'user': current_user.to_dict(), 'comments': complete_comments2, 'likes': likes_comp2})
         complete_comments2 = []
         likes_comp2 = []

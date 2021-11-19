@@ -14,6 +14,7 @@ import { Modal } from "../../context/Modal";
 import { icon1, icon2, icon3, icon4 } from "../Home/icons";
 import Picker from "emoji-picker-react";
 import "./Post.css";
+import CommentModal from "../CommentModal/CommentModal";
 
 const Post = () => {
   const history = useHistory();
@@ -27,11 +28,19 @@ const Post = () => {
   const user = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[user?.id]?.following);
   const load = useSelector((state) => state.post.following);
+  const [hidden, setHidden] = useState(
+    new Array(post?.comments?.length).fill(true)
+  );
 
   useEffect(() => {
     dispatch(postInfo(+postId));
     dispatch(findFollows(user?.id));
   }, [postId, user, load]);
+
+  useEffect(() => {
+    const arr = new Array(post?.comments.length).fill(true);
+    setHidden(arr);
+  }, [post?.comments]);
 
   const RemoveOutside = (ref) => {
     useEffect(() => {
@@ -92,6 +101,18 @@ const Post = () => {
     setInput("");
   };
 
+  const showDelete = (i) => {
+    let arr = [...hidden];
+    arr[i] = false;
+    setHidden(arr);
+  };
+
+  const hideDelete = (i) => {
+    let arr = [...hidden];
+    arr[i] = true;
+    setHidden(arr);
+  };
+
   return (
     <div className="post-main">
       <div className="p-card">
@@ -150,8 +171,13 @@ const Post = () => {
                   </div>
                 </>
               ) : null}
-              {post?.comments?.map((p) => (
-                <>
+              {post?.comments?.map((p, i) => (
+                <span
+                  onMouseEnter={
+                    p.user.id === user?.id ? () => showDelete(i) : null
+                  }
+                  onMouseLeave={() => hideDelete(i)}
+                >
                   <div className="pp-com-info">
                     <img
                       className="pp-user-img"
@@ -174,8 +200,9 @@ const Post = () => {
                   </div>
                   <div className="pp-date">
                     {p?.comment?.createdAt.split(" ").slice(1, 4).join(" ")}
+                    <CommentModal comment={p} hidden={hidden[i]} />
                   </div>
-                </>
+                </span>
               ))}
             </div>
           </div>

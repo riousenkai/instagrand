@@ -104,6 +104,10 @@
   font-size: 12px;
   padding-left: 42px;
   margin-bottom: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .pp-d-d {
