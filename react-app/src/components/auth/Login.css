@@ -1,0 +1,103 @@
+.login-main {
+  background-color: #fafafa;
+  width: 100w;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-img-wrapper {
+  user-select: none;
+}
+
+.login-img {
+  width: 728px;
+  height: 514px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.login-top {
+  width: 350px;
+  height: 438px;
+  background-color: #ffffff;
+  border: 0.5px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-logo {
+  width: 175px;
+  margin: 22px 86.5px 12px 86.5px;
+}
+
+.login-email {
+  background-color: #fafafa;
+  color: #262626;
+  border: 0.5px solid #dbdbdb;
+  align-self: center;
+  width: 268px;
+  height: 38px;
+  border-radius: 3px;
+  padding: 9px 0px 7px 8px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.login-email::placeholder {
+  color: #8e8e8e;
+}
+
+.login-email:focus {
+  outline: none;
+}
+
+.login-submit {
+  background-color: #0095f6;
+  outline: none;
+  border: none;
+  color: white;
+  width: 268px;
+  height: 30px;
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-submit:active {
+  opacity: 0.7;
+}
+
+.login-or {
+  margin: 10px 40px 18px;
+  color: #8e8e8e;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.l-or {
+  color: #8e8e8e;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-line {
+  height: 1px;
+  width: 110px;
+  background-color: #dbdbdb;
+}

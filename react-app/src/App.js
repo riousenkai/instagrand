@@ -5,7 +5,6 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import Navigation from "./components/Navigation/Navigation";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Home from "./components/Home/Home";
 import Post from "./components/Post/Post";
@@ -32,7 +31,7 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/posts/:postId" exact={true}>

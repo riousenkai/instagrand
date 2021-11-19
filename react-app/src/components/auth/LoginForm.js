@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { useModal } from '../../context/UseModal';
-import { login } from '../../store/session';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { useModal } from "../../context/UseModal";
+import { login } from "../../store/session";
+import "./Login.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
-  const {setNum} = useModal()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
+  const { setNum } = useModal();
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -29,39 +30,55 @@ const LoginForm = () => {
   };
 
   if (user) {
-    setNum(0)
-    return <Redirect to='/' />;
+    setNum(0);
+    return <Redirect to="/" />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className="login-main">
+      <div className="login-img-wrapper">
+        <img className="login-img" src="https://i.imgur.com/ptJQSQ4.jpg" />
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
+      <div className="login-right">
+        <div className="login-top">
+          <img
+            className="login-logo"
+            src="https://fontmeme.com/permalink/211117/be912bd83fb2b6a44d50d0b7b4562822.png"
+          />
+          <form onSubmit={onLogin} className="login-form">
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <input
+              className="login-email"
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+            />
+            <input
+              className="login-email"
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={updatePassword}
+            />
+            <button className="login-submit" type="submit">
+              Login
+            </button>
+          </form>
+          <div className="login-or">
+            <div className="login-line"></div>
+            <div className="l-or">OR</div>
+            <div className="login-line"></div>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 
