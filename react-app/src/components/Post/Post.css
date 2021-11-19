@@ -5,42 +5,184 @@
 }
 
 .p-card {
-  margin-top: 40px;
+  margin-top: 40px !important;
   width: 812px;
   height: 597.5px;
   border: 0.5px solid #efefef;
   display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 
 .pp-img {
-    width: 478px;
-    height: 597.5px;
-    object-fit: cover;
+  width: 478px;
+  height: 597.5px;
+  object-fit: cover;
 }
 
 .pp-top-right {
-    padding: 14px 4px 14px 16px;
-    display: flex;
-    align-items: center;
+  padding: 14px 4px 14px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid #efefef;
+  width: 333px;
 }
 
 .pp-user-img {
-    cursor: pointer;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
-
 .pp-user {
-    font-size: 14px;
-    color: #262626;
-    font-weight: 600;
-    cursor: pointer;
+  font-size: 14px;
+  color: #262626;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .pp-user:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.pp-follow {
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.p-follow-me {
+  font-size: 14px;
+  color: #0095f6;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.p-follow {
+  margin-left: 10px;
+}
+
+.pp-mid {
+  height: 369.5px;
+  overflow-y: auto !important;
+  border-bottom: 0.5px solid #efefef;
+}
+
+.pp-com {
+  padding: 16px;
+}
+
+.pp-com-info {
+  display: flex;
+  align-items: center;
+  width: 302px;
+  margin-bottom: 10px;
+}
+
+.pp-user-desc {
+  display: flex;
+  word-wrap: break-word;
+  align-items: center;
+  overflow-y: auto !important;
+}
+
+.pp-desc {
+  font-size: 14px;
+  color: #262626;
+  word-wrap: break-word;
+}
+
+.pp-date {
+  color: #8e8e8e;
+  font-size: 12px;
+  padding-left: 42px;
+  margin-bottom: 20px;
+}
+
+.pp-d-d {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pp-mid::-webkit-scrollbar {
+  display: none;
+}
+
+.post-icons-2 {
+  background-color: #ffffff;
+  padding: 6px 16px 8px;
+  margin: 4px 0px 0px;
+  display: flex;
+  gap: 10px;
+}
+
+.pp-nolikes {
+  padding: 6px 16px 8px;
+  margin: 4px 0px 0px;
+  font-size: 14px;
+  color: #262626;
+}
+
+.pp-likes {
+  padding: 6px 16px 8px;
+  margin: 4px 0px 0px;
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+}
+
+.pp-like-me {
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pp-p-d {
+  padding: 0 0 0 16px;
+  font-size: 10px;
+  color: #8e8e8e;
+  margin-bottom: 10px;
+}
+
+.p-c-i {
+  display: flex;
+  border-top: 0.5px solid #efefef;
+  height: 61px;
+  padding: 6px 16px;
+  width: 100%;
+  align-items: center;
+  margin: 14px 0 0 0;
+  gap: 10px;
+}
+
+.pp-input {
+  background-color: #ffffff;
+  border: none;
+  font-size: 14px;
+  color: #262626;
+  width: 229px;
+  resize: none;
+  height: 18px;
+  max-height: 28px;
+}
+
+.pp-input:focus {
+  outline: none;
+}
+
+.pp-submit {
+  font-size: 14px;
+  margin-right: auto;
+  color: #0095f6;
+  cursor: pointer;
+  font-weight: 500;
 }

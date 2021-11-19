@@ -11,10 +11,10 @@ const OptionsModal = ({ post }) => {
     <>
       <img
         className="post-options"
-        onClick={() => setPostId(post.post.id)}
+        onClick={() => setPostId(post?.post.id)}
         src="https://img.icons8.com/material-two-tone/24/000000/more.png"
       />
-      {postId === post.post.id && (
+      {postId === post?.post.id && (
         <Modal onClose={() => setPostId(0)}>
           <Options post={post} />
         </Modal>

@@ -1,11 +1,11 @@
 from app.models import db, Comment
-
+from datetime import datetime
 
 # Adds a demo user, you can add other users here if you want
 def seed_comments():
-    comment1 = Comment(user_id=1, post_id=2, description="Test")
-    comment2 = Comment(user_id=2, post_id=1, description="Hello!")
-    comment3 = Comment(user_id=3, post_id=1, description="Woaaah")
+    comment1 = Comment(user_id=1, post_id=2, description="Test", createdAt=datetime.now())
+    comment2 = Comment(user_id=2, post_id=1, description="Hello!", createdAt=datetime.now())
+    comment3 = Comment(user_id=3, post_id=1, description="Woaaah", createdAt=datetime.now())
 
     db.session.add(comment1)
     db.session.add(comment2)

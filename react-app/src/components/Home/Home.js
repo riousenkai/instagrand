@@ -98,8 +98,6 @@ const Home = () => {
       description: inputs[index],
     };
 
-    console.log(obj);
-
     dispatch(submitComment(obj));
   };
 

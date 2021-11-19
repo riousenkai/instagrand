@@ -1,13 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import { unFollowUser } from "../../store/follow";
+import { findFollowingPosts } from "../../store/post";
 
 const Unfollow = ({ user }) => {
   const dispatch = useDispatch();
   const { setNum } = useModal();
+  const main = useSelector((state) => state.session.user);
 
   const remove = () => {
-    dispatch(unFollowUser(user?.id));
+    dispatch(unFollowUser(user?.id)).then(() => dispatch(findFollowingPosts(main?.id)));
     setNum(0);
   };
 
