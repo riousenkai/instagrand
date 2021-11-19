@@ -232,6 +232,7 @@
 
 .emoji-post2 {
   position: relative;
+  z-index: 0;
 }
 
 .post-time {
@@ -315,4 +316,8 @@
 .p-dots {
   cursor: pointer;
   font-weight: 600;
+}
+
+.like-post {
+  position: absolute;
 }

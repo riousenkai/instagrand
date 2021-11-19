@@ -19,6 +19,7 @@ const Home = () => {
   const emojis = useRef([]);
   const dispatch = useDispatch();
   const [currEmoji, setCurrEmoji] = useState("");
+  const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
@@ -28,6 +29,10 @@ const Home = () => {
   const [loaded, setLoaded] = useState(
     new Array(followingPosts?.length).fill(false)
   );
+
+  useEffect(() => {
+    updateInput(currInput);
+  }, [currEmoji]);
 
   useEffect(() => {
     dispatch(findFollows(user?.id));
@@ -262,7 +267,7 @@ const Home = () => {
                         <div
                           className="picker hidden"
                           ref={(el) => (emojis.current[post.post.id] = el)}
-                          onMouseUp={() => updateInput(i)}
+                          onMouseUp={() => setCurrInput(i)}
                         >
                           <Picker
                             native={true}
@@ -272,6 +277,7 @@ const Home = () => {
                               width: "15vw",
                               marginLeft: "-12px",
                               top: "-330px",
+                              zIndex: '0',
                             }}
                           />
                         </div>
