@@ -198,7 +198,14 @@ const Post = () => {
                         </div>
                         <div className="pp-d-d">
                           <span className="pp-desc">
-                            {post?.post?.description}
+                            {post?.post?.description
+                              .split("\n")
+                              .map((sentence) => (
+                                <>
+                                  {sentence}
+                                  <br />
+                                </>
+                              ))}
                           </span>
                         </div>
                       </div>

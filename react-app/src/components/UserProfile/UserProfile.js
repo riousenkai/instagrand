@@ -73,7 +73,7 @@ const UserProfile = () => {
             <div className="prof-name">{user?.username}</div>
             {user?.id === main?.id ? (
               <>
-                <button className="prof-edit">Edit Profile</button>
+                <button className="prof-edit" onClick={() => history.push('/settings')}>Edit Profile</button>
               </>
             ) : following === true ? (
               <UserModal user={user}></UserModal>

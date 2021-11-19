@@ -198,7 +198,18 @@ const Home = () => {
                       >
                         {post.user.username}
                       </div>
-                      <div className="post-desc">{post.post.description}</div>
+                      <div className="post-desc">
+                        {post.post.description.split("\n").length > 1
+                          ? post.post.description
+                              .split("\n")
+                              .slice(0, 1)
+                              .map((sentence) => (
+                                <>
+                                  {sentence} <span className="p-dots" onClick={() => history.push(`/posts/${post.post.id}`)}>...</span>
+                                </>
+                              ))
+                          : null}
+                      </div>
                     </div>
                   ) : null}
                   <div

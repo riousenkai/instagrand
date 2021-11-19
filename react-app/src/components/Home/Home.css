@@ -311,3 +311,8 @@
   user-select: none;
   margin-left: 195px;
 }
+
+.p-dots {
+  cursor: pointer;
+  font-weight: 600;
+}
