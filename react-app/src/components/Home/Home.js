@@ -19,7 +19,7 @@ const Home = () => {
   const emojis = useRef([]);
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
-  const [hidden, setHidden] = useState(true);
+  const [currEmoji, setCurrEmoji] = useState("");
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -86,12 +86,14 @@ const Home = () => {
   };
 
   const onEmojiClick = (event, emojiObject) => {
-    // let arr = [...inputs];
-    // arr[i] = arr[i] + emojiObject.emoji;
-    // setInputs(arr);
+    setCurrEmoji(emojiObject.emoji);
   };
 
   const newComment = (index, postId) => {
+    if (inputs[index].length < 1) {
+      return;
+    }
+
     const obj = {
       user_id: +user.id,
       post_id: +postId,
@@ -185,15 +187,7 @@ const Home = () => {
               <div className="post-comments">
                 {post.comments.length > 0 &&
                   post.comments.slice(0, 1).map((comment) => (
-                    <div
-                      className="post-test"
-                      onMouseEnter={
-                        comment.user.id === user?.id
-                          ? () => setHidden(false)
-                          : null
-                      }
-                      onMouseLeave={() => setHidden(true)}
-                    >
+                    <div className="post-test">
                       <div
                         className="post-commenter-name"
                         onClick={() =>
@@ -207,7 +201,6 @@ const Home = () => {
                           ? comment.comment.description.slice(0, 35) + "..."
                           : comment.comment.description}
                       </div>
-                      <CommentModal comment={comment} hidden={hidden} />
                     </div>
                   ))}
               </div>
