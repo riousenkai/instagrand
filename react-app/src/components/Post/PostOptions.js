@@ -45,6 +45,7 @@ const PostOptions = ({ post }) => {
   const del = () => {
     dispatch(deletePost(post.post.id));
     setPostId(0);
+    history.push(`/users/${post.user.id}`);
   };
 
   const edit = () => {
@@ -61,76 +62,67 @@ const PostOptions = ({ post }) => {
     setPostId(0);
   };
 
-    return (
-      <div className="options-modal">
-        <div className="hide-options">
-          <div onClick={goodbye} className="delete-post">
-            Delete post
-          </div>
-          <div className="edit-post" onClick={edit}>
-            Edit caption
-          </div>
-
-          <div
-            onClick={() => history.push(`/posts/${post.post.id}`)}
-            className="goto-post-b"
-          >
-            Go to post
-          </div>
-          <div className="goto-post" onClick={() => setPostId(0)}>
-            Cancel
-          </div>
+  return (
+    <div className="options-modal">
+      <div className="hide-options">
+        <div onClick={goodbye} className="delete-post">
+          Delete post
         </div>
-        <div className="delete-conf hidden">
-          <div className="del-conf-top">
-            <p className="del-title">Delete Post?</p>
-            <p className="del-desc">
-              Are you sure you want to delete this post?
-            </p>
-          </div>
-          <div className="delete-post" onClick={del}>
-            Delete
-          </div>
-          <div className="goto-post" onClick={() => setPostId(0)}>
-            Cancel
-          </div>
+        <div className="edit-post" onClick={edit}>
+          Edit caption
         </div>
-        <div className="edit-it hidden">
-          <div className="edit-it-top">
-            <div className="emoji-post-3">
-              <img
-                onClick={() => emoji.current.classList.remove("hidden")}
-                className="emoji-btn editb"
-                src="https://img.icons8.com/ios/50/000000/smiling.png"
-              />
-              <div className="picker hidden" ref={emoji}>
-                <Picker
-                  native={true}
-                  onEmojiClick={onEmojiClick}
-                  pickerStyle={{
-                    position: "absolute",
-                    width: "15vw",
-                    marginLeft: "-20px",
-                    top: "110px",
-                  }}
-                />
-              </div>
-            </div>
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="edit-it-input"
-            />
-          </div>
-          <div className="submit-edit" onClick={submitEdit}>
-            Submit
-          </div>
-          <div className="goto-post" onClick={() => setPostId(0)}>
-            Cancel
-          </div>
+        <div className="goto-post" onClick={() => setPostId(0)}>
+          Cancel
         </div>
       </div>
-    );
+      <div className="delete-conf hidden">
+        <div className="del-conf-top">
+          <p className="del-title">Delete Post?</p>
+          <p className="del-desc">Are you sure you want to delete this post?</p>
+        </div>
+        <div className="delete-post" onClick={del}>
+          Delete
+        </div>
+        <div className="goto-post" onClick={() => setPostId(0)}>
+          Cancel
+        </div>
+      </div>
+      <div className="edit-it hidden">
+        <div className="edit-it-top">
+          <div className="emoji-post-3">
+            <img
+              onClick={() => emoji.current.classList.remove("hidden")}
+              className="emoji-btn editb"
+              src="https://img.icons8.com/ios/50/000000/smiling.png"
+            />
+            <div className="picker hidden" ref={emoji}>
+              <Picker
+                native={true}
+                onEmojiClick={onEmojiClick}
+                pickerStyle={{
+                  position: "absolute",
+                  width: "15vw",
+                  marginLeft: "-20px",
+                  top: "110px",
+                }}
+              />
+            </div>
+          </div>
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="edit-it-input"
+          />
+        </div>
+        <div className="submit-edit" onClick={submitEdit}>
+          Submit
+        </div>
+        <div className="goto-post" onClick={() => setPostId(0)}>
+          Cancel
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PostOptions;
