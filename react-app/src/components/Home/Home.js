@@ -205,10 +205,18 @@ const Home = () => {
                               .slice(0, 1)
                               .map((sentence) => (
                                 <>
-                                  {sentence} <span className="p-dots" onClick={() => history.push(`/posts/${post.post.id}`)}>...</span>
+                                  {sentence}{" "}
+                                  <span
+                                    className="p-dots"
+                                    onClick={() =>
+                                      history.push(`/posts/${post.post.id}`)
+                                    }
+                                  >
+                                    ...
+                                  </span>
                                 </>
                               ))
-                          : null}
+                          : post.post.description}
                       </div>
                     </div>
                   ) : null}

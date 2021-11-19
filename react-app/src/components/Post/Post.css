@@ -97,7 +97,6 @@
 
 .pp-user-desc {
   display: flex;
-  word-break: break-all;
   align-items: center;
   overflow-y: auto !important;
 }
