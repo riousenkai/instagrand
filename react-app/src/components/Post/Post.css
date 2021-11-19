@@ -97,7 +97,7 @@
 
 .pp-user-desc {
   display: flex;
-  word-wrap: break-word;
+  word-break: break-all;
   align-items: center;
   overflow-y: auto !important;
 }
@@ -105,7 +105,7 @@
 .pp-desc {
   font-size: 14px;
   color: #262626;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .pp-date {
