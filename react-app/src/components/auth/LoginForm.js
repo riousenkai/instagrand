@@ -80,6 +80,10 @@ const LoginForm = () => {
             <div className="l-or">OR</div>
             <div className="login-line"></div>
           </div>
+          <div className="demo-login">
+            <img className="demo-img" src="https://img.icons8.com/color/48/000000/user-location.png" />
+            <div className="demo-link">Login as Demo User</div>
+          </div>
         </div>
       </div>
     </div>

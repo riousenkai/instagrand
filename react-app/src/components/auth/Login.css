@@ -21,7 +21,7 @@
 
 .login-top {
   width: 350px;
-  height: 438px;
+  min-height: 438px;
   background-color: #ffffff;
   border: 0.5px solid #dbdbdb;
   display: flex;
@@ -30,6 +30,7 @@
 }
 
 .login-form {
+  margin-top: 24px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -37,7 +38,8 @@
 
 .login-logo {
   width: 175px;
-  margin: 22px 86.5px 12px 86.5px;
+  margin: 22px 86.5px 12px;
+  padding-top: 10px;
 }
 
 .login-email {
@@ -82,7 +84,7 @@
 }
 
 .login-submit:disabled {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .login-or {
@@ -105,4 +107,22 @@
   height: 1px;
   width: 110px;
   background-color: #dbdbdb;
+}
+
+.demo-login {
+    display: flex;
+    align-items: center;
+}
+
+.demo-link {
+    font-size: 14px;
+    color: #385185;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.demo-img {
+    height: 18px;
+    width: 18px;
 }
