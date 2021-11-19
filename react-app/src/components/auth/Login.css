@@ -55,6 +55,12 @@
   font-size: 12px;
 }
 
+.login-right {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .login-email::placeholder {
   color: #8e8e8e;
 }
@@ -110,19 +116,71 @@
 }
 
 .demo-login {
-    display: flex;
-    align-items: center;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+}
+
+.demo-login svg {
+  cursor: pointer;
+}
+
+.demo-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .demo-link {
-    font-size: 14px;
-    color: #385185;
-    font-weight: 500;
-    cursor: pointer;
-    gap: 5px;
+  font-size: 14px;
+  color: #385185;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 5px;
 }
 
 .demo-img {
-    height: 18px;
-    width: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.login-errors {
+  width: 268px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 3px;
+}
+
+.l-err-msg {
+  font-size: 14px;
+  color: #ed4956;
+}
+
+.login-signup {
+  width: 350px;
+  height: 63px;
+  background-color: #ffffff;
+  border: 0.5px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-signup-word {
+    font-size: 14px;
+    color: #262626;
+}
+
+.l-s-link {
+    cursor: pointer;
+    color: #0095F6;
+    font-weight: 500;
 }

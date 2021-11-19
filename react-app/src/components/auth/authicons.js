@@ -3,10 +3,9 @@ export const icon1 = (
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
-    width="48"
-    height="48"
+    width="24"
+    height="24"
     viewBox="0 0 172 172"
-    style=" fill:#000000;"
   >
     <g
       fill="none"
@@ -22,7 +21,6 @@ export const icon1 = (
       font-weight="none"
       font-size="none"
       text-anchor="none"
-      style="mix-blend-mode: normal"
     >
       <path d="M0,172v-172h172v172z" fill="none"></path>
       <g fill="#385185">

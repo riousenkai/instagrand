@@ -7,7 +7,8 @@
   cursor: pointer;
 }
 
-.profile-info:hover, .profile-info2:hover {
+.profile-info:hover,
+.profile-info2:hover {
   background-color: #fafafa;
 }
 
@@ -27,4 +28,5 @@
 
 .info-logout {
   margin: 0 0 4px;
+  color: #262626;
 }

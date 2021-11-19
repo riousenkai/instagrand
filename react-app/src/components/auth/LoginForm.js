@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { addAbortSignal } from "stream";
 import { useModal } from "../../context/UseModal";
 import { login } from "../../store/session";
 import { icon1 } from "./authicons";
@@ -35,6 +36,10 @@ const LoginForm = () => {
     return <Redirect to="/" />;
   }
 
+  const demo = async () => {
+    await dispatch(login("demo@aa.io", "password"));
+  };
+
   return (
     <div className="login-main">
       <div className="login-img-wrapper">
@@ -47,11 +52,6 @@ const LoginForm = () => {
             src="https://fontmeme.com/permalink/211117/be912bd83fb2b6a44d50d0b7b4562822.png"
           />
           <form onSubmit={onLogin} className="login-form">
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
             <input
               className="login-email"
               name="email"
@@ -82,8 +82,23 @@ const LoginForm = () => {
             <div className="login-line"></div>
           </div>
           <div className="demo-login">
-            <div className="demo-link">Login as Demo User</div>
+            <span className="demo-span" onClick={demo}>
+              {icon1}
+            </span>
+            <div className="demo-link" onClick={demo}>
+              Login as Demo User
+            </div>
           </div>
+          <div className="login-errors">
+            {errors.map((error, ind) => (
+              <div className="l-err-msg" key={ind}>
+                {error}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="login-signup">
+          <div className="login-signup-word">Don't have an account? <span className="l-s-link">Sign up</span></div>
         </div>
       </div>
     </div>
