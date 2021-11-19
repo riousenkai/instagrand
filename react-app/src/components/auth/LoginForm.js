@@ -67,7 +67,11 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
-            <button className="login-submit" type="submit">
+            <button
+              className="login-submit"
+              type="submit"
+              disabled={email.length < 1 || password.length < 1}
+            >
               Login
             </button>
           </form>

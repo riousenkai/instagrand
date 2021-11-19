@@ -74,10 +74,15 @@
   cursor: pointer;
   margin-top: 10px;
   font-size: 14px;
+  margin: 8px 40px;
 }
 
 .login-submit:active {
   opacity: 0.7;
+}
+
+.login-submit:disabled {
+    opacity: 0.4;
 }
 
 .login-or {
