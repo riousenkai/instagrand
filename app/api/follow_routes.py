@@ -17,9 +17,9 @@ def user(id):
         single = User.query.get(user.follower_id)
         fin_followers.append(single.to_dict())
 
-    for user in following:
-        single = User.query.get(user.following_id)
-        fin_following.append(single.to_dict())
+    for user2 in following:
+        single2 = User.query.get(user2.following_id)
+        fin_following.append(single2.to_dict())
 
 
     return {'following': fin_following, 'followers': fin_followers}

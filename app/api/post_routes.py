@@ -39,13 +39,13 @@ def posts(id):
     for post in posts:
         likes = Like.query.filter_by(post_id=post.id).all()
         for like in likes:
-            user = User.query.filter_by(id=like.user_id).first()
-            likes_comp.append(user.to_dict())
+            user9 = User.query.filter_by(id=like.user_id).first()
+            likes_comp.append(user9.to_dict())
 
         comments = Comment.query.filter_by(post_id=post.id).all()
         for comment in comments:
-            user = User.query.filter_by(id=comment.user_id).first()
-            comment_comp.append(user.to_dict())
+            user8 = User.query.filter_by(id=comment.user_id).first()
+            comment_comp.append(user8.to_dict())
 
         fin.append({'post': post.to_dict(), 'likes': likes_comp, 'comments': comment_comp})
         likes_comp = []

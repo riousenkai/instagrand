@@ -172,7 +172,7 @@
   font-size: 14px;
   display: flex;
   flex-direction: row !important;
-  align-items: center;
+  align-items: flex-end;
   padding-bottom: 5px;
   max-width: 550px;
   gap: 5px;

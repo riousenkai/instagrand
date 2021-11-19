@@ -22,6 +22,7 @@ const Post = () => {
   const emoji = useRef(null);
   const dispatch = useDispatch();
   const { postId } = useParams();
+  const [focus, setFocus] = useState(false);
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
   const post = useSelector((state) => state.post?.specific);
@@ -91,6 +92,10 @@ const Post = () => {
   };
 
   const newComment = (postId) => {
+    if (input.length < 1) {
+      return;
+    }
+
     const obj = {
       user_id: +user.id,
       post_id: +postId,
@@ -221,7 +226,7 @@ const Post = () => {
               className="post-icon"
               onClick={() => history.push(`/posts/${post.post.id}`)}
             >
-              {icon3}
+              {focus === true ? icon4 : <span onClick={() => document.querySelector('.pp-input').focus()}>{icon3}</span>}
             </div>
           </div>
           {post?.likes?.length > 0 ? (
@@ -259,11 +264,14 @@ const Post = () => {
                 />
               </div>
             </div>
-            <textarea
+            <input
               className="pp-input"
               onKeyUp={(e) => e.key === "Enter" && newComment(post?.post?.id)}
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              placeholder="Add a comment..."
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
             />
             <div
               className="pp-submit"
