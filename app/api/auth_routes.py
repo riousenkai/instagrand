@@ -66,7 +66,7 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            image_url="https://scontent.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_cat=1&_nc_ohc=0eeCCv7wmQsAX_hc7m8&edm=ADRIorAAAAAA&ccb=7-4&oh=4a87db92d668bb26362cdbcec08bbc37&oe=619C4E8F&_nc_sid=c2bffe&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-4",
+            image_url="https://nitreo.com/img/igDefaultProfilePic.png",
             name=form.data['name']
         )
         db.session.add(user)

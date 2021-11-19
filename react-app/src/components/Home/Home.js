@@ -12,6 +12,7 @@ import Picker from "emoji-picker-react";
 import "./Home.css";
 import OptionsModal from "../Options/OptionsModal";
 import { icon1, icon2, icon3 } from "./icons";
+import { logout } from "../../store/session";
 
 const Home = () => {
   const history = useHistory();
@@ -93,12 +94,12 @@ const Home = () => {
 
   const show = (i) => {
     if (open === 0) {
-    emojis.current[i].classList.remove("hidden")
-    setOpen(1)
+      emojis.current[i].classList.remove("hidden");
+      setOpen(1);
     } else {
-      setOpen(0)
+      setOpen(0);
     }
-  }
+  };
 
   const newComment = (index, postId) => {
     if (inputs[index].length < 1) {
@@ -119,153 +120,188 @@ const Home = () => {
   };
 
   return (
-    <div className="home-main">
-      <div className="home-left">
-        <div className="home-posts">
-          {followingPosts?.map((post, i) => (
-            <div className="post-card">
-              <div className="post-top">
-                <div className="post-top-left">
-                  <img
-                    onClick={() => history.push(`/users/${post.user.id}`)}
-                    className="post-user-img"
-                    src={post.user.image_url}
-                  />
-                  <div
-                    onClick={() => history.push(`/users/${post.user.id}`)}
-                    className="post-name"
-                  >
-                    {post.user.username}
-                  </div>
-                </div>
-                <div className="post-top-right">
-                  <OptionsModal post={post} />
-                </div>
-              </div>
-              <img
-                className={`post-img-loading post-img-${i}`}
-                // src="https://i.imgur.com/YNa2qdO.gif"
-                src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
-                // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
-              />
-              <img
-                className={`post-img loaded-img-${i} hidden`}
-                onLoad={() => loadIt(i)}
-                src={post.post.media_url}
-              />
-              <div className="post-icons">
-                {post.likes.find((p) => p.id === user.id) !== undefined ? (
-                  <div className="post-icon" onClick={() => like(post.post.id)}>
-                    {icon2}
-                  </div>
-                ) : (
-                  <div className="post-icon" onClick={() => like(post.post.id)}>
-                    {icon1}
-                  </div>
-                )}
-                <div
-                  className="post-icon"
-                  onClick={() => history.push(`/posts/${post.post.id}`)}
-                >
-                  {icon3}
-                </div>
-              </div>
-              {post.likes.length > 0 ? (
-                <div className="post-likes">
-                  {post.likes.length}{" "}
-                  {post.likes.length === 1 ? "like" : "likes"}
-                </div>
-              ) : null}
-              {post.post.description.length > 0 ? (
-                <div className="post-u-d">
-                  <div
-                    onClick={() => history.push(`/users/${post.user.id}`)}
-                    className="post-user"
-                  >
-                    {post.user.username}
-                  </div>
-                  <div className="post-desc">{post.post.description}</div>
-                </div>
-              ) : null}
-              <div
-                className="post-comment-count"
-                onClick={() => history.push(`/posts/${post.post.id}`)}
-              >
-                {post.comments?.length > 1
-                  ? `View all ${post.comments.length} comments`
-                  : null}
-              </div>
-              <div className="post-comments">
-                {post.comments.length > 0 &&
-                  post.comments.slice(0, 1).map((comment) => (
-                    <div className="post-test">
+    <>
+      {followingPosts?.length < 1 ? (
+        <div className="new-main">
+          Please submit a new post or search for people to follow to populate
+          your home feed.
+        </div>
+      ) : (
+        <div className="home-main">
+          <div className="home-left">
+            <div className="home-posts">
+              {followingPosts?.map((post, i) => (
+                <div className="post-card">
+                  <div className="post-top">
+                    <div className="post-top-left">
+                      <img
+                        onClick={() => history.push(`/users/${post.user.id}`)}
+                        className="post-user-img"
+                        src={post.user.image_url}
+                      />
                       <div
-                        className="post-commenter-name"
-                        onClick={() =>
-                          history.push(`/users/${comment.user.id}`)
-                        }
+                        onClick={() => history.push(`/users/${post.user.id}`)}
+                        className="post-name"
                       >
-                        {comment.user.username}
-                      </div>
-                      <div className="post-comment">
-                        {comment.comment.description?.length > 35
-                          ? comment.comment.description.slice(0, 35) + "..."
-                          : comment.comment.description}
+                        {post.user.username}
                       </div>
                     </div>
-                  ))}
-              </div>
-              <div className="post-time">
-                {post.post.createdAt.split(" ").slice(1, 4).join(" ")}
-              </div>
-              <div className="comment-input">
-                <div className="emoji-wordcount-2">
-                  <div className="emoji-post2">
-                    <img
-                      onClick={() => show(post.post.id)}
-                      className="emoji-btn2"
-                      src="https://img.icons8.com/ios/50/000000/smiling.png"
+                    <div className="post-top-right">
+                      <OptionsModal post={post} />
+                    </div>
+                  </div>
+                  <img
+                    className={`post-img-loading post-img-${i}`}
+                    // src="https://i.imgur.com/YNa2qdO.gif"
+                    src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                    // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
+                  />
+                  <img
+                    className={`post-img loaded-img-${i} hidden`}
+                    onLoad={() => loadIt(i)}
+                    src={post.post.media_url}
+                  />
+                  <div className="post-icons">
+                    {post.likes.find((p) => p.id === user.id) !== undefined ? (
+                      <div
+                        className="post-icon"
+                        onClick={() => like(post.post.id)}
+                      >
+                        {icon2}
+                      </div>
+                    ) : (
+                      <div
+                        className="post-icon"
+                        onClick={() => like(post.post.id)}
+                      >
+                        {icon1}
+                      </div>
+                    )}
+                    <div
+                      className="post-icon"
+                      onClick={() => history.push(`/posts/${post.post.id}`)}
+                    >
+                      {icon3}
+                    </div>
+                  </div>
+                  {post.likes.length > 0 ? (
+                    <div className="post-likes">
+                      {post.likes.length}{" "}
+                      {post.likes.length === 1 ? "like" : "likes"}
+                    </div>
+                  ) : null}
+                  {post.post.description.length > 0 ? (
+                    <div className="post-u-d">
+                      <div
+                        onClick={() => history.push(`/users/${post.user.id}`)}
+                        className="post-user"
+                      >
+                        {post.user.username}
+                      </div>
+                      <div className="post-desc">{post.post.description}</div>
+                    </div>
+                  ) : null}
+                  <div
+                    className="post-comment-count"
+                    onClick={() => history.push(`/posts/${post.post.id}`)}
+                  >
+                    {post.comments?.length > 1
+                      ? `View all ${post.comments.length} comments`
+                      : null}
+                  </div>
+                  <div className="post-comments">
+                    {post.comments.length > 0 &&
+                      post.comments.slice(0, 1).map((comment) => (
+                        <div className="post-test">
+                          <div
+                            className="post-commenter-name"
+                            onClick={() =>
+                              history.push(`/users/${comment.user.id}`)
+                            }
+                          >
+                            {comment.user.username}
+                          </div>
+                          <div className="post-comment">
+                            {comment.comment.description?.length > 35
+                              ? comment.comment.description.slice(0, 35) + "..."
+                              : comment.comment.description}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                  <div className="post-time">
+                    {post.post.createdAt.split(" ").slice(1, 4).join(" ")}
+                  </div>
+                  <div className="comment-input">
+                    <div className="emoji-wordcount-2">
+                      <div className="emoji-post2">
+                        <img
+                          onClick={() => show(post.post.id)}
+                          className="emoji-btn2"
+                          src="https://img.icons8.com/ios/50/000000/smiling.png"
+                        />
+                        <div
+                          className="picker hidden"
+                          ref={(el) => (emojis.current[post.post.id] = el)}
+                          onMouseUp={() => updateInput(i)}
+                        >
+                          <Picker
+                            native={true}
+                            onEmojiClick={onEmojiClick}
+                            pickerStyle={{
+                              position: "absolute",
+                              width: "15vw",
+                              marginLeft: "-12px",
+                              top: "-330px",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      onKeyPress={(e) =>
+                        e.key === "Enter" && newComment(i, post.post.id)
+                      }
+                      placeholder="Add a comment..."
+                      className="post-comment-input"
+                      value={inputs[i]}
+                      onChange={(e) => update(e, i)}
                     />
                     <div
-                      className="picker hidden"
-                      ref={(el) => (emojis.current[post.post.id] = el)}
-                      onMouseUp={() => updateInput(i)}
+                      className="post-submit-comment"
+                      onClick={(e) => newComment(i, post.post.id)}
                     >
-                      <Picker
-                        native={true}
-                        onEmojiClick={onEmojiClick}
-                        pickerStyle={{
-                          position: "absolute",
-                          width: "15vw",
-                          marginLeft: "-12px",
-                          top: "-330px",
-                        }}
-                      />
+                      Post
                     </div>
                   </div>
                 </div>
-                <input
-                  onKeyPress={(e) =>
-                    e.key === "Enter" && newComment(i, post.post.id)
-                  }
-                  placeholder="Add a comment..."
-                  className="post-comment-input"
-                  value={inputs[i]}
-                  onChange={(e) => update(e, i)}
-                />
+              ))}
+            </div>
+          </div>
+          <div className="home-right">
+            <div className="h-right-user">
+              <img
+                className="hr-user-img"
+                onClick={() => history.push(`/users/${user.id}`)}
+                src={user?.image_url}
+              />
+              <div className="h-r-info">
                 <div
-                  className="post-submit-comment"
-                  onClick={(e) => newComment(i, post.post.id)}
+                  className="h-r-username"
+                  onClick={() => history.push(`/users/${user.id}`)}
                 >
-                  Post
+                  {user?.username}
                 </div>
+                <div className="h-r-name">{user?.name}</div>
+              </div>
+              <div className="h-r-switch" onClick={() => dispatch(logout())}>
+                Switch
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-      <div className="home-right"></div>
-    </div>
+      )}
+    </>
   );
 };
 

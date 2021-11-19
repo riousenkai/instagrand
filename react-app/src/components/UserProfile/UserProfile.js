@@ -105,7 +105,7 @@ const UserProfile = () => {
           </div>
           <div className="prof-r-name">{user?.name}</div>
           <div className="prof-desc">
-            {user?.description.split("\n").map((sentence) => (
+            {user?.description !== null && user?.description.split("\n").map((sentence) => (
               <>
                 {sentence}
                 <br />
