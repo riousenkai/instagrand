@@ -11,8 +11,8 @@
 
 .p-card {
   margin-top: 40px !important;
-  width: 812px;
-  height: 597.5px;
+  width: 932px;
+  height: 598x;
   border: 0.5px solid #efefef;
   display: flex;
   border-radius: 4px;
@@ -22,8 +22,8 @@
 }
 
 .pp-img {
-  width: 478px;
-  height: 597.5px;
+  width: 598px;
+  height: 598px;
   object-fit: cover;
 }
 
@@ -173,7 +173,7 @@
   padding: 6px 16px;
   width: 100%;
   align-items: center;
-  margin: 14px 0 0 0;
+  margin: 16px 0 0 0;
   gap: 10px;
 }
 

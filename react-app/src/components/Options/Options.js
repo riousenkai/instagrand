@@ -78,7 +78,10 @@ const Options = ({ post }) => {
           <div className="unfollow-post">Unfollow</div>
         )}
         <div
-          onClick={() => history.push(`/posts/${post.post.id}`)}
+          onClick={() => {
+            history.push(`/posts/${post.post.id}`);
+            setPostId(0);
+          }}
           className="goto-post-b"
         >
           Go to post
