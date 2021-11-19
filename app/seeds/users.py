@@ -4,11 +4,11 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='I am the demo user.')
+        username='demo', email='demo@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='I am the demo user.', name='Demo Account')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='Marnie')
+        username='marnie', email='marnie@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='Marnie', name='Marnie Marn')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='Hello')
+        username='bobbie', email='bobbie@aa.io', password='password', image_url='https://www.designscene.net/wp-content/uploads/2020/04/Louis-Vuitton-New-Classic-Bags-Craig-McDean-00.jpg', description='Hello', name='Bobbie B')
 
     db.session.add(demo)
     db.session.add(marnie)

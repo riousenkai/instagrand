@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(300), nullable=True)
+    name = db.Column(db.String(40), nullable=False)
 
     @property
     def password(self):
@@ -30,7 +31,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'image_url': self.image_url,
-            'description': self.description
+            'description': self.description,
+            'name': self.name
         }
 
     follower = db.relationship("Follow", back_populates="follower_user", foreign_keys="Follow.follower_id", cascade="all,delete-orphan")

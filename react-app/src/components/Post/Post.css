@@ -6,8 +6,8 @@
 }
 
 .p-main-top {
-    padding-bottom: 50px;
-    border-bottom: 0.5px solid #dbdbdb;
+  padding-bottom: 50px;
+  border-bottom: 0.5px solid #dbdbdb;
 }
 
 .p-card {
@@ -203,10 +203,20 @@
 }
 
 .p-bot {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .p-bot-desc {
-    font-size: 14px;
-    color: #8e8e8e;
+  font-size: 14px;
+  color: #8e8e8e;
+  margin-bottom: 20px;
+}
+
+.pp-prof-bot {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  margin-bottom: 40px;
 }

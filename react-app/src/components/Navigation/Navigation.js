@@ -66,7 +66,10 @@ const Navigation = () => {
                 to={`/users/${res.id}`}
               >
                 <img className="search-prof" src={res.image_url} />
-                <div className="search-name">{res.username}</div>
+                <div className="search-names">
+                  <div className="search-username">{res.username}</div>
+                  <div className="search-name">{res.name}</div>
+                </div>
               </NavLink>
             ))
           ) : (

@@ -10,7 +10,7 @@ const NewPost = () => {
   const dispatch = useDispatch();
   const emoji = useRef(null);
   const { num, setNum } = useModal();
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
@@ -47,7 +47,7 @@ const NewPost = () => {
       return setErrors(err);
     }
 
-    const types = ["gif", "jpg", "jpeg", "png"];
+    const types = ["gif", "jpg", "jpeg", "png", ".com", "www", "http"];
 
     let filtered = types.filter((type) => url.includes(type));
 

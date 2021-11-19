@@ -78,6 +78,13 @@
   font-weight: 600;
 }
 
+.prof-r-name {
+  color: #262626;
+  font-size: 16p  x;
+  font-weight: 500;
+  margin-bottom: -15px;
+}
+
 .prof-desc {
   color: #262626;
   font-size: 16px;

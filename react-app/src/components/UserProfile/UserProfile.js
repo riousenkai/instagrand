@@ -103,6 +103,7 @@ const UserProfile = () => {
               following
             </div>
           </div>
+          <div className="prof-r-name">{user?.name}</div>
           <div className="prof-desc">
             {user?.description.split("\n").map((sentence) => (
               <>

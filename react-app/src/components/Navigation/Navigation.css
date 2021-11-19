@@ -108,9 +108,21 @@
   background-color: #fafafa;
 }
 
-.search-name {
+.search-username {
   color: #262626;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.search-names {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.search-name {
+  font-size: 14px;
+  color: #8e8e8e;
 }
 
 .search-none {

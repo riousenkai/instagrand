@@ -7,6 +7,7 @@ import {
   postInfo,
   likePost,
   submitComment,
+  findPosts,
 } from "../../store/post";
 import { useModal } from "../../context/UseModal";
 import Unfollow from "../UserProfile/Unfollow";
@@ -26,6 +27,7 @@ const Post = () => {
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
   const post = useSelector((state) => state.post?.specific);
+  const userPosts = useSelector((state) => state.post[post?.user?.id]?.posts);
   const user = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[user?.id]?.following);
   const load = useSelector((state) => state.post.following);
@@ -37,6 +39,10 @@ const Post = () => {
     dispatch(postInfo(+postId));
     dispatch(findFollows(user?.id));
   }, [postId, user, load]);
+
+  useEffect(() => {
+    dispatch(findPosts(post?.user?.id));
+  }, [post]);
 
   useEffect(() => {
     const arr = new Array(post?.comments.length).fill(true);
@@ -118,9 +124,14 @@ const Post = () => {
     setHidden(arr);
   };
 
-  const loadIt = () => {
+  const loadPost = () => {
     document.querySelector(".pp-img-load").classList.add("hidden");
     document.querySelector(".pp-img").classList.remove("hidden");
+  };
+
+  const loadIt = (i) => {
+    document.querySelector(`.pl-img-${i}`).classList.add("hidden");
+    document.querySelector(`.p-img-${i}`).classList.remove("hidden");
   };
 
   return (
@@ -133,7 +144,7 @@ const Post = () => {
           />
           <img
             className="pp-img hidden"
-            onLoad={loadIt}
+            onLoad={loadPost}
             src={post?.post?.media_url}
           />
           <div className="pp-right">
@@ -164,7 +175,7 @@ const Post = () => {
             </div>
             <div className="pp-mid">
               <div className="pp-com">
-                {post?.post?.description !== null ? (
+                {post?.post?.description !== '' ? (
                   <>
                     <div className="pp-com-info">
                       <img
@@ -310,7 +321,51 @@ const Post = () => {
         </div>
       </div>
       <div className="p-bot">
-          <div className="p-bot-desc">More posts from <span className="pp-like-me" onClick={() => history.push(`/users/${user.id}`)}>{post?.user?.username}</span></div>
+        <div className="p-bot-desc">
+          More posts from{" "}
+          <span
+            className="pp-like-me"
+            onClick={() => history.push(`/users/${user.id}`)}
+          >
+            {post?.user?.username}
+          </span>
+        </div>
+        <div className="pp-prof-bot">
+          {userPosts?.length > 0
+            ? userPosts?.slice(0, 6).map((post, i) => (
+                <div
+                  className="post-c"
+                  onClick={() => history.push(`/posts/${post.post.id}`)}
+                >
+                  <img
+                    className={`p-img-loading pl-img-${i} `}
+                    src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                  />
+                  <img
+                    className={`p-img p-img-${i} hidden`}
+                    onLoad={() => loadIt(i)}
+                    src={post.post.media_url}
+                  />
+                  <div className="p-hover">
+                    <div className="p-likes">
+                      <img
+                        className="p-icons"
+                        src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
+                      />
+                      <div className="p-like-ct">{post.likes.length}</div>
+                    </div>
+                    <div className="p-comments">
+                      <img
+                        className="p-icons"
+                        src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
+                      />
+                      <div className="p-like-ct">{post.comments.length}</div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : null}
+        </div>
       </div>
       {num === 8 && (
         <Modal onClose={() => setNum(0)}>
