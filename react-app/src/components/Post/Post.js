@@ -16,6 +16,7 @@ import { icon1, icon2, icon3, icon4 } from "../Home/icons";
 import Picker from "emoji-picker-react";
 import "./Post.css";
 import CommentModal from "../CommentModal/CommentModal";
+import PostOptionsModal from "./PostOptionsModal";
 
 const Post = () => {
   const history = useHistory();
@@ -172,6 +173,9 @@ const Post = () => {
                   </div>
                 )
               ) : null}
+              {post?.user?.id === user?.id ? (
+                <PostOptionsModal post={post} />
+              ) : null}
             </div>
             <div className="pp-mid">
               <div className="pp-com">
@@ -320,10 +324,12 @@ const Post = () => {
           </div>
         </div>
       </div>
-      {post?.user?.id !== user?.id || userPosts?.length > 1 ? (
+      {post?.user?.id !== user?.id ? (
         <div className="p-bot">
           <div className="p-bot-desc">
-            More posts from{" "}
+            {userPosts?.length > 1
+              ? "More posts from "
+              : "No additional posts from "}
             <span
               className="pp-like-me"
               onClick={() => history.push(`/users/${user.id}`)}
