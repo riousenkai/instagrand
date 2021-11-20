@@ -20,7 +20,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors();
+      setErrors(data);
     }
   };
 
@@ -91,7 +91,7 @@ const LoginForm = () => {
             </div>
           </div>
           <div className="login-errors">
-            {errors.map((error, ind) => (
+            {errors?.map((error, ind) => (
               <div className="l-err-msg" key={ind}>
                 {error}
               </div>
