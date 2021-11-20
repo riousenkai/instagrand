@@ -36,7 +36,6 @@ def seed_users():
     db.session.add(tarkin)
     db.session.add(canyon)
 
-
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
