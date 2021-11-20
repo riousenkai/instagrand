@@ -21,6 +21,7 @@ const Home = () => {
   const [currEmoji, setCurrEmoji] = useState("");
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
+  const [count, setCount] = useState(0)
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -32,7 +33,7 @@ const Home = () => {
 
   useEffect(() => {
     updateInput(currInput);
-  }, [currEmoji]);
+  }, [count]);
 
   useEffect(() => {
     dispatch(findFollows(user?.id));
@@ -95,6 +96,7 @@ const Home = () => {
 
   const onEmojiClick = (event, emojiObject) => {
     setCurrEmoji(emojiObject.emoji);
+    setCount(old => old + 1)
   };
 
   const show = (i) => {
