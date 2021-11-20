@@ -304,15 +304,6 @@
   cursor: pointer;
 }
 
-.post-options2 {
-  background-color: #ffffff;
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
-  user-select: none;
-  margin-left: 195px;
-}
-
 .p-dots {
   cursor: pointer;
   font-weight: 600;

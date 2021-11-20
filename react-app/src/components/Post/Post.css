@@ -219,3 +219,12 @@
   grid-gap: 40px;
   margin-bottom: 40px;
 }
+
+.post-options2 {
+  background-color: #ffffff;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  user-select: none;
+  margin-left: auto;
+}
