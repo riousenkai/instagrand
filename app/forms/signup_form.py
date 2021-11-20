@@ -23,6 +23,8 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
     elif len(username) > 30:
         raise ValidationError('Username cannot be over 30 characters.')
+    elif len(username) < 4:
+        raise ValidationError('A username must have at least 4 characters.')
 
 def password_too_short(form, field):
 
