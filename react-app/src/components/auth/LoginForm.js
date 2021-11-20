@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 import { useModal } from "../../context/UseModal";
 import { login } from "../../store/session";
 import { icon1 } from "./authicons";
 import "./Login.css";
 
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors();
     }
   };
 
@@ -97,7 +99,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="login-signup">
-          <div className="login-signup-word">Don't have an account? <span className="l-s-link">Sign up</span></div>
+          <div className="login-signup-word">Don't have an account? <span onClick={() => history.push('/signup')} className="l-s-link">Sign up</span></div>
         </div>
       </div>
     </div>
