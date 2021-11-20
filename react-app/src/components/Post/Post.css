@@ -51,9 +51,17 @@
 .pp-user {
   font-size: 14px;
   color: #262626;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   margin-right: 10px;
+}
+
+.pp-user-c-desc {
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .pp-user:hover {
@@ -90,6 +98,7 @@
 
 .pp-com-info {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   width: 302px;
   margin-bottom: 10px;
@@ -227,4 +236,13 @@
   width: 20px;
   user-select: none;
   margin-left: auto;
+}
+
+.pp-p {
+  display:block;
+}
+
+span.pp-user {
+  padding: 0;
+  margin-right: 5px !important;
 }
