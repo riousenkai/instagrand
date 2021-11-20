@@ -19,10 +19,10 @@ def username_exists(form, field):
     user = User.query.filter(User.username == username).first()
     if user:
         raise ValidationError('Username is already in use.')
-    elif len(username) > 40:
-        raise ValidationError('Username must be less than 40 characters.')
+    elif len(username) > 30:
+        raise ValidationError('Username cannot be over 30 characters.')
 
-def password_too_short(form. field):
+def password_too_short(form, field):
 
     password = field.data
     if len(password) < 4:

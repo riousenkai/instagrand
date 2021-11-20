@@ -27,7 +27,7 @@ const SignUpForm = () => {
         setErrors(data);
       }
     } else {
-      setErrors(['Passwords must match.'])
+      setErrors(["Passwords must match."]);
     }
   };
 
@@ -139,7 +139,9 @@ const SignUpForm = () => {
         </form>
         <div className="login-errors">
           {errors.map((error, ind) => (
-            <div className="l-err-msg" key={ind}>{error}</div>
+            <div className="l-err-msg" key={ind}>
+              {error}
+            </div>
           ))}
         </div>
       </div>
