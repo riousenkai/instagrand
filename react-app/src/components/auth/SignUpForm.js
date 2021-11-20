@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 import { signUp, login } from "../../store/session";
+import { useModal } from "../../context/UseModal";
 import { icon2 } from "./authicons";
 import "./Signup.css";
 
 const SignUpForm = () => {
   const history = useHistory();
+  const { setNum } = useModal();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -26,6 +28,7 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       }
+      setNum(0);
     } else {
       setErrors(["Passwords must match."]);
     }
@@ -86,6 +89,7 @@ const SignUpForm = () => {
             onChange={updateEmail}
             value={email}
             required={true}
+            autoComplete="off"
           ></input>
           <input
             placeholder="Full Name"
@@ -94,6 +98,7 @@ const SignUpForm = () => {
             name="name"
             onChange={updateName}
             value={name}
+            autoComplete="off"
             required={true}
           ></input>
           <input
@@ -102,6 +107,7 @@ const SignUpForm = () => {
             type="text"
             name="username"
             onChange={updateUsername}
+            autoComplete="off"
             value={username}
             required={true}
           ></input>
@@ -110,12 +116,14 @@ const SignUpForm = () => {
             className="signup-input"
             type="password"
             name="password"
+            autoComplete="off"
             onChange={updatePassword}
             value={password}
             required={true}
           ></input>
           <input
             placeholder="Repeat Password"
+            autoComplete="off"
             className="signup-input"
             type="password"
             name="repeat_password"
