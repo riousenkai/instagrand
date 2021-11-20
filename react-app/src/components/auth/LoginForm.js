@@ -44,7 +44,7 @@ const LoginForm = () => {
   return (
     <div className="login-main">
       <div className="login-img-wrapper">
-        <img className="login-img" src="https://i.imgur.com/ptJQSQ4.jpg" />
+        <img className="login-img" src="https://i.imgur.com/kvP0Lup.jpg" />
       </div>
       <div className="login-right">
         <div className="login-top">

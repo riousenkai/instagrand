@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
-import { signUp } from "../../store/session";
+import { signUp, login } from "../../store/session";
 import { icon2 } from "./authicons";
 import "./Signup.css";
 
@@ -27,6 +27,10 @@ const SignUpForm = () => {
         setErrors(data);
       }
     }
+  };
+
+  const demo = async () => {
+    await dispatch(login("demo@aa.io", "password"));
   };
 
   const updateUsername = (e) => {
@@ -63,7 +67,9 @@ const SignUpForm = () => {
         <div className="signup-hello">
           Sign up to see photos and videos from your friends.
         </div>
-        <button className="signup-demo">{icon2} Log in as Demo</button>
+        <button onClick={demo} className="signup-demo">
+          {icon2} Log in as Demo
+        </button>
         <div className="login-or">
           <div className="login-line"></div>
           <div className="l-or">OR</div>
