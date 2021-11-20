@@ -221,7 +221,7 @@ const Home = () => {
                                   </span>
                                 </>
                               ))
-                          : post.post.description}
+                          : post.post.description.length > 30 ? post.post.description.slice(0, 30) + '...' : post.post.description}
                       </div>
                     </div>
                   ) : null}
