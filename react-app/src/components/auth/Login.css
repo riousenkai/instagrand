@@ -40,6 +40,8 @@
   width: 175px;
   margin: 22px 86.5px 12px;
   padding-top: 10px;
+  user-select: none;
+  pointer-events: none !important;
 }
 
 .login-email {
