@@ -28,11 +28,15 @@ def password_too_short(form, field):
     if len(password) < 4:
         raise ValidationError('Password must be at least four characters long.')
 
+def name_too_long(form, field):
 
+    name = field.data
+    if len(name) > 40:
+        raise ValidationError('Full Name cannot be over 40 characters. Please use a nickname.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired(), password_too_short])
-    name = StringField('name', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired()], name_too_long)
