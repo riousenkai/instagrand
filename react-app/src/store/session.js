@@ -95,6 +95,20 @@ export const signUp = (username, email, password, name) => async (dispatch) => {
   }
 };
 
+export const editProf = (obj) => async (dispatch) => {
+  const res = await fetch("/api/auth/edit", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+
+  if (res.ok) {
+    return "ok"
+  }
+};
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
