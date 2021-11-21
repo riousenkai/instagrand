@@ -9,6 +9,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import Home from "./components/Home/Home";
 import Post from "./components/Post/Post";
 import { authenticate } from "./store/session";
+import Settings from "./components/Settings/Settings";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,10 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <Navigation />
           <Home />
+        </ProtectedRoute>
+        <ProtectedRoute path="/settings" exact={true}>
+          <Navigation />
+          <Settings />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

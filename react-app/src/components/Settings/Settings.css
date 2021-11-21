@@ -1,0 +1,47 @@
+.settings-main {
+  padding-top: 85px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.settings-card {
+  width: 932px;
+  height: 885px;
+  border: 0.5px solid #dbdbdb;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.settings-left {
+  border-right: 0.5px solid #dbdbdb;
+  width: 236px;
+  height: 100%;
+}
+
+.settings-e-prof {
+  padding: 16px 16px 16px 30px;
+  color: #262626;
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 2px solid #262626;
+}
+
+.set-r-top {
+  margin: 32px 0px 0px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.set-r-img {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.set-r-img-set {
+    display: flex;
+    flex-direction: column;
+}
