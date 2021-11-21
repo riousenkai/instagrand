@@ -23,15 +23,33 @@ const NavSettings = () => {
         {icon1}
         <div className="info-title">Profile</div>
       </div>
-      <div className="profile-info" onClick={() => history.push(`/settings`)}>
+      <div
+        className="profile-info"
+        onClick={() => {
+          setNum(0);
+          history.push(`/settings`);
+        }}
+      >
         {icon2}
         <div className="info-title">Settings</div>
       </div>
-      <div className="profile-info" onClick={() => history.push(`/about`)}>
+      <div
+        className="profile-info"
+        onClick={() => {
+          setNum(0);
+          history.push(`/about`);
+        }}
+      >
         {icon3}
         <div className="info-title">About the Site Creator</div>
       </div>
-      <div className="profile-info2" onClick={() => dispatch(logout())}>
+      <div
+        className="profile-info2"
+        onClick={() => {
+          setNum(0);
+          dispatch(logout());
+        }}
+      >
         <div className="info-logout">Log Out</div>
       </div>
     </div>
