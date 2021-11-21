@@ -104,8 +104,11 @@ export const editProf = (obj) => async (dispatch) => {
     body: JSON.stringify(obj),
   });
 
-  if (res.ok) {
-    return "ok"
+  const data = await res.json();
+  if (data.errors && res.status < 500) {
+    return data.errors;
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 

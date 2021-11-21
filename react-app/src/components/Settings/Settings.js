@@ -21,7 +21,7 @@ const Settings = () => {
       name,
     };
 
-    dispatch(editProf);
+    dispatch(editProf(obj));
     history.push(`/users/${user?.id}`);
   };
 

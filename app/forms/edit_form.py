@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 import re
 
@@ -32,9 +32,14 @@ def name_too_long(form, field):
     if len(name) > 40:
         raise ValidationError('Full Name cannot be over 40 characters. Please use a nickname.')
 
+def bio_too_long(form, field):
+    bio = field.data
+
+    if len(bio) > 150:
+        raise ValidationError('Please limit your bio to 150 characters.')
+
 class EditForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired(), name_too_long])
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired(), password_too_short])
+    bio = StringField('bio', validators=[bio_too_long])
+    name = StringField('name', validators=[DataRequired(), name_too_long])
