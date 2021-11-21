@@ -1,16 +1,22 @@
 .nav-main {
   height: 54px;
-  width: 100vw;
+  width: 100%;
   background-color: #ffffff;
   border-bottom: 1px solid rgb(219, 219, 219);
   display: flex;
   align-items: center;
-  padding-left: 25%;
-  padding-right: 25%;
   justify-content: space-between;
   box-sizing: border-box;
   position: fixed;
   z-index: 100;
+}
+
+.nav-mid {
+  display: flex;
+  margin: auto;
+  width: 975px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav-img {

@@ -376,7 +376,7 @@ const Post = () => {
               : "No additional posts from "}
             <span
               className="pp-like-me"
-              onClick={() => history.push(`/users/${user.id}`)}
+              onClick={() => history.push(`/users/${post.user.id}`)}
             >
               {post?.user?.username}
             </span>
