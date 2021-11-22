@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { editProf, authenticate } from "../../store/session";
+import { uploadFile } from "../../store/user";
+import { Modal } from "../../context/Modal";
+import { useModal } from "../../context/UseModal";
+import EditPic from "../EditPicModal/EditPic";
 import Picker from "emoji-picker-react";
 import "./Settings.css";
 
@@ -10,6 +14,7 @@ const Settings = () => {
   const history = useHistory();
   const emoji = useRef(null);
   const [count, setCount] = useState(0);
+  const { num, setNum } = useModal();
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(user?.name);
@@ -92,11 +97,21 @@ const Settings = () => {
         <form className="settings-right" onSubmit={(e) => editProfile(e)}>
           <div className="set-r-top">
             <div className="set-r-left-img">
-              <img className="set-r-img" src={user?.image_url} />
+              <img
+                className="set-r-img"
+                src={user?.image_url}
+                onClick={() => setNum(11)}
+              />
             </div>
             <div className="set-r-img-set">
               <div className="set-r-username">{user?.username}</div>
-              <div className="set-r-change-pic">Change Profile Photo</div>
+              <div
+                for="pics"
+                className="set-r-change-pic"
+                onClick={() => setNum(11)}
+              >
+                Change Profile Photo
+              </div>
             </div>
           </div>
           <div className="set-name">
@@ -180,6 +195,11 @@ const Settings = () => {
           )}
         </form>
       </div>
+      {num === 11 && (
+        <Modal onClose={() => setNum(0)}>
+          <EditPic />
+        </Modal>
+      )}
     </div>
   );
 };
