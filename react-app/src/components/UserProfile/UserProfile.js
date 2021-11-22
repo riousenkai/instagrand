@@ -27,12 +27,6 @@ const UserProfile = () => {
     }
 
     dispatch(updateUser(userId));
-
-    // (async () => {
-    //   const response = await fetch(`/api/users/${userId}`);
-    //   const user = await response.json();
-    //   setUser(user);
-    // })();
   }, [userId, profNum]);
 
   useEffect(() => {
