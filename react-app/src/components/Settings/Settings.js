@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { editProf, authenticate } from "../../store/session";
+import Picker from "emoji-picker-react";
 import "./Settings.css";
 
 const Settings = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const emoji = useRef(null);
+  const [count, setCount] = useState(0);
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(user?.name);
@@ -41,6 +44,44 @@ const Settings = () => {
       }
     });
   };
+
+  const onEmojiClick = (event, emojiObject) => {
+    let copy = bio;
+    copy += emojiObject.emoji;
+    setBio(copy);
+  };
+
+  const showEmoji = () => {
+    if (count === 0) {
+      emoji.current.classList.remove("hidden");
+      setCount(1);
+    } else {
+      setCount(0);
+    }
+  };
+
+  const RemoveOutside = (ref) => {
+    useEffect(() => {
+      const handleClick = (e) => {
+        if (
+          !e?.target?.classList?.contains("emoji-btn2") &&
+          !e?.target?.nextElementSibling?.classList.contains("hidden")
+        ) {
+          setCount(0);
+        }
+        if (ref.current && !ref.current.contains(e.target)) {
+          emoji.current.classList.add("hidden");
+        }
+      };
+      document.addEventListener("mousedown", handleClick);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClick);
+      };
+    }, [ref]);
+  };
+
+  RemoveOutside(emoji);
 
   return (
     <div className="settings-main">
@@ -89,7 +130,28 @@ const Settings = () => {
             </div>
           </div>
           <div className="set-username">
-            <div className="set-r-left">Bio</div>
+            <div className="set-r-left-bio">
+              <span className="set-bio">Bio</span>
+              <div className="emoji-post4">
+                <img
+                  onClick={() => showEmoji()}
+                  className="emoji-btn2"
+                  src="https://img.icons8.com/ios/50/000000/smiling.png"
+                />
+                <div className="picker hidden" ref={emoji}>
+                  <Picker
+                    native={true}
+                    onEmojiClick={onEmojiClick}
+                    pickerStyle={{
+                      position: "absolute",
+                      width: "15vw",
+                      marginLeft: "-25px",
+                      top: "30px",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
             <div className="set-right-username">
               <textarea
                 placeholder="Bio"
