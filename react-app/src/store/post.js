@@ -18,17 +18,16 @@ const getInfo = (posts) => ({
   payload: posts,
 });
 
-
 export const likePost = (postId) => async (dispatch) => {
   const res = await fetch(`/api/likes/${postId}`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-  })
-  const data = await res.json()
-  dispatch(getFollowingPosts(data))
-}
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  dispatch(getFollowingPosts(data));
+};
 
 export const deleteComment = (id) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}`, {
@@ -102,13 +101,31 @@ export const findPosts = (userId) => async (dispatch) => {
   }
 };
 
-
 export const findFollowingPosts = () => async (dispatch) => {
   const res = await fetch(`/api/posts/following`);
   const data = await res.json();
   if (res.ok) {
     dispatch(getFollowingPosts(data));
   }
+};
+
+export const uploadFile = (fileForm) => async (dispatch) => {
+  const {
+    user_id,
+    /* all,
+       other,
+       form,
+       fields, */
+    file, // this is the file for uploading
+  } = fileForm;
+
+  const form = new FormData();
+  form.append("file", file);
+
+  const res = await fetch("/api/<your_api_route>", {
+    method: "POST",
+    body: form,
+  });
 };
 
 const initialState = {};
@@ -120,7 +137,7 @@ export default function reducer(state = initialState, action) {
     case GET_FOLLOWING_POSTS:
       return { ...state, following: action.payload.following };
     case GET_SINGLE_POST:
-      return { ...state, ...action.payload}
+      return { ...state, ...action.payload };
     default:
       return state;
   }
