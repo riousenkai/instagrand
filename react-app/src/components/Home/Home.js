@@ -251,8 +251,8 @@ const Home = () => {
                             {comment.user.username}
                           </div>
                           <div className="post-comment">
-                            {comment.comment.description?.length > 36
-                              ? comment.comment.description.slice(0, 36) + "..."
+                            {comment.comment.description?.length > 40
+                              ? comment.comment.description.slice(0, 40) + "..."
                               : comment.comment.description}
                           </div>
                         </div>
