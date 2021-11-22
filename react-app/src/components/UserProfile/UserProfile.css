@@ -8,6 +8,8 @@
 .prof-top {
   padding-left: 8%;
   padding-right: 8%;
+  margin: 0 auto;
+  max-width: 935px;
   display: flex;
   flex-direction: row;
   gap: 100px;
@@ -105,13 +107,17 @@
 } */
 
 .prof-bot {
+  margin: 0 auto;
   display: grid;
   justify-items: center;
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
+  /* grid-gap: 40px; */
   margin-top: 40px;
   margin-bottom: 40px;
+  width: 935px;
+  grid-row-gap: 30px;
+  grid-column-gap: 30px;
 }
 
 .p-img {

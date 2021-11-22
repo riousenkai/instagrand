@@ -17,6 +17,7 @@
   width: 975px;
   align-items: center;
   justify-content: space-between;
+  padding: 0 10px;
 }
 
 .nav-img {
