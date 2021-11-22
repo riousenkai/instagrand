@@ -107,9 +107,10 @@ export const editProf = (obj) => async (dispatch) => {
   const data = await res.json();
   if (data.errors && res.status < 500) {
     return data.errors;
-  } else {
+  } else if (res.status >= 500) {
     return ["An error occurred. Please try again."];
   }
+  return null;
 };
 
 export default function reducer(state = initialState, action) {

@@ -162,3 +162,24 @@
 .settings-submit:active {
   opacity: 0.7;
 }
+
+.set-r-left-error {
+  width: 194px;
+  padding: 0px 32px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 500;
+  color: #ed4956;
+}
+
+.set-right-error {
+  display: flex;
+  flex-direction: column;
+  width: 355px;
+  padding: 0px 60px 0px 0px;
+  gap: 15px;
+}
+
+.edit-err {
+  color: #ed4956;
+}

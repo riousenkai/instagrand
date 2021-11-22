@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { editProf } from "../../store/session";
@@ -8,9 +8,17 @@ const Settings = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
   const [name, setName] = useState(user?.name);
   const [username, setUsername] = useState(user?.username);
   const [bio, setBio] = useState(user?.description);
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/users/${user?.id}`);
+    }
+  }, [success]);
 
   const editProfile = (e) => {
     e.preventDefault();
@@ -21,8 +29,13 @@ const Settings = () => {
       name,
     };
 
-    dispatch(editProf(obj));
-    history.push(`/users/${user?.id}`);
+    dispatch(editProf(obj)).then((data) => {
+      if (data) {
+        setErrors(data);
+      } else {
+        setSuccess(true);
+      }
+    });
   };
 
   return (
@@ -87,6 +100,15 @@ const Settings = () => {
               </button>
             </div>
           </div>
+          {errors?.length > 0 && (
+            <div className="set-username">
+              <div className="set-r-left-error">Error</div>
+              <div className="set-right-error">
+                {errors?.length > 0 &&
+                  errors?.map((err) => <div className="edit-err">{err}</div>)}
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </div>

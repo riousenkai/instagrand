@@ -20,7 +20,7 @@ def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
     user = User.query.filter(User.username == username).first()
-    if user and user is not current_user.username:
+    if user and user.username is not current_user.username:
         raise ValidationError('Username is already in use.')
     elif len(username) > 30:
         raise ValidationError('Username cannot be over 30 characters.')

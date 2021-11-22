@@ -81,12 +81,15 @@ def sign_up():
 def edit_prof():
 
     form = EditForm()
-    current_user.username = form.data['username']
-    current_user.description = form.data['bio']
-    current_user.name = form.data['name']
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if current_user.username is not form.data['username']:
+            current_user.username = form.data['username']
+        current_user.description = form.data['bio']
+        current_user.name = form.data['name']
 
-    db.session.commit()
-    return current_user.to_dict()
+        db.session.commit()
+        return current_user.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
