@@ -47,6 +47,9 @@
   display: flex;
   gap: 20px;
   background-color: #ffffff;
+  white-space: nowrap;
+  padding-left: 24px;
+  padding-right: 5px;
 }
 
 .nav-icons {
