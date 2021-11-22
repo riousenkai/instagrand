@@ -8,6 +8,7 @@ import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
 import EditPic from "../EditPicModal/EditPic";
 import "./UserProfile.css";
+import { updateUser } from "../../store/user";
 
 const UserProfile = () => {
   const history = useHistory();
@@ -15,7 +16,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const { num, setNum } = useModal();
-  const [user, setUser] = useState();
+  const user = useSelector((state) => state.user.user);
   const [following, setFollowing] = useState(false);
   const posts = useSelector((state) => state.post);
   const follows = useSelector((state) => state.follow);
@@ -24,11 +25,14 @@ const UserProfile = () => {
     if (!userId) {
       return;
     }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
+
+    dispatch(updateUser(userId));
+
+    // (async () => {
+    //   const response = await fetch(`/api/users/${userId}`);
+    //   const user = await response.json();
+    //   setUser(user);
+    // })();
   }, [userId]);
 
   useEffect(() => {
@@ -67,12 +71,20 @@ const UserProfile = () => {
           className="prof-img-loading"
           src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
         />
-        <img
-          className="prof-img hidden"
-          onLoad={loadProfImg}
-          src={user?.image_url}
-          onClick={() => setNum(8)}
-        />
+        {+userId === main?.id ? (
+          <img
+            className="prof-img hidden"
+            onLoad={loadProfImg}
+            src={user?.image_url}
+            onClick={() => setNum(11)}
+          />
+        ) : (
+          <img
+            className="prof-img not-img hidden"
+            onLoad={loadProfImg}
+            src={user?.image_url}
+          />
+        )}
         <div className="prof-top-right">
           <div className="prof-top-top">
             <div className="prof-name">{user?.username}</div>
@@ -161,7 +173,7 @@ const UserProfile = () => {
             ))
           : null}
       </div>
-      {num === 8 && (
+      {num === 11 && (
         <Modal onClose={() => setNum(0)}>
           <EditPic />
         </Modal>

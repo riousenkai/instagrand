@@ -109,18 +109,6 @@ export const findFollowingPosts = () => async (dispatch) => {
   }
 };
 
-export const uploadFile = (fileForm) => async (dispatch) => {
-  const { file } = fileForm;
-
-  const form = new FormData();
-  form.append("file", file);
-
-  const res = await fetch("/api/users/picture", {
-    method: "POST",
-    body: form,
-  });
-};
-
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

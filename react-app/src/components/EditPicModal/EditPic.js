@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import { uploadFile } from "../../store/post";
+import { updateUser, uploadFile } from "../../store/user";
+import { authenticate } from "../../store/session";
 import "./EditPic.css";
 
 const EditPic = () => {
@@ -18,6 +19,8 @@ const EditPic = () => {
     };
 
     dispatch(uploadFile(fileForm));
+    dispatch(authenticate());
+    dispatch(updateUser(user.id))
     setNum(0);
   };
 
@@ -33,6 +36,7 @@ const EditPic = () => {
           id="files"
           type="file"
           className="hidden"
+          accept="image/*"
           onChange={(e) => submit(e)}
         />
       </label>
