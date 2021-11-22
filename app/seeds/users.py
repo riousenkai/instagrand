@@ -24,7 +24,7 @@ def seed_users():
     )
 
     canyon = User(
-        username='grand.canyon', email='grand@canyon.com', password='grand123', image_url='https://www.visitgrandcanyon.com/~/media/images/grandcanyon/callouts/visitgrandcanyon-tn-home-canyon-vista.jpg', description='Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history. Viewpoints include Mather Point, Yavapai Observation Station and architect Mary Colter’s Lookout Studio and her Desert View Watchtower. Lipan Point, with wide views of the canyon and Colorado River, is a popular, especially at sunrise and sunset.', name='Grand Canyon'
+        username='grand.canyon', email='grand@canyon.com', password='grand123', image_url='https://www.visitgrandcanyon.com/~/media/images/grandcanyon/callouts/visitgrandcanyon-tn-home-canyon-vista.jpg', description='Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history.', name='Grand Canyon'
     )
 
     db.session.add(demo)
