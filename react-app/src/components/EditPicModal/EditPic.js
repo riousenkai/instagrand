@@ -9,7 +9,7 @@ const EditPic = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [file, setFile] = useState();
-  const { setNum } = useModal();
+  const { setNum, setProfNum } = useModal();
 
   const submit = (e) => {
     setFile(e.target.files[0]);
@@ -18,9 +18,13 @@ const EditPic = () => {
       file: e.target.files[0],
     };
 
-    dispatch(uploadFile(fileForm));
-    dispatch(authenticate());
-    dispatch(updateUser(user.id))
+    dispatch(uploadFile(fileForm))
+      .then(() => {
+        dispatch(updateUser(user.id));
+      })
+      .then(() => dispatch(authenticate()));
+
+    setProfNum((old) => old + 1);
     setNum(0);
   };
 

@@ -15,7 +15,7 @@ const UserProfile = () => {
   const main = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const { num, setNum } = useModal();
+  const { num, setNum, profNum } = useModal();
   const user = useSelector((state) => state.user.user);
   const [following, setFollowing] = useState(false);
   const posts = useSelector((state) => state.post);
@@ -33,7 +33,7 @@ const UserProfile = () => {
     //   const user = await response.json();
     //   setUser(user);
     // })();
-  }, [userId]);
+  }, [userId, profNum]);
 
   useEffect(() => {
     dispatch(findFollows(+userId));
