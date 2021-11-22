@@ -8,6 +8,7 @@ import "./Options.css";
 
 const Options = ({ post }) => {
   const history = useHistory();
+  const [open, setOpen] = useState(0);
   const dispatch = useDispatch();
   const emoji = useRef(null);
   const { postId, setPostId } = useModal();
@@ -23,6 +24,12 @@ const Options = ({ post }) => {
   const RemoveOutside = (ref) => {
     useEffect(() => {
       const handleClick = (e) => {
+        if (
+          !e?.target?.classList?.contains("emoji-btn") &&
+          !e?.target?.nextElementSibling?.classList.contains("hidden")
+        ) {
+          setOpen(0);
+        }
         if (ref.current && !ref.current.contains(e.target)) {
           emoji.current.classList.add("hidden");
         }
@@ -60,6 +67,15 @@ const Options = ({ post }) => {
 
     dispatch(editPost(obj, post.post.id));
     setPostId(0);
+  };
+
+  const show = () => {
+    if (open === 0) {
+      emoji.current.classList.remove("hidden");
+      setOpen(1);
+    } else {
+      setOpen(0);
+    }
   };
 
   return (
@@ -106,7 +122,7 @@ const Options = ({ post }) => {
         <div className="edit-it-top">
           <div className="emoji-post-3">
             <img
-              onClick={() => emoji.current.classList.remove("hidden")}
+              onClick={show}
               className="emoji-btn editb"
               src="https://img.icons8.com/ios/50/000000/smiling.png"
             />
