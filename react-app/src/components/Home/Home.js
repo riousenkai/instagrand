@@ -21,7 +21,7 @@ const Home = () => {
   const [currEmoji, setCurrEmoji] = useState("");
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -96,7 +96,7 @@ const Home = () => {
 
   const onEmojiClick = (event, emojiObject) => {
     setCurrEmoji(emojiObject.emoji);
-    setCount(old => old + 1)
+    setCount((old) => old + 1);
   };
 
   const show = (i) => {
@@ -163,11 +163,16 @@ const Home = () => {
                     src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
                     // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
                   />
-                  <img
-                    className={`post-img loaded-img-${i} hidden`}
-                    onLoad={() => loadIt(i)}
-                    src={post.post.media_url}
-                  />
+                  <div
+                    className="dbl-img"
+                    onDoubleClick={() => like(post.post.id)}
+                  >
+                    <img
+                      className={`post-img loaded-img-${i} hidden`}
+                      onLoad={() => loadIt(i)}
+                      src={post.post.media_url}
+                    />
+                  </div>
                   <div className="post-icons">
                     {post.likes.find((p) => p.id === user.id) !== undefined ? (
                       <div
@@ -223,7 +228,9 @@ const Home = () => {
                                   </span>
                                 </>
                               ))
-                          : post.post.description.length > 30 ? post.post.description.slice(0, 30) + '...' : post.post.description}
+                          : post.post.description.length > 30
+                          ? post.post.description.slice(0, 30) + "..."
+                          : post.post.description}
                       </div>
                     </div>
                   ) : null}
@@ -279,7 +286,7 @@ const Home = () => {
                               width: "15vw",
                               marginLeft: "-12px",
                               top: "-330px",
-                              zIndex: '0',
+                              zIndex: "0",
                             }}
                           />
                         </div>
