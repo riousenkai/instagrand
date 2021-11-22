@@ -11,6 +11,7 @@ import Post from "./components/Post/Post";
 import { authenticate } from "./store/session";
 import Settings from "./components/Settings/Settings";
 import About from "./components/About/About";
+import AboutNav from "./components/About/AboutNav";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,7 +38,8 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path="/about" exact={true}>
-           <About />
+          <AboutNav />
+          <About />
         </Route>
         <ProtectedRoute path="/posts/:postId" exact={true}>
           <Navigation />

@@ -30,7 +30,10 @@ const About = () => {
             <br />
             Please click on the images below to view my links to:
             <br />
-            GitHub, LinkedIn and other personal projects.
+            • GitHub
+            <br />
+            • LinkedIn
+            <br />• Other personal projects
           </div>
         </div>
       </div>
