@@ -112,7 +112,7 @@
 .pp-desc {
   font-size: 14px;
   color: #262626;
-  word-break: break-all;
+  overflow-wrap: break-all;
 }
 
 .pp-date {

@@ -88,7 +88,7 @@
 .prof-desc {
   color: #262626;
   font-size: 16px;
-  word-break: break-all;
+  overflow-wrap: break-all;
   padding-bottom: 20px;
 }
 
