@@ -8,7 +8,7 @@ const About = () => {
         />
         <div className="prof-top-right">
           <div className="prof-top-top">
-            <div className="prof-name">Creator</div>
+            <div className="prof-name">John Elijah 'Revan' Fajardo</div>
           </div>
           <div className="prof-count">
             <div className="prof-posts">
@@ -21,7 +21,7 @@ const About = () => {
               <span className="p-ct-bold">1</span> following
             </div>
           </div>
-          <div className="prof-r-name">John Elijah 'Revan' Fajardo</div>
+          <div className="prof-r-name">Website Creator</div>
           <div className="prof-desc">
             <br />
             Hello! I am a Software Engineer with an affinity for React and

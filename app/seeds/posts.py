@@ -5,7 +5,7 @@ from datetime import datetime
 def seed_posts():
     post1 = Post(user_id=1, media_url='https://s3.amazonaws.com/nikeinc/assets/48622/2015-Nike-Mag-02_hd_1600.jpg?1445446034', description='Nike is the future.', createdAt=datetime.now())
     post2 = Post(user_id=1, media_url='https://sneakerbardetroit.com/wp-content/uploads/2021/09/Gundam-Nike-SB-Dunk-High-DH7717-100-Release-Date-Price-4-1068x714.jpg', description='Clean.', createdAt=datetime.now())
-    post3 = Post(user_id=2, media_url='https://houseofheat.co/app/uploads/2021/09/Gundam-x-Nike-SB-Dunk-High-02-Banshee-DH7717-400-2.jpg', description='Gundam SB Dunks', createdAt=datetime.now())
+    post3 = Post(user_id=2, media_url='https://cdn.shopify.com/s/files/1/1501/7282/products/EDC2020-All-Are-Welcome-Pin-f_9e8a765e-2706-47d9-9023-400fb4ad15ef_2048x2048.jpg?v=1588960867', description='Welcome! Follow users to populate your feed.', createdAt=datetime.now())
 
     db.session.add(post1)
     db.session.add(post2)

@@ -47,7 +47,7 @@ const NewPost = () => {
       return setErrors(err);
     }
 
-    const types = ["gif", "jpg", "jpeg", "png", ".com", "www", "http"];
+    const types = ["gif", "jpg", "jpeg", "png", ".com", "www.", "http"];
 
     let filtered = types.filter((type) => url.includes(type));
 
@@ -124,7 +124,7 @@ const NewPost = () => {
               <div className="wordcount">{desc?.length} / 500</div>
             </div>
             <input
-              maxLength="255"
+              maxLength="300"
               placeholder="Paste image url here..."
               className="post-url"
               value={url}

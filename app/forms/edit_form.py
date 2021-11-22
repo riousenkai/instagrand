@@ -39,8 +39,12 @@ def bio_too_long(form, field):
     if len(bio) > 150:
         raise ValidationError('Please limit your bio to 150 characters.')
 
+def is_demo(form, field):
+    if current_user.id == 1:
+        raise ValidationError("You cannot edit the demo account's info!")
+
 class EditForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    bio = StringField('bio', validators=[bio_too_long])
-    name = StringField('name', validators=[DataRequired(), name_too_long])
+        'username', validators=[DataRequired(), username_exists, is_demo])
+    bio = StringField('bio', validators=[bio_too_long, is_demo])
+    name = StringField('name', validators=[DataRequired(), name_too_long, is_demo])
