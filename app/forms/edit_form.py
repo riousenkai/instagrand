@@ -41,7 +41,7 @@ def bio_too_long(form, field):
 
 def is_demo(form, field):
     if current_user.id == 1:
-        raise ValidationError("You cannot edit the demo account's info!")
+        raise ValidationError("You cannot edit the demo user's info!")
 
 class EditForm(FlaskForm):
     username = StringField(
