@@ -163,16 +163,12 @@ const Home = () => {
                     src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
                     // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
                   />
-                  <div
-                    className="dbl-img"
+                  <img
                     onDoubleClick={() => like(post.post.id)}
-                  >
-                    <img
-                      className={`post-img loaded-img-${i} hidden`}
-                      onLoad={() => loadIt(i)}
-                      src={post.post.media_url}
-                    />
-                  </div>
+                    className={`post-img loaded-img-${i} hidden`}
+                    onLoad={() => loadIt(i)}
+                    src={post.post.media_url}
+                  />
                   <div className="post-icons">
                     {post.likes.find((p) => p.id === user.id) !== undefined ? (
                       <div
@@ -228,8 +224,8 @@ const Home = () => {
                                   </span>
                                 </>
                               ))
-                          : post.post.description.length > 30
-                          ? post.post.description.slice(0, 30) + "..."
+                          : post.post.description.length > 45
+                          ? post.post.description.slice(0, 45) + "..."
                           : post.post.description}
                       </div>
                     </div>
@@ -255,8 +251,8 @@ const Home = () => {
                             {comment.user.username}
                           </div>
                           <div className="post-comment">
-                            {comment.comment.description?.length > 35
-                              ? comment.comment.description.slice(0, 35) + "..."
+                            {comment.comment.description?.length > 36
+                              ? comment.comment.description.slice(0, 36) + "..."
                               : comment.comment.description}
                           </div>
                         </div>
