@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,10 +11,8 @@ import NavModal from "../NavModal/NavModal";
 const Navigation = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const [hidden, setHidden] = useState(true);
   const { num, setNum } = useModal();
   const path = window.location.pathname;
-  const border = useRef(null);
   const user = useSelector((state) => state.session?.user);
   const history = useHistory();
   const results = useSelector((state) => state.search?.users);
