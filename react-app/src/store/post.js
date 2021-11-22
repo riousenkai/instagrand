@@ -110,19 +110,12 @@ export const findFollowingPosts = () => async (dispatch) => {
 };
 
 export const uploadFile = (fileForm) => async (dispatch) => {
-  const {
-    user_id,
-    /* all,
-       other,
-       form,
-       fields, */
-    file, // this is the file for uploading
-  } = fileForm;
+  const { file } = fileForm;
 
   const form = new FormData();
   form.append("file", file);
 
-  const res = await fetch("/api/<your_api_route>", {
+  const res = await fetch("/api/users/picture", {
     method: "POST",
     body: form,
   });
