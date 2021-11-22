@@ -64,6 +64,7 @@ const Settings = () => {
               <input
                 className="set-r-input"
                 value={name}
+                placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
               />
               <div className="set-right-info">
@@ -76,6 +77,7 @@ const Settings = () => {
             <div className="set-r-left">Username</div>
             <div className="set-right-username">
               <input
+                placeholder="Username"
                 className="set-r-input"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -90,6 +92,7 @@ const Settings = () => {
             <div className="set-r-left">Bio</div>
             <div className="set-right-username">
               <textarea
+                placeholder="Bio"
                 className="set-r-textarea"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
