@@ -12,7 +12,7 @@ const About = () => {
           </div>
           <div className="prof-count">
             <div className="prof-posts">
-              <span className="p-ct-bold">6</span> Posts
+              <span className="p-ct-bold">5</span> Posts
             </div>
             <div className="prof-posts">
               <span className="p-ct-bold">1,000,000</span> followers
@@ -72,6 +72,32 @@ const About = () => {
           />
           <div className="p-hover">
             <div className="p-like-ct">Gundam Hunt</div>
+          </div>
+        </a>
+        <a
+          className="post-c"
+          href="http://coinffflip.herokuapp.com/"
+          target="_blank"
+        >
+          <img
+            className="p-img"
+            src="https://thumbs.dreamstime.com/b/image-bitcoin-black-background-bitcoin-107991145.jpg"
+          />
+          <div className="p-hover">
+            <div className="p-like-ct">Coin Flip</div>
+          </div>
+        </a>
+        <a
+          className="post-c"
+          href="https://awesome-anime.herokuapp.com/"
+          target="_blank"
+        >
+          <img
+            className="p-img"
+            src="https://camo.githubusercontent.com/f46c8ccebc56102a5f8982c0c55c6e3c80c09ba790ade0de420f3e6cffddec10/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3838373037393733363932333238373538322f3838383535393931363236333032363731382f6e65774c6f676f2e706e67"
+          />
+          <div className="p-hover">
+            <div className="p-like-ct">awesome/Anime</div>
           </div>
         </a>
       </div>
