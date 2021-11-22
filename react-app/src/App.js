@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import Post from "./components/Post/Post";
 import { authenticate } from "./store/session";
 import Settings from "./components/Settings/Settings";
+import About from "./components/About/About";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/signup" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/about" exact={true}>
+           <About />
         </Route>
         <ProtectedRoute path="/posts/:postId" exact={true}>
           <Navigation />

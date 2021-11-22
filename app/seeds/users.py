@@ -27,6 +27,10 @@ def seed_users():
         username='grand.canyon', email='grand@canyon.com', password='grand123', image_url='https://www.visitgrandcanyon.com/~/media/images/grandcanyon/callouts/visitgrandcanyon-tn-home-canyon-vista.jpg', description='Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history.', name='Grand Canyon'
     )
 
+    creator = User(
+        username="creator", email='creator@revan.com', password='creator123420', image_url='https://cdna.artstation.com/p/assets/images/images/036/541/778/large/scott-thumbnail.jpg?1617929132', description='Please see the about page for more information!', name='Creator'
+    )
+
     db.session.add(demo)
     db.session.add(instagrand)
     db.session.add(neb)
@@ -35,6 +39,7 @@ def seed_users():
     db.session.add(revan)
     db.session.add(tarkin)
     db.session.add(canyon)
+    db.session.add(creator)
 
     db.session.commit()
 
