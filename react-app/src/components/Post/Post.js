@@ -209,28 +209,6 @@ const Post = () => {
                           </span>
                         </p>
                       </div>
-                      {/* <div className="pp-user-desc">
-                        <div
-                          className="pp-user"
-                          onClick={() =>
-                            history.push(`/users/${post?.user?.id}`)
-                          }
-                        >
-                          {post?.user?.username}
-                        </div>
-                        <div className="pp-d-d">
-                          <span className="pp-desc">
-                            {post?.post?.description
-                              .split("\n")
-                              .map((sentence) => (
-                                <>
-                                  {sentence}
-                                  <br />
-                                </>
-                              ))}
-                          </span>
-                        </div>
-                      </div> */}
                     </div>
                     <div className="pp-date">
                       {post?.post?.createdAt.split(" ").slice(1, 4).join(" ")}
