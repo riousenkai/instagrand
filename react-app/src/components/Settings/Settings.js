@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { editProf } from "../../store/session";
+import { editProf, authenticate } from "../../store/session";
 import "./Settings.css";
 
 const Settings = () => {
@@ -13,6 +13,10 @@ const Settings = () => {
   const [username, setUsername] = useState(user?.username);
   const [bio, setBio] = useState(user?.description);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    dispatch(authenticate());
+  }, []);
 
   useEffect(() => {
     if (success) {

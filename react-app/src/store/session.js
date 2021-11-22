@@ -104,13 +104,18 @@ export const editProf = (obj) => async (dispatch) => {
     body: JSON.stringify(obj),
   });
 
-  const data = await res.json();
-  if (data.errors && res.status < 500) {
-    return data.errors;
-  } else if (res.status >= 500) {
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setUser(data));
+    return null;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
     return ["An error occurred. Please try again."];
   }
-  return null;
 };
 
 export default function reducer(state = initialState, action) {
