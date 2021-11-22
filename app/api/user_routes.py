@@ -28,7 +28,7 @@ def search():
 
     data = request.json['input']
 
-    users = User.query.filter(User.username.ilike(f'%{data}%')).all()
+    users = User.query.filter(User.username.ilike(f'%{data}%'), User.username != current_user.username).all()
 
     return {'users': [user.to_dict() for user in users]}
 
