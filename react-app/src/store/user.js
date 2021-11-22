@@ -23,6 +23,14 @@ export const uploadFile = (fileForm) => async (dispatch) => {
   });
 };
 
+export const deletePic = () => async (dispatch) => {
+  const res = await fetch("/api/users/picture", {
+    method: "DELETE",
+  });
+  const data = await res.json();
+  dispatch(setUser(data));
+};
+
 const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {

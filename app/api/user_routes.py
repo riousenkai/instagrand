@@ -52,6 +52,13 @@ def upload_pic():
         #      url=file_url
         #  )
         db.session.commit()
-        return user.to_dict()
+        return current_user.to_dict()
     else:
         return 'No File Attached!'
+
+@user_routes.route('/picture', methods=['DELETE'])
+@login_required
+def delete_pic():
+    current_user.image_url = "https://nitreo.com/img/igDefaultProfilePic.png"
+    db.session.commit()
+    return current_user.to_dict()
