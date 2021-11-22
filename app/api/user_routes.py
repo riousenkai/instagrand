@@ -53,4 +53,5 @@ def upload_pic():
         #  )
         db.session.commit()
         return user.to_dict()
-     else: return 'No File Attached!'
+    else:
+        return 'No File Attached!'
