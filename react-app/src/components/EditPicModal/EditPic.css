@@ -1,0 +1,74 @@
+.edit-p-main {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popup 400ms forwards;
+  overflow: hidden;
+}
+
+.edit-p-top {
+  width: 400px !important;
+  margin: 32px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.5px solid #dbdbdb;
+  padding-bottom: 16px;
+}
+
+.edit-p-pic {
+  height: 56px;
+  width: 56px;
+  object-fit: cover;
+  user-select: none;
+  cursor: default;
+}
+
+.edit-current {
+  color: #262626;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.edit-option {
+  height: 48px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0095f6;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}
+
+.edit-option2 {
+  height: 48px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ed4956;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}
+
+.edit-option3 {
+  height: 48px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #262626;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}

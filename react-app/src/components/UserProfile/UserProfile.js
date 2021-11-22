@@ -3,14 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 import { findPosts } from "../../store/post";
 import { findFollows, followUser } from "../../store/follow";
-import "./UserProfile.css";
 import UserModal from "./UserModal";
+import { Modal } from "../../context/Modal";
+import { useModal } from "../../context/UseModal";
+import EditPic from "../EditPicModal/EditPic";
+import "./UserProfile.css";
 
 const UserProfile = () => {
   const history = useHistory();
   const main = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
+  const { num, setNum } = useModal();
   const [user, setUser] = useState();
   const [following, setFollowing] = useState(false);
   const posts = useSelector((state) => state.post);
@@ -67,13 +71,19 @@ const UserProfile = () => {
           className="prof-img hidden"
           onLoad={loadProfImg}
           src={user?.image_url}
+          onClick={() => setNum(8)}
         />
         <div className="prof-top-right">
           <div className="prof-top-top">
             <div className="prof-name">{user?.username}</div>
             {user?.id === main?.id ? (
               <>
-                <button className="prof-edit" onClick={() => history.push('/settings')}>Edit Profile</button>
+                <button
+                  className="prof-edit"
+                  onClick={() => history.push("/settings")}
+                >
+                  Edit Profile
+                </button>
               </>
             ) : following === true ? (
               <UserModal user={user}></UserModal>
@@ -105,12 +115,13 @@ const UserProfile = () => {
           </div>
           <div className="prof-r-name">{user?.name}</div>
           <div className="prof-desc">
-            {user?.description !== null && user?.description.split("\n").map((sentence) => (
-              <>
-                {sentence}
-                <br />
-              </>
-            ))}
+            {user?.description !== null &&
+              user?.description.split("\n").map((sentence) => (
+                <>
+                  {sentence}
+                  <br />
+                </>
+              ))}
           </div>
         </div>
       </div>
@@ -150,6 +161,11 @@ const UserProfile = () => {
             ))
           : null}
       </div>
+      {num === 8 && (
+        <Modal onClose={() => setNum(0)}>
+          <EditPic />
+        </Modal>
+      )}
     </div>
   );
 };

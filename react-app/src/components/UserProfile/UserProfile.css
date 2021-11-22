@@ -23,6 +23,7 @@
   width: 150px;
   object-fit: cover;
   user-select: none;
+  cursor: pointer;
 }
 
 .prof-img-loading {
