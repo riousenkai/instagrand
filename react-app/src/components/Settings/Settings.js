@@ -28,7 +28,7 @@ const Settings = () => {
     e.preventDefault();
 
     const obj = {
-      username,
+      username: username.toLowerCase(),
       bio,
       name,
     };
