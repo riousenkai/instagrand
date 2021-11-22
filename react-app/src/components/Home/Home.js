@@ -224,7 +224,9 @@ const Home = () => {
                                   </span>
                                 </>
                               ))
-                          : post.post.description.length > 45
+                          : post.user.username.length +
+                              post.post.description.length >
+                            55
                           ? post.post.description.slice(0, 45) + "..."
                           : post.post.description}
                       </div>
@@ -251,7 +253,9 @@ const Home = () => {
                             {comment.user.username}
                           </div>
                           <div className="post-comment">
-                            {comment.comment.description?.length > 40
+                            {comment.user.username.length +
+                              comment.comment.description?.length >
+                            50
                               ? comment.comment.description.slice(0, 40) + "..."
                               : comment.comment.description}
                           </div>
