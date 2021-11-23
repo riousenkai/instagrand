@@ -360,7 +360,11 @@ const Home = () => {
                 {suggestions?.length > 0
                   ? suggestions?.map((s) => (
                       <div className="suggestion-card">
-                        <img className="suggestion-img" src={s.image_url} />
+                        <img
+                          onClick={() => history.push(`/users/${s.id}`)}
+                          className="suggestion-img"
+                          src={s.image_url}
+                        />
                       </div>
                     ))
                   : null}
