@@ -144,15 +144,17 @@ const NewPost = () => {
               </div>
               <div className="wordcount">{desc?.length} / 300</div>
             </div>
-            <div
-              className="post-url"
-              onClick={() => {
-                setUrl("");
-                setImgUrl("");
-              }}
-            >
-              Remove Image
-            </div>
+            {url.length > 0 ? (
+              <div
+                className="post-url"
+                onClick={() => {
+                  setUrl("");
+                  setImgUrl("");
+                }}
+              >
+                Remove Image
+              </div>
+            ) : null}
             {errors &&
               errors.map((err) => <div className="post-error">{err}</div>)}
           </div>
