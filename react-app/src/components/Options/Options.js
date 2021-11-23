@@ -5,13 +5,15 @@ import { useModal } from "../../context/UseModal";
 import { deletePost, editPost } from "../../store/post";
 import Picker from "emoji-picker-react";
 import "./Options.css";
+import { Modal } from "../../context/Modal";
+import Unfollow from "../UserProfile/Unfollow";
 
 const Options = ({ post }) => {
   const history = useHistory();
   const [open, setOpen] = useState(0);
   const dispatch = useDispatch();
   const emoji = useRef(null);
-  const { postId, setPostId } = useModal();
+  const { postId, setPostId, num, setNum } = useModal();
   const user = useSelector((state) => state.session.user);
   const [input, setInput] = useState(post.post.description);
 
@@ -91,7 +93,9 @@ const Options = ({ post }) => {
             </div>
           </>
         ) : (
-          <div className="unfollow-post">Unfollow</div>
+          <div className="unfollow-post" onClick={() => setNum(8)}>
+            Unfollow
+          </div>
         )}
         <div
           onClick={() => {
@@ -152,6 +156,16 @@ const Options = ({ post }) => {
           Cancel
         </div>
       </div>
+      {num === 8 && (
+        <Modal
+          onClose={() => {
+            setPostId(0);
+            setNum(0);
+          }}
+        >
+          <Unfollow user={post.user} />
+        </Modal>
+      )}
     </div>
   );
 };

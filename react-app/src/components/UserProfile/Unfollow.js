@@ -5,7 +5,7 @@ import { findFollowingPosts } from "../../store/post";
 
 const Unfollow = ({ user }) => {
   const dispatch = useDispatch();
-  const { setNum } = useModal();
+  const { setNum, setPostId } = useModal();
   const main = useSelector((state) => state.session.user);
 
   const remove = () => {
@@ -13,6 +13,7 @@ const Unfollow = ({ user }) => {
       .then(() => dispatch(findFollowingPosts(main?.id)))
       .then(() => dispatch(findFollows(main?.id)));
     setNum(0);
+    setPostId(0);
   };
 
   return (

@@ -70,7 +70,8 @@ def suggestions():
 
     final = list(total_set - following_set)
 
-    final.remove(current_user)
+    if current_user in final:
+        final.remove(current_user)
 
     sorter = sorted(final, key=lambda x:x.id)
 
