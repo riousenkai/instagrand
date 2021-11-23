@@ -11,7 +11,7 @@ const NewPost = () => {
   const dispatch = useDispatch();
   const emoji = useRef(null);
   const { num, setNum } = useModal();
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
@@ -89,7 +89,7 @@ const NewPost = () => {
         </div>
         <div className="new-post-bot">
           <div className="mid-left">
-            {url === null ? (
+            {url === "" ? (
               <div className="new-p-preview">
                 {newIcon}
                 <div className="new-p-video">Upload photos here</div>
@@ -100,7 +100,9 @@ const NewPost = () => {
                     type="file"
                     className="hidden"
                     accept="image/*"
-                    // onChange={(e) => submit(e)}
+                    onChange={(e) =>
+                      setUrl(URL.createObjectURL(e.target.files[0]))
+                    }
                   />
                 </label>
               </div>
@@ -141,13 +143,11 @@ const NewPost = () => {
               </div>
               <div className="wordcount">{desc?.length} / 500</div>
             </div>
-            <input
+            <div
               maxLength="300"
-              placeholder="Paste image url here..."
               className="post-url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-            />
+              onClick={() => setUrl('')}
+            >Remove Image</div>
             {errors &&
               errors.map((err) => <div className="post-error">{err}</div>)}
           </div>

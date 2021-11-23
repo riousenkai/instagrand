@@ -100,7 +100,7 @@
 
 .preview-img {
   max-height: 100%;
-  width: 100%;
+  max-width: 100%;
   object-fit: cover;
 }
 
@@ -124,12 +124,16 @@
 }
 
 .post-url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 44px;
   outline: none;
   border: none;
-  padding: 8px 16px;
   border-bottom: 0.5px solid #dbdbdb;
   font-size: 16px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .new-submit {
@@ -151,4 +155,36 @@
   font-size: 12px;
   color: #c7c7c7;
   padding: 8px 16px;
+}
+
+.new-p-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.new-p-video {
+  color: #262626;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.new-p-upload {
+  width: 158px;
+  height: 30px;
+  background-color: #0095f6;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.new-p-upload:active {
+  opacity: 0.7;
 }

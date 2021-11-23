@@ -2,8 +2,8 @@ export const newIcon = (
   <svg
     aria-label="Icon to represent media such as images or videos"
     class="_8-yf5 "
-    color="#262626"
-    fill="#262626"
+    color="#0095f6"
+    fill="#0095f6"
     height="77"
     role="img"
     viewBox="0 0 97.6 77.3"
