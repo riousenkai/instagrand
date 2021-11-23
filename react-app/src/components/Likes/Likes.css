@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  max-height: 398px;
   animation: popup 400ms forwards;
 }
 
@@ -15,6 +16,11 @@
   width: 400px;
   border-bottom: 0.5px solid #dbdbdb;
   align-items: center;
+}
+
+.likes-bot {
+  max-height: 356px;
+  overflow-y: scroll;
 }
 
 .likes-header {
@@ -28,9 +34,76 @@
   color: #262626;
 }
 
+.likes-card {
+  display: flex;
+  flex-direction: row;
+  padding: 8px 16px;
+  width: 383px;
+}
+
 .likes-close {
   margin-left: auto;
   padding: 8px;
   padding-top: 10px;
   cursor: pointer;
+}
+
+.likes-img {
+  padding-right: auto;
+  height: 44px;
+  width: 44px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.likes-details {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+.likes-unfollow {
+  height: 30px;
+  width: 81.92px;
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+  border: 0.5px solid #dbdbdb;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.likes-username {
+    font-size: 14px;
+    color: #262626;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.likes-username:hover {
+    text-decoration: underline;
+}
+
+.likes-name {
+    font-size: 14px;
+    color: #8e8e8e;
+}
+
+.likes-follow {
+  height: 30px;
+  width: 61.67px;
+  font-size: 14px;
+  color: white;
+  background-color: #0095f6;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.likes-follow:active {
+  opacity: 0.7;
 }
