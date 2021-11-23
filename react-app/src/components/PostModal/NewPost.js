@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useModal } from "../../context/UseModal";
 import { useSelector, useDispatch } from "react-redux";
 import { createPost, findFollowingPosts } from "../../store/post";
+import { newIcon } from "./newIcons";
 import Picker from "emoji-picker-react";
 
 import "./NewPost.css";
@@ -10,7 +11,7 @@ const NewPost = () => {
   const dispatch = useDispatch();
   const emoji = useRef(null);
   const { num, setNum } = useModal();
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(null);
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
@@ -88,7 +89,24 @@ const NewPost = () => {
         </div>
         <div className="new-post-bot">
           <div className="mid-left">
-            <img className="preview-img" src={url} />
+            {url === null ? (
+              <div className="new-p-preview">
+                {newIcon}
+                <div className="new-p-video">Upload photos here</div>
+                <label className="new-p-upload" for="new-pic">
+                  Select from computer
+                  <input
+                    id="new-pic"
+                    type="file"
+                    className="hidden"
+                    accept="image/*"
+                    // onChange={(e) => submit(e)}
+                  />
+                </label>
+              </div>
+            ) : (
+              <img className="preview-img" src={url} />
+            )}
           </div>
           <div className="mid-right">
             <div className="new-post-user">
