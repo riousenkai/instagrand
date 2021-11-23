@@ -6,6 +6,7 @@ import { newIcon } from "./newIcons";
 import Picker from "emoji-picker-react";
 
 import "./NewPost.css";
+import { updateUser } from "../../store/user";
 
 const NewPost = () => {
   const dispatch = useDispatch();
@@ -71,6 +72,7 @@ const NewPost = () => {
 
     if (path === `/users/${user?.id}`) {
       dispatch(findPosts(user?.id));
+      dispatch(updateUser(user?.id));
     }
 
     setNum(0);

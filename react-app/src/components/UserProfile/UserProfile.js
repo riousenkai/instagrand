@@ -32,7 +32,7 @@ const UserProfile = () => {
   useEffect(() => {
     dispatch(findFollows(+userId));
     dispatch(findPosts(+userId));
-  }, [userId]);
+  }, [userId, num]);
 
   const loadIt = (i) => {
     document.querySelector(`.pl-img-${i}`).classList.add("hidden");
