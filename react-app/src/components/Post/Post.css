@@ -257,6 +257,8 @@ span.pp-user {
   left: 33%;
   transform: translate(-50%, -50%);
   height: 350px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .pp-right {

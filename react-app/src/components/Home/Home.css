@@ -324,4 +324,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 350px;
+  cursor: pointer;
+  user-select: none;
 }
