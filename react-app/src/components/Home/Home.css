@@ -351,9 +351,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 321px;
+  width: 293px;
   height: 48px;
-  padding: 8px 16px;
+  padding: 8px 0px;
 }
 
 .suggestion-img {
@@ -363,4 +363,37 @@
   cursor: pointer;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.s-user-info {
+  width: 201px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
+  gap: 4px;
+}
+
+.s-username {
+  font-size: 14px;
+  color: #262626;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.s-username:hover {
+  text-decoration: underline;
+}
+
+.s-name {
+  font-size: 12px;
+  color: #8e8e8e;
+}
+
+.s-follow {
+  font-size: 12px;
+  color: #0095f6;
+  font-weight: 500;
+  margin-left: auto;
+  cursor: pointer;
 }

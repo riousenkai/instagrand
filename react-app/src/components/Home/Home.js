@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { findFollows, findSuggestions } from "../../store/follow";
+import { findFollows, findSuggestions, followUser } from "../../store/follow";
 import {
   findFollowingPosts,
   findPosts,
@@ -142,6 +142,10 @@ const Home = () => {
 
   const like2 = (id) => {
     dispatch(likePost(id));
+  };
+
+  const follow = (id) => {
+    dispatch(followUser(id));
   };
 
   return (
@@ -365,6 +369,16 @@ const Home = () => {
                           className="suggestion-img"
                           src={s.image_url}
                         />
+                        <div className="s-user-info">
+                          <div
+                            className="s-username"
+                            onClick={() => history.push(`/users/${s.id}`)}
+                          >
+                            {s.username}
+                          </div>
+                          <div className="s-name">{s.name}</div>
+                        </div>
+                        <div className="s-follow" onClick={() => follow(s.id)}>Follow</div>
                       </div>
                     ))
                   : null}
