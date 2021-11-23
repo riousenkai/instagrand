@@ -68,12 +68,14 @@ const NewPost = () => {
       description: desc,
     };
 
-    dispatch(createPost(obj)).then(() => dispatch(findFollowingPosts()));
-
-    if (path === `/users/${user?.id}`) {
-      dispatch(findPosts(user?.id));
-      dispatch(updateUser(user?.id));
-    }
+    dispatch(createPost(obj))
+      .then(() => dispatch(findFollowingPosts()))
+      .then(() => {
+        if (path === `/users/${user?.id}`) {
+          dispatch(findPosts(user?.id));
+          dispatch(updateUser(user?.id));
+        }
+      });
 
     setNum(0);
   };
