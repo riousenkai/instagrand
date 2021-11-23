@@ -11,8 +11,11 @@ import { useHistory } from "react-router";
 import Picker from "emoji-picker-react";
 import "./Home.css";
 import OptionsModal from "../Options/OptionsModal";
+import { useModal } from "../../context/UseModal";
+import { Modal } from "../../context/Modal";
 import { icon1, icon2, icon3 } from "./icons";
 import { logout } from "../../store/session";
+import Unfollow from "../UserProfile/Unfollow";
 
 const Home = () => {
   const history = useHistory();
@@ -21,11 +24,14 @@ const Home = () => {
   const [currEmoji, setCurrEmoji] = useState("");
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
+  const { num, setNum } = useModal();
   const [count, setCount] = useState(0);
   const [src, setSrc] = useState("");
+  const [unfollowed, setUnfollowed] = useState();
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const suggestions = useSelector((state) => state.follow.users);
+  const following = useSelector((state) => state.follow[user?.id]?.following);
   const [inputs, setInputs] = useState(
     new Array(followingPosts?.length).fill("")
   );
@@ -145,7 +151,7 @@ const Home = () => {
   };
 
   const follow = (id) => {
-    dispatch(followUser(id));
+    dispatch(followUser(id)).then(() => dispatch(findFollows(user?.id)));
   };
 
   return (
@@ -362,24 +368,49 @@ const Home = () => {
               <div className="suggestions-title">Suggestions for You</div>
               <div className="suggestions-list">
                 {suggestions?.length > 0
-                  ? suggestions?.map((s) => (
-                      <div className="suggestion-card">
-                        <img
-                          onClick={() => history.push(`/users/${s.id}`)}
-                          className="suggestion-img"
-                          src={s.image_url}
-                        />
-                        <div className="s-user-info">
-                          <div
-                            className="s-username"
+                  ? suggestions?.slice(0, 5).map((s) => (
+                      <>
+                        {num === s.id + 15 && (
+                          <Modal onClose={() => setNum(0)}>
+                            <Unfollow user={unfollowed} />
+                          </Modal>
+                        )}
+                        <div className="suggestion-card">
+                          <img
                             onClick={() => history.push(`/users/${s.id}`)}
-                          >
-                            {s.username}
+                            className="suggestion-img"
+                            src={s.image_url}
+                          />
+                          <div className="s-user-info">
+                            <div
+                              className="s-username"
+                              onClick={() => history.push(`/users/${s.id}`)}
+                            >
+                              {s.username}
+                            </div>
+                            <div className="s-name">{s.name}</div>
                           </div>
-                          <div className="s-name">{s.name}</div>
+                          {following?.find((u) => u.id === s.id) ===
+                          undefined ? (
+                            <div
+                              className="s-follow"
+                              onClick={() => follow(s.id)}
+                            >
+                              Follow
+                            </div>
+                          ) : (
+                            <div
+                              className="s-unfollow"
+                              onClick={() => {
+                                setUnfollowed(s);
+                                setNum(s.id + 15);
+                              }}
+                            >
+                              Following
+                            </div>
+                          )}
                         </div>
-                        <div className="s-follow" onClick={() => follow(s.id)}>Follow</div>
-                      </div>
+                      </>
                     ))
                   : null}
               </div>

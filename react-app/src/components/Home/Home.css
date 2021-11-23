@@ -340,6 +340,7 @@
   height: 18px;
   font-size: 14px;
   font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .suggestions-list {
@@ -393,6 +394,14 @@
 .s-follow {
   font-size: 12px;
   color: #0095f6;
+  font-weight: 500;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.s-unfollow {
+  font-size: 12px;
+  color: #262626;
   font-weight: 500;
   margin-left: auto;
   cursor: pointer;
