@@ -4,10 +4,10 @@ class Message(db.Model):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
-    sender_id = db.Column(db.Integer, db.ForeignKey(users.id), nullable=False)
-    receiver_id = db.Column(db.Integer, db.ForeignKey(users.id), nullable=False)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    receiver_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     message = db.Column(db.Text, nullable=False)
-    dm_id = db.Column(db.Integer, db.ForeignKey(dm_channels.id), nullable=False)
+    dm_id = db.Column(db.Integer, db.ForeignKey('dm_channels.id'), nullable=False)
 
     sender_user = db.relationship('User', back_populates="sender", foreign_keys=[sender_id])
     receiver_user = db.relationship('User', back_populates="receiver", foreign_keys=[receiver_id])
