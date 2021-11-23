@@ -17,10 +17,11 @@ import Picker from "emoji-picker-react";
 import "./Post.css";
 import CommentModal from "../CommentModal/CommentModal";
 import PostOptionsModal from "./PostOptionsModal";
+import Likes from "../Likes/Likes";
 
 const Post = () => {
   const history = useHistory();
-  const { num, setNum } = useModal();
+  const { num, setNum, likes, setLikes } = useModal();
   const emoji = useRef(null);
   const dispatch = useDispatch();
   const { postId } = useParams();
@@ -314,10 +315,20 @@ const Post = () => {
               </div>
             </div>
             {post?.likes?.length > 0 ? (
-              <div className="pp-likes">
-                {post?.likes.length}{" "}
-                {post?.likes.length === 1 ? "like" : "likes"}
-              </div>
+              <>
+                <div
+                  className="pp-likes"
+                  onClick={() => setLikes(post.post.id)}
+                >
+                  {post?.likes.length}{" "}
+                  {post?.likes.length === 1 ? "like" : "likes"}
+                </div>
+                {likes === post.post.id && (
+                  <Modal onClose={() => setLikes(0)}>
+                    <Likes users={post.likes} />
+                  </Modal>
+                )}
+              </>
             ) : (
               <div className="pp-nolikes">
                 Be the first to{" "}
