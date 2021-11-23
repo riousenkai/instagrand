@@ -327,3 +327,40 @@
   cursor: pointer;
   user-select: none;
 }
+
+.h-suggestions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 293px;
+}
+
+.suggestions-title {
+  color: #8e8e8e;
+  height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 321px;
+  height: 48px;
+  padding: 8px 16px;
+}
+
+.suggestion-img {
+  width: 32px;
+  height: 32px;
+  user-select: none;
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 50%;
+}

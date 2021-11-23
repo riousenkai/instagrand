@@ -25,6 +25,7 @@ const Home = () => {
   const [src, setSrc] = useState("");
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
+  const suggestions = useSelector((state) => state.follow.users);
   const [inputs, setInputs] = useState(
     new Array(followingPosts?.length).fill("")
   );
@@ -39,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(findFollows(user?.id));
     dispatch(findPosts(user?.id));
-    dispatch(findSuggestions())
+    dispatch(findSuggestions());
   }, []);
 
   useEffect(() => {
@@ -351,6 +352,18 @@ const Home = () => {
               </div>
               <div className="h-r-switch" onClick={() => dispatch(logout())}>
                 Switch
+              </div>
+            </div>
+            <div className="h-suggestions">
+              <div className="suggestions-title">Suggestions for You</div>
+              <div className="suggestions-list">
+                {suggestions?.length > 0
+                  ? suggestions?.map((s) => (
+                      <div className="suggestion-card">
+                        <img className="suggestion-img" src={s.image_url} />
+                      </div>
+                    ))
+                  : null}
               </div>
             </div>
           </div>
