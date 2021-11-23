@@ -29,8 +29,13 @@ def search():
     data = request.json['input']
 
     users = User.query.filter(User.username.ilike(f'%{data}%'), User.username != current_user.username).all()
+    users_name = User.query.filter(User.name.ilike(f'%{data}%'), User.name != current_user.name).all()
 
-    return {'users': [user.to_dict() for user in users]}
+    combined_users = list(set(users + users_name))
+
+    # return {'users': [user.to_dict() for user in users]}
+
+    return {'users': [user.to_dict() for user in combined_users]}
 
 @user_routes.route('/picture', methods=['POST'])
 @login_required
@@ -42,15 +47,9 @@ def upload_pic():
 
     if file:
         file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-         # create an instance of <Your_Model>
+
         current_user.image_url = file_url
-        #  file = File(
-        #      user_id=request.form.get('user_id')
-        #      # extract any form fields you've appended to the
-        #      # body of your POST request
-        #      # i.e.
-        #      url=file_url
-        #  )
+
         db.session.commit()
         return current_user.to_dict()
     else:
