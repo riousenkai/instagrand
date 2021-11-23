@@ -55,6 +55,7 @@
   width: 44px;
   user-select: none;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .likes-details {
@@ -62,7 +63,7 @@
   flex-direction: column;
   margin-right: auto;
   justify-content: center;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .likes-unfollow {
