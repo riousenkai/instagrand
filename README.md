@@ -2,7 +2,7 @@
 
 (Best viewed in 1920 x 1080 resolution)
 
-Instabrand is an Instagram clone that focuses on the brands that the user loves. Not a paid advertising website.
+Instagrand is an Instagram clone that focuses on everything grand.
 
 ### Languages/Libraries Used
 * React
