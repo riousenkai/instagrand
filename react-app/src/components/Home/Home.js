@@ -15,6 +15,7 @@ import { useModal } from "../../context/UseModal";
 import { Modal } from "../../context/Modal";
 import { icon1, icon2, icon3 } from "./icons";
 import { logout } from "../../store/session";
+import Likes from "../Likes/Likes";
 import Unfollow from "../UserProfile/Unfollow";
 
 const Home = () => {
@@ -370,7 +371,7 @@ const Home = () => {
                 {suggestions?.length > 0
                   ? suggestions?.slice(0, 5).map((s) => (
                       <>
-                        {num === s.id + 15 && (
+                        {num === s.id && (
                           <Modal onClose={() => setNum(0)}>
                             <Unfollow user={unfollowed} />
                           </Modal>
