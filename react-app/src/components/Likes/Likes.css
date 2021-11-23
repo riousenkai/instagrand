@@ -7,7 +7,6 @@
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  max-height: 398px;
   animation: popup 400ms forwards;
 }
 
@@ -19,7 +18,7 @@
 }
 
 .likes-bot {
-  max-height: 356px;
+  height: 356px;
   overflow-y: scroll;
 }
 
@@ -38,7 +37,9 @@
   display: flex;
   flex-direction: row;
   padding: 8px 16px;
-  width: 383px;
+  min-width: 383px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .likes-close {

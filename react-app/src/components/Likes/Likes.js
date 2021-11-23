@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { close } from "./LikeIcons";
 import { useModal } from "../../context/UseModal";
 import "./Likes.css";
-import { findFollows } from "../../store/follow";
+import { findFollows, followUser } from "../../store/follow";
 
 const Likes = ({ users }) => {
   const history = useHistory();
@@ -16,6 +16,10 @@ const Likes = ({ users }) => {
   useEffect(() => {
     dispatch(findFollows(main?.id));
   }, [main]);
+
+  const follow = (id) => {
+      dispatch(followUser(id)).then(() => dispatch(findFollows(main?.id)))
+  }
 
   return (
     <div className="likes-main">
@@ -36,12 +40,17 @@ const Likes = ({ users }) => {
                 onClick={() => history.push(`/users/${user.id}`)}
               />
               <div className="likes-details">
-                <div className="likes-username">{user.username}</div>
+                <div
+                  className="likes-username"
+                  onClick={() => history.push(`/users/${user.id}`)}
+                >
+                  {user.username}
+                </div>
                 <div className="likes-name">{user.name}</div>
               </div>
               {user.id !== main.id ? (
                 following.find((f) => f.id === user.id) === undefined ? (
-                  <button className="likes-follow">Follow</button>
+                  <button className="likes-follow" onClick={() => follow(user.id)}>Follow</button>
                 ) : (
                   <button className="likes-unfollow">Following</button>
                 )
