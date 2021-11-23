@@ -382,36 +382,42 @@ const Post = () => {
           <div className="pp-prof-bot">
             {userPosts?.length > 0
               ? userPosts?.slice(0, 6).map((post, i) => (
-                  <div
-                    className="post-c"
-                    onClick={() => history.push(`/posts/${post.post.id}`)}
-                  >
-                    <img
-                      className={`p-img-loading pl-img-${i} `}
-                      src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
-                    />
-                    <img
-                      className={`p-img p-img-${i} hidden`}
-                      onLoad={() => loadIt(i)}
-                      src={post.post.media_url}
-                    />
-                    <div className="p-hover">
-                      <div className="p-likes">
+                  <>
+                    {post.post.id !== +postId ? (
+                      <div
+                        className="post-c"
+                        onClick={() => history.push(`/posts/${post.post.id}`)}
+                      >
                         <img
-                          className="p-icons"
-                          src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
+                          className={`p-img-loading pl-img-${i} `}
+                          src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
                         />
-                        <div className="p-like-ct">{post.likes.length}</div>
-                      </div>
-                      <div className="p-comments">
                         <img
-                          className="p-icons"
-                          src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
+                          className={`p-img p-img-${i} hidden`}
+                          onLoad={() => loadIt(i)}
+                          src={post.post.media_url}
                         />
-                        <div className="p-like-ct">{post.comments.length}</div>
+                        <div className="p-hover">
+                          <div className="p-likes">
+                            <img
+                              className="p-icons"
+                              src="https://img.icons8.com/fluency-systems-filled/48/ffffff/like.png"
+                            />
+                            <div className="p-like-ct">{post.likes.length}</div>
+                          </div>
+                          <div className="p-comments">
+                            <img
+                              className="p-icons"
+                              src="https://img.icons8.com/ios-filled/48/ffffff/speech-bubble.png"
+                            />
+                            <div className="p-like-ct">
+                              {post.comments.length}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    ) : null}
+                  </>
                 ))
               : null}
           </div>
