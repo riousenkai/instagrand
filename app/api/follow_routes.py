@@ -45,3 +45,31 @@ def unfollow(id):
     db.session.commit()
 
     return user(id)
+
+@follow_routes.route('/suggestions')
+@login_required
+def suggestions():
+
+    following = Follow.query.filter_by(follower_id=current_user.id).all()
+    following_users = []
+
+    for follow in following:
+        follow_user = User.query.get(follow.following_id)
+        following_users.append(follow_user)
+
+    total_follows = []
+
+    for follow in following:
+        follow_find = Follow.query.filter_by(follower_id=follow.following_id).all()
+        for item in follow_find:
+            find_user = User.query.get(item.following_id)
+            total_follows.append(find_user)
+
+    total_set = set(total_follows)
+    following_set = set(following_users)
+
+    final = list(total_set - following_set)
+
+    final.remove(current_user)
+
+    return {'final': [user.to_dict() for user in final]}

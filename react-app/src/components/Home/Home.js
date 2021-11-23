@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { findFollows } from "../../store/follow";
+import { findFollows, findSuggestions } from "../../store/follow";
 import {
   findFollowingPosts,
   findPosts,
@@ -39,6 +39,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(findFollows(user?.id));
     dispatch(findPosts(user?.id));
+    dispatch(findSuggestions())
   }, []);
 
   useEffect(() => {
