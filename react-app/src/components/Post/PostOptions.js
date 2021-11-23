@@ -52,7 +52,7 @@ const PostOptions = ({ post }) => {
   const del = () => {
     dispatch(deletePost(post.post.id));
     setPostId(0);
-    history.push(`/users/${post.user.id}`);
+    history.push(`/`);
   };
 
   const show = () => {
