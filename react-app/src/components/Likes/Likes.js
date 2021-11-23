@@ -3,13 +3,15 @@ import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { close } from "./LikeIcons";
 import { useModal } from "../../context/UseModal";
+import { Modal } from "../../context/Modal";
+import Unfollow from "../UserProfile/Unfollow";
 import "./Likes.css";
 import { findFollows, followUser } from "../../store/follow";
 
 const Likes = ({ users }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { setLikes } = useModal();
+  const { setLikes, unfollow, setUnfollow } = useModal();
   const main = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[main?.id]?.following);
 
@@ -18,8 +20,8 @@ const Likes = ({ users }) => {
   }, [main]);
 
   const follow = (id) => {
-      dispatch(followUser(id)).then(() => dispatch(findFollows(main?.id)))
-  }
+    dispatch(followUser(id)).then(() => dispatch(findFollows(main?.id)));
+  };
 
   return (
     <div className="likes-main">
@@ -50,9 +52,26 @@ const Likes = ({ users }) => {
               </div>
               {user.id !== main.id ? (
                 following.find((f) => f.id === user.id) === undefined ? (
-                  <button className="likes-follow" onClick={() => follow(user.id)}>Follow</button>
+                  <button
+                    className="likes-follow"
+                    onClick={() => follow(user.id)}
+                  >
+                    Follow
+                  </button>
                 ) : (
-                  <button className="likes-unfollow">Following</button>
+                  <>
+                    <button
+                      className="likes-unfollow"
+                      onClick={() => setUnfollow(user.id)}
+                    >
+                      Following
+                    </button>
+                    {unfollow === user.id && (
+                      <Modal onClose={() => setUnfollow(0)}>
+                        <Unfollow user={user} />
+                      </Modal>
+                    )}
+                  </>
                 )
               ) : null}
             </div>

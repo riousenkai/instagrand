@@ -25,7 +25,7 @@ const Home = () => {
   const [currEmoji, setCurrEmoji] = useState("");
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
-  const { num, setNum, likes, setLikes } = useModal();
+  const { unfollow, setUnfollow, likes, setLikes } = useModal();
   const [count, setCount] = useState(0);
   const [src, setSrc] = useState("");
   const [unfollowed, setUnfollowed] = useState();
@@ -379,8 +379,8 @@ const Home = () => {
                 {suggestions?.length > 0
                   ? suggestions?.slice(0, 5).map((s) => (
                       <>
-                        {num === s.id && (
-                          <Modal onClose={() => setNum(0)}>
+                        {unfollow === s.id && (
+                          <Modal onClose={() => setUnfollow(0)}>
                             <Unfollow user={unfollowed} />
                           </Modal>
                         )}
@@ -412,7 +412,7 @@ const Home = () => {
                               className="s-unfollow"
                               onClick={() => {
                                 setUnfollowed(s);
-                                setNum(s.id + 15);
+                                setUnfollow(s.id);
                               }}
                             >
                               Following
