@@ -33,8 +33,6 @@ def search():
 
     combined_users = list(set(users + users_name))
 
-    # return {'users': [user.to_dict() for user in users]}
-
     return {'users': [user.to_dict() for user in combined_users]}
 
 @user_routes.route('/picture', methods=['POST'])
