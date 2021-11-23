@@ -19,6 +19,7 @@
   overflow: hidden;
   margin: 0 auto;
   background-color: #ffffff;
+  position: relative;
 }
 
 .pp-img {
@@ -252,8 +253,12 @@ span.pp-user {
   position: absolute;
   background: transparent !important;
   background-color: transparent !important;
-  top: 400px;
-  left: 800px;
+  top: 45%;
+  left: 33%;
   transform: translate(-50%, -50%);
   height: 350px;
+}
+
+.pp-right {
+  border-left: 0.5px solid #efefef;
 }
