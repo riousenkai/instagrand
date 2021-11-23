@@ -22,6 +22,7 @@ const Home = () => {
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
   const [count, setCount] = useState(0);
+  const [src, setSrc] = useState("");
   const user = useSelector((state) => state.session.user);
   const followingPosts = useSelector((state) => state.post.following);
   const [inputs, setInputs] = useState(
@@ -122,7 +123,22 @@ const Home = () => {
     dispatch(submitComment(obj));
   };
 
-  const like = (id) => {
+  const like = (id, p) => {
+    if (p.find((post) => post.id === user.id) === undefined) {
+      setSrc(
+        "https://instagrand-aa.s3.us-east-2.amazonaws.com/output-onlinegiftools+(1).gif"
+      );
+      document.querySelector(`.liked-img-${id}`).classList.remove("hidden");
+
+      setTimeout(() => {
+        document.querySelector(`.liked-img-${id}`).classList.add("hidden");
+        setSrc("");
+      }, 1000);
+    }
+    dispatch(likePost(id));
+  };
+
+  const like2 = (id) => {
     dispatch(likePost(id));
   };
 
@@ -164,23 +180,27 @@ const Home = () => {
                     // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
                   />
                   <img
-                    onDoubleClick={() => like(post.post.id)}
+                    onDoubleClick={() => like(post.post.id, post.likes)}
                     className={`post-img loaded-img-${i} hidden`}
                     onLoad={() => loadIt(i)}
                     src={post.post.media_url}
+                  />
+                  <img
+                    className={`img-absolute liked-img-${post.post.id} hidden`}
+                    src={src}
                   />
                   <div className="post-icons">
                     {post.likes.find((p) => p.id === user.id) !== undefined ? (
                       <div
                         className="post-icon"
-                        onClick={() => like(post.post.id)}
+                        onClick={() => like2(post.post.id)}
                       >
                         {icon2}
                       </div>
                     ) : (
                       <div
                         className="post-icon"
-                        onClick={() => like(post.post.id)}
+                        onClick={() => like2(post.post.id)}
                       >
                         {icon1}
                       </div>

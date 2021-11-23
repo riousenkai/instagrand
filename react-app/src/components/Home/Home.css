@@ -24,6 +24,7 @@
   flex-direction: column;
   border-radius: 3px;
   background-color: #ffffff;
+  position: relative;
 }
 
 .post-card > * {
@@ -74,6 +75,7 @@
   width: 100%;
   object-fit: cover;
   user-select: none;
+  cursor: pointer;
 }
 
 .post-img-loading {
@@ -312,4 +314,14 @@
 
 .like-post {
   position: absolute;
+}
+
+.img-absolute {
+  position: absolute;
+  background: transparent !important;
+  background-color: transparent !important;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 350px;
 }
