@@ -14,8 +14,6 @@ const CommentModal = ({ comment, hidden }) => {
         hidden={hidden}
         onClick={() => setCommentId(comment.comment.id)}
         src="https://img.icons8.com/material-sharp/30/000000/delete-sign.png"
-        // src="https://img.icons8.com/ios-glyphs/30/000000/delete-sign.png"
-        // src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/000000/external-delete-miscellaneous-kiranshastry-solid-kiranshastry.png"
       />
       {commentId === comment.comment.id && (
         <Modal onClose={() => setCommentId(0)}>

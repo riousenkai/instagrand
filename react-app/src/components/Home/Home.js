@@ -25,7 +25,7 @@ const Home = () => {
   const [currEmoji, setCurrEmoji] = useState("");
   const [currInput, setCurrInput] = useState();
   const [open, setOpen] = useState(0);
-  const { num, setNum } = useModal();
+  const { num, setNum, likes, setLikes } = useModal();
   const [count, setCount] = useState(0);
   const [src, setSrc] = useState("");
   const [unfollowed, setUnfollowed] = useState();
@@ -224,10 +224,20 @@ const Home = () => {
                     </div>
                   </div>
                   {post.likes.length > 0 ? (
-                    <div className="post-likes">
-                      {post.likes.length}{" "}
-                      {post.likes.length === 1 ? "like" : "likes"}
-                    </div>
+                    <>
+                      <div
+                        className="post-likes"
+                        onClick={() => setLikes(post.post.id)}
+                      >
+                        {post.likes.length}{" "}
+                        {post.likes.length === 1 ? "like" : "likes"}
+                      </div>
+                      {likes === post.post.id && (
+                        <Modal onClose={() => setLikes(0)}>
+                          <Likes users={post.likes} />
+                        </Modal>
+                      )}
+                    </>
                   ) : null}
                   {post.post.description.length > 0 ? (
                     <div className="post-u-d">
