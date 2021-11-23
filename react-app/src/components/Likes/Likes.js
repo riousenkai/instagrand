@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { close } from "./LikeIcons";
@@ -12,6 +12,7 @@ const Likes = ({ users }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { setLikes, unfollow, setUnfollow } = useModal();
+  const [unfollowed, setUnfollowed] = useState()
   const main = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[main?.id]?.following);
 
@@ -32,13 +33,12 @@ const Likes = ({ users }) => {
         </div>
       </div>
       <div className="likes-bot">
-        {console.log(users)}
-        {users.length > 0 &&
-          users.map((user) => (
+        {users?.length > 0 &&
+          users?.map((user) => (
             <div className="likes-card">
               <img
                 className="likes-img"
-                src={user.image_url}
+                src={user?.image_url}
                 onClick={() => history.push(`/users/${user.id}`)}
               />
               <div className="likes-details">
@@ -52,23 +52,27 @@ const Likes = ({ users }) => {
               </div>
               {user.id !== main.id ? (
                 following.find((f) => f.id === user.id) === undefined ? (
-                  <button
-                    className="likes-follow"
-                    onClick={() => follow(user.id)}
-                  >
-                    Follow
-                  </button>
+                  <>
+                    <button
+                      className="likes-follow"
+                      onClick={() => follow(user.id)}
+                    >
+                      Follow
+                    </button>
+                  </>
                 ) : (
                   <>
                     <button
                       className="likes-unfollow"
-                      onClick={() => setUnfollow(user.id)}
+                      onClick={() => {
+                          setUnfollowed(user)
+                          setUnfollow(user.id)}}
                     >
                       Following
                     </button>
                     {unfollow === user.id && (
                       <Modal onClose={() => setUnfollow(0)}>
-                        <Unfollow user={user} />
+                        <Unfollow user={unfollowed} />
                       </Modal>
                     )}
                   </>

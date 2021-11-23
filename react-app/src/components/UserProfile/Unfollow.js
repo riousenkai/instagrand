@@ -20,7 +20,7 @@ const Unfollow = ({ user }) => {
   return (
     <div className="unfollow-settings">
       <div className="unfollow-img-c">
-        <img className="unfollow-img" src={user.image_url} />
+        <img className="unfollow-img" src={user?.image_url} />
       </div>
       <p className="unfollow-desc">Unfollow @{user?.username}?</p>
       <div className="unfollow-p" onClick={remove}>
