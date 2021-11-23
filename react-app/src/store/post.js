@@ -76,12 +76,19 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 export const createPost = (obj) => async (dispatch) => {
+  const { user_id, file, description } = obj;
+
+  const form = new FormData();
+  form.append("file", file);
+  form.append("user_id", user_id);
+  form.append("description", description);
+
   const res = await fetch("/api/posts/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(post),
+    body: form,
   });
 };
 
