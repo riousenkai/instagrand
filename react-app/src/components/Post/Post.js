@@ -27,6 +27,7 @@ const Post = () => {
   const [focus, setFocus] = useState(false);
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
+  const [src, setSrc] = useState("");
   const post = useSelector((state) => state.post?.specific);
   const userPosts = useSelector((state) => state.post[post?.user?.id]?.posts);
   const user = useSelector((state) => state.session.user);
@@ -98,6 +99,22 @@ const Post = () => {
     dispatch(likePost(id)).then(() => dispatch(findFollowingPosts(user?.id)));
   };
 
+  const like2 = (id, p) => {
+    if (p.find((post) => post.id === user.id) === undefined) {
+      setSrc(
+        "https://instagrand-aa.s3.us-east-2.amazonaws.com/output-onlinegiftools+(1).gif"
+      );
+      document.querySelector(`.liked-img-${id}`).classList.remove("hidden");
+
+      setTimeout(() => {
+        document.querySelector(`.liked-img-${id}`).classList.add("hidden");
+        setSrc("");
+      }, 1000);
+    }
+
+    dispatch(likePost(id)).then(() => dispatch(findFollowingPosts(user?.id)));
+  };
+
   const newComment = (postId) => {
     if (input.length < 1) {
       return;
@@ -146,6 +163,7 @@ const Post = () => {
           <img
             className="pp-img hidden"
             onLoad={loadPost}
+            onDoubleClick={() => like2(post?.post.id, post?.likes)}
             src={post?.post?.media_url}
           />
           <div className="pp-right">
@@ -154,6 +172,10 @@ const Post = () => {
                 className="pp-user-img"
                 src={post?.user?.image_url}
                 onClick={() => history.push(`/users/${post?.user?.id}`)}
+              />
+              <img
+                className={`img-absolute-2 liked-img-${post?.post.id} hidden`}
+                src={src}
               />
               <div
                 className="pp-user"

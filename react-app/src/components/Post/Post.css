@@ -25,6 +25,7 @@
   width: 598px;
   height: 598px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .pp-img-load {
@@ -245,4 +246,14 @@
 span.pp-user {
   padding: 0;
   margin-right: 5px !important;
+}
+
+.img-absolute-2 {
+  position: absolute;
+  background: transparent !important;
+  background-color: transparent !important;
+  top: 400px;
+  left: 800px;
+  transform: translate(-50%, -50%);
+  height: 350px;
 }
