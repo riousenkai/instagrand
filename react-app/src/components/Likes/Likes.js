@@ -5,7 +5,10 @@ const Likes = ({ users }) => {
     <div className="likes-main">
       <div className="likes-top">
         <div className="likes-header">Likes</div>
-        {close}
+        <div className="likes-close">{close}</div>
+      </div>
+      <div className="likes-bot">
+
       </div>
     </div>
   );

@@ -188,9 +188,7 @@ const Home = () => {
                   </div>
                   <img
                     className={`post-img-loading post-img-${i}`}
-                    // src="https://i.imgur.com/YNa2qdO.gif"
                     src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
-                    // src="https://i.pinimg.com/originals/5b/e3/65/5be365b4576b73da8de3e8e7cf5ba94d.gif"
                   />
                   <img
                     onDoubleClick={() => like(post.post.id, post.likes)}
