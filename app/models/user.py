@@ -42,3 +42,5 @@ class User(db.Model, UserMixin):
     like = db.relationship("Like", back_populates="user", cascade="all,delete-orphan")
     sender = db.relationship("Message", back_populates="sender_user", foreign_keys="Message.sender_id", cascade="all,delete-orphan")
     receiver = db.relationship("Message", back_populates="receiver_user", foreign_keys="Message.receiver_id", cascade="all,delete-orphan")
+    user_1 = db.relationship("DM_Channel", back_populates="user1", foreign_keys="DM_Channel.user1_id", cascade="all,delete-orphan")
+    user_2 = db.relationship("DM_Channel", back_populates="user2", foreign_keys="DM_Channel.user2_id", cascade="all,delete-orphan")

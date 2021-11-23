@@ -9,6 +9,11 @@ class Message(db.Model):
     message = db.Column(db.Text, nullable=False)
     dm_id = db.Column(db.Integer, db.ForeignKey(dm_channels.id), nullable=False)
 
+    sender_user = db.relationship('User', back_populates="sender", foreign_keys=[sender_id])
+    receiver_user = db.relationship('User', back_populates="receiver", foreign_keys=[receiver_id])
+
+    channel = db.relationship('DM_Channel', back_populates="messages")
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -16,9 +21,6 @@ class Message(db.Model):
             'receiver_id': self.receiver_id,
             'message': self.message,
             'dm_id': self.dm_id,
-            'sender': self.sender.to_dict(),
-            'receiver': self.receiver.to_dict()
+            'sender_user': self.sender_user.to_dict(),
+            'receiver_user': self.receiver_user.to_dict()
         }
-
-    sender_user = db.relationship('User', back_populates="sender", foreign_keys=[sender_id])
-    receiver_user = db.relationship('User', back_populates="receiver", foreign_keys=[receiver_id])
