@@ -114,9 +114,6 @@ def posts_post():
 
     file = request.files['file']
 
-
-    print(f'\n\n\n{file}\n\n\n')
-
     # data = request.json
 
     # post = Post(user_id=current_user.id, media_url=data['media_url'], description=data['description'], createdAt=datetime.now())
