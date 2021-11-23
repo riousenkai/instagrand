@@ -11,8 +11,8 @@ import { findFollows, followUser } from "../../store/follow";
 const Likes = ({ users }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { setLikes, unfollow, setUnfollow } = useModal();
-  const [unfollowed, setUnfollowed] = useState()
+  const { setLikes, unfollow2, setUnfollow2 } = useModal();
+  const [unfollowed, setUnfollowed] = useState();
   const main = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[main?.id]?.following);
 
@@ -65,13 +65,15 @@ const Likes = ({ users }) => {
                     <button
                       className="likes-unfollow"
                       onClick={() => {
-                          setUnfollowed(user)
-                          setUnfollow(user.id)}}
+                        console.log(user);
+                        setUnfollowed(user);
+                        setUnfollow2(user.id);
+                      }}
                     >
                       Following
                     </button>
-                    {unfollow === user.id && (
-                      <Modal onClose={() => setUnfollow(0)}>
+                    {unfollow2 === user.id && (
+                      <Modal onClose={() => setUnfollow2(0)}>
                         <Unfollow user={unfollowed} />
                       </Modal>
                     )}
