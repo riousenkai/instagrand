@@ -15,12 +15,9 @@ def seed_users():
     hacker = User(
         username='hacker', email='hacker@hacker.com', password='hacking', image_url='https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg', description='I will hack you', name='Cohort Hacker'
     )
-    revan = User(
-        username='revan', email='revan@revan.com', password='revan123', image_url='https://media-exp1.licdn.com/dms/image/C4E03AQGsNwVN7pC2Jw/profile-displayphoto-shrink_800_800/0/1517237423843?e=1642636800&v=beta&t=oCS6uoTPKOV8lKH5867PdZ5HYINZKJitzGsxYBbV7Q0', description='I may or may not have created this website.', name='Revan F'
-    )
 
     tarkin = User(
-        username='grand.moff.tarkin', email='grand@moff.com', password='grand', image_url='https://static.wikia.nocookie.net/starwars/images/c/c1/Tarkin1.png/revision/latest?cb=20130304023051', description='There is no such thing as a death star', name='Wilhuff Tarkin'
+        username='grand.moff.tarkin', email='grand@moff.com', password='grand', image_url='https://www.denofgeek.com/wp-content/uploads/2018/02/star-wars-grand-moff-tarkin.jpg?resize=768%2C432', description='There is no such thing as a death star', name='Wilhuff Tarkin'
     )
 
     canyon = User(
@@ -31,15 +28,20 @@ def seed_users():
         username="creator", email='creator@revan.com', password='creator123420', image_url='https://cdna.artstation.com/p/assets/images/images/036/541/778/large/scott-thumbnail.jpg?1617929132', description='Please see the about page for more information!', name='Creator'
     )
 
+    revan = User(
+        username='revan', email='revan@revan.com', password='revan123', image_url='https://media-exp1.licdn.com/dms/image/C4E03AQGsNwVN7pC2Jw/profile-displayphoto-shrink_800_800/0/1517237423843?e=1642636800&v=beta&t=oCS6uoTPKOV8lKH5867PdZ5HYINZKJitzGsxYBbV7Q0', description='I may or may not have created this website.', name='Revan F'
+    )
+
     db.session.add(demo)
     db.session.add(instagrand)
     db.session.add(neb)
     db.session.add(brandon)
     db.session.add(hacker)
-    db.session.add(revan)
     db.session.add(tarkin)
     db.session.add(canyon)
     db.session.add(creator)
+    db.session.add(revan)
+
 
     db.session.commit()
 
