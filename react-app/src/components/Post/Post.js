@@ -266,19 +266,6 @@ const Post = () => {
                           </span>
                         </p>
                       </div>
-                      {/* <div className="pp-user-desc">
-                        <div
-                          className="pp-user"
-                          onClick={() => history.push(`/users/${p?.user?.id}`)}
-                        >
-                          {p?.user?.username}
-                        </div>
-                        <div className="pp-d-d">
-                          <span className="pp-desc">
-                            {p?.comment?.description}
-                          </span>
-                        </div>
-                      </div> */}
                     </div>
                     <div className="pp-date">
                       {p?.comment?.createdAt.split(" ").slice(1, 4).join(" ")}
