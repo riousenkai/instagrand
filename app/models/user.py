@@ -40,3 +40,5 @@ class User(db.Model, UserMixin):
     post = db.relationship('Post', back_populates="user", cascade="all,delete-orphan")
     comment = db.relationship("Comment", back_populates="user", cascade="all,delete-orphan")
     like = db.relationship("Like", back_populates="user", cascade="all,delete-orphan")
+    sender = db.relationship("Message", back_populates="sender_user", foreign_keys="Message.sender_id", cascade="all,delete-orphan")
+    receiver = db.relationship("Message", back_populates="receiver_user", foreign_keys="Message.receiver_id", cascade="all,delete-orphan")
