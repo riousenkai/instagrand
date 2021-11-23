@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useModal } from "../../context/UseModal";
 import { useSelector, useDispatch } from "react-redux";
-import { createPost, findFollowingPosts } from "../../store/post";
+import { createPost, findFollowingPosts, findPosts } from "../../store/post";
 import { newIcon } from "./newIcons";
 import Picker from "emoji-picker-react";
 
@@ -15,6 +15,7 @@ const NewPost = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
+  const path = window.location.pathname;
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
@@ -67,6 +68,10 @@ const NewPost = () => {
     };
 
     dispatch(createPost(obj)).then(() => dispatch(findFollowingPosts()));
+
+    if (path === `/users/${user?.id}`) {
+      dispatch(findPosts(user?.id));
+    }
 
     setNum(0);
   };
