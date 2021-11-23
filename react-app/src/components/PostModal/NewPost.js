@@ -62,7 +62,6 @@ const NewPost = () => {
     }
 
     const obj = {
-      user_id: user.id,
       file: imgUrl,
       description: desc,
     };
@@ -103,7 +102,7 @@ const NewPost = () => {
                     accept="image/*"
                     onChange={(e) => {
                       setUrl(URL.createObjectURL(e.target.files[0]));
-                      setImgUrl(e.target.files);
+                      setImgUrl(e.target.files[0]);
                     }}
                   />
                 </label>
