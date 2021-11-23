@@ -93,7 +93,11 @@ const Options = ({ post }) => {
             </div>
           </>
         ) : (
-          <div className="unfollow-post" onClick={() => setNum(8)}>
+          <div
+            className="unfollow-post"
+            onClick={() => setPostId(0)}
+            onMouseDown={() => setNum(8)}
+          >
             Unfollow
           </div>
         )}

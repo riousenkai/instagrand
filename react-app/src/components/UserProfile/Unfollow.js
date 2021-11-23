@@ -25,7 +25,13 @@ const Unfollow = ({ user }) => {
       <div className="unfollow-p" onClick={remove}>
         Unfollow
       </div>
-      <div className="unfollow-cancel" onClick={() => setNum(0)}>
+      <div
+        className="unfollow-cancel"
+        onClick={() => {
+          setPostId(0);
+          setNum(0);
+        }}
+      >
         Cancel
       </div>
     </div>
