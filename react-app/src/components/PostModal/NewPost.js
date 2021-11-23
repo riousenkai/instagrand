@@ -12,9 +12,14 @@ const NewPost = () => {
   const emoji = useRef(null);
   const { num, setNum } = useModal();
   const [url, setUrl] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState([]);
   const user = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    setErrors([]);
+  }, [url]);
 
   const onEmojiClick = (event, emojiObject) => {
     setDesc((older) =>
@@ -44,16 +49,12 @@ const NewPost = () => {
     let err = [];
 
     if (url.length < 1) {
-      err.push("Please provide an image link.");
+      err.push("Please provide an image.");
       return setErrors(err);
     }
 
-    const types = ["gif", "jpg", "jpeg", "png", ".com", "www.", "http"];
-
-    let filtered = types.filter((type) => url.includes(type));
-
-    if (filtered.length < 1) {
-      err.push("Please submit a valid image link.");
+    if (desc.length > 300) {
+      err.push("Caption cannot be over 300 characters.");
     }
 
     if (err.length > 0) {
@@ -62,7 +63,7 @@ const NewPost = () => {
 
     const obj = {
       user_id: user.id,
-      media_url: url,
+      file: imgUrl,
       description: desc,
     };
 
@@ -100,9 +101,10 @@ const NewPost = () => {
                     type="file"
                     className="hidden"
                     accept="image/*"
-                    onChange={(e) =>
-                      setUrl(URL.createObjectURL(e.target.files[0]))
-                    }
+                    onChange={(e) => {
+                      setUrl(URL.createObjectURL(e.target.files[0]));
+                      setImgUrl(e.target.files);
+                    }}
                   />
                 </label>
               </div>
@@ -120,7 +122,7 @@ const NewPost = () => {
               onChange={(e) => setDesc(e.target.value)}
               className="new-post-desc"
               placeholder="Write a caption..."
-              maxLength="500"
+              maxLength="300"
             />
             <div className="emoji-wordcount">
               <div className="emoji-post">
@@ -141,13 +143,17 @@ const NewPost = () => {
                   />
                 </div>
               </div>
-              <div className="wordcount">{desc?.length} / 500</div>
+              <div className="wordcount">{desc?.length} / 300</div>
             </div>
             <div
-              maxLength="300"
               className="post-url"
-              onClick={() => setUrl('')}
-            >Remove Image</div>
+              onClick={() => {
+                setUrl("");
+                setImgUrl("");
+              }}
+            >
+              Remove Image
+            </div>
             {errors &&
               errors.map((err) => <div className="post-error">{err}</div>)}
           </div>

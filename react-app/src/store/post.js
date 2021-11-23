@@ -75,7 +75,7 @@ export const deletePost = (id) => async (dispatch) => {
   dispatch(getFollowingPosts(data));
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (obj) => async (dispatch) => {
   const res = await fetch("/api/posts/new", {
     method: "POST",
     headers: {

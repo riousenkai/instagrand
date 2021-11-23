@@ -6,7 +6,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     media_url = db.Column(db.String(300), nullable=False)
-    description = db.Column(db.String(500), nullable=True)
+    description = db.Column(db.String(300), nullable=True)
     createdAt = db.Column(db.DateTime, nullable=False)
 
     def to_dict(self):
