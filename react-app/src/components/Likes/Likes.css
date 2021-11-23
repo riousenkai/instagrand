@@ -1,0 +1,10 @@
+.likes-main {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popup 400ms forwards;
+}
