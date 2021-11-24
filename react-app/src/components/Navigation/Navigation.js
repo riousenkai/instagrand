@@ -7,6 +7,7 @@ import "./Navigation.css";
 import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
 import NavModal from "../NavModal/NavModal";
+import { msgIcon, msgIconActive } from "./NavIcons";
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -91,6 +92,21 @@ const Navigation = () => {
               alt="svgImg"
               src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzIiIGhlaWdodD0iMzIiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzAwMDAwMCI+PHBhdGggZD0iTTg2LDEzLjk0MTQxbC0zLjg2MzI4LDMuNjk1MzFsLTY5Ljg3NSw2OS44NzVsNy43MjY1Niw3LjcyNjU2bDYuODg2NzIsLTYuODg2NzJ2NjIuMTQ4NDRoNDguMzc1di01My43NWgyMS41djUzLjc1aDQ4LjM3NXYtNjIuMTQ4NDRsNi44ODY3Miw2Ljg4NjcybDcuNzI2NTYsLTcuNzI2NTZsLTY5Ljg3NSwtNjkuODc1ek04NiwyOS4yMjY1Nmw0OC4zNzUsNDguMzc1djYyLjE0ODQ0aC0yNi44NzV2LTUzLjc1aC00M3Y1My43NWgtMjYuODc1di02Mi4xNDg0NHoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="
             />
+          )}
+          {path === "/messages" && num === 0 ? (
+            <span
+              className="nav-msg-icon"
+              onClick={() => history.push("/messages")}
+            >
+              {msgIconActive}
+            </span>
+          ) : (
+            <span
+              className="nav-msg-icon"
+              onClick={() => history.push("/messages")}
+            >
+              {msgIcon}
+            </span>
           )}
           <PostModal />
           <NavModal user={user} path={path} />
