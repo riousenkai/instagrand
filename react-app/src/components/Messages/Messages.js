@@ -91,11 +91,25 @@ const Messages = ({ user, channelId }) => {
                 {msg.sender_id === user?.id ? (
                   <div className="channel-msgs-rec">
                     <img className="msg-left-img" src={user?.image_url} />
-                    <div className="msg-content">{msg.message}</div>
+                    <div className="msg-content">
+                      {msg.message.split("\n").map((sentence) => (
+                        <>
+                          {sentence}
+                          <br />
+                        </>
+                      ))}
+                    </div>
                   </div>
                 ) : (
                   <div className="channel-msgs-rec-right">
-                    <div className="msg-content-right">{msg.message}</div>
+                    <div className="msg-content-right">
+                      {msg.message.split("\n").map((sentence) => (
+                        <>
+                          {sentence}
+                          <br />
+                        </>
+                      ))}
+                    </div>
                   </div>
                 )}
               </>

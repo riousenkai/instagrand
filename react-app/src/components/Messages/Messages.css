@@ -164,6 +164,7 @@
   gap: 10px;
   align-items: flex-end;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .msg-left-img {
@@ -199,12 +200,12 @@
   align-items: flex-end;
   width: 100%;
   justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .msg-content-right {
   padding: 16px;
   max-width: 234px;
-  border: 0.5px solid #dbdbdb;
   align-content: stretch;
   align-items: stretch;
   cursor: default;
@@ -256,19 +257,19 @@
 }
 
 .msg-post {
-    color: #0095f6;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+  color: #0095f6;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .msg-post:disabled {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .msg-post:active {
-    opacity: 0.7;
+  opacity: 0.7;
 }
