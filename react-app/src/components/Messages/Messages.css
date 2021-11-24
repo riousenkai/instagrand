@@ -150,3 +150,69 @@
 .channel-r-top > a {
   text-decoration: none;
 }
+
+.channel-msgs {
+    padding: 20px 20px 0;
+    height: 713px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.channel-msgs-rec {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.msg-left-img {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.msg-input {
+    margin-top: auto;
+    padding: 20px 20px;
+}
+
+.msg-content {
+    padding: 16px;
+    max-width: 234px;
+    border: 0.5px solid #dbdbdb;
+    align-content: stretch;
+    align-items: stretch;
+    cursor: default;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #262626;
+    overflow-wrap: break-word;
+    min-height: 44px;
+}
+
+.channel-msgs-rec-right {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.msg-content-right {
+    padding: 16px;
+    max-width: 234px;
+    border: 0.5px solid #dbdbdb;
+    align-content: stretch;
+    align-items: stretch;
+    cursor: default;
+    border-radius: 20px;
+    background-color: #efefef;
+    font-size: 14px;
+    color: #262626;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    min-height: 44px;
+}

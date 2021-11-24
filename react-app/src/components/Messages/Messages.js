@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelMessages } from "../../store/message";
@@ -32,7 +32,24 @@ const Messages = ({ user, channelId }) => {
           </NavLink>
         </div>
         <div className="channel-msgs">
-            <div className="channel-msgs-card"></div>
+          {messages?.length > 0 &&
+            messages?.map((msg) => (
+              <>
+                {msg.sender_id === user?.id ? (
+                  <div className="channel-msgs-rec">
+                    <img className="msg-left-img" src={user?.image_url} />
+                    <div className="msg-content">{msg.message}</div>
+                  </div>
+                ) : (
+                  <div className="channel-msgs-rec-right">
+                    <div className="msg-content-right">{msg.message}</div>
+                  </div>
+                )}
+              </>
+            ))}
+        </div>
+        <div className="msg-input">
+          <input />
         </div>
       </div>
     );
