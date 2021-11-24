@@ -6,7 +6,7 @@ const getMessages = (messages) => ({
   payload: messages,
 });
 
-const getMsgList = (list) => ({
+const getList = (list) => ({
   type: GET_LIST,
   payload: list,
 });
@@ -32,7 +32,7 @@ export const createMessage = (obj) => async (dispatch) => {
 export const getMsgList = () => async (dispatch) => {
   const res = await fetch("/api/messages/list");
   const data = await res.json();
-  dispatch(getMsgList(data));
+  dispatch(getList(data));
 };
 
 const initialState = {};

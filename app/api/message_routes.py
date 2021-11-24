@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Message, User, db
+from app.models import Message, User, db, Follow
 from sqlalchemy import or_
 
 message_routes = Blueprint('messages', __name__)
@@ -37,12 +37,14 @@ def message_list():
 
     for user in followers:
         single = User.query.get(user.follower_id)
-        fin_followers.append(single.to_dict())
+        fin_followers.append(single)
 
     for user2 in following:
         single2 = User.query.get(user2.following_id)
-        fin_following.append(single2.to_dict())
+        fin_following.append(single2)
 
     combined = list(set(fin_followers + fin_following))
 
-    return {'list': combined}
+    print(f'\n\n\n{combined}\n\n\n')
+
+    return {'list': [item.to_dict() for item in combined]}
