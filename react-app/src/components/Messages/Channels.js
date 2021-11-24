@@ -10,6 +10,7 @@ const Channels = () => {
   const user = useSelector((state) => state.session?.user);
   const channels = useSelector((state) => state.channel?.channels);
   const [msg, setMsg] = useState();
+  const [chan, setChan] = useState()
 
   useEffect(() => {
     dispatch(findChannels());
@@ -17,6 +18,7 @@ const Channels = () => {
 
   const change = (user, id) => {
     setMsg(user);
+    setChan(id)
     document.querySelectorAll(".channel-card-c").forEach((c) => {
       c.classList.remove("channel-active");
     });
@@ -67,7 +69,7 @@ const Channels = () => {
               ))}
           </div>
         </div>
-        <Messages user={msg} />
+        <Messages user={msg} channelId={chan} />
       </div>
     </div>
   );

@@ -3,13 +3,13 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelMessages } from "../../store/message";
 
-const Messages = ({ user }) => {
-    const dispatch = useDispatch()
+const Messages = ({ user, channelId }) => {
+  const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
 
   useEffect(() => {
     if (user) {
-
+      dispatch(getChannelMessages(channelId));
     }
   }, [user]);
 
@@ -30,6 +30,9 @@ const Messages = ({ user }) => {
           <NavLink to={`/users/${user?.id}`} className="channel-rt-name">
             {user?.username}
           </NavLink>
+        </div>
+        <div className="channel-msgs">
+            <div className="channel-msgs-card"></div>
         </div>
       </div>
     );
