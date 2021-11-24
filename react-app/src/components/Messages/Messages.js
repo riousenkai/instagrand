@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getChannelMessages } from "../../store/message";
+import { createMessage, getChannelMessages } from "../../store/message";
 import Picker from "emoji-picker-react";
 
 const Messages = ({ user, channelId }) => {
@@ -62,6 +62,8 @@ const Messages = ({ user, channelId }) => {
       message: input,
       dm_id: channelId,
     };
+
+    dispatch(createMessage(obj));
   };
 
   if (!user) {

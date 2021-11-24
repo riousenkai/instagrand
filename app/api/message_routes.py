@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Message, User
+from app.models import Message, User, db
 from sqlalchemy import or_
 
 message_routes = Blueprint('messages', __name__)
