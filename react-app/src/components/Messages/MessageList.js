@@ -15,7 +15,7 @@ const MessageList = () => {
         <div className="msg-list-next">Next</div>
       </div>
       <div className="msg-list">
-
+        
       </div>
     </div>
   );
