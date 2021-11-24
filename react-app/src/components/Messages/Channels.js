@@ -4,6 +4,9 @@ import { newIcon } from "./ChannelIcons";
 import { findChannels } from "../../store/channel";
 import "./Messages.css";
 import Messages from "./Messages";
+import MessageList from "./MessageList";
+import { Modal } from "../../context/Modal";
+import { useModal } from "../../context/UseModal";
 
 const Channels = () => {
   const dispatch = useDispatch();
@@ -11,6 +14,7 @@ const Channels = () => {
   const channels = useSelector((state) => state.channel?.channels);
   const [msg, setMsg] = useState();
   const [chan, setChan] = useState()
+  const { msgCount, setMsgCount } = useModal()
 
   useEffect(() => {
     dispatch(findChannels());
@@ -32,7 +36,12 @@ const Channels = () => {
         <div className="channel-left">
           <div className="channel-l-top">
             <div className="channel-l-name">{user?.username}</div>
-            <div className="channel-l-icon">{newIcon}</div>
+            <div className="channel-l-icon" onClick={() => setMsgCount(1)}>{newIcon}</div>
+            {msgCount === 1 && (
+              <Modal onClose={() => setMsgCount(0)}>
+                <MessageList />
+              </Modal>
+            )}
           </div>
           <div className="channel-l-bot">
             {channels?.length > 0 &&

@@ -273,3 +273,39 @@
 .msg-post:active {
   opacity: 0.7;
 }
+
+.list-main {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popup 400ms forwards;
+}
+
+.msg-list-top {
+  height: 42px;
+  width: 100%;
+  display: flex;
+}
+
+.close-msg-list {
+  height: 42px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.msg-list-title {
+  width: 269.75px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  color: #262626;
+}

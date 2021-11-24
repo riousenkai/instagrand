@@ -262,6 +262,10 @@
   position: relative;
 }
 
+.home-right-card {
+  position: fixed;
+}
+
 .h-right-user {
   display: flex;
   flex-direction: row;

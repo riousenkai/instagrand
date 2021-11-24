@@ -10,6 +10,7 @@ export const UseModalProvider = (props) => {
   const [likes, setLikes] = useState(0);
   const [unfollow, setUnfollow] = useState(0);
   const [unfollow2, setUnfollow2] = useState(0);
+  const [msgCount, setMsgCount] = useState(0)
 
   return (
     <UseModalContext.Provider
@@ -28,6 +29,8 @@ export const UseModalProvider = (props) => {
         setProfNum,
         likes,
         setLikes,
+        msgCount,
+        setMsgCount
       }}
     >
       {props.children}
