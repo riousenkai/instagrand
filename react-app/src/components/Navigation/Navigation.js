@@ -48,7 +48,7 @@ const Navigation = () => {
           alt="grand-hotel-font"
           border="0"
         />
-        <div classname="search-container" onBlur={(e) => hide(e)}>
+        <div className="search-container" onBlur={(e) => hide(e)}>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
