@@ -1,9 +1,22 @@
-const Channels = () => {
-    return <div className="channel-main">
-        <div className="channel-left">
-            
-        </div>
-    </div>
-}
+import { useSelector } from "react-redux";
+import { newIcon } from "./ChannelIcons";
+import "./Messages.css";
 
-export default Channels
+const Channels = () => {
+  const user = useSelector((state) => state.session.user);
+
+  return (
+    <div className="channel-main">
+      <div className="channel-card">
+        <div className="channel-left">
+          <div className="channel-l-top">
+            <div className="channel-l-name">{user?.username}</div>
+            <div className="channel-l-icon">{newIcon}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Channels;

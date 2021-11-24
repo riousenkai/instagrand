@@ -1,7 +1,45 @@
 .channel-main {
-    width: 932px;
-    height: 841px;
-    display: flex;
-    flex-direction: row;
-    border: 0.5px solid #dbdbdb;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 75px;
+}
+
+.channel-card {
+  width: 955px;
+  height: 841px;
+  display: flex;
+  flex-direction: row;
+  border: 0.5px solid #dbdbdb;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.channel-left {
+  width: 349px;
+  border-right: 0.5px solid #dbdbdb;
+}
+
+.channel-l-top {
+  height: 60px;
+  border-bottom: 0.5px solid #dbdbdb;
+  width: 349px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.channel-l-name {
+  font-size: 16px;
+  color: #262626;
+  font-weight: 500;
+  cursor: default;
+  width: 349px;
+  text-align: center;
+  margin: 0 auto;
+  margin-left: 24px;
+}
+
+.channel-l-icon {
+    margin-left: auto;
+    cursor: pointer;
 }
