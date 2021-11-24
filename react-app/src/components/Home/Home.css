@@ -259,6 +259,7 @@
   flex-direction: column;
   padding-top: 60px;
   padding-left: 35px;
+  position: relative;
 }
 
 .h-right-user {
