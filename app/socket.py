@@ -15,7 +15,7 @@ socketio = SocketIO(cors_allowed_origins=origins)
 # handle room-chat messages
 @socketio.on("message")
 def handle_chat(data):
-    send({'id': data['id'], 'message': data['content'], "sender": data['sender']}, room=data['room'])
+    send({'receiver_id': data['receiver_id'], 'message': data['message'], "dm_id": data['dm_id']}, room=data['room'])
 
 # handle join chat
 @socketio.on('join')

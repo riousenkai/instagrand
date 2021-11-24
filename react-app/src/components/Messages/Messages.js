@@ -3,13 +3,45 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessage, getChannelMessages } from "../../store/message";
 import Picker from "emoji-picker-react";
+import { io } from "socket.io-client";
+let socket;
 
-const Messages = ({ user, channelId }) => {
+const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
   const [input, setInput] = useState("");
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
+  const [prevRoom, setPrevRoom] = useState(channelId);
+
+  useEffect(() => {
+    // open socket connection
+    // create websocket
+    socket = io();
+
+    socket.on("chat", (chat) => {
+      setLiveMessages((liveMessages) => [...liveMessages, chat]);
+    });
+    // when component unmounts, disconnect
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    leaveRoom(prevRoom);
+    joinRoom(channelId);
+    setLiveMessages([]);
+    setPrevRoom(channelId);
+  }, [channelId]);
+
+  const leaveRoom = (oldRoom) => {
+    socket.emit("leave", { room: oldRoom });
+  };
+
+  const joinRoom = (newRoom) => {
+    socket.emit("join", { room: newRoom });
+  };
 
   useEffect(() => {
     if (user) {
@@ -60,6 +92,12 @@ const Messages = ({ user, channelId }) => {
     if (input.length < 1) {
       return;
     }
+
+    socket.emit("chat", {
+      receiver_id: user?.id,
+      message: input,
+      dm_id: channelId,
+    });
 
     const obj = {
       receiver_id: user?.id,
@@ -120,6 +158,34 @@ const Messages = ({ user, channelId }) => {
                 )}
               </>
             ))}
+          {liveMessages?.map((msg) => (
+            <>
+              {msg.sender_id === user?.id ? (
+                <div className="channel-msgs-rec">
+                  <img className="msg-left-img" src={user?.image_url} />
+                  <div className="msg-content">
+                    {msg.message.split("\n").map((sentence) => (
+                      <>
+                        {sentence}
+                        <br />
+                      </>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="channel-msgs-rec-right">
+                  <div className="msg-content-right">
+                    {msg.message.split("\n").map((sentence) => (
+                      <>
+                        {sentence}
+                        <br />
+                      </>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          ))}
         </div>
         <div className="msg-input">
           <div className="msg-box">
