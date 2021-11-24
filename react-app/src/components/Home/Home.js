@@ -376,52 +376,55 @@ const Home = () => {
             <div className="h-suggestions">
               <div className="suggestions-title">Suggestions for You</div>
               <div className="suggestions-list">
-                {suggestions?.length > 0
-                  ? suggestions?.slice(0, 5).map((s) => (
-                      <>
-                        {unfollow === s.id && (
-                          <Modal onClose={() => setUnfollow(0)}>
-                            <Unfollow user={unfollowed} />
-                          </Modal>
-                        )}
-                        <div className="suggestion-card">
-                          <img
+                {suggestions?.length > 0 ? (
+                  suggestions?.slice(0, 5).map((s) => (
+                    <>
+                      {unfollow === s.id && (
+                        <Modal onClose={() => setUnfollow(0)}>
+                          <Unfollow user={unfollowed} />
+                        </Modal>
+                      )}
+                      <div className="suggestion-card">
+                        <img
+                          onClick={() => history.push(`/users/${s.id}`)}
+                          className="suggestion-img"
+                          src={s.image_url}
+                        />
+                        <div className="s-user-info">
+                          <div
+                            className="s-username"
                             onClick={() => history.push(`/users/${s.id}`)}
-                            className="suggestion-img"
-                            src={s.image_url}
-                          />
-                          <div className="s-user-info">
-                            <div
-                              className="s-username"
-                              onClick={() => history.push(`/users/${s.id}`)}
-                            >
-                              {s.username}
-                            </div>
-                            <div className="s-name">{s.name}</div>
+                          >
+                            {s.username}
                           </div>
-                          {following?.find((u) => u.id === s.id) ===
-                          undefined ? (
-                            <div
-                              className="s-follow"
-                              onClick={() => follow(s.id)}
-                            >
-                              Follow
-                            </div>
-                          ) : (
-                            <div
-                              className="s-unfollow"
-                              onClick={() => {
-                                setUnfollowed(s);
-                                setUnfollow(s.id);
-                              }}
-                            >
-                              Following
-                            </div>
-                          )}
+                          <div className="s-name">{s.name}</div>
                         </div>
-                      </>
-                    ))
-                  : null}
+                        {following?.find((u) => u.id === s.id) === undefined ? (
+                          <div
+                            className="s-follow"
+                            onClick={() => follow(s.id)}
+                          >
+                            Follow
+                          </div>
+                        ) : (
+                          <div
+                            className="s-unfollow"
+                            onClick={() => {
+                              setUnfollowed(s);
+                              setUnfollow(s.id);
+                            }}
+                          >
+                            Following
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  ))
+                ) : (
+                  <div className="home-no-suggestions">
+                    No available suggestions
+                  </div>
+                )}
               </div>
             </div>
           </div>
