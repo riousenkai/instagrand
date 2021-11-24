@@ -1,17 +1,60 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannelMessages } from "../../store/message";
+import Picker from "emoji-picker-react";
 
 const Messages = ({ user, channelId }) => {
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
+  const [input, setInput] = useState("");
+  const [count, setCount] = useState(0);
+  const emoji = useRef(null);
 
   useEffect(() => {
     if (user) {
       dispatch(getChannelMessages(channelId));
     }
+    setInput("");
   }, [user]);
+
+  const showEmoji = () => {
+    if (count === 0) {
+      emoji.current.classList.remove("hidden");
+      setCount(1);
+    } else {
+      setCount(0);
+    }
+  };
+
+  const RemoveOutside = (ref) => {
+    useEffect(() => {
+      const handleClick = (e) => {
+        if (
+          !e?.target?.classList?.contains("emoji-btn2") &&
+          !e?.target?.nextElementSibling?.classList.contains("hidden")
+        ) {
+          setCount(0);
+        }
+        if (ref.current && !ref.current.contains(e.target)) {
+          emoji.current.classList.add("hidden");
+        }
+      };
+      document.addEventListener("mousedown", handleClick);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClick);
+      };
+    }, [ref]);
+  };
+
+  RemoveOutside(emoji);
+
+  const onEmojiClick = (event, emojiObject) => {
+    let copy = input;
+    copy += emojiObject.emoji;
+    setInput(copy);
+  };
 
   if (!user) {
     return (
@@ -49,7 +92,26 @@ const Messages = ({ user, channelId }) => {
             ))}
         </div>
         <div className="msg-input">
-          <input />
+          <div className="emoji-post2">
+            <img
+              onClick={() => showEmoji()}
+              className="emoji-btn2"
+              src="https://img.icons8.com/ios/50/000000/smiling.png"
+            />
+            <div className="picker hidden" ref={emoji}>
+              <Picker
+                native={true}
+                onEmojiClick={onEmojiClick}
+                pickerStyle={{
+                  position: "absolute",
+                  width: "15vw",
+                  marginLeft: "-12px",
+                  top: "-330px",
+                }}
+              />
+            </div>
+          </div>
+          <input value={input} onChange={(e) => setInput(e.target.value)} />
         </div>
       </div>
     );
