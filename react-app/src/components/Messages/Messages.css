@@ -140,13 +140,13 @@
 }
 
 .channel-rt-name {
-    font-size: 16px;
-    color: #262626;
-    font-weight: 500;
-    margin-left: 12px;
-    cursor: pointer;
+  font-size: 16px;
+  color: #262626;
+  font-weight: 500;
+  margin-left: 12px;
+  cursor: pointer;
 }
 
 .channel-r-top > a {
-    text-decoration: none;
+  text-decoration: none;
 }

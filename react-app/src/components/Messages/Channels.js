@@ -9,11 +9,20 @@ const Channels = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user);
   const channels = useSelector((state) => state.channel?.channels);
-  const [msg, setMsg] = useState()
+  const [msg, setMsg] = useState();
 
   useEffect(() => {
     dispatch(findChannels());
   }, []);
+
+  const change = (user, id) => {
+    setMsg(user);
+    document.querySelectorAll(".channel-card-c").forEach((c) => {
+      c.classList.remove("channel-active");
+    });
+
+    document.querySelector(`.ccard-${id}`).classList.add("channel-active");
+  };
 
   return (
     <div className="channel-main">
@@ -28,7 +37,10 @@ const Channels = () => {
               channels.map((channel) => (
                 <>
                   {channel.user1_id === user?.id ? (
-                    <div className="channel-card-c" onClick={() => setMsg(channel.user2)}>
+                    <div
+                      className={`channel-card-c ccard-${channel.id}`}
+                      onClick={() => change(channel.user2, channel.id)}
+                    >
                       <img
                         className="channel-pic"
                         src={channel.user2.image_url}
@@ -38,7 +50,10 @@ const Channels = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="channel-card-c" onClick={() => setMsg(channel.user1)}>
+                    <div
+                      className={`channel-card-c ccard-${channel.id}`}
+                      onClick={() => change(channel.user1, channel.id)}
+                    >
                       <img
                         className="channel-pic"
                         src={channel.user1.image_url}
