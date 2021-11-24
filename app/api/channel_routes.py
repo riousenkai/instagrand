@@ -11,4 +11,20 @@ def get_channels():
 
     channels = DM_Channel.query.filter(or_(DM_Channel.user1_id==current_user.id, DM_Channel.user2_id==current_user.id)).all()
 
-    return {'ok': [channel.to_dict() for channel in channels]}
+    return {'channels': [channel.to_dict() for channel in channels]}
+
+@channel_routes.route('/new/<int:id>')
+@login_required
+def create_channel(id):
+
+    channel1 = DM_Channel.query.filter(DM_Channel.user1_id==current_user.id, DM_Channel.user2_id==id).all()
+    channel2 = DM_Channel.query.filter(DM_Channel.user1_id==id, DM_Channel.user2_id==current_user.id).all()
+
+    if len(channel1) > 0 or len(channel2) > 0:
+        return 'Bad request.'
+
+    channel = DM_Channel(user_1=current_user.id, user_2=id)
+    db.session.add(channel)
+    db.session.commit()
+
+    return get_channels()
