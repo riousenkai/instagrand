@@ -5,6 +5,8 @@ import follow from "./follow";
 import post from "./post";
 import search from "./search";
 import user from "./user";
+import channel from './channel'
+import message from './message'
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +14,8 @@ const rootReducer = combineReducers({
   post,
   search,
   user,
+  channel,
+  message
 });
 
 let enhancer;

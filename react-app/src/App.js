@@ -12,6 +12,7 @@ import { authenticate } from "./store/session";
 import Settings from "./components/Settings/Settings";
 import About from "./components/About/About";
 import AboutNav from "./components/About/AboutNav";
+import Channels from "./components/Messages/Channels";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,10 @@ function App() {
         <ProtectedRoute path="/settings" exact={true}>
           <Navigation />
           <Settings />
+        </ProtectedRoute>
+        <ProtectedRoute path="/messages" exact={true}>
+          <Navigation />
+          <Channels />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
