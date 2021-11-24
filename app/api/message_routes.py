@@ -26,11 +26,11 @@ def new_msg():
 
     return get_msgs(data['dm_id'])
 
-@message_routes.route('/list/<int:id>')
+@message_routes.route('/list')
 @login_required
-def message_list(id):
-    followers = Follow.query.filter_by(following_id=id)
-    following = Follow.query.filter_by(follower_id=id)
+def message_list():
+    followers = Follow.query.filter_by(following_id=current_user.id)
+    following = Follow.query.filter_by(follower_id=current_user.id)
 
     fin_followers = []
     fin_following = []
