@@ -31,7 +31,7 @@ const Messages = ({ user, channelId }) => {
     useEffect(() => {
       const handleClick = (e) => {
         if (
-          !e?.target?.classList?.contains("emoji-btn2") &&
+          !e?.target?.classList?.contains("emoji-btn4") &&
           !e?.target?.nextElementSibling?.classList.contains("hidden")
         ) {
           setCount(0);
@@ -54,6 +54,14 @@ const Messages = ({ user, channelId }) => {
     let copy = input;
     copy += emojiObject.emoji;
     setInput(copy);
+  };
+
+  const send = () => {
+    const obj = {
+      receiver_id: user?.id,
+      message: input,
+      dm_id: channelId,
+    };
   };
 
   if (!user) {
@@ -92,26 +100,40 @@ const Messages = ({ user, channelId }) => {
             ))}
         </div>
         <div className="msg-input">
-          <div className="emoji-post2">
-            <img
-              onClick={() => showEmoji()}
-              className="emoji-btn2"
-              src="https://img.icons8.com/ios/50/000000/smiling.png"
-            />
-            <div className="picker hidden" ref={emoji}>
-              <Picker
-                native={true}
-                onEmojiClick={onEmojiClick}
-                pickerStyle={{
-                  position: "absolute",
-                  width: "15vw",
-                  marginLeft: "-12px",
-                  top: "-330px",
-                }}
+          <div className="msg-box">
+            <div className="emoji-post2">
+              <img
+                onClick={() => showEmoji()}
+                className="emoji-btn4"
+                src="https://img.icons8.com/ios/50/000000/smiling.png"
               />
+              <div className="picker hidden" ref={emoji}>
+                <Picker
+                  native={true}
+                  onEmojiClick={onEmojiClick}
+                  pickerStyle={{
+                    position: "absolute",
+                    width: "15vw",
+                    marginLeft: "-12px",
+                    top: "-330px",
+                  }}
+                />
+              </div>
             </div>
+            <textarea
+              className="msgs-textarea"
+              placeholder="Message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button
+              disabled={input.length < 1}
+              className="msg-post"
+              onClick={send}
+            >
+              Send
+            </button>
           </div>
-          <input value={input} onChange={(e) => setInput(e.target.value)} />
         </div>
       </div>
     );
