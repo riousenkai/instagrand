@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { newIcon } from "./ChannelIcons";
+import { findChannels } from "../../store/channel";
 import "./Messages.css";
+import Messages from "./Messages";
 
 const Channels = () => {
-  const user = useSelector((state) => state.session.user);
-  const channels = useSelector(state => state.channels)
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session?.user);
+  const channels = useSelector((state) => state.channel?.channels);
+  const [msg, setMsg] = useState()
+
+  useEffect(() => {
+    dispatch(findChannels());
+  }, []);
 
   return (
     <div className="channel-main">
@@ -14,7 +23,36 @@ const Channels = () => {
             <div className="channel-l-name">{user?.username}</div>
             <div className="channel-l-icon">{newIcon}</div>
           </div>
+          <div className="channel-l-bot">
+            {channels?.length > 0 &&
+              channels.map((channel) => (
+                <>
+                  {channel.user1_id === user?.id ? (
+                    <div className="channel-card-c" onClick={() => setMsg(channel.user2)}>
+                      <img
+                        className="channel-pic"
+                        src={channel.user2.image_url}
+                      />
+                      <div className="channel-name">
+                        {channel.user2.username}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="channel-card-c" onClick={() => setMsg(channel.user1)}>
+                      <img
+                        className="channel-pic"
+                        src={channel.user1.image_url}
+                      />
+                      <div className="channel-name">
+                        {channel.user1.username}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ))}
+          </div>
         </div>
+        <Messages user={msg} />
       </div>
     </div>
   );

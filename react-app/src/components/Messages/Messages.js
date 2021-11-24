@@ -1,13 +1,27 @@
-const Messages = ({ channel }) => {
+import { NavLink } from "react-router-dom"
+
+const Messages = ({ user }) => {
 
 
-    if (!channel) {
+    if (!user) {
         return (
-            <div></div>
+            <div className="no-channel">
+                <img className="no-channel-img" src="https://i.imgur.com/XPOUlZK.png" />
+                <div className="no-msgs">Your Messages</div>
+                <div className="no-msgs-desc">Send private messages to a friend.</div>
+                <button className="no-channel-button">Send Message</button>
+            </div>
         )
     } else {
         return (
-            <div></div>
+            <div className="channel-right">
+                <div className="channel-r-top">
+                    <img className="channel-rt-img" src={user?.image_url} />
+                    <NavLink to={`/users/${user?.id}`} className="channel-rt-name">{user?.username}</NavLink>
+                </div>
+            </div>
         )
     }
 }
+
+export default Messages

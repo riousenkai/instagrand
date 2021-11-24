@@ -5,7 +5,7 @@ from sqlalchemy import or_
 
 channel_routes = Blueprint('dm_channels', __name__)
 
-@channel_routes.route('/')
+@channel_routes.route('/all')
 @login_required
 def get_channels():
 

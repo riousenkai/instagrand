@@ -14,3 +14,10 @@ export const newIcon = (
     <path d="M38.2 14.02a1.51 1.51 0 01-1.1-.44l-6.56-6.56a1.5 1.5 0 012.12-2.12l6.6 6.6a1.49 1.49 0 010 2.12 1.51 1.51 0 01-1.06.4z"></path>
   </svg>
 );
+
+export const msgIcon = (
+  <span
+    aria-label="Direct"
+    class="glyphsSpriteDirect__outline__96 u-__7"
+  ></span>
+);
