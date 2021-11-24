@@ -4,6 +4,7 @@ import "./Messages.css";
 
 const Channels = () => {
   const user = useSelector((state) => state.session.user);
+  const channels = useSelector(state => state.channels)
 
   return (
     <div className="channel-main">
