@@ -57,11 +57,17 @@ const Messages = ({ user, channelId }) => {
   };
 
   const send = () => {
+    if (input.length < 1) {
+      return;
+    }
+
     const obj = {
       receiver_id: user?.id,
       message: input,
       dm_id: channelId,
     };
+
+    setInput("");
 
     dispatch(createMessage(obj));
   };

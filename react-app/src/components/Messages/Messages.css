@@ -154,6 +154,7 @@
 .channel-msgs {
   padding: 20px 20px 0;
   height: 695px;
+  overflow-y: scroll !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
