@@ -45,6 +45,4 @@ def message_list():
 
     combined = list(set(fin_followers + fin_following))
 
-    print(f'\n\n\n{combined}\n\n\n')
-
     return {'list': [item.to_dict() for item in combined]}

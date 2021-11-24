@@ -6,7 +6,7 @@ import { closeIcon } from "./ChannelIcons";
 import { getMsgList } from "../../store/message";
 
 const MessageList = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { setMsgCount } = useModal();
   const list = useSelector((state) => state.message.list);
 
@@ -24,7 +24,17 @@ const MessageList = () => {
         <div className="msg-list-next">Next</div>
       </div>
       <div className="msg-list">
-        
+        {list?.length > 0
+          ? list.map((li, i) => (
+              <div className="list-card" key={i}>
+                <img className="list-c-img" src={li.image_url} />
+                <div className="list-card-desc">
+                  <div className="list-card-username">{li.username}</div>
+                  <div className="list-card-name">{li.name}</div>
+                </div>
+              </div>
+            ))
+          : null}
       </div>
     </div>
   );

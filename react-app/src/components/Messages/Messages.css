@@ -329,4 +329,22 @@
 
 .msg-list {
   max-height: 511.047px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.list-card {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.list-c-img {
+  height: 44px;
+  width: 44px;
+  object-fit: cover;
+  margin-right: 12px;
+  border-radius: 50%;
 }
