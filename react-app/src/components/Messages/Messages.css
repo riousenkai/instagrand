@@ -1,0 +1,7 @@
+.channel-main {
+    width: 932px;
+    height: 841px;
+    display: flex;
+    flex-direction: row;
+    border: 0.5px solid #dbdbdb;
+}
