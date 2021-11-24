@@ -282,6 +282,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
   animation: popup 400ms forwards;
 }
 
@@ -289,6 +290,7 @@
   height: 42px;
   width: 100%;
   display: flex;
+  border-bottom: 0.5px solid #dbdbdb;
 }
 
 .close-msg-list {
@@ -308,4 +310,23 @@
   font-size: 16px;
   font-weight: 500;
   color: #262626;
+}
+
+.msg-list-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0095f6;
+  padding: 0 16px;
+  width: 80.25px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.msg-list-next:active {
+  opacity: 0.7;
+}
+
+.msg-list {
+  max-height: 511.047px;
 }

@@ -12,6 +12,10 @@ const MessageList = () => {
           {closeIcon}
         </div>
         <div className="msg-list-title">New Message</div>
+        <div className="msg-list-next">Next</div>
+      </div>
+      <div className="msg-list">
+
       </div>
     </div>
   );
