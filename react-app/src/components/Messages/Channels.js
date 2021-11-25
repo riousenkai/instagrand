@@ -7,9 +7,6 @@ import Messages from "./Messages";
 import MessageList from "./MessageList";
 import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
-import { io } from "socket.io-client";
-
-let socket;
 
 
 const Channels = () => {
@@ -19,22 +16,6 @@ const Channels = () => {
   const [msg, setMsg] = useState();
   const [chan, setChan] = useState()
   const { msgCount, setMsgCount } = useModal()
-  const [liveMessages, setLiveMessages] = useState([]);
-
-  useEffect(() => {
-    // open socket connection
-    // create websocket
-    socket = io();
-
-    socket.on("chat", (chat) => {
-      setLiveMessages((liveMessages) => [...liveMessages, chat]);
-    });
-    // when component unmounts, disconnect
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
 
   useEffect(() => {
     dispatch(findChannels());
@@ -98,7 +79,7 @@ const Channels = () => {
               ))}
           </div>
         </div>
-        <Messages user={msg} liveMessages={liveMessages} socket={socket} setLiveMessages={setLiveMessages} channelId={chan} />
+        <Messages user={msg} channelId={chan} />
       </div>
     </div>
   );

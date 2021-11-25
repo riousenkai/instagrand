@@ -120,6 +120,7 @@
 
 .channel-right {
   width: 100%;
+  position: relative;
 }
 
 .channel-r-top {
@@ -153,10 +154,17 @@
 
 .channel-msgs {
   padding: 20px 20px 0;
-  height: 695px;
+  height: 695px !important;
+  /* margin-top: auto !important; */
   overflow-y: auto !important;
   display: flex;
-  flex-direction: column-reverse;
+  /* flex-direction: column-reverse; */
+  flex-direction: column;
+}
+
+.channel-msgs-inner {
+  height: max-content;
+  margin-top: auto;
 }
 
 .channel-msgs-rec {
@@ -176,8 +184,11 @@
 }
 
 .msg-input {
-  margin-top: auto;
+  /* margin-top: auto; */
   padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .msg-content {
@@ -347,4 +358,18 @@
   object-fit: cover;
   margin-right: 12px;
   border-radius: 50%;
+}
+
+.actualmsgs {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.livemsgs {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
 }

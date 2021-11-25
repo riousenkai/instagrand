@@ -6,23 +6,21 @@ import Picker from "emoji-picker-react";
 import { io } from "socket.io-client";
 let socket;
 
-const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
+const Messages = ({ user, channelId }) => {
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
   const [input, setInput] = useState("");
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
   const [prevRoom, setPrevRoom] = useState(channelId);
+  const [liveMessages, setLiveMessages] = useState([]);
+  const main = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    // open socket connection
-    // create websocket
     socket = io();
-
-    socket.on("chat", (chat) => {
+    socket.on("message", (chat) => {
       setLiveMessages((liveMessages) => [...liveMessages, chat]);
     });
-    // when component unmounts, disconnect
     return () => {
       socket.disconnect();
     };
@@ -32,6 +30,7 @@ const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
     leaveRoom(prevRoom);
     joinRoom(channelId);
     setLiveMessages([]);
+    console.log(prevRoom, channelId);
     setPrevRoom(channelId);
   }, [channelId]);
 
@@ -93,10 +92,12 @@ const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
       return;
     }
 
-    socket.emit("chat", {
+    socket.send({
+      sender_id: main?.id,
       receiver_id: user?.id,
       message: input,
       dm_id: channelId,
+      room: channelId,
     });
 
     const obj = {
@@ -108,6 +109,8 @@ const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
     setInput("");
 
     dispatch(createMessage(obj));
+
+    return;
   };
 
   if (!user) {
@@ -129,8 +132,37 @@ const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
           </NavLink>
         </div>
         <div className="channel-msgs">
-          {messages?.length > 0 &&
-            messages?.map((msg) => (
+          <div className="channel-msgs-inner">
+            {messages?.length > 0 &&
+              messages?.map((msg) => (
+                <>
+                  {msg.sender_id === user?.id ? (
+                    <div className="channel-msgs-rec">
+                      <img className="msg-left-img" src={user?.image_url} />
+                      <div className="msg-content">
+                        {msg.message.split("\n").map((sentence) => (
+                          <>
+                            {sentence}
+                            <br />
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="channel-msgs-rec-right">
+                      <div className="msg-content-right">
+                        {msg.message.split("\n").map((sentence) => (
+                          <>
+                            {sentence}
+                            <br />
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ))}
+            {liveMessages.map((msg) => (
               <>
                 {msg.sender_id === user?.id ? (
                   <div className="channel-msgs-rec">
@@ -158,34 +190,7 @@ const Messages = ({ user, channelId, setLiveMessages, liveMessages }) => {
                 )}
               </>
             ))}
-          {liveMessages?.map((msg) => (
-            <>
-              {msg.sender_id === user?.id ? (
-                <div className="channel-msgs-rec">
-                  <img className="msg-left-img" src={user?.image_url} />
-                  <div className="msg-content">
-                    {msg.message.split("\n").map((sentence) => (
-                      <>
-                        {sentence}
-                        <br />
-                      </>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="channel-msgs-rec-right">
-                  <div className="msg-content-right">
-                    {msg.message.split("\n").map((sentence) => (
-                      <>
-                        {sentence}
-                        <br />
-                      </>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </>
-          ))}
+          </div>
         </div>
         <div className="msg-input">
           <div className="msg-box">
