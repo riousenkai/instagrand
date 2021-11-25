@@ -346,7 +346,7 @@
 }
 
 .msg-list {
-  height: 511.047px;
+  height: 480px;
   overflow-y: auto;
   width: 100%;
 }
@@ -357,6 +357,16 @@
   display: flex;
   align-items: center;
   padding: 8px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.list-card:hover {
+  background-color: #fafafa;
+}
+
+.list-card:active {
+  background-color: #efefef !important;
 }
 
 .list-c-img {
@@ -396,6 +406,7 @@
   border: none;
   cursor: pointer;
   margin-left: auto;
+  z-index: 20;
 }
 
 .list-not-selected2 {
@@ -404,4 +415,5 @@
   border: none;
   cursor: pointer;
   margin-left: auto;
+  z-index: 20;
 }

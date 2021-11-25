@@ -15,7 +15,9 @@ const MessageList = () => {
     dispatch(getMsgList());
   }, []);
 
-  const deselect = () => {
+  const deselect = (e) => {
+    e.stopPropagation()
+
     document.querySelectorAll(".list-not-selected2").forEach((li) => {
       li.classList.add("hidden");
     });
@@ -27,8 +29,16 @@ const MessageList = () => {
     setChosen(null);
   };
 
-  const select = (id) => {
-    deselect();
+  const select = (e, id) => {
+    e.stopPropagation()
+
+    if (
+      document.querySelector(`.not-list-${id}`).classList.contains("hidden")
+    ) {
+      return deselect(e);
+    }
+
+    deselect(e);
 
     document.querySelector(`.not-list-${id}`).classList.add("hidden");
 
@@ -51,7 +61,7 @@ const MessageList = () => {
       <div className="msg-list">
         {list?.length > 0
           ? list.map((li, i) => (
-              <div className="list-card" key={i}>
+              <div className="list-card" key={i} onClick={(e) => select(e, li.id)}>
                 <img className="list-c-img" src={li.image_url} />
                 <div className="list-card-desc">
                   <div className="list-card-username">{li.username}</div>
@@ -59,13 +69,13 @@ const MessageList = () => {
                 </div>
                 <button
                   className={`list-not-selected not-list-${li.id}`}
-                  onClick={() => select(li.id)}
+                  onClick={(e) => select(e, li.id)}
                 >
                   {notSelectedIcon}
                 </button>
                 <button
                   className={`list-not-selected2 selected-list-${li.id} hidden`}
-                  onClick={deselect}
+                  onClick={(e) => deselect(e)}
                 >
                   {selectedIcon}
                 </button>
