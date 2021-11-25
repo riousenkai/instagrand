@@ -39,12 +39,18 @@ const Likes = ({ users }) => {
               <img
                 className="likes-img"
                 src={user?.image_url}
-                onClick={() => history.push(`/users/${user.id}`)}
+                onClick={() => {
+                  setLikes(0);
+                  history.push(`/users/${user.id}`);
+                }}
               />
               <div className="likes-details">
                 <div
                   className="likes-username"
-                  onClick={() => history.push(`/users/${user.id}`)}
+                  onClick={() => {
+                    setLikes(0);
+                    history.push(`/users/${user.id}`);
+                  }}
                 >
                   {user.username}
                 </div>

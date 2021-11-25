@@ -87,7 +87,7 @@
 
 .prof-r-name {
   color: #262626;
-  font-size: 16p  x;
+  font-size: 16p x;
   font-weight: 500;
   margin-bottom: -15px;
 }
@@ -95,7 +95,7 @@
 .prof-desc {
   color: #262626;
   font-size: 16px;
-  overflow-wrap: break-all;
+  overflow-wrap: break-word;
   padding-bottom: 20px;
 }
 
