@@ -4,6 +4,7 @@ import { useModal } from "../../context/UseModal";
 import "./Messages.css";
 import { closeIcon, selectedIcon, notSelectedIcon } from "./ChannelIcons";
 import { getMsgList } from "../../store/message";
+import { createChannels } from "../../store/channel";
 
 const MessageList = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,16 @@ const MessageList = () => {
     dispatch(getMsgList());
   }, []);
 
+  const newChannel = () => {
+    if (chosen === null) {
+      return;
+    }
+
+    dispatch(createChannels(chosen));
+  };
+
   const deselect = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
     document.querySelectorAll(".list-not-selected2").forEach((li) => {
       li.classList.add("hidden");
@@ -30,7 +39,7 @@ const MessageList = () => {
   };
 
   const select = (e, id) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
     if (
       document.querySelector(`.not-list-${id}`).classList.contains("hidden")
@@ -54,14 +63,18 @@ const MessageList = () => {
           {closeIcon}
         </div>
         <div className="msg-list-title">New Message</div>
-        <button className="msg-list-next" disabled={chosen === null}>
+        <button className="msg-list-next" disabled={chosen === null} onClick={newChannel}>
           Next
         </button>
       </div>
       <div className="msg-list">
         {list?.length > 0
           ? list.map((li, i) => (
-              <div className="list-card" key={i} onClick={(e) => select(e, li.id)}>
+              <div
+                className="list-card"
+                key={i}
+                onClick={(e) => select(e, li.id)}
+              >
                 <img className="list-c-img" src={li.image_url} />
                 <div className="list-card-desc">
                   <div className="list-card-username">{li.username}</div>
