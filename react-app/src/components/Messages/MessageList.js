@@ -10,13 +10,33 @@ const MessageList = () => {
   const dispatch = useDispatch();
   const { setMsgCount, setAcct, setPick } = useModal();
   const list = useSelector((state) => state.message.list);
+  const [people, setPeople] = useState([]);
+  const [input, setInput] = useState("");
   const channels = useSelector((state) => state.channel?.channels);
   const [chosen, setChosen] = useState(null);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     dispatch(getMsgList());
+    document.querySelector(".msg-input-search")?.focus();
   }, []);
+
+  useEffect(() => {
+    setPeople(list);
+  }, [list]);
+
+  useEffect(() => {
+    const filtered = list?.filter((c) => {
+      if (
+        c.name.toLowerCase().startsWith(input.toLowerCase()) ||
+        c.username.startsWith(input.toLowerCase())
+      ) {
+        return c;
+      }
+    });
+    console.log(filtered);
+    setPeople(filtered);
+  }, [input]);
 
   const newChannel = () => {
     if (chosen === null) {
@@ -88,9 +108,18 @@ const MessageList = () => {
           Next
         </button>
       </div>
+      <div className="msg-input-main">
+        <div className="msg-input-to">To:</div>
+        <input
+          className="msg-input-search"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Search..."
+        ></input>
+      </div>
       <div className="msg-list">
-        {list?.length > 0 ? (
-          list.map((li, i) => (
+        {people?.length > 0 ? (
+          people?.map((li, i) => (
             <div
               className="list-card"
               key={i}
