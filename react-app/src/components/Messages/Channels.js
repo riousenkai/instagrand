@@ -21,8 +21,10 @@ const Channels = () => {
     dispatch(findChannels());
     if (acct > 0) {
       change(pick, acct)
+    } else if (acct === undefined) {
+      change(pick, channels[channels.length - 1].id)
     }
-  }, [acct]);
+  }, [acct, pick]);
 
   const change = (user, id) => {
     setMsg(user);

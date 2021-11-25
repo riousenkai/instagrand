@@ -41,7 +41,7 @@ const MessageList = () => {
         setPick(user);
         setAcct(item.id);
       }
-    }).then(() => dispatch(findChannels()))
+    });
 
     setMsgCount(0);
   };
@@ -49,11 +49,11 @@ const MessageList = () => {
   const deselect = (e) => {
     e.stopPropagation();
 
-    document.querySelectorAll(".list-not-selected2").forEach((li) => {
+    document.querySelectorAll(".list-not-selected2")?.forEach((li) => {
       li.classList.add("hidden");
     });
 
-    document.querySelectorAll(".list-not-selected").forEach((li) => {
+    document.querySelectorAll(".list-not-selected")?.forEach((li) => {
       li.classList.remove("hidden");
     });
 
@@ -64,16 +64,16 @@ const MessageList = () => {
     e.stopPropagation();
 
     if (
-      document.querySelector(`.not-list-${id}`).classList.contains("hidden")
+      document.querySelector(`.not-list-${id}`)?.classList.contains("hidden")
     ) {
       return deselect(e);
     }
 
     deselect(e);
 
-    document.querySelector(`.not-list-${id}`).classList.add("hidden");
+    document.querySelector(`.not-list-${id}`)?.classList.add("hidden");
 
-    document.querySelector(`.selected-list-${id}`).classList.remove("hidden");
+    document.querySelector(`.selected-list-${id}`)?.classList.remove("hidden");
 
     setChosen(id);
     setUser(li);
