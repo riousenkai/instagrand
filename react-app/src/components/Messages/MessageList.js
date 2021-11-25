@@ -89,33 +89,38 @@ const MessageList = () => {
         </button>
       </div>
       <div className="msg-list">
-        {list?.length > 0
-          ? list.map((li, i) => (
-              <div
-                className="list-card"
-                key={i}
+        {list?.length > 0 ? (
+          list.map((li, i) => (
+            <div
+              className="list-card"
+              key={i}
+              onClick={(e) => select(e, li.id, li)}
+            >
+              <img className="list-c-img" src={li.image_url} />
+              <div className="list-card-desc">
+                <div className="list-card-username">{li.username}</div>
+                <div className="list-card-name">{li.name}</div>
+              </div>
+              <button
+                className={`list-not-selected not-list-${li.id}`}
                 onClick={(e) => select(e, li.id, li)}
               >
-                <img className="list-c-img" src={li.image_url} />
-                <div className="list-card-desc">
-                  <div className="list-card-username">{li.username}</div>
-                  <div className="list-card-name">{li.name}</div>
-                </div>
-                <button
-                  className={`list-not-selected not-list-${li.id}`}
-                  onClick={(e) => select(e, li.id, li)}
-                >
-                  {notSelectedIcon}
-                </button>
-                <button
-                  className={`list-not-selected2 selected-list-${li.id} hidden`}
-                  onClick={(e) => deselect(e)}
-                >
-                  {selectedIcon}
-                </button>
-              </div>
-            ))
-          : null}
+                {notSelectedIcon}
+              </button>
+              <button
+                className={`list-not-selected2 selected-list-${li.id} hidden`}
+                onClick={(e) => deselect(e)}
+              >
+                {selectedIcon}
+              </button>
+            </div>
+          ))
+        ) : (
+          <div className="list-c-error">
+            Please follow other users or obtain followers to message other
+            users.
+          </div>
+        )}
       </div>
     </div>
   );
