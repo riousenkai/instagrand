@@ -15,11 +15,14 @@ const Channels = () => {
   const channels = useSelector((state) => state.channel?.channels);
   const [msg, setMsg] = useState();
   const [chan, setChan] = useState()
-  const { msgCount, setMsgCount } = useModal()
+  const { msgCount, setMsgCount, acct, pick } = useModal()
 
   useEffect(() => {
     dispatch(findChannels());
-  }, []);
+    if (acct > 0) {
+      change(pick, acct)
+    }
+  }, [acct]);
 
   const change = (user, id) => {
     setMsg(user);
