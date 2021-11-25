@@ -1,16 +1,13 @@
 .home-main {
   display: flex;
   flex-direction: row;
-  /* width: 100%; */
   width: 975px;
   margin: 0 auto;
   margin-bottom: 40px;
   padding-top: 45px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
-/* .home-left {
-  margin-left: 25%;
-} */
 
 .home-posts {
   display: flex;
