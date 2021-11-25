@@ -18,17 +18,6 @@ const MessageList = () => {
     dispatch(getMsgList());
   }, []);
 
-  // useEffect(() => {
-  //   let item = channels.find(
-  //     (c) => c.user1_id === chosen || c.user2_id === chosen
-  //   );
-  //   if (item) {
-  //     setPick(user);
-  //     setAcct(item.id);
-  //     document.querySelector(`.ccard-${item.id}`).click();
-  //   }
-  // }, [channels]);
-
   const newChannel = () => {
     if (chosen === null) {
       return;
@@ -43,8 +32,8 @@ const MessageList = () => {
         setPick(user);
         document.querySelector(`.ccard-${item.id}`)?.click();
       } else {
-        setAcct(null)
-        setPick(user)
+        setAcct(null);
+        setPick(user);
       }
     });
 
