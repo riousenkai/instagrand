@@ -45,4 +45,6 @@ def message_list():
 
     combined = list(set(fin_followers + fin_following))
 
-    return {'list': [item.to_dict() for item in combined]}
+    sort = sorted(combined, key=lambda x:x.username)
+
+    return {'list': [item.to_dict() for item in sort]}
