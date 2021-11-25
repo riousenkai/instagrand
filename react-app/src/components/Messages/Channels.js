@@ -8,6 +8,7 @@ import MessageList from "./MessageList";
 import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
 
+
 const Channels = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user);

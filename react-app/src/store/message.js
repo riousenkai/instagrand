@@ -25,8 +25,8 @@ export const createMessage = (obj) => async (dispatch) => {
     },
     body: JSON.stringify(obj),
   });
-  const data = await res.json();
-  dispatch(getMessages(data));
+  // const data = await res.json();
+  // dispatch(getMessages(data));
 };
 
 export const getMsgList = () => async (dispatch) => {
