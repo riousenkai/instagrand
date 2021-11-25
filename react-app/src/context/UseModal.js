@@ -13,6 +13,7 @@ export const UseModalProvider = (props) => {
   const [msgCount, setMsgCount] = useState(0);
   const [acct, setAcct] = useState(0);
   const [pick, setPick] = useState(null);
+  const [active, setActive] = useState(0);
 
   return (
     <UseModalContext.Provider
@@ -37,6 +38,8 @@ export const UseModalProvider = (props) => {
         setAcct,
         pick,
         setPick,
+        active,
+        setActive,
       }}
     >
       {props.children}

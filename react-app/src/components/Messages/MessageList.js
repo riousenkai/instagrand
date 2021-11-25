@@ -8,7 +8,7 @@ import "./Messages.css";
 
 const MessageList = () => {
   const dispatch = useDispatch();
-  const { setMsgCount, setAcct, setPick } = useModal();
+  const { setMsgCount, setAcct, setPick, active } = useModal();
   const list = useSelector((state) => state.message.list);
   const [people, setPeople] = useState([]);
   const [input, setInput] = useState("");
@@ -34,7 +34,6 @@ const MessageList = () => {
         return c;
       }
     });
-    console.log(filtered);
     setPeople(filtered);
   }, [input]);
 
@@ -48,6 +47,9 @@ const MessageList = () => {
         (c) => c.user1_id === chosen || c.user2_id === chosen
       );
       if (item) {
+        if (active === item.id) {
+          return;
+        }
         setAcct(item.id);
         setPick(user);
         document.querySelector(`.ccard-${item.id}`)?.click();
