@@ -19,6 +19,7 @@ const MessageList = () => {
   }, []);
 
   useEffect(() => {
+    console.log('weeb')
     let item = channels.find(
       (c) => c.user1_id === chosen || c.user2_id === chosen
     );

@@ -10,7 +10,7 @@ class DM_Channel(db.Model):
     user1 = db.relationship('User', back_populates="user_1", foreign_keys=[user1_id])
     user2 = db.relationship('User', back_populates="user_2", foreign_keys=[user2_id])
 
-    messages = db.relationship('Message', back_populates="channel")
+    messages = db.relationship('Message', back_populates="channel", cascade="all,delete-orphan")
 
     def to_dict(self):
         return {
