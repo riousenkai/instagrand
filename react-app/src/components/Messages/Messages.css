@@ -339,7 +339,7 @@
 }
 
 .msg-list {
-  max-height: 511.047px;
+  height: 511.047px;
   overflow-y: auto;
   width: 100%;
 }
