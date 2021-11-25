@@ -27,4 +27,8 @@ def create_channel(id):
     db.session.add(channel)
     db.session.commit()
 
+    new_channel = DM_Channel.query.filter_by(user1_id=current_user.id, user2_id=id).first()
+
+    print(f'\n\n\n{new_channel.to_dict()}\n\n\n')
+
     return get_channels()

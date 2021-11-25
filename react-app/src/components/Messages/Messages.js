@@ -32,7 +32,6 @@ const Messages = ({ user, channelId }) => {
     leaveRoom(prevRoom);
     joinRoom(channelId);
     setLiveMessages([]);
-    console.log(prevRoom, channelId);
     setPrevRoom(channelId);
   }, [channelId]);
 

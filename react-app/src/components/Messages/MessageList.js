@@ -41,7 +41,7 @@ const MessageList = () => {
         setPick(user);
         setAcct(item.id);
       }
-    }).then(() => findChannels())
+    }).then(() => dispatch(findChannels()))
 
     setMsgCount(0);
   };
