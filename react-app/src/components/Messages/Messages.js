@@ -44,7 +44,10 @@ const Messages = ({ user, channelId }) => {
 
   useEffect(() => {
     if (user) {
-      dispatch(getChannelMessages(channelId));
+      dispatch(getChannelMessages(channelId)).then(() => {
+        let body = document.querySelector(".channel-msgs");
+        body.scrollTop = body.scrollHeight - body.clientHeight;
+      });
     }
     setInput("");
   }, [user]);
@@ -87,7 +90,9 @@ const Messages = ({ user, channelId }) => {
     setInput(copy);
   };
 
-  const send = () => {
+  const send = (e) => {
+    e.preventDefault();
+
     if (input.length < 1) {
       return;
     }
@@ -108,7 +113,10 @@ const Messages = ({ user, channelId }) => {
 
     setInput("");
 
-    dispatch(createMessage(obj));
+    dispatch(createMessage(obj)).then(() => {
+      let body = document.querySelector(".channel-msgs");
+      body.scrollTop = body.scrollHeight - body.clientHeight;
+    });
 
     return;
   };
@@ -217,12 +225,13 @@ const Messages = ({ user, channelId }) => {
               className="msgs-textarea"
               placeholder="Message..."
               value={input}
+              onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && send(e)}
               onChange={(e) => setInput(e.target.value)}
             />
             <button
               disabled={input.length < 1}
               className="msg-post"
-              onClick={send}
+              onClick={(e) => send(e)}
             >
               Send
             </button>
