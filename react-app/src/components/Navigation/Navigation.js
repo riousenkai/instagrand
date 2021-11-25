@@ -12,7 +12,7 @@ import { msgIcon, msgIconActive } from "./NavIcons";
 const Navigation = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const { num, setNum } = useModal();
+  const { num, setPick, setAcct } = useModal();
   const path = window.location.pathname;
   const user = useSelector((state) => state.session?.user);
   const history = useHistory();
@@ -23,6 +23,11 @@ const Navigation = () => {
       dispatch(searchUsers(input));
     }
   }, [input]);
+
+  useEffect(() => {
+    setPick(null)
+    setAcct(null)
+  }, [path])
 
   const show = () => {
     document.querySelector(".search-results").classList.remove("hidden");

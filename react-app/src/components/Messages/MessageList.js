@@ -4,7 +4,7 @@ import { useModal } from "../../context/UseModal";
 import "./Messages.css";
 import { closeIcon, selectedIcon, notSelectedIcon } from "./ChannelIcons";
 import { getMsgList } from "../../store/message";
-import { createChannels, findChannels } from "../../store/channel";
+import { createChannels } from "../../store/channel";
 
 const MessageList = () => {
   const dispatch = useDispatch();
