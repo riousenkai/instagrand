@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessage, getChannelMessages } from "../../store/message";
+import { useModal } from "../../context/UseModal";
 import Picker from "emoji-picker-react";
 import { io } from "socket.io-client";
 let socket;
@@ -12,6 +13,7 @@ const Messages = ({ user, channelId }) => {
   const [input, setInput] = useState("");
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
+  const { setMsgCount } = useModal();
   const [prevRoom, setPrevRoom] = useState(channelId);
   const [liveMessages, setLiveMessages] = useState([]);
   const main = useSelector((state) => state.session.user);
@@ -125,7 +127,9 @@ const Messages = ({ user, channelId }) => {
         <img className="no-channel-img" src="https://i.imgur.com/XPOUlZK.png" />
         <div className="no-msgs">Your Messages</div>
         <div className="no-msgs-desc">Send private messages to a friend.</div>
-        <button className="no-channel-button">Send Message</button>
+        <button className="no-channel-button" onClick={() => setMsgCount(1)}>
+          Send Message
+        </button>
       </div>
     );
   } else {

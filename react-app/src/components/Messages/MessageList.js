@@ -18,15 +18,16 @@ const MessageList = () => {
     dispatch(getMsgList());
   }, []);
 
-  useEffect(() => {
-    let item = channels.find(
-      (c) => c.user1_id === chosen || c.user2_id === chosen
-    );
-    if (item) {
-      setPick(user);
-      setAcct(item.id);
-    }
-  }, [channels]);
+  // useEffect(() => {
+  //   let item = channels.find(
+  //     (c) => c.user1_id === chosen || c.user2_id === chosen
+  //   );
+  //   if (item) {
+  //     setPick(user);
+  //     setAcct(item.id);
+  //     document.querySelector(`.ccard-${item.id}`).click();
+  //   }
+  // }, [channels]);
 
   const newChannel = () => {
     if (chosen === null) {
@@ -38,8 +39,12 @@ const MessageList = () => {
         (c) => c.user1_id === chosen || c.user2_id === chosen
       );
       if (item) {
-        setPick(user);
         setAcct(item.id);
+        setPick(user);
+        document.querySelector(`.ccard-${item.id}`)?.click();
+      } else {
+        setAcct(null)
+        setPick(user)
       }
     });
 

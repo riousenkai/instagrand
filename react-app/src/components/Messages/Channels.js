@@ -8,27 +8,27 @@ import MessageList from "./MessageList";
 import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
 
-
 const Channels = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user);
   const channels = useSelector((state) => state.channel?.channels);
   const [msg, setMsg] = useState();
-  const [chan, setChan] = useState()
-  const { msgCount, setMsgCount, acct, pick } = useModal()
+  const [chan, setChan] = useState();
+  const { msgCount, setMsgCount, acct, pick } = useModal();
 
   useEffect(() => {
-    dispatch(findChannels());
-    if (acct > 0) {
-      change(pick, acct)
-    } else if (acct === undefined) {
-      change(pick, channels[channels.length - 1].id)
-    }
-  }, [acct, pick]);
+    dispatch(findChannels()).then(() => {
+      if (acct) {
+        change(pick, acct);
+      } else if (!acct && pick) {
+        document.querySelector(".channel-l-bot")?.lastElementChild?.click();
+      }
+    });
+  }, [pick]);
 
   const change = (user, id) => {
     setMsg(user);
-    setChan(id)
+    setChan(id);
     document.querySelectorAll(".channel-card-c").forEach((c) => {
       c.classList.remove("channel-active");
     });
@@ -42,7 +42,9 @@ const Channels = () => {
         <div className="channel-left">
           <div className="channel-l-top">
             <div className="channel-l-name">{user?.username}</div>
-            <div className="channel-l-icon" onClick={() => setMsgCount(1)}>{newIcon}</div>
+            <div className="channel-l-icon" onClick={() => setMsgCount(1)}>
+              {newIcon}
+            </div>
             {msgCount === 1 && (
               <Modal onClose={() => setMsgCount(0)}>
                 <MessageList />
