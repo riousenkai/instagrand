@@ -20,6 +20,8 @@ const Messages = ({ user, channelId }) => {
     socket = io();
     socket.on("message", (chat) => {
       setLiveMessages((liveMessages) => [...liveMessages, chat]);
+      let body = document.querySelector(".channel-msgs");
+      body.scrollTop = body.scrollHeight - body.clientHeight;
     });
     return () => {
       socket.disconnect();
@@ -113,10 +115,7 @@ const Messages = ({ user, channelId }) => {
 
     setInput("");
 
-    dispatch(createMessage(obj)).then(() => {
-      let body = document.querySelector(".channel-msgs");
-      body.scrollTop = body.scrollHeight - body.clientHeight;
-    });
+    dispatch(createMessage(obj));
 
     return;
   };
