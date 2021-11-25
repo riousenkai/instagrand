@@ -140,6 +140,7 @@ const Messages = ({ user, channelId }) => {
           <NavLink to={`/users/${user?.id}`} className="channel-rt-name">
             {user?.username}
           </NavLink>
+          {/* <img className="channel-del" onClick={() => setMsgCount(2)} src="https://img.icons8.com/material-rounded/24/000000/delete-sign.png" />{" "} */}
         </div>
         <div className="channel-msgs">
           <div className="channel-msgs-inner">

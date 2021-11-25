@@ -46,6 +46,13 @@
   cursor: pointer;
 }
 
+.channel-l-bot {
+  display: flex;
+  flex-direction: column;
+  height: 781px;
+  overflow-y: auto;
+}
+
 .channel-card-c {
   display: flex;
   align-items: center;
@@ -416,4 +423,11 @@
   cursor: pointer;
   margin-left: auto;
   z-index: 20;
+}
+
+.channel-del {
+  height: 24px;
+  width: 24px;
+  margin-left: auto;
+  cursor: pointer;
 }

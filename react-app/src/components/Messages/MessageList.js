@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import "./Messages.css";
 import { closeIcon, selectedIcon, notSelectedIcon } from "./ChannelIcons";
 import { getMsgList } from "../../store/message";
 import { createChannels } from "../../store/channel";
+import "./Messages.css";
 
 const MessageList = () => {
   const dispatch = useDispatch();
