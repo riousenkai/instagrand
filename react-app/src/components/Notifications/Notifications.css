@@ -8,11 +8,12 @@
 }
 
 .notif-card {
-    width: 100%;
-    height: 68px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  height: 68px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .notif-img {
@@ -24,15 +25,24 @@
   cursor: pointer;
 }
 
+.notif-sender {
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
+}
+
 .notif-username {
-    padding: none;
-    color: #262626;
-    font-size: 14px;
-    font-weight: 500;
-    margin-left: 10px;
-    cursor: pointer;
+  padding: none;
+  color: #262626;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+  cursor: pointer;
+  display: block;
 }
 
 .notif-msg {
-    
+  display: block;
+  color: #262626;
+  font-size: 14px;
 }

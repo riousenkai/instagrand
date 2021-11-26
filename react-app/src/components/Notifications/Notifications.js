@@ -18,15 +18,38 @@ const Notifications = () => {
     dispatch(getUserNotif());
   }, [user]);
 
+  const redirect = (e, id) => {
+    e.stopPropagation();
+    history.push(`/users/${id}`);
+    setNum(0);
+  };
+
   return (
     <>
       {notifications?.length > 0
         ? notifications.slice(0, 5).map((n) => (
-            <div key={n} className="notif-card">
-              <img src={n.sender.image_url} className="notif-img" />
-              <span className="notif-username">{n.sender.username}</span>{" "}
-              <span className="notif-msg">{n.message}</span>
-            </div>
+            <>
+              {n.sender.id !== user?.id && (
+                <div
+                  key={n}
+                  className="notif-card"
+                  onClick={() => {
+                    history.push(n.link);
+                    setNum(0);
+                  }}
+                >
+                  <img
+                    onClick={(e) => redirect(e, n.sender.id)}
+                    src={n.sender.image_url}
+                    className="notif-img"
+                  />
+                  <div className="notif-sender">
+                    <div className="notif-username">{n.sender.username}</div>
+                    <div className="notif-msg">{n.message}</div>
+                  </div>
+                </div>
+              )}
+            </>
           ))
         : null}
     </>
