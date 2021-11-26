@@ -6,3 +6,4 @@ from .comment import Comment
 from .like import Like
 from .message import Message
 from .dm_channel import DM_Channel
+from .notification import Notification
