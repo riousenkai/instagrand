@@ -17,5 +17,7 @@ export default function reducer(state = {}, action) {
     switch(action.type) {
         case GET_NOTIFICATIONS:
             return {...state, notifications: action.payload.notifications}
-    }
+        default:
+            return state;
+        }
 }

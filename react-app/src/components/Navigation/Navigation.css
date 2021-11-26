@@ -151,3 +151,12 @@
   width: 22px;
   height: 22px;
 }
+
+.notif-icon {
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
