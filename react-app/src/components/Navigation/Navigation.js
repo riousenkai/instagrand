@@ -7,7 +7,8 @@ import "./Navigation.css";
 import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
 import NavModal from "../NavModal/NavModal";
-import { msgIcon, msgIconActive, notifIcon, notifIconFocus } from "./NavIcons";
+import { msgIcon, msgIconActive } from "./NavIcons";
+import NotificationsModal from "../Notifications/NotificationsModal";
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -114,11 +115,7 @@ const Navigation = () => {
             </span>
           )}
           <PostModal />
-          {num === 55 ? (
-            <span className="notif-icon" onClick={() => setNum(0)}>{notifIconFocus}</span>
-          ) : (
-            <span className="notif-icon" onClick={() => setNum(55)}>{notifIcon}</span>
-          )}
+          <NotificationsModal />
           <NavModal user={user} path={path} />
         </div>
       </div>

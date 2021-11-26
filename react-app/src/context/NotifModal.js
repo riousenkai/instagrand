@@ -4,10 +4,9 @@ import "./Modal.css";
 
 const NotifModalContext = React.createContext();
 
-export function NewModalProvider({ children }) {
-  const newModalRef = useRef();
-  const [openNotif, setOpenNotif] = useState();
-
+export function NotifModalProvider({ children }) {
+  const notifModalRef = useRef();
+  const [value, setValue] = useState();
   useEffect(() => {
     setValue(notifModalRef.current);
   }, []);
