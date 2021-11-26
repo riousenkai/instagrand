@@ -25,7 +25,7 @@ const Notifications = () => {
   };
 
   return (
-    <>
+    <div className="notifications-main">
       {notifications?.length > 0
         ? notifications.map((n) => (
             <>
@@ -52,7 +52,7 @@ const Notifications = () => {
             </>
           ))
         : null}
-    </>
+    </div>
   );
 };
 
