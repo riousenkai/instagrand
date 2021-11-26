@@ -14,7 +14,7 @@ const Messages = ({ user, channelId }) => {
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
   const { setMsgCount } = useModal();
-  const [prevRoom, setPrevRoom] = useState(channelId);
+  const [prevRoom, setPrevRoom] = useState(0);
   const [liveMessages, setLiveMessages] = useState([]);
   const main = useSelector((state) => state.session.user);
 
