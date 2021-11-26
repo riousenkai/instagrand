@@ -27,7 +27,7 @@ const Notifications = () => {
   return (
     <>
       {notifications?.length > 0
-        ? notifications.slice(0, 5).map((n) => (
+        ? notifications.map((n) => (
             <>
               {n.sender.id !== user?.id && (
                 <div
