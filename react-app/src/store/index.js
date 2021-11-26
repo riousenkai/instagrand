@@ -7,7 +7,7 @@ import search from "./search";
 import user from "./user";
 import channel from "./channel";
 import message from "./message";
-import notification from "./notifications";
+import notification from "./notification";
 
 const rootReducer = combineReducers({
   session,

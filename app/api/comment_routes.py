@@ -16,7 +16,7 @@ def make_comment():
 
     post = Post.query.get(new_comment['post_id'])
 
-    new_notification = Notification(sender=current_user.id, message=' commented on your post.', user_id=post.user_id, link=f'/posts/{post.id}')
+    new_notification = Notification(sender=current_user.id, message='commented on your post.', user_id=post.user_id, link=f'/posts/{post.id}')
 
     db.session.add(comment)
     db.session.add(new_notification)

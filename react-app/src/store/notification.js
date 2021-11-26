@@ -6,7 +6,7 @@ const getNotifications = (notifications) => ({
 });
 
 export const getUserNotif = () => async (dispatch) => {
-  const res = await fetch("/api/notifications");
+  const res = await fetch('/api/notifications');
   const data = await res.json();
   dispatch(getNotifications(data));
 };
