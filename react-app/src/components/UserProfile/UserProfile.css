@@ -36,6 +36,8 @@
   width: 150px;
   object-fit: cover;
   user-select: none;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .prof-top-right {
@@ -187,9 +189,11 @@
 }
 
 .p-img-loading {
-  height: 293px;
-  width: 293px;
+  max-height: 293px;
+  max-width: 293px;
   object-fit: cover;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .prof-follow {

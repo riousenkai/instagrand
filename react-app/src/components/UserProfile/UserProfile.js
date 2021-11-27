@@ -63,7 +63,7 @@ const UserProfile = () => {
       <div className="prof-top">
         <img
           className="prof-img-loading"
-          src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
         />
         {+userId === main?.id ? (
           <img
@@ -140,7 +140,7 @@ const UserProfile = () => {
               >
                 <img
                   className={`p-img-loading pl-img-${i} `}
-                  src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
                 />
                 <img
                   className={`p-img p-img-${i} hidden`}

@@ -8,11 +8,12 @@ import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
 import NavModal from "../NavModal/NavModal";
 import { msgIcon, msgIconActive } from "./NavIcons";
+import NotificationsModal from "../Notifications/NotificationsModal";
 
 const Navigation = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const { num, setPick, setAcct } = useModal();
+  const { num, setPick, setAcct, setNum } = useModal();
   const path = window.location.pathname;
   const user = useSelector((state) => state.session?.user);
   const history = useHistory();
@@ -25,9 +26,9 @@ const Navigation = () => {
   }, [input]);
 
   useEffect(() => {
-    setPick(null)
-    setAcct(null)
-  }, [path])
+    setPick(null);
+    setAcct(null);
+  }, [path]);
 
   const show = () => {
     document.querySelector(".search-results").classList.remove("hidden");
@@ -114,6 +115,7 @@ const Navigation = () => {
             </span>
           )}
           <PostModal />
+          <NotificationsModal />
           <NavModal user={user} path={path} />
         </div>
       </div>

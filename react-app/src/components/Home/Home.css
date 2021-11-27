@@ -79,9 +79,11 @@
 
 .post-img-loading {
   align-self: center;
-  min-height: 600px;
+  max-height: 600px;
   max-width: 100%;
   object-fit: cover;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .post-top-right {

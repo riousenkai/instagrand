@@ -6,6 +6,7 @@ import App from "./App";
 import { ModalProvider } from "./context/Modal";
 import { UseModalProvider } from "./context/UseModal";
 import { NewModalProvider } from "./context/NewModal";
+import { NotifModalProvider } from "./context/NotifModal";
 import configureStore from "./store";
 
 const store = configureStore();
@@ -13,13 +14,15 @@ const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <NewModalProvider>
-        <ModalProvider>
-          <UseModalProvider>
-            <App />
-          </UseModalProvider>
-        </ModalProvider>
-      </NewModalProvider>
+      <NotifModalProvider>
+        <NewModalProvider>
+          <ModalProvider>
+            <UseModalProvider>
+              <App />
+            </UseModalProvider>
+          </ModalProvider>
+        </NewModalProvider>
+      </NotifModalProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
