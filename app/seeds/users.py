@@ -29,7 +29,7 @@ def seed_users():
     )
 
     revan = User(
-        username='revan', email='revan@revan.com', password='revan123', image_url='https://media-exp1.licdn.com/dms/image/C4E03AQGsNwVN7pC2Jw/profile-displayphoto-shrink_800_800/0/1517237423843?e=1642636800&v=beta&t=oCS6uoTPKOV8lKH5867PdZ5HYINZKJitzGsxYBbV7Q0', description='I may or may not have created this website.', name='Revan F'
+        username='revan', email='revan@revan.com', password='revan123', image_url='https://instagrand-aa.s3.us-east-2.amazonaws.com/revan.jpg', description='I may or may not have created this website.', name='Revan F'
     )
 
     db.session.add(demo)
