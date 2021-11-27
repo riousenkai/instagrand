@@ -79,6 +79,6 @@ def suggestions():
     if current_user in final:
         final.remove(current_user)
 
-    sorter = sorted(final, key=lambda x:x.id)
+    # sorter = sorted(final, key=lambda x:x.id)
 
-    return {'final': [user.to_dict() for user in sorter]}
+    return {'final': [user.to_dict() for user in final]}

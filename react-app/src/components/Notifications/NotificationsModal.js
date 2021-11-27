@@ -10,6 +10,7 @@ import "./Notifications.css";
 const NotificationsModal = () => {
   const { num, setNum } = useModal();
   const dispatch = useDispatch();
+  const path = window.location.href;
   const notifications = useSelector(
     (state) => state.notification.notifications
   );
@@ -21,15 +22,13 @@ const NotificationsModal = () => {
   }, []);
 
   useEffect(() => {
-    console.log(notifications);
     const filtered = notifications?.filter(
       (n) => n.read === false && n.sender.id !== user?.id
     );
-    console.log(filtered);
     if (filtered?.length > 0) {
       setNewN(true);
     }
-  }, notifications);
+  }, [notifications, path]);
 
   return (
     <>
@@ -42,8 +41,8 @@ const NotificationsModal = () => {
           className="notif-icon"
           onClick={() => {
             dispatch(readAllNotif());
-            setNum(55);
             setNewN(false);
+            setNum(55);
           }}
         >
           {notifIcon}
@@ -53,8 +52,8 @@ const NotificationsModal = () => {
           className="notif-icon"
           onClick={() => {
             dispatch(readAllNotif());
-            setNum(55);
             setNewN(false);
+            setNum(55);
           }}
         >
           {newNotifs}
