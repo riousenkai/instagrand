@@ -241,7 +241,9 @@ const Post = () => {
                 {post?.comments?.map((p, i) => (
                   <span
                     onMouseEnter={
-                      p.user.id === user?.id ? () => showDelete(i) : null
+                      p.user.id === user?.id || post?.user?.id === user?.id
+                        ? () => showDelete(i)
+                        : null
                     }
                     onMouseLeave={() => hideDelete(i)}
                   >
