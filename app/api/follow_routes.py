@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Follow, User, db
+from app.models import Follow, User, db, Notification
 
 follow_routes = Blueprint('follows', __name__)
 
@@ -29,7 +29,9 @@ def user(id):
 def follow(id):
 
     follow = Follow(follower_id=current_user.id, following_id=id)
+    new_notification = Notification(sender=current_user.id, message='started following you.', user_id=id, link=f'/users/{current_user.id}')
 
+    db.session.add(new_notification)
     db.session.add(follow)
     db.session.commit()
 
@@ -40,7 +42,11 @@ def follow(id):
 def unfollow(id):
 
     follow = Follow.query.filter_by(follower_id=current_user.id, following_id=id).first()
+    notif = Notification.query.filter_by(sender=current_user.id, link=f'/users/{current_user.id}').first()
 
+    if notif != None:
+        db.session.delete(notif)
+        db.session.commit()
     db.session.delete(follow)
     db.session.commit()
 
