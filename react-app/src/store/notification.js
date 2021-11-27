@@ -33,6 +33,10 @@ export const delAllNotif = () => async (dispatch) => {
   dispatch(getNotifications(data));
 };
 
+export const readAllNotif = () => async (dispatch) => {
+  const res = await fetch(`/api/notifications/all`);
+};
+
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_NOTIFICATIONS:

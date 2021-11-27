@@ -30,3 +30,14 @@ def delete_notifications():
         db.session.delete(notification)
         db.session.commit()
     return get_notifications()
+
+@notification_routes.route('/all')
+@login_required
+def read_all_notifications():
+
+    notifs = Notification.query.filter_by(user_id=current_user.id).all()
+    for notif in notifs:
+        notif.read = True
+        db.session.commit()
+
+    return {'status': 'ok'}
