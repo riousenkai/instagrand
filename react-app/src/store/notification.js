@@ -11,6 +11,17 @@ export const getUserNotif = () => async (dispatch) => {
   dispatch(getNotifications(data));
 };
 
+export const delNotif = (id) => async (dispatch) => {
+  const res = await fetch(`/api/notifications/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const data = await res.json()
+  dispatch(getNotifications(data))
+}
+
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_NOTIFICATIONS:
