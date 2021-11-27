@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessage, getChannelMessages } from "../../store/message";
 import { useModal } from "../../context/UseModal";
+import { Modal } from "../../context/Modal";
 import Picker from "emoji-picker-react";
 import { io } from "socket.io-client";
+import ChannelDelete from "./ChannelDelete";
 let socket;
 
 const Messages = ({ user, channelId }) => {
@@ -13,7 +15,7 @@ const Messages = ({ user, channelId }) => {
   const [input, setInput] = useState("");
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
-  const { setMsgCount } = useModal();
+  const { msgCount, setMsgCount } = useModal();
   const [prevRoom, setPrevRoom] = useState(0);
   const [liveMessages, setLiveMessages] = useState([]);
   const main = useSelector((state) => state.session.user);
@@ -135,12 +137,17 @@ const Messages = ({ user, channelId }) => {
   } else {
     return (
       <div className="channel-right">
+        {msgCount === 2 && <ChannelDelete />}
         <div className="channel-r-top">
           <img className="channel-rt-img" src={user?.image_url} />
           <NavLink to={`/users/${user?.id}`} className="channel-rt-name">
             {user?.username}
           </NavLink>
-          {/* <img className="channel-del" onClick={() => setMsgCount(2)} src="https://img.icons8.com/material-rounded/24/000000/delete-sign.png" />{" "} */}
+          <img
+            className="channel-del"
+            onClick={() => setMsgCount(2)}
+            src="https://img.icons8.com/material-rounded/24/000000/delete-sign.png"
+          />
         </div>
         <div className="channel-msgs">
           <div className="channel-msgs-inner">

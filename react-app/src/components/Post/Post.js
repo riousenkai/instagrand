@@ -133,14 +133,14 @@ const Post = () => {
 
   const showDelete = (i) => {
     let arr = [...hidden];
-    arr.map((a) => (a = true));
+    arr.fill(true);
     arr[i] = false;
     setHidden(arr);
   };
 
   const hideDelete = (i) => {
     let arr = [...hidden];
-    arr.map((a) => (a = true));
+    arr.fill(true);
     arr[i] = true;
     setHidden(arr);
   };
