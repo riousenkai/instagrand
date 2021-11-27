@@ -74,7 +74,10 @@ const Notifications = () => {
             </div>
           )}
         </>
-      ) : <div className="notif-none">No new notifications.</div>}
+      ) : null}
+      {notifications?.length === ownNotif || notifications?.length === 0 ? (
+        <div className="notif-none">No new notifications.</div>
+      ) : null}
     </div>
   );
 };

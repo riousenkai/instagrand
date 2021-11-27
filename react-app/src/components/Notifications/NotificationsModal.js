@@ -19,7 +19,7 @@ const NotificationsModal = () => {
 
   useEffect(() => {
     dispatch(getUserNotif());
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     const filtered = notifications?.filter(
@@ -27,13 +27,22 @@ const NotificationsModal = () => {
     );
     if (filtered?.length > 0) {
       setNewN(true);
+    } else {
+      setNewN(false);
     }
-  }, [notifications, path]);
+  }, [notifications]);
 
   return (
     <>
       {num === 55 ? (
-        <span className="notif-icon" onClick={() => setNum(0)}>
+        <span
+          className="notif-icon"
+          onClick={() => {
+            dispatch(readAllNotif());
+            setNewN(false);
+            setNum(0);
+          }}
+        >
           {notifIconFocus}
         </span>
       ) : newN === false ? (
