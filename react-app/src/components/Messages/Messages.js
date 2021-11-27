@@ -137,7 +137,11 @@ const Messages = ({ user, channelId }) => {
   } else {
     return (
       <div className="channel-right">
-        {msgCount === 2 && <ChannelDelete />}
+        {msgCount === 2 && (
+          <Modal onClose={() => setMsgCount(0)}>
+            <ChannelDelete channelId={channelId} />
+          </Modal>
+        )}
         <div className="channel-r-top">
           <img className="channel-rt-img" src={user?.image_url} />
           <NavLink to={`/users/${user?.id}`} className="channel-rt-name">

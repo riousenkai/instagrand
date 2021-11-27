@@ -33,9 +33,9 @@ def create_channel(id):
 
     return get_channels()
 
-@channel_routes.route('/<int:id>', methods=['DELETE'])
+@channel_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
-def remove_channel(id)
+def remove_channel(id):
 
     channel = DM_Channel.query.get(id)
 

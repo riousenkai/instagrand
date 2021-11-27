@@ -470,3 +470,51 @@
   outline: none;
   padding: 4px 20px;
 }
+
+.del-channel-main {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popup 400ms forwards;
+  height: 219px;
+}
+
+.del-chan-top {
+  display: flex;
+  flex-direction: column;
+  height: 123px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 32px;
+  border-bottom: 0.5px solid #dbdbdb;
+  align-items: center;
+  text-align: center;
+}
+
+.del-chan-title {
+  font-size: 18px;
+  color: #262626;
+  font-weight: 500;
+}
+
+.del-chan-desc {
+  width: 336px;
+  color: #8e8e8e;
+  padding-top: 10px;
+}
+
+.del-chan-yes {
+  width: 100%;
+  text-align: center;
+  color: #ed4956;
+  padding: 16px 16px;
+  height: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 0.5px solid #dbdbdb;
+}
