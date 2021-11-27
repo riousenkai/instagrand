@@ -12,7 +12,7 @@ def get_notifications():
 
     return {'notifications': [notification.to_dict() for notification in notifications]}
 
-@notification_routes.route('/<int:id>'. methods=['DELETE'])
+@notification_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_notifications(id):
 

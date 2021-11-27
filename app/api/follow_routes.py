@@ -42,7 +42,7 @@ def follow(id):
 def unfollow(id):
 
     follow = Follow.query.filter_by(follower_id=current_user.id, following_id=id).first()
-    notif = Notification.query.filter_by(sender=current_user.id, link=f'/users/{current_user.id}').first()
+    notif = Notification.query.filter_by(sender=current_user.id, message='started following you.', link=f'/users/{current_user.id}').first()
 
     if notif != None:
         db.session.delete(notif)

@@ -16,7 +16,7 @@ def make_comment():
 
     post = Post.query.get(new_comment['post_id'])
 
-    notif = Notification.query.filter_by(sender=current_user.id, link=f'/posts/{post.id}').first()
+    notif = Notification.query.filter_by(sender=current_user.id, message='commented on your post.', link=f'/posts/{post.id}').first()
     if notif != None:
         db.session.delete(notif)
         db.session.commit()

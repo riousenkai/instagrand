@@ -20,7 +20,7 @@ def like_post(id):
         db.session.commit()
 
     else:
-        sent = Notification.query.filter_by(sender=current_user.id, link=f'/posts/{post.id}').first()
+        sent = Notification.query.filter_by(sender=current_user.id, message='liked your post.', link=f'/posts/{post.id}').first()
         if sent != None:
             db.session.delete(sent)
         db.session.delete(like)

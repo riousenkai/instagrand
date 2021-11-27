@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import { getUserNotif } from "../../store/notification";
+import { delNotif, getUserNotif } from "../../store/notification";
 import { useHistory } from "react-router";
 import "./Notifications.css";
 
@@ -35,6 +35,7 @@ const Notifications = () => {
                   className="notif-card"
                   onClick={() => {
                     history.push(n.link);
+                    dispatch(delNotif(n.id));
                     setNum(0);
                   }}
                 >
