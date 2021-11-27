@@ -5,6 +5,7 @@ from .posts import seed_posts, undo_posts
 from .comments import seed_comments, undo_comments
 from .likes import seed_likes, undo_likes
 from .channels import seed_channels, undo_channels
+from .notifications import undo_notifications
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -32,4 +33,5 @@ def undo():
     undo_users()
     undo_likes()
     undo_channels()
+    undo_notifications()
     # Add other undo functions here

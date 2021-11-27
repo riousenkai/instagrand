@@ -10,9 +10,9 @@ like_routes = Blueprint('likess', __name__)
 def like_post(id):
 
     like = Like.query.filter_by(user_id=current_user.id, post_id=id).first()
+    post = Post.query.get(id)
 
     if like is None:
-        post = Post.query.get(id)
         new_notification = Notification(sender=current_user.id, message='liked your post.', user_id=post.user_id, link=f'/posts/{post.id}')
         new_like = Like(user_id=current_user.id, post_id=id)
         db.session.add(new_notification)
@@ -20,6 +20,9 @@ def like_post(id):
         db.session.commit()
 
     else:
+        sent = Notification.query.filter_by(sender=current_user.id, link=f'/posts/{post.id}').first()
+        if sent != None:
+            db.session.delete(sent)
         db.session.delete(like)
         db.session.commit()
 

@@ -8,6 +8,6 @@ notification_routes = Blueprint('notifications', __name__)
 @login_required
 def get_notifications():
 
-    notifications = Notification.query.filter_by(user_id=current_user.id)
+    notifications = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.id.desc()).all()
 
     return {'notifications': [notification.to_dict() for notification in notifications]}
