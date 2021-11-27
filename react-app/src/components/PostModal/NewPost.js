@@ -18,6 +18,7 @@ const NewPost = () => {
   const [errors, setErrors] = useState([]);
   const path = window.location.pathname;
   const user = useSelector((state) => state.session.user);
+  const [image, setImage] = useState(true);
 
   useEffect(() => {
     setErrors([]);
@@ -57,6 +58,10 @@ const NewPost = () => {
 
     if (desc.length > 300) {
       err.push("Caption cannot be over 300 characters.");
+    }
+
+    if (image === false) {
+      err.push("Please provide an image file.");
     }
 
     if (err.length > 0) {
@@ -117,7 +122,12 @@ const NewPost = () => {
                 </label>
               </div>
             ) : (
-              <img className="preview-img" src={url} />
+              <img
+                className="preview-img"
+                src={url}
+                onError={() => setImage(false)}
+                onLoad={() => setImage(true)}
+              />
             )}
           </div>
           <div className="mid-right">
