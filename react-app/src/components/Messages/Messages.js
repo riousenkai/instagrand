@@ -15,7 +15,7 @@ const Messages = ({ user, channelId }) => {
   const [input, setInput] = useState("");
   const [count, setCount] = useState(0);
   const emoji = useRef(null);
-  const { msgCount, setMsgCount } = useModal();
+  const { msgCount, setMsgCount, currUser } = useModal();
   const [prevRoom, setPrevRoom] = useState(0);
   const [liveMessages, setLiveMessages] = useState([]);
   const main = useSelector((state) => state.session.user);
@@ -25,7 +25,9 @@ const Messages = ({ user, channelId }) => {
     socket.on("message", (chat) => {
       setLiveMessages((liveMessages) => [...liveMessages, chat]);
       let body = document.querySelector(".channel-msgs");
-      body.scrollTop = body.scrollHeight - body.clientHeight;
+      if (body) {
+        body.scrollTop = body.scrollHeight - body.clientHeight;
+      }
     });
     return () => {
       socket.disconnect();
@@ -123,7 +125,7 @@ const Messages = ({ user, channelId }) => {
     return;
   };
 
-  if (!user) {
+  if (!currUser) {
     return (
       <div className="no-channel">
         <img className="no-channel-img" src="https://i.imgur.com/XPOUlZK.png" />

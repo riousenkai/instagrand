@@ -19,8 +19,9 @@ def new_msg():
 
     data = request.json
 
-    channel = DM_Channel.query.get(data['dm_id'])
-    if channel == None:
+    channel = DM_Channel.query.filter_by(user1_id=current_user.id, user2_id=data['receiver_id']).first()
+    channel2 = DM_Channel.query.filter_by(user1_id=data['receiver_id'], user2_id=current_user.id).first()
+    if channel == None and channel2 == None:
         new_channel = DM_Channel(user1_id=current_user.id, user2_id=data['receiver_id'])
         db.session.add(new_channel)
         db.session.commit()

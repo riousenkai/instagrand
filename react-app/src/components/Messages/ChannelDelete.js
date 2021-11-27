@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import { deleteChannel } from "../../store/channel";
-import Messages from "./Messages";
 import "./Messages.css";
 
 const ChannelDelete = ({ channelId }) => {
   const dispatch = useDispatch();
-  const { setMsgCount } = useModal();
-  const channels = useSelector((state) => state.channel?.channels);
-
-  useEffect(() => {}, []);
+  const { setMsgCount, setCurrUser } = useModal();
 
   const del = () => {
     dispatch(deleteChannel(channelId));
     setMsgCount(0);
-    return <Messages user={null} channelId={channelId} />;
+    setCurrUser(null);
   };
 
   return (
@@ -30,7 +25,9 @@ const ChannelDelete = ({ channelId }) => {
       <div className="del-chan-yes" onClick={del}>
         Delete
       </div>
-      <div className="unfollow-cancel">Cancel</div>
+      <div className="unfollow-cancel" onClick={() => setMsgCount(0)}>
+        Cancel
+      </div>
     </div>
   );
 };

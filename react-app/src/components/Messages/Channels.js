@@ -14,7 +14,7 @@ const Channels = () => {
   const channels = useSelector((state) => state.channel?.channels);
   const [msg, setMsg] = useState();
   const [chan, setChan] = useState();
-  const { msgCount, setMsgCount, acct, pick, setActive } = useModal();
+  const { msgCount, setMsgCount, acct, pick, setActive, setCurrUser } = useModal();
 
   useEffect(() => {
     dispatch(findChannels()).then(() => {
@@ -28,6 +28,7 @@ const Channels = () => {
 
   const change = (user, id) => {
     setMsg(user);
+    setCurrUser(user)
     setChan(id);
     setActive(id)
     document.querySelectorAll(".channel-card-c").forEach((c) => {

@@ -13,7 +13,7 @@ import NotificationsModal from "../Notifications/NotificationsModal";
 const Navigation = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  const { num, setPick, setAcct, setNum } = useModal();
+  const { num, setPick, setAcct, setCurrUser } = useModal();
   const path = window.location.pathname;
   const user = useSelector((state) => state.session?.user);
   const history = useHistory();
@@ -28,6 +28,7 @@ const Navigation = () => {
   useEffect(() => {
     setPick(null);
     setAcct(null);
+    setCurrUser(null)
   }, [path]);
 
   const show = () => {
