@@ -75,3 +75,14 @@
   color: #ed4956;
   cursor: pointer;
 }
+
+.notif-none {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  color: #8e8e8e;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}

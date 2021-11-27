@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import { delNotif, getUserNotif } from "../../store/notification";
+import { delAllNotif, delNotif, getUserNotif } from "../../store/notification";
 import { useHistory } from "react-router";
 import "./Notifications.css";
 
@@ -62,10 +62,19 @@ const Notifications = () => {
             </>
           ))}
           {notifications?.length > ownNotif && (
-            <div className="notif-clear"><div className="clear-click">Clear All</div></div>
+            <div className="notif-clear">
+              <div
+                className="clear-click"
+                onClick={() => {
+                  dispatch(delAllNotif());
+                }}
+              >
+                Clear All
+              </div>
+            </div>
           )}
         </>
-      ) : null}
+      ) : <div className="notif-none">No new notifications.</div>}
     </div>
   );
 };

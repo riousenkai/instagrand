@@ -23,7 +23,7 @@ def delete_notifications(id):
 
 @notification_routes.route('/all', methods=['DELETE'])
 @login_required
-def delete_notifications():
+def delete_all_notifications():
 
     notifications = Notification.query.filter_by(user_id=current_user.id).all()
     for notification in notifications:
