@@ -24,6 +24,17 @@ export const createChannels = (user2) => async (dispatch) => {
   dispatch(getChannels(data));
 };
 
+export const deleteChannel = (channelId) => async (dispatch) => {
+  const res = await fetch(`/api/channels/${channelId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  dispatch(getChannels(data));
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

@@ -32,3 +32,14 @@ def create_channel(id):
     print(f'\n\n\n{new_channel.to_dict()}\n\n\n')
 
     return get_channels()
+
+@channel_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def remove_channel(id)
+
+    channel = DM_Channel.query.get(id)
+
+    db.session.delete(channel)
+    db.session.commit()
+
+    return get_channels()

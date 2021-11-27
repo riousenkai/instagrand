@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Message, User, db, Follow
+from app.models import Message, User, db, Follow, DM_Channel
 from sqlalchemy import or_
 
 message_routes = Blueprint('messages', __name__)
@@ -19,7 +19,14 @@ def new_msg():
 
     data = request.json
 
-    message = Message(sender_id=current_user.id, receiver_id=data['receiver_id'], message=data['message'], dm_id=data['dm_id'])
+    channel = DM_Channel.query.get(data['dm_id'])
+    if channel == None:
+        new_channel = DM_Channel(user1_id=current_user.id, user2_id=data['receiver_id'])
+        db.session.add(new_channel)
+        db.session.commit()
+        message = Message(sender_id=current_user.id, receiver_id=data['receiver_id'], message=data['message'], dm_id=new_channel.id)
+    else:
+        message = Message(sender_id=current_user.id, receiver_id=data['receiver_id'], message=data['message'], dm_id=data['dm_id'])
 
     db.session.add(message)
     db.session.commit()
