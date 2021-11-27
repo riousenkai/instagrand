@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
-import { delAllNotif, delNotif, getUserNotif } from "../../store/notification";
+import { delAllNotif, delNotif, getUserNotif, readAllNotif } from "../../store/notification";
 import { useHistory } from "react-router";
 import "./Notifications.css";
 
@@ -17,6 +17,7 @@ const Notifications = () => {
 
   useEffect(() => {
     dispatch(getUserNotif());
+    dispatch(readAllNotif())
   }, [user]);
 
   useEffect(() => {

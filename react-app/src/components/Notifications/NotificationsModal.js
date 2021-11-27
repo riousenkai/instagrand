@@ -70,7 +70,12 @@ const NotificationsModal = () => {
       )}
 
       {num === 55 && (
-        <NotifModal onClose={() => setNum(0)}>
+        <NotifModal
+          onClose={() => {
+            setNewN(false);
+            setNum(0);
+          }}
+        >
           <Notifications />
         </NotifModal>
       )}
