@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import { delNotif, getUserNotif } from "../../store/notification";
@@ -13,10 +13,18 @@ const Notifications = () => {
   const notifications = useSelector(
     (state) => state.notification.notifications
   );
+  const [ownNotif, setOwnNotif] = useState(0);
 
   useEffect(() => {
     dispatch(getUserNotif());
   }, [user]);
+
+  useEffect(() => {
+    const filtered = notifications?.filter((n) => n.sender.id === user?.id);
+    if (filtered) {
+      setOwnNotif(filtered?.length);
+    }
+  }, [notifications]);
 
   const redirect = (e, id) => {
     e.stopPropagation();
@@ -26,8 +34,9 @@ const Notifications = () => {
 
   return (
     <div className="notifications-main">
-      {notifications?.length > 0
-        ? notifications.map((n) => (
+      {notifications?.length > 0 ? (
+        <>
+          {notifications.map((n) => (
             <>
               {n.sender.id !== user?.id && (
                 <div
@@ -51,8 +60,12 @@ const Notifications = () => {
                 </div>
               )}
             </>
-          ))
-        : null}
+          ))}
+          {notifications?.length > ownNotif && (
+            <div className="notif-clear"><div className="clear-click">Clear All</div></div>
+          )}
+        </>
+      ) : null}
     </div>
   );
 };

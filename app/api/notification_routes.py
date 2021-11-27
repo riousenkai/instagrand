@@ -20,3 +20,13 @@ def delete_notifications(id):
     db.session.delete(notification)
     db.session.commit()
     return get_notifications()
+
+@notification_routes.route('/all', methods=['DELETE'])
+@login_required
+def delete_notifications():
+
+    notifications = Notification.query.filter_by(user_id=current_user.id).all()
+    for notification in notifications:
+        db.session.delete(notification)
+        db.session.commit()
+    return get_notifications()
