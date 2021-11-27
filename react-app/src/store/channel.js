@@ -24,8 +24,8 @@ export const createChannels = (user2) => async (dispatch) => {
   dispatch(getChannels(data));
 };
 
-export const deleteChannel = (channelId) => async (dispatch) => {
-  const res = await fetch(`/api/channels/delete/${channelId}`, {
+export const deleteChannel = (channelId, id) => async (dispatch) => {
+  const res = await fetch(`/api/channels/delete/${channelId}/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

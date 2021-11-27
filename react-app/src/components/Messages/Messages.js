@@ -141,7 +141,7 @@ const Messages = ({ user, channelId }) => {
       <div className="channel-right">
         {msgCount === 2 && (
           <Modal onClose={() => setMsgCount(0)}>
-            <ChannelDelete channelId={channelId} />
+            <ChannelDelete channelId={channelId} user={user} />
           </Modal>
         )}
         <div className="channel-r-top">

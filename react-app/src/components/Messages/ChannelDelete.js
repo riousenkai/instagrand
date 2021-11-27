@@ -3,12 +3,12 @@ import { useModal } from "../../context/UseModal";
 import { deleteChannel } from "../../store/channel";
 import "./Messages.css";
 
-const ChannelDelete = ({ channelId }) => {
+const ChannelDelete = ({ channelId, user }) => {
   const dispatch = useDispatch();
   const { setMsgCount, setCurrUser } = useModal();
 
   const del = () => {
-    dispatch(deleteChannel(channelId));
+    dispatch(deleteChannel(channelId, user.id));
     setMsgCount(0);
     setCurrUser(null);
   };

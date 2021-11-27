@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import DM_Channel, User, db
+from app.models import DM_Channel, User, db, Notification, Message
 from sqlalchemy import or_
 
 channel_routes = Blueprint('dm_channels', __name__)
@@ -33,12 +33,19 @@ def create_channel(id):
 
     return get_channels()
 
-@channel_routes.route('/delete/<int:id>', methods=['DELETE'])
+@channel_routes.route('/delete/<int:id>/<int:user_id>', methods=['DELETE'])
 @login_required
-def remove_channel(id):
+def remove_channel(id, user_id):
 
     channel = DM_Channel.query.get(id)
 
+    messages = Message.query.filter_by(dm_id=id).all()
+
+    print(f'\n\n\n{messages}\n\n\n')
+
+    if messages:
+        new_notification = Notification(sender=current_user.id, message='deleted your messages with them.', user_id=user_id, link='/messages')
+        db.session.add(new_notification)
     db.session.delete(channel)
     db.session.commit()
 
