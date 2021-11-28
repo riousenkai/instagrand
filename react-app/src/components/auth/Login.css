@@ -197,19 +197,18 @@
   margin-top: 20px;
   font-size: 11px;
   gap: 2.5px;
-  /* margin-top: auto !important; */
   bottom: 40px;
   margin: 0 auto;
   width: max-content;
 }
 
 .login-about > * {
-  color: #c7c7c7;
+  color: #8e8e8e !important;
 }
 
 .l-copyright {
   position: absolute;
-  color: #c7c7c7;
+  color: #8e8e8e;
   cursor: pointer;
   margin-top: 10px !important;
   font-size: 11px;
