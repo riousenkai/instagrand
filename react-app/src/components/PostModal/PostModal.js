@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import { useModal } from "../../context/UseModal";
 import NewPost from "./NewPost";
+import { newPostIcon, postIconActive } from "../Home/icons";
 import "../Navigation/Navigation.css";
 
 const PostModal = () => {
@@ -10,17 +11,19 @@ const PostModal = () => {
   return (
     <>
       {num !== 1 ? (
-        <img
+        <div
           onClick={() => setNum(1)}
           className="nav-icons"
-          src="https://img.icons8.com/ios/50/000000/plus-2-math.png"
-        />
+        >
+          {newPostIcon}
+        </div>
       ) : (
-        <img
+        <div
           onClick={() => setNum(1)}
           className="nav-icons"
-          src="https://img.icons8.com/ios-filled/50/000000/plus-2-math.png"
-        />
+        >
+          {postIconActive}
+        </div>
       )}
       {num === 1 && (
         <Modal onClose={() => setNum(0)}>
