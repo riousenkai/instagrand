@@ -37,6 +37,7 @@ const Post = () => {
   const [hidden, setHidden] = useState(
     new Array(post?.comments?.length).fill(true)
   );
+  let date = new Date()
 
   useEffect(() => {
     dispatch(postInfo(+postId));
@@ -427,6 +428,30 @@ const Post = () => {
           </div>
         </div>
       ) : null}
+      <div className="post-about">
+        <div className="h-about" onClick={() => history.push("/about")}>
+          About
+        </div>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-linkedin"
+          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          target="_blank"
+        >
+          Linkedin
+        </a>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-github"
+          href="https://github.com/riousenkai"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </div>
+      <div className="p-copyright" onClick={() => history.push("/about")}>
+        © {date.getFullYear()} Instagrand by John Elijah 'Revan' Fajardo
+      </div>
       {num === 8 && (
         <Modal onClose={() => setNum(0)}>
           <Unfollow user={post?.user} />
