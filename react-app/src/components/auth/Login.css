@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .login-img-wrapper {
@@ -27,6 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .login-form {
@@ -180,12 +182,40 @@
 }
 
 .login-signup-word {
-    font-size: 14px;
-    color: #262626;
+  font-size: 14px;
+  color: #262626;
 }
 
 .l-s-link {
-    cursor: pointer;
-    color: #0095F6;
-    font-weight: 500;
+  cursor: pointer;
+  color: #0095f6;
+  font-weight: 500;
+}
+
+.login-about {
+  display: flex;
+  position: absolute;
+  margin-top: 20px;
+  font-size: 11px;
+  gap: 2.5px;
+  /* margin-top: auto !important; */
+  bottom: 40px;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.login-about > * {
+  color: #c7c7c7;
+}
+
+.l-copyright {
+  position: absolute;
+  color: #c7c7c7;
+  cursor: pointer;
+  margin-top: 10px !important;
+  font-size: 11px;
+  display: flex;
+  margin: 0 auto;
+  bottom: 20px;
+  width: max-content;
 }

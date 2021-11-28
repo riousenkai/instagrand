@@ -8,13 +8,14 @@ import { icon1 } from "./authicons";
 import "./Login.css";
 
 const LoginForm = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
   const { setNum } = useModal();
   const dispatch = useDispatch();
+  const date = new Date();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -97,10 +98,42 @@ const LoginForm = () => {
               </div>
             ))}
           </div>
+          <div className="login-signup">
+            <div className="login-signup-word">
+              Don't have an account?{" "}
+              <span
+                onClick={() => history.push("/signup")}
+                className="l-s-link"
+              >
+                Sign up
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="login-signup">
-          <div className="login-signup-word">Don't have an account? <span onClick={() => history.push('/signup')} className="l-s-link">Sign up</span></div>
+      </div>
+      <div className="login-about">
+        <div className="h-about" onClick={() => history.push("/about")}>
+          About
         </div>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-linkedin"
+          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          target="_blank"
+        >
+          Linkedin
+        </a>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-github"
+          href="https://github.com/riousenkai"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </div>
+      <div className="l-copyright" onClick={() => history.push("/about")}>
+        © {date.getFullYear()} Instagrand by John Elijah 'Revan' Fajardo
       </div>
     </div>
   );
