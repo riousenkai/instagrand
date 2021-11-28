@@ -37,7 +37,7 @@ const Post = () => {
   const [hidden, setHidden] = useState(
     new Array(post?.comments?.length).fill(true)
   );
-  let date = new Date()
+  let date = new Date();
 
   useEffect(() => {
     dispatch(postInfo(+postId));
@@ -360,6 +360,7 @@ const Post = () => {
                 placeholder="Add a comment..."
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
+                maxLength="300"
               />
               <div
                 className="pp-submit"

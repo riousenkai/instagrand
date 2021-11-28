@@ -342,6 +342,7 @@ const Home = () => {
                       className="post-comment-input"
                       value={inputs[i]}
                       onChange={(e) => update(e, i)}
+                      maxLength="300"
                     />
                     <div
                       className="post-submit-comment"
