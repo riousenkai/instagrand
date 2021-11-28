@@ -1,15 +1,15 @@
 .prof-main {
   padding-top: 85px;
   margin: 0 auto;
-  padding-right: 25%;
-  padding-left: 25%;
+  /* padding-right: 25%;
+  padding-left: 25%; */
 }
 
 .prof-top {
-  padding-left: 8%;
-  padding-right: 8%;
+  padding-left: 4%;
+  padding-right: 4%;
   margin: 0 auto;
-  max-width: 935px;
+  width: 935px;
   display: flex;
   flex-direction: row;
   gap: 100px;
