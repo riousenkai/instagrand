@@ -167,7 +167,7 @@ const Home = () => {
         <div className="home-main">
           <div className="home-left">
             <div className="home-posts">
-              {followingPosts?.map((post, i) => (
+              {followingPosts?.slice(0, 20).map((post, i) => (
                 <div className="post-card">
                   <div className="post-top">
                     <div className="post-top-left">
