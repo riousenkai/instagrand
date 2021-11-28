@@ -118,6 +118,7 @@
   font-size: 14px;
   color: #262626;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .pp-date {

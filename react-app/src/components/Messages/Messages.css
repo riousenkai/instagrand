@@ -209,6 +209,7 @@
   font-size: 14px;
   color: #262626;
   overflow-wrap: break-word;
+  word-break: break-word;
   min-height: 44px;
 }
 
@@ -232,6 +233,7 @@
   font-size: 14px;
   color: #262626;
   overflow-wrap: break-word;
+  word-break: break-word;
   font-weight: 400;
   min-height: 44px;
 }
@@ -254,6 +256,7 @@
   margin-top: 3px;
   align-content: center;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .msg-box {
