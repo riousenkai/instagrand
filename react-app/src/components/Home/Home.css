@@ -425,6 +425,11 @@
   margin-top: 20px;
   font-size: 11px;
   gap: 2.5px;
+  cursor: pointer;
+}
+
+.home-about > * {
+  color: #c7c7c7;
 }
 
 .h-about {
@@ -432,7 +437,14 @@
   cursor: pointer;
 }
 
+.h-linkedin,
+.h-github {
+  color: #c7c7c7;
+}
+
 .h-copyright {
   color: #c7c7c7;
   cursor: pointer;
+  margin-top: 10px;
+  font-size: 11px;
 }

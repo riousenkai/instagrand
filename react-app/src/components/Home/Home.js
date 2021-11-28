@@ -39,6 +39,7 @@ const Home = () => {
   const [loaded, setLoaded] = useState(
     new Array(followingPosts?.length).fill(false)
   );
+  const date = new Date();
 
   useEffect(() => {
     updateInput(currInput);
@@ -429,9 +430,20 @@ const Home = () => {
                   )}
                 </div>
               </div>
-              <div className="home-about" onClick={() => history.push('/about')}>
-                <div className="h-about">About • </div>
-                <div className="h-copyright">© 2021 INSTAGRAND BY REVAN FAJARDO</div>
+              <div className="home-about">
+                <div className="h-about" onClick={() => history.push("/about")}>
+                  About
+                </div>
+                <div className="about-dot">{" • "}</div>
+                <div className="h-linkedin">Linkedin</div>
+                <div className="about-dot">{" • "}</div>
+                <div className="h-github">GitHub</div>
+              </div>
+              <div
+                className="h-copyright"
+                onClick={() => history.push("/about")}
+              >
+                © {date.getFullYear()} Instagrand by John Elijah 'Revan' Fajardo
               </div>
             </div>
           </div>
