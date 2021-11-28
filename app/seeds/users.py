@@ -8,29 +8,36 @@ def seed_users():
     instagrand = User(
         username='instagrand', email='instagrand@heroku.com', password='instagrandmaster', image_url='https://img.icons8.com/clouds/150/000000/instagram.png', description='Yours To Make', name='Instagrand')
     neb = User(
-        username='nebbb', email='neb@aa.io', password='nebbb', image_url='https://www.philasun.com/wp-content/uploads/2018/09/twitta.png', description='Number 1 student of App Academy', name='Neb')
+        username='nebbb', email='neb@aa.io', password='nebbb', image_url='https://www.philasun.com/wp-content/uploads/2018/09/twitta.png', description='Twitta CEO', name='Neb')
     brandon = User(
         username='brandon', email='brandon@aa.io', password='brandisimo', image_url='http://cdn.gamer-network.net/2019/metabomb/overwatchptrpatch135willbuffreaperandjunkrat.jpg', description='I love Genshin Impact', name='Brandon L'
     )
     hacker = User(
         username='hacker', email='hacker@hacker.com', password='hacking', image_url='https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg', description='I will hack you', name='Cohort Hacker'
     )
-
     tarkin = User(
         username='grand.moff.tarkin', email='grand@moff.com', password='grand', image_url='https://www.denofgeek.com/wp-content/uploads/2018/02/star-wars-grand-moff-tarkin.jpg?resize=768%2C432', description='There is no such thing as a death star', name='Wilhuff Tarkin'
     )
-
     canyon = User(
         username='grand.canyon', email='grand@canyon.com', password='grand123', image_url='https://www.visitgrandcanyon.com/~/media/images/grandcanyon/callouts/visitgrandcanyon-tn-home-canyon-vista.jpg', description='Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon, with its layered bands of red rock revealing millions of years of geological history.', name='Grand Canyon'
     )
-
     creator = User(
         username="creator", email='creator@revan.com', password='creator123420', image_url='https://cdna.artstation.com/p/assets/images/images/036/541/778/large/scott-thumbnail.jpg?1617929132', description='Please see the about page for more information!', name='Creator'
     )
-
     revan = User(
         username='revan', email='revan@revan.com', password='revan123', image_url='https://instagrand-aa.s3.us-east-2.amazonaws.com/revan.jpg', description='I may or may not have created this website.', name='Revan F'
     )
+    ann = User(
+        username="annnnn", email='ann@aa.io', password='annann', image_url='https://res.cloudinary.com/dis83syog/image/upload/v1637629611/Countable/Screen_Shot_2021-11-22_at_8.06.32_PM_sf7msz.png', description="a/A Student", name='Ann'
+    )
+    rockstar = User(
+        username="rockstar.games", email="rockstar@rockstar.com", password='gta123', image_url='https://eskipaper.com/images/rockstar-games-logo-wallpaper-1.jpg', description="Creator of Grand Theft Auto", name="Grand Theft Auto"
+    )
+    ariana = User(
+        username="grand.e", email="arianagrande@aa.io", password='arianagrande', image_url='https://static.wikia.nocookie.net/disney/images/9/96/Ariana_Grande_at_the_2020_Grammy_Awards.jpg/revision/latest?cb=20210527173655', description="Ariana GRANDe", name="Ariana Grande"
+    )
+
+
 
     db.session.add(demo)
     db.session.add(instagrand)
@@ -41,6 +48,9 @@ def seed_users():
     db.session.add(canyon)
     db.session.add(creator)
     db.session.add(revan)
+    db.session.add(ann)
+    db.session.add(rockstar)
+    db.session.add(ariana)
 
 
     db.session.commit()
