@@ -419,3 +419,20 @@
   font-size: 12px;
   margin-bottom: 5px;
 }
+
+.home-about {
+  display: flex;
+  margin-top: 20px;
+  font-size: 11px;
+  gap: 2.5px;
+}
+
+.h-about {
+  color: #c7c7c7;
+  cursor: pointer;
+}
+
+.h-copyright {
+  color: #c7c7c7;
+  cursor: pointer;
+}

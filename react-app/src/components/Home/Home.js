@@ -429,6 +429,10 @@ const Home = () => {
                   )}
                 </div>
               </div>
+              <div className="home-about" onClick={() => history.push('/about')}>
+                <div className="h-about">About • </div>
+                <div className="h-copyright">© 2021 INSTAGRAND BY REVAN FAJARDO</div>
+              </div>
             </div>
           </div>
         </div>
