@@ -18,6 +18,7 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const date = new Date()
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -158,6 +159,30 @@ const SignUpForm = () => {
         <span onClick={() => history.push("/login")} className="signup-log">
           Log in
         </span>
+      </div>
+      <div className="signup-about">
+        <div className="h-about" onClick={() => history.push("/about")}>
+          About
+        </div>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-linkedin"
+          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          target="_blank"
+        >
+          Linkedin
+        </a>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-github"
+          href="https://github.com/riousenkai"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </div>
+      <div className="s-copyright" onClick={() => history.push("/about")}>
+        © {date.getFullYear()} Instagrand by John Elijah 'Revan' Fajardo
       </div>
     </div>
   );

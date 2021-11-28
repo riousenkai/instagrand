@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .signup-top {
@@ -100,22 +100,44 @@
 }
 
 .signup-submit:disabled {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .signup-bot {
-    width: 350px;
-    height: 70px;
-    background-color: #ffffff;
-    border: 0.5px solid #dbdbdb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    font-size: 14px;
+  width: 350px;
+  height: 70px;
+  background-color: #ffffff;
+  border: 0.5px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 14px;
 }
 
 .signup-log {
-    cursor: pointer;
-    color: #0095f6
+  cursor: pointer;
+  color: #0095f6;
+}
+
+.signup-about {
+  display: flex;
+  font-size: 11px;
+  gap: 2.5px;
+  padding-top: 10px;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.signup-about > * {
+  color: #c7c7c7;
+}
+
+.s-copyright {
+  color: #c7c7c7;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  margin: 0 auto;
+  width: max-content;
 }
