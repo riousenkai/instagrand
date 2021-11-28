@@ -13,7 +13,7 @@ const Options = ({ post }) => {
   const [open, setOpen] = useState(0);
   const dispatch = useDispatch();
   const emoji = useRef(null);
-  const { postId, setPostId, num, setNum } = useModal();
+  const { setPostId, num, setNum } = useModal();
   const user = useSelector((state) => state.session.user);
   const [input, setInput] = useState(post.post.description);
 
