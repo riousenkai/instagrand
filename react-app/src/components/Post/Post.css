@@ -4,6 +4,8 @@
   padding-left: 25%; */
   margin: 0 auto;
   margin-bottom: 40px;
+  min-height: calc(100vh - 50px);
+  position: relative;
 }
 
 .p-main-top {
@@ -272,8 +274,9 @@ span.pp-user {
   margin-top: 20px;
   font-size: 11px;
   gap: 2.5px;
-  cursor: pointer;
-  justify-content: center;
+  /* margin-top: auto !important; */
+  margin: 0 auto;
+  width: max-content;
 }
 
 .post-about > * {
@@ -283,8 +286,9 @@ span.pp-user {
 .p-copyright {
   color: #c7c7c7;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 10px !important;
   font-size: 11px;
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  width: max-content;
 }
