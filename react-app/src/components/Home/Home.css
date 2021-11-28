@@ -440,6 +440,7 @@
 .h-linkedin,
 .h-github {
   color: #c7c7c7;
+  text-decoration: none;
 }
 
 .h-copyright {

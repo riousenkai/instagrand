@@ -435,9 +435,21 @@ const Home = () => {
                   About
                 </div>
                 <div className="about-dot">{" • "}</div>
-                <div className="h-linkedin">Linkedin</div>
+                <a
+                  className="h-linkedin"
+                  href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+                  target="_blank"
+                >
+                  Linkedin
+                </a>
                 <div className="about-dot">{" • "}</div>
-                <div className="h-github">GitHub</div>
+                <a
+                  className="h-github"
+                  href="https://github.com/riousenkai"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
               </div>
               <div
                 className="h-copyright"
