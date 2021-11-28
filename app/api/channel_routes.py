@@ -41,9 +41,7 @@ def remove_channel(id, user_id):
 
     messages = Message.query.filter_by(dm_id=id).all()
 
-    print(f'\n\n\n{messages}\n\n\n')
-
-    if messages:
+    if len(messages) > 0:
         new_notification = Notification(sender=current_user.id, message='deleted your messages with them.', user_id=user_id, link='/messages')
         db.session.add(new_notification)
     db.session.delete(channel)
