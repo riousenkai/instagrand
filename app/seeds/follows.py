@@ -14,6 +14,7 @@ def seed_follows():
     follow9 = Follow(follower_id=8, following_id=2)
     follow10 = Follow(following_id=9, follower_id=2)
     follow11 = Follow(following_id=2, follower_id=9)
+    follow12 = Follow(follower_id=10, following_id=2)
     follow13 = Follow(following_id=3, follower_id=1)
     follow14 = Follow(following_id=3, follower_id=2)
     follow15 = Follow(following_id=4, follower_id=2)
@@ -21,6 +22,12 @@ def seed_follows():
     follow17 = Follow(following_id=6, follower_id=2)
     follow18 = Follow(following_id=7, follower_id=2)
     follow19 = Follow(following_id=8, follower_id=2)
+    follow20 = Follow(following_id=10, follower_id=2)
+    follow21 = Follow(following_id=11, follower_id=2)
+    follow22 = Follow(following_id=11, follower_id=2)
+    follow23 = Follow(following_id=12, follower_id=2)
+    follow24 = Follow(following_id=12, follower_id=2)
+
 
     db.session.add(follow1)
     db.session.add(follow2)
@@ -33,6 +40,7 @@ def seed_follows():
     db.session.add(follow9)
     db.session.add(follow10)
     db.session.add(follow11)
+    db.session.add(follow12)
     db.session.add(follow13)
     db.session.add(follow14)
     db.session.add(follow15)
@@ -40,6 +48,11 @@ def seed_follows():
     db.session.add(follow17)
     db.session.add(follow18)
     db.session.add(follow19)
+    db.session.add(follow20)
+    db.session.add(follow21)
+    db.session.add(follow22)
+    db.session.add(follow23)
+    db.session.add(follow24)
 
     db.session.commit()
 
