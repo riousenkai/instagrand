@@ -11,6 +11,10 @@ def user_exists(form, field):
     if not user:
         raise ValidationError('Email address and password do not match.')
 
+def username_has_space(form, field):
+    username = field.data
+    if ' ' in username:
+        raise ValidationError('Username cannot have spaces.')
 
 def password_matches(form, field):
     # Checking if password matches
@@ -24,6 +28,6 @@ def password_matches(form, field):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    email = StringField('email', validators=[DataRequired(), user_exists, username_has_space])
     password = StringField('password', validators=[
                            DataRequired(), password_matches])

@@ -26,21 +26,24 @@ def username_exists(form, field):
     elif len(username) < 4:
         raise ValidationError('A username must have at least 4 characters.')
 
-def password_too_short(form, field):
+def username_has_space(form, field):
+    username = field.data
+    if ' ' in username:
+        raise ValidationError('Username cannot have spaces.')
 
+def password_too_short(form, field):
     password = field.data
     if len(password) < 4:
         raise ValidationError('Password must be at least four characters long.')
 
 def name_too_long(form, field):
-
     name = field.data
     if len(name) > 40:
         raise ValidationError('Full Name cannot be over 40 characters. Please use a nickname.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
+        'username', validators=[DataRequired(), username_exists, username_has_space])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired(), password_too_short])
     name = StringField('name', validators=[DataRequired(), name_too_long])

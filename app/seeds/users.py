@@ -34,7 +34,7 @@ def seed_users():
         username="rockstar.games", email="rockstar@rockstar.com", password='gta123', image_url='https://eskipaper.com/images/rockstar-games-logo-wallpaper-1.jpg', description="Creator of Grand Theft Auto", name="Grand Theft Auto"
     )
     ariana = User(
-        username="grand.e", email="arianagrande@aa.io", password='arianagrande', image_url='https://static.wikia.nocookie.net/disney/images/9/96/Ariana_Grande_at_the_2020_Grammy_Awards.jpg/revision/latest?cb=20210527173655', description="Ariana GRANDe", name="Ariana Grande"
+        username="grand.e", email="arianagrande@aa.io", password='arianagrande', image_url='https://upload.wikimedia.org/wikipedia/commons/d/dd/Ariana_Grande_Grammys_Red_Carpet_2020.png', description="Ariana GRANDe", name="Ariana Grande"
     )
 
 
