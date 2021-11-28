@@ -2,10 +2,16 @@ const About = () => {
   return (
     <div className="prof-main">
       <div className="prof-top">
-        <img
-          className="prof-img"
-          src="https://avatars.githubusercontent.com/u/82624619?s=400&v=4"
-        />
+        <a
+          style={{ height: "150px" }}
+          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          target="_blank"
+        >
+          <img
+            className="prof-img"
+            src="https://avatars.githubusercontent.com/u/82624619?s=400&v=4"
+          />
+        </a>
         <div className="prof-top-right">
           <div className="prof-top-top">
             <div className="prof-name">John Elijah 'Revan' Fajardo</div>
