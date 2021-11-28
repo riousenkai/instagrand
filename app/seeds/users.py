@@ -36,7 +36,7 @@ def seed_users():
     ariana = User(
         username="grand.e", email="arianagrande@aa.io", password='arianagrande', image_url='https://upload.wikimedia.org/wikipedia/commons/d/dd/Ariana_Grande_Grammys_Red_Carpet_2020.png', description="Ariana GRANDe", name="Ariana Grande"
     )
-
+    
 
 
     db.session.add(demo)
