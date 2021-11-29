@@ -11,6 +11,13 @@ def seed_posts():
     post6 = Post(user_id=1, media_url='https://www.liveabout.com/thmb/uTB3L4WlPJpu3DRLLQB2N1A6CRA=/1299x1299/smart/filters:no_upscale()/Clone-Warriors_ACW-IA-15137_L_8x10-56a839265f9b58b7d0f1a639.jpg', description='Star Wars: Grand Army of the Republic', createdAt=datetime.now())
     post7 = Post(user_id=14, media_url='https://i.imgur.com/nFgeUhK.png', description='What a grand time going to EDC!', createdAt=datetime.now())
     post8 = Post(user_id=14, media_url='https://i.imgur.com/1wdbnNf.png', description='Amazing view.', createdAt=datetime.now())
+    post9 = Post(user_id=9, media_url='https://i.imgur.com/vomK1D5.jpg', description='My next Gundam kit', createdAt=datetime.now())
+    post10 = Post(user_id=9, media_url='https://i.imgur.com/IGmthKs.jpg', description='I was actually in Star Wars', createdAt=datetime.now())
+    post11 = Post(user_id=9, media_url='https://i.imgur.com/zyyvDkT.jpg', description="You can tell I don't play", createdAt=datetime.now())
+    post12 = Post(user_id=9, media_url='https://i.imgur.com/IOYjKXM.jpg?5', description='Was the Green Ranger for Halloween a while back', createdAt=datetime.now())
+    post13 = Post(user_id=9, media_url='https://i.imgur.com/CDA2VwN.jpg', description='Got my picture taken by Insomniac during EDC. They said I hold my flag well.', createdAt=datetime.now())
+
+    # post = Post(user_id=, media_url=, description=, createdAt=datetime.now())
 
     db.session.add(post3)
     db.session.add(post1)
@@ -20,6 +27,11 @@ def seed_posts():
     db.session.add(post6)
     db.session.add(post7)
     db.session.add(post8)
+    db.session.add(post9)
+    db.session.add(post10)
+    db.session.add(post11)
+    db.session.add(post12)
+    db.session.add(post13)
 
     db.session.commit()
 
