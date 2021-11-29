@@ -16,6 +16,11 @@ def seed_posts():
     post11 = Post(user_id=9, media_url='https://i.imgur.com/zyyvDkT.jpg', description="You can tell I don't play", createdAt=datetime.now())
     post12 = Post(user_id=9, media_url='https://i.imgur.com/IOYjKXM.jpg?5', description='Was the Green Ranger for Halloween a while back', createdAt=datetime.now())
     post13 = Post(user_id=9, media_url='https://i.imgur.com/CDA2VwN.jpg', description='Got my picture taken by Insomniac during EDC. They said I hold my flag well.', createdAt=datetime.now())
+    post14 = Post(user_id=3, media_url='https://i.imgur.com/zNDs3Li.jpg', description='Jett from Valorant', createdAt=datetime.now())
+    post15 = Post(user_id=3, media_url='https://i.imgur.com/uQ1pQte.jpg', description='Finally saw Shang-Chi after @revan telling me to watch it for the 1000th time', createdAt=datetime.now())
+    # post16 = Post(user_id=3, media_url=, description=, createdAt=datetime.now())
+    # post17 = Post(user_id=4, media_url=, description=, createdAt=datetime.now())
+
 
     # post = Post(user_id=, media_url=, description=, createdAt=datetime.now())
 
