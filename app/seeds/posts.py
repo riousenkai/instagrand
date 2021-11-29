@@ -15,7 +15,7 @@ def seed_posts():
     post10 = Post(user_id=9, media_url='https://i.imgur.com/IGmthKs.jpg', description='I was actually in Star Wars', createdAt=datetime.now())
     post11 = Post(user_id=9, media_url='https://i.imgur.com/zyyvDkT.jpg', description="You can tell I don't play", createdAt=datetime.now())
     post12 = Post(user_id=10, media_url='https://i.imgur.com/8iGyFn2.jpg', description='Piano at the park', createdAt=datetime.now())
-    post13 = Post(user_id=14, media_url='https://i.imgur.com/nFgeUhK.png', description='What a grand time going to EDC!', createdAt=datetime.now())
+    post13 = Post(user_id=14, media_url='https://i.imgur.com/nFgeUhK.png?1', description='What a grand time going to EDC!', createdAt=datetime.now())
     post14 = Post(user_id=3, media_url='https://i.imgur.com/zNDs3Li.jpg', description='Jett from Valorant', createdAt=datetime.now())
     post15 = Post(user_id=3, media_url='https://i.imgur.com/uQ1pQte.jpg', description='Finally saw Shang-Chi after @revan telling me to watch it for the 1000th time', createdAt=datetime.now())
     post16 = Post(user_id=12, media_url='https://i.imgur.com/LxYLBeM.jpg', description='Thinking of my crush, @revan', createdAt=datetime.now())
