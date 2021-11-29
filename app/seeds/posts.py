@@ -9,6 +9,8 @@ def seed_posts():
     post4 = Post(user_id=9, media_url='https://i.imgur.com/QCSsHpt.jpg', description='Go Chicago Bears!', createdAt=datetime.now())
     post5 = Post(user_id=9, media_url='https://i.imgur.com/PC48tcb.jpg', description='Going here after a/A graduation.', createdAt=datetime.now())
     post6 = Post(user_id=1, media_url='https://static.wikia.nocookie.net/starwars/images/6/68/GrandArmyoftheRepublic-BF.jpg', description='Star Wars: Grand Army of the Republic', createdAt=datetime.now())
+    post7 = Post(user_id=14, media_url='https://i.imgur.com/nFgeUhK.png', description='What a grand time going to EDC!', createdAt=datetime.now())
+    post8 = Post(user_id=14, media_url='https://i.imgur.com/1wdbnNf.png', description='Amazing view.', createdAt=datetime.now())
 
     db.session.add(post3)
     db.session.add(post1)
@@ -16,6 +18,8 @@ def seed_posts():
     db.session.add(post4)
     db.session.add(post5)
     db.session.add(post6)
+    db.session.add(post7)
+    db.session.add(post8)
 
     db.session.commit()
 

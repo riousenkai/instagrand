@@ -36,7 +36,12 @@ def seed_users():
     ariana = User(
         username="grand.e", email="arianagrande@aa.io", password='arianagrande', image_url='https://upload.wikimedia.org/wikipedia/commons/d/dd/Ariana_Grande_Grammys_Red_Carpet_2020.png', description="Ariana GRANDe", name="Ariana Grande"
     )
-    
+    andrew = User(
+        username="andrew.codes", email="andrew@aa.io", password='andrew123', image_url='https://cdn.discordapp.com/attachments/857407992572018728/901251930465108038/Brad_with_Hair2.png', description="a/A Student", name="Andrew F"
+    )
+    david = User(
+        username='daeviid', email="davidv@aa.io", password="david123", image_url="https://i.imgur.com/TQKRZRL.png", description='a/A student', name="David L"
+    )
 
 
     db.session.add(demo)
@@ -51,7 +56,8 @@ def seed_users():
     db.session.add(ann)
     db.session.add(rockstar)
     db.session.add(ariana)
-
+    db.session.add(andrew)
+    db.session.add(david)
 
     db.session.commit()
 

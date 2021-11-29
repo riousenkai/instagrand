@@ -24,9 +24,11 @@ def seed_follows():
     follow19 = Follow(following_id=8, follower_id=2)
     follow20 = Follow(following_id=10, follower_id=2)
     follow21 = Follow(following_id=11, follower_id=2)
-    follow22 = Follow(following_id=11, follower_id=2)
-    follow23 = Follow(following_id=12, follower_id=2)
+    follow22 = Follow(following_id=2, follower_id=11)
+    follow23 = Follow(following_id=2, follower_id=12)
     follow24 = Follow(following_id=12, follower_id=2)
+    follow25 = Follow(following_id=2, follower_id=13)
+    follow26 = Follow(following_id=13, follower_id=2)
 
 
     db.session.add(follow1)
