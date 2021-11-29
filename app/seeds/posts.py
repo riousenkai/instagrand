@@ -27,7 +27,7 @@ def seed_posts():
     post22 = Post(user_id=7, media_url='https://i.imgur.com/eKbvLY6.jpg', description='Come experience this view live. Go visit the Grand Canyon!', createdAt=datetime.now())
     post23 = Post(user_id=8, media_url='https://i.imgur.com/DJQv5i5.jpg', description='Funko', createdAt=datetime.now())
     post24 = Post(user_id=10, media_url='https://cdn.discordapp.com/attachments/876571177529790485/914739206344048700/5EF0ECD9-E0A6-4AC1-9FA8-8D7745A73A92.jpg', description='Yes', createdAt=datetime.now())
-    post25 = Post(user_id=10, media_url='https://i.imgur.com/WiHVYON.jpg', description='This is not what I meant when I said Europe', createdAt=datetime.now())
+    post25 = Post(user_id=10, media_url='https://i.imgur.com/8iGyFn2.jpg', description='Piano at the park', createdAt=datetime.now())
     post26 = Post(user_id=11, media_url='https://i.imgur.com/9sxGzGX.jpg', description="This game is old but we're still making money off of this so no GTA 6 for you...", createdAt=datetime.now())
     post27 = Post(user_id=12, media_url='https://i.imgur.com/LxYLBeM.jpg', description='Thinking of my crush, @revan', createdAt=datetime.now())
     post28 = Post(user_id=13, media_url='https://i.imgur.com/AjdDtGb.jpg', description='Not going to win this year because Revan is tearing it up at fantasy football', createdAt=datetime.now())

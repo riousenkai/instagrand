@@ -49,14 +49,13 @@ def seed_comments():
     comment44 = Comment(user_id=13, post_id=24, description="Yes?", createdAt=datetime.now())
     comment45 = Comment(user_id=10, post_id=24, description="Yup", createdAt=datetime.now())
     comment46 = Comment(user_id=4, post_id=24, description="This Rocks! -The Rock", createdAt=datetime.now())
-    comment47 = Comment(user_id=9, post_id=25, description="WHOOPS", createdAt=datetime.now())
+    comment47 = Comment(user_id=9, post_id=25, description="Did he bring his own piano to the park?", createdAt=datetime.now())
     comment48 = Comment(user_id=9, post_id=26, description="Release a new GTA soon?", createdAt=datetime.now())
     comment49 = Comment(user_id=9, post_id=27, description="I have a girlfriend and you are married... Chill", createdAt=datetime.now())
     comment50 = Comment(user_id=9, post_id=28, description="It's okay you'll win sometime in the future like maybe 2030", createdAt=datetime.now())
     comment51 = Comment(user_id=13, post_id=28, description="You really think so?", createdAt=datetime.now())
     comment52 = Comment(user_id=9, post_id=28, description="Nope", createdAt=datetime.now())
     comment53 = Comment(user_id=4, post_id=29, description="I live so close to you!", createdAt=datetime.now())
-
 
 
     db.session.add(comment1)
