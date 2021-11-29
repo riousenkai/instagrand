@@ -13,7 +13,7 @@ def seed_users():
         username='brandon', email='brandon@aa.io', password='brandisimo', image_url='http://cdn.gamer-network.net/2019/metabomb/overwatchptrpatch135willbuffreaperandjunkrat.jpg', description='I love Genshin Impact', name='Brandon L'
     )
     hacker = User(
-        username='hacker', email='hacker@hacker.com', password='hacking', image_url='https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg', description='I will hack you', name='Cohort Hacker'
+        username='hacker', email='hacker@hacker.com', password='hacking', image_url='https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg', description='I will hack you', name='Master Hacker'
     )
     tarkin = User(
         username='grand.moff.tarkin', email='grand@moff.com', password='grand', image_url='https://www.denofgeek.com/wp-content/uploads/2018/02/star-wars-grand-moff-tarkin.jpg?resize=768%2C432', description='There is no such thing as a death star', name='Wilhuff Tarkin'
