@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { createMessage, getChannelMessages } from "../../store/message";
 import { useModal } from "../../context/UseModal";
 import { Modal } from "../../context/Modal";
@@ -10,6 +11,7 @@ import ChannelDelete from "./ChannelDelete";
 let socket;
 
 const Messages = ({ user, channelId }) => {
+  const history = useHistory()
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
   const [input, setInput] = useState("");
@@ -162,7 +164,7 @@ const Messages = ({ user, channelId }) => {
                 <>
                   {msg.sender_id === user?.id ? (
                     <div className="channel-msgs-rec">
-                      <img className="msg-left-img" src={user?.image_url} />
+                      <img className="msg-left-img" src={user?.image_url} onClick={() => history.push(`/users/${user?.id}`)} />
                       <div className="msg-content">
                         {msg.message.split("\n").map((sentence) => (
                           <>
@@ -190,7 +192,7 @@ const Messages = ({ user, channelId }) => {
               <>
                 {msg.sender_id === user?.id ? (
                   <div className="channel-msgs-rec">
-                    <img className="msg-left-img" src={user?.image_url} />
+                    <img className="msg-left-img" src={user?.image_url} onClick={() => history.push(`/users/${user?.id}`)} />
                     <div className="msg-content">
                       {msg.message.split("\n").map((sentence) => (
                         <>
