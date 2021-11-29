@@ -59,6 +59,8 @@ def seed_follows():
     db.session.add(follow24)
     db.session.add(follow25)
     db.session.add(follow26)
+    db.session.add(follow27)
+    db.session.add(follow28)
 
 
     db.session.commit()
