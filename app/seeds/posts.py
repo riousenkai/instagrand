@@ -7,7 +7,7 @@ def seed_posts():
     post2 = Post(user_id=1, media_url='https://sneakerbardetroit.com/wp-content/uploads/2021/09/Gundam-Nike-SB-Dunk-High-DH7717-100-Release-Date-Price-4-1068x714.jpg', description='Sold out.', createdAt=datetime.now())
     post3 = Post(user_id=2, media_url='https://cdn.shopify.com/s/files/1/1501/7282/products/EDC2020-All-Are-Welcome-Pin-f_9e8a765e-2706-47d9-9023-400fb4ad15ef_2048x2048.jpg?v=1588960867', description='Welcome! Follow users to populate your feed.', createdAt=datetime.now())
     post4 = Post(user_id=9, media_url='https://i.imgur.com/QCSsHpt.jpg', description='Go Chicago Bears!', createdAt=datetime.now())
-    post5 = Post(user_id=9, media_url='https://i.imgur.com/PC48tcb.jpg', description='Going here after a/A graduation.', createdAt=datetime.now())
+    post5 = Post(user_id=9, media_url='https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disneyland/attractions/disneyland/sleeping-beauty-castle-walkthrough/sleeping-beauty-castle-exterior-16x9.jpg?1593556896598', description='Going here after a/A graduation.', createdAt=datetime.now())
     post6 = Post(user_id=1, media_url='https://static.wikia.nocookie.net/starwars/images/6/68/GrandArmyoftheRepublic-BF.jpg', description='Star Wars: Grand Army of the Republic', createdAt=datetime.now())
     post7 = Post(user_id=14, media_url='https://i.imgur.com/nFgeUhK.png', description='What a grand time going to EDC!', createdAt=datetime.now())
     post8 = Post(user_id=14, media_url='https://i.imgur.com/1wdbnNf.png', description='Amazing view.', createdAt=datetime.now())
