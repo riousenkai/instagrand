@@ -45,6 +45,10 @@ const Post = () => {
   }, [postId, user, load]);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [postId])
+
+  useEffect(() => {
     dispatch(findPosts(post?.user?.id));
   }, [post]);
 

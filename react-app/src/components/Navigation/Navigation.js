@@ -26,6 +26,10 @@ const Navigation = () => {
   }, [input]);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [path])
+
+  useEffect(() => {
     setPick(null);
     setAcct(null);
     setCurrUser(null);
