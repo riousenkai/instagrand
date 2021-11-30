@@ -1,6 +1,4 @@
-<a href="https://instagrand.herokuapp.com/" target="_blank"><img src="https://fontmeme.com/permalink/211117/be912bd83fb2b6a44d50d0b7b4562822.png" align="center" /></a>
-
-![Preview](https://i.imgur.com/gdCVBLw.png)
+<a href="https://instagrand.herokuapp.com/" target="_blank" align="center"><img src="https://fontmeme.com/permalink/211130/921f570189966118793c108917a437a1.png" align="center" /></a>
 
 <p align="center">(Best viewed in 1920 x 1080 resolution)</p>
 
