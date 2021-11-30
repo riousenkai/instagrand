@@ -1,10 +1,10 @@
 <a href="https://instagrand.herokuapp.com/" target="_blank"><h1 align="center">Instagrand</h1></a>
 
-![Preview](https://i.imgur.com/l5TCYYh.png?2)
+![Preview](https://i.imgur.com/gdCVBLw.png)
 
-(Best viewed in 1920 x 1080 resolution)
+<p align="center">(Best viewed in 1920 x 1080 resolution)</p>
 
-Instagrand is an Instagram clone that focuses on your grand moments.
+<p align="center">Instagrand is an Instagram clone that focuses on your grand moments.</p>
 
 ### Languages/Libraries/Technologies Used
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
