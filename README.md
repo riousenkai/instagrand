@@ -12,17 +12,27 @@ Instagrand is an Instagram clone that focuses on everything grand.
   * Log in, sign up or sign in as a demo user.
 * [Home Page](https://instagrand.herokuapp.com/home)
   * View posts that your followed users posted.
-  * Comment on a user's post.
+  * Like and comment on a user's post.
 * [User Profile Page](https://instagrand.herokuapp.com/users/1)
   * View a specific user's profile information.
   * Follow or unfollow a user.
   * View all posts made by the user.
-* [Navigation Bar](https://instagrand.herokuapp.com/posts/1)
+* [User Post Page](https://instagrand.herokuapp.com/posts/1)
+  * View a specific post's complete description and comments.
+  * Like and comment on a user's post.
+* [Messaging Page](https://instagrand.herokuapp.com/messages)
+  * Fully functional live messaging.
+  * Message followers and users that you follow.
+  * Deleting a conversation notifies the other user.
+* [Navigation Bar](https://instagrand.herokuapp.com)
   * Search users on the search bar.
-  * Navigation links for home, user profile and creating a new post.
+  * Navigation links for home, user profile, notifications, messaging and creating a new post.
 * [Search](https://instagrand.herokuapp.com/)
   * Live search in navigation bar.
   * Search results return users.
+* [Notifications](https://instagrand.herokuapp.com/)
+  * Receive notifications when another user follows you, comments on your post and/or likes your post.
+  * Icon is red when you have an unread notification.
 * [About Page](https://instagrand.herokuapp.com/about)
   * Page about the creator of the project.
 
