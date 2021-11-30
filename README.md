@@ -1,4 +1,4 @@
-## [Instagrand](https://instagrand.herokuapp.com/)
+<p align="center"> ## [Instagrand](https://instagrand.herokuapp.com/) </p>
 
 ![Preview](https://i.imgur.com/l5TCYYh.png?2)
 
