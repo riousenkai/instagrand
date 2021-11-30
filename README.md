@@ -1,4 +1,4 @@
-<a href="https://instagrand.herokuapp.com/" target="_blank"><h1 align="center">Instagrand</h1></a>
+<a href="https://instagrand.herokuapp.com/" target="_blank"><img src="https://fontmeme.com/permalink/211117/be912bd83fb2b6a44d50d0b7b4562822.png" align="center" /></a>
 
 ![Preview](https://i.imgur.com/gdCVBLw.png)
 
