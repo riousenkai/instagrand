@@ -162,7 +162,7 @@ const Post = () => {
         <div className="p-card">
           <img
             className="pp-img-load"
-            src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
           />
           <img
             className="pp-img hidden"
@@ -396,7 +396,7 @@ const Post = () => {
                       >
                         <img
                           className={`p-img-loading pl-img-${i} `}
-                          src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif"
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
                         />
                         <img
                           className={`p-img p-img-${i} hidden`}
