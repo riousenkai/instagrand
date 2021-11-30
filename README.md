@@ -1,4 +1,4 @@
-<p align="center><a href="https://instagrand.herokuapp.com/" target="_blank" align="center"><img src="https://fontmeme.com/permalink/211130/921f570189966118793c108917a437a1.png" align="center" /></a></p>
+<p align="center><img src="https://fontmeme.com/permalink/211130/921f570189966118793c108917a437a1.png" align="center" /></p>
 
 ![Preview](https://i.imgur.com/gdCVBLw.png)
 
