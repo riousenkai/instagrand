@@ -1,6 +1,6 @@
 ## [Instagrand](https://instagrand.herokuapp.com/)
 
-![Preview](https://i.imgur.com/l5TCYYh.png?1)
+![Preview](https://i.imgur.com/l5TCYYh.png?2)
 
 (Best viewed in 1920 x 1080 resolution)
 
