@@ -1,35 +1,29 @@
-## [Instagrand](https://github.com/riousenkai/instabrand)
+## [Instagrand](https://instagrand.herokuapp.com/)
 
 (Best viewed in 1920 x 1080 resolution)
 
 Instagrand is an Instagram clone that focuses on everything grand.
 
 ### Languages/Libraries Used
-* React
-* Javascript
-* Python
-* JSX
-* Flask
-* CSS
-
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ### Features (All pages outside of the splash page require a user to log in)
-* [Splash Page](#)
+* [Splash Page](https://instagrand.herokuapp.com/)
   * Log in, sign up or sign in as a demo user.
-* [Home Page](#)
+* [Home Page](https://instagrand.herokuapp.com/home)
   * View posts that your followed users posted.
   * Comment on a user's post.
-* [User Profile Page](#)
+* [User Profile Page](https://instagrand.herokuapp.com/users/1)
   * View a specific user's profile information.
   * Follow or unfollow a user.
   * View all posts made by the user.
-* [Navigation Bar](#)
+* [Navigation Bar](https://instagrand.herokuapp.com/posts/1)
   * Search users on the search bar.
   * Navigation links for home, user profile and creating a new post.
-* [Search](#)
+* [Search](https://instagrand.herokuapp.com/)
   * Live search in navigation bar.
   * Search results return users.
-* [About Page](#)
+* [About Page](https://instagrand.herokuapp.com/about)
   * Page about the creator of the project.
 
 
