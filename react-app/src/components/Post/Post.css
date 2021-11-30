@@ -164,6 +164,7 @@
   color: #262626;
   font-weight: 500;
   cursor: pointer;
+  width: max-content;
 }
 
 .pp-like-me {
