@@ -1,5 +1,7 @@
 ## [Instagrand](https://instagrand.herokuapp.com/)
 
+![Preview](https://i.imgur.com/l5TCYYh.png?1)
+
 (Best viewed in 1920 x 1080 resolution)
 
 Instagrand is an Instagram clone that focuses on your grand moments.
