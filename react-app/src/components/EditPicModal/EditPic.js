@@ -9,8 +9,19 @@ const EditPic = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const { setNum, setProfNum } = useModal();
+  const [src, setSrc] = useState("");
 
   const submit = (e) => {
+    const fileType = ["gif", "jpeg", "jpg", "png"];
+
+    const filtered = fileType.find((item) =>
+      e.target.files[0].type.includes(item)
+    );
+
+    if (!filtered) {
+      return window.alert("Please provide an image file!");
+    }
+
     const fileForm = {
       file: e.target.files[0],
     };
@@ -72,6 +83,7 @@ const EditPic = () => {
         <div className="edit-option3" onClick={() => setNum(0)}>
           Cancel
         </div>
+        <img src={src} />
       </div>
     </>
   );
