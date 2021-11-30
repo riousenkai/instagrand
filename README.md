@@ -1,5 +1,7 @@
 <a href="https://instagrand.herokuapp.com/" target="_blank" align="center"><img src="https://fontmeme.com/permalink/211130/921f570189966118793c108917a437a1.png" align="center" /></a>
 
+![Preview](https://i.imgur.com/gdCVBLw.png)
+
 <p align="center">(Best viewed in 1920 x 1080 resolution)</p>
 
 <p align="center">Instagrand is an Instagram clone that focuses on your grand moments.</p>
