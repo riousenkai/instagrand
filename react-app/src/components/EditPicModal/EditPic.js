@@ -9,7 +9,6 @@ const EditPic = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const { setNum, setProfNum } = useModal();
-  const [src, setSrc] = useState("");
 
   const submit = (e) => {
     const fileType = ["gif", "jpeg", "jpg", "png"];
@@ -83,7 +82,6 @@ const EditPic = () => {
         <div className="edit-option3" onClick={() => setNum(0)}>
           Cancel
         </div>
-        <img src={src} />
       </div>
     </>
   );
