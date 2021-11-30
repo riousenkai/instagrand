@@ -1,4 +1,4 @@
-<a href="https://instagrand.herokuapp.com/"><h1 align="center">Instagrand</h1></a>
+<a href="https://instagrand.herokuapp.com/" target="_blank"><h1 align="center">Instagrand</h1></a>
 
 ![Preview](https://i.imgur.com/l5TCYYh.png?2)
 
