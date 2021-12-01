@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 const About = () => {
+  useEffect(() => {
+    document.title = "About John Elijah 'Revan' Fajardo";
+  }, []);
+
   return (
     <div className="prof-main">
       <div className="prof-top">
@@ -49,10 +55,7 @@ const About = () => {
           href="https://github.com/riousenkai"
           target="_blank"
         >
-          <img
-            className="p-img"
-            src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU"
-          />
+          <img className="p-img" src="https://i.imgur.com/5btn6RE.png" />
           <div className="p-hover">
             <div className="p-like-ct">GitHub</div>
           </div>
@@ -62,10 +65,7 @@ const About = () => {
           href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
           target="_blank"
         >
-          <img
-            className="p-img"
-            src="https://www.simonzon.com/wp-content/uploads/2021/06/LinkedIn.jpg"
-          />
+          <img className="p-img" src="https://i.imgur.com/Z9M0KmM.jpg" />
           <div className="p-hover">
             <div className="p-like-ct">LinkedIn</div>
           </div>
@@ -77,7 +77,7 @@ const About = () => {
         >
           <img
             className="p-img"
-            src="https://gundamhangar.com/_next/static/images/gundam-icon-26-0e687f793950511687e038b7ade3b2d0.png"
+            src="https://i.imgur.com/4iWhnub.png"
           />
           <div className="p-hover">
             <div className="p-like-ct">Gundam Hunt</div>
@@ -90,7 +90,7 @@ const About = () => {
         >
           <img
             className="p-img"
-            src="https://thumbs.dreamstime.com/b/image-bitcoin-black-background-bitcoin-107991145.jpg"
+            src="https://i.imgur.com/LWVvsFG.jpg"
           />
           <div className="p-hover">
             <div className="p-like-ct">Coin Flip</div>
