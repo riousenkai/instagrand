@@ -24,6 +24,7 @@ const Settings = () => {
 
   useEffect(() => {
     dispatch(authenticate());
+    document.title = 'Edit Profile • Instagrand'
   }, []);
 
   useEffect(() => {
