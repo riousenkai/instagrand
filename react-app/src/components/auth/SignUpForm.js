@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -19,6 +19,10 @@ const SignUpForm = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const date = new Date()
+
+  useEffect(() => {
+    document.title = 'Sign Up • Instagrand'
+  }, [])
 
   const onSignUp = async (e) => {
     e.preventDefault();

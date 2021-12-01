@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -16,6 +16,10 @@ const LoginForm = () => {
   const { setNum } = useModal();
   const dispatch = useDispatch();
   const date = new Date();
+
+  useEffect(() => {
+    document.title = 'Login • Instagrand'
+  }, [])
 
   const onLogin = async (e) => {
     e.preventDefault();
