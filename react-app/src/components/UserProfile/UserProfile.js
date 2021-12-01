@@ -22,8 +22,10 @@ const UserProfile = () => {
   const follows = useSelector((state) => state.follow);
 
   useEffect(() => {
-    document.title = `${user?.name} (@${user?.username}) • Instagrand Photos`
-  }, [user])
+    if (user) {
+      document.title = `${user?.name} (@${user?.username}) • Instagrand Photos`;
+    }
+  }, [user]);
 
   useEffect(() => {
     if (!userId) {

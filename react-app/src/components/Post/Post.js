@@ -46,7 +46,9 @@ const Post = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${post?.user?.name} on Instagrand: "${post?.post?.description}""`;
+    if (post) {
+      document.title = `${post?.user?.name} on Instagrand: "${post?.post?.description}""`;
+    }
   }, [postId, post]);
 
   useEffect(() => {
