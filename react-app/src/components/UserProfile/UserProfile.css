@@ -307,6 +307,7 @@
   object-fit: cover;
   border-radius: 50%;
   margin: 32px 16px 16px;
+  cursor: pointer;
 }
 
 .del-user-title {
@@ -317,4 +318,46 @@
   color: #262626;
   margin: -4px 0px -5px;
   font-weight: 300;
+  margin-top: 16px;
+  margin-bottom: 2px;
+}
+
+.del-user-desc {
+  font-size: 14px;
+  color: #8e8e8e;
+  margin: -3px 0px -4px;
+  padding: 16px 0px 0px;
+  width: 336px;
+  height: 52px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.del-user-conf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 48px;
+  padding: 4px 8px;
+  border-top: 0.5px solid #dbdbdb;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ed4956;
+  font-weight: 500;
+}
+
+.del-user-cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 48px;
+  padding: 4px 8px;
+  border-top: 0.5px solid #dbdbdb;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #262626;
 }

@@ -65,7 +65,11 @@ const FollowerModal = ({ followers, userId }) => {
                   </button>
                   {unfollow2 === user.id && (
                     <Modal onClose={() => setUnfollow2(0)}>
-                      <DeleteFollower user={unfollowed} />
+                      <DeleteFollower
+                        user={unfollowed}
+                        setUnfollow2={setUnfollow2}
+                        setLikes={setLikes}
+                      />
                     </Modal>
                   )}
                 </>
