@@ -372,6 +372,7 @@
   color: #262626;
   gap: 3px;
   font-weight: 500;
+  cursor: default;
 }
 
 .prof-line {
