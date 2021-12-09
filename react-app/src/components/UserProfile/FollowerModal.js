@@ -6,6 +6,7 @@ import { Modal } from "../../context/Modal";
 import { useHistory } from "react-router";
 import Unfollow from "./Unfollow";
 import { followUser, findFollows } from "../../store/follow";
+import DeleteFollower from "./DeleteFollower";
 
 const FollowerModal = ({ followers, userId }) => {
   const history = useHistory();
@@ -64,7 +65,7 @@ const FollowerModal = ({ followers, userId }) => {
                   </button>
                   {unfollow2 === user.id && (
                     <Modal onClose={() => setUnfollow2(0)}>
-                      <Unfollow user={unfollowed} />
+                      <DeleteFollower user={unfollowed} />
                     </Modal>
                   )}
                 </>
