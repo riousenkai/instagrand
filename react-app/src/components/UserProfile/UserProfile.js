@@ -10,6 +10,7 @@ import EditPic from "../EditPicModal/EditPic";
 import "./UserProfile.css";
 import { updateUser } from "../../store/user";
 import FollowerModal from "./FollowerModal";
+import FollowingModal from "./FollowingModal";
 
 const UserProfile = () => {
   const history = useHistory();
@@ -111,7 +112,10 @@ const UserProfile = () => {
               <span className="p-ct-bold">{posts[+userId]?.posts.length}</span>{" "}
               {posts[+userId]?.posts.length !== 1 ? "posts" : "post"}
             </div>
-            <div className="prof-posts prof-follows" onClick={() => setLikes(3)}>
+            <div
+              className="prof-posts prof-follows"
+              onClick={() => setLikes(3)}
+            >
               <span className="p-ct-bold">
                 {follows[+userId]?.followers.length}
               </span>{" "}
@@ -127,12 +131,20 @@ const UserProfile = () => {
                 />
               </Modal>
             )}
-            <div className="prof-posts">
+            <div
+              className="prof-posts prof-follows"
+              onClick={() => setLikes(5)}
+            >
               <span className="p-ct-bold">
                 {follows[+userId]?.following.length}
               </span>{" "}
               following
             </div>
+            {likes === 5 && (
+              <Modal onClose={() => setLikes(0)}>
+                <FollowingModal followingPeople={follows[+userId]?.following} />
+              </Modal>
+            )}
           </div>
           <div className="prof-r-name">{user?.name}</div>
           <div className="prof-desc">

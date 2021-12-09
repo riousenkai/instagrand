@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import { close } from "../Likes/LikeIcons";
@@ -7,13 +7,17 @@ import { useHistory } from "react-router";
 import Unfollow from "./Unfollow";
 import { followUser, findFollows } from "../../store/follow";
 
-const FollowingModal = ({ following }) => {
+const FollowingModal = ({ followingPeople }) => {
   const history = useHistory();
   const { setLikes, setUnfollow2, unfollow2 } = useModal();
   const [unfollowed, setUnfollowed] = useState();
   const dispatch = useDispatch();
   const main = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[main?.id]?.following);
+
+  useEffect(() => {
+    dispatch(findFollows(main?.id));
+  }, [main]);
 
   const follow = (id) => {
     dispatch(followUser(id)).then(() => dispatch(findFollows(main?.id)));
@@ -28,8 +32,8 @@ const FollowingModal = ({ following }) => {
         </div>
       </div>
       <div className="likes-bot">
-        {following?.length > 0 &&
-          following?.map((user) => (
+        {followingPeople?.length > 0 &&
+          followingPeople?.map((user) => (
             <div className="likes-card">
               <img
                 className="likes-img"
@@ -52,7 +56,7 @@ const FollowingModal = ({ following }) => {
                 <div className="likes-name">{user.name}</div>
               </div>
               {user.id !== main.id ? (
-                following.find((f) => f.id === user.id) === undefined ? (
+                following?.find((f) => f.id === user.id) === undefined ? (
                   <>
                     <button
                       className="likes-follow"

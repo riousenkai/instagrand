@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/UseModal";
 import { close } from "../Likes/LikeIcons";
@@ -15,6 +15,10 @@ const FollowerModal = ({ followers, userId }) => {
   const dispatch = useDispatch();
   const main = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[main?.id]?.following);
+
+  useEffect(() => {
+    dispatch(findFollows(main?.id));
+  }, [main]);
 
   const follow = (id) => {
     dispatch(followUser(id)).then(() => dispatch(findFollows(main?.id)));
@@ -77,7 +81,7 @@ const FollowerModal = ({ followers, userId }) => {
               ) : (
                 <>
                   {user.id !== main.id ? (
-                    following.find((f) => f.id === user.id) === undefined ? (
+                    following?.find((f) => f.id === user.id) === undefined ? (
                       <>
                         <button
                           className="likes-follow"
