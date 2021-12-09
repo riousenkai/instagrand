@@ -9,13 +9,14 @@ import { useModal } from "../../context/UseModal";
 import EditPic from "../EditPicModal/EditPic";
 import "./UserProfile.css";
 import { updateUser } from "../../store/user";
+import FollowerModal from "./FollowerModal";
 
 const UserProfile = () => {
   const history = useHistory();
   const main = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const { num, setNum, profNum } = useModal();
+  const { num, setNum, profNum, setLikes, likes } = useModal();
   const user = useSelector((state) => state.user.user);
   const [following, setFollowing] = useState(false);
   const posts = useSelector((state) => state.post);
@@ -110,7 +111,7 @@ const UserProfile = () => {
               <span className="p-ct-bold">{posts[+userId]?.posts.length}</span>{" "}
               {posts[+userId]?.posts.length !== 1 ? "posts" : "post"}
             </div>
-            <div className="prof-posts">
+            <div className="prof-posts" onClick={() => setLikes(3)}>
               <span className="p-ct-bold">
                 {follows[+userId]?.followers.length}
               </span>{" "}
@@ -118,6 +119,14 @@ const UserProfile = () => {
                 ? "followers"
                 : "follower"}
             </div>
+            {likes === 3 && (
+              <Modal onClose={() => setLikes(0)}>
+                <FollowerModal
+                  followers={follows[+userId]?.followers}
+                  userId={userId}
+                />
+              </Modal>
+            )}
             <div className="prof-posts">
               <span className="p-ct-bold">
                 {follows[+userId]?.following.length}
