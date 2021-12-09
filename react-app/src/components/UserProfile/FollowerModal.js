@@ -69,6 +69,7 @@ const FollowerModal = ({ followers, userId }) => {
                         user={unfollowed}
                         setUnfollow2={setUnfollow2}
                         setLikes={setLikes}
+                        mainId={main.id}
                       />
                     </Modal>
                   )}

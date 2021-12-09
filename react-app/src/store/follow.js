@@ -56,7 +56,12 @@ export const findSuggestions = () => async (dispatch) => {
 };
 
 export const removeFollower = (id, userId) => async (dispatch) => {
-  const res = await fetch(`/api/follows/remove/${id}`);
+  const res = await fetch(`/api/follows/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   if (res.ok) {
     const data = await res.json();

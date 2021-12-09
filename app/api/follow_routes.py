@@ -86,7 +86,7 @@ def suggestions():
 @follow_routes.route('/remove/<int:id>', methods=['DELETE'])
 def remove_follower(id):
 
-    follower = Follow.query.filter_by(follower_id=id, following_id=current_user.id)
+    follower = Follow.query.filter_by(follower_id=id, following_id=current_user.id).first()
 
     db.session.delete(follower)
     db.session.commit()
