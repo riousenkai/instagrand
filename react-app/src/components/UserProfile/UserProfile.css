@@ -115,7 +115,7 @@
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
   /* grid-gap: 40px; */
-  margin-top: 40px;
+  /* margin-top: 40px; */
   margin-bottom: 40px;
   width: 935px;
   grid-row-gap: 28px;
@@ -360,4 +360,29 @@
   cursor: pointer;
   font-size: 14px;
   color: #262626;
+}
+
+.prof-posts-img {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  font-size: 12px;
+  height: 53px;
+  color: #262626;
+  gap: 3px;
+  font-weight: 500;
+}
+
+.prof-line {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: -1.5px !important;
+  margin-bottom: none;
+  padding-bottom: none;
+  color: #262626;
+  width: 55px;
+  border-bottom: 1.5px solid black;
+  margin: auto;
 }

@@ -11,6 +11,7 @@ import "./UserProfile.css";
 import { updateUser } from "../../store/user";
 import FollowerModal from "./FollowerModal";
 import FollowingModal from "./FollowingModal";
+import { postsIcon } from "../Likes/LikeIcons";
 
 const UserProfile = () => {
   const history = useHistory();
@@ -158,6 +159,8 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+      <div className="prof-line"></div>
+      <div className="prof-posts-img">{postsIcon} POSTS</div>
       <div className="prof-bot">
         {posts[+userId]?.posts.length > 0
           ? posts[+userId]?.posts.map((post, i) => (
