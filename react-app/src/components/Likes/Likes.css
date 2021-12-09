@@ -40,6 +40,7 @@
   min-width: 383px;
   max-width: 400px;
   width: 100%;
+  align-items: center;
 }
 
 .likes-close {

@@ -82,3 +82,12 @@ def suggestions():
     # sorter = sorted(final, key=lambda x:x.id)
 
     return {'final': [user.to_dict() for user in final]}
+
+@follow_routes.route('/remove/<int:id>', methods=['DELETE'])
+def remove_follower(id):
+
+    follower = Follow.query.filter_by(follower_id=id, following_id=current_user.id)
+
+    db.session.delete(follower)
+    db.session.commit()
+    return user(current_user.id)

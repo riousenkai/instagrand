@@ -280,3 +280,11 @@
   text-align: center;
   color: #262626;
 }
+
+.prof-follows {
+  cursor: pointer;
+}
+
+.prof-follows:active {
+  opacity: 0.7;
+}

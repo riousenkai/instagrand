@@ -111,7 +111,7 @@ const UserProfile = () => {
               <span className="p-ct-bold">{posts[+userId]?.posts.length}</span>{" "}
               {posts[+userId]?.posts.length !== 1 ? "posts" : "post"}
             </div>
-            <div className="prof-posts" onClick={() => setLikes(3)}>
+            <div className="prof-posts prof-follows" onClick={() => setLikes(3)}>
               <span className="p-ct-bold">
                 {follows[+userId]?.followers.length}
               </span>{" "}

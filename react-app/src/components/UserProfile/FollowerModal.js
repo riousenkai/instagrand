@@ -51,7 +51,24 @@ const FollowerModal = ({ followers, userId }) => {
                 </div>
                 <div className="likes-name">{user.name}</div>
               </div>
-              {main.id === +userId ? null : (
+              {main.id === +userId ? (
+                <>
+                  <button
+                    className="likes-unfollow"
+                    onClick={() => {
+                      setUnfollowed(user);
+                      setUnfollow2(user.id);
+                    }}
+                  >
+                    Remove
+                  </button>
+                  {unfollow2 === user.id && (
+                    <Modal onClose={() => setUnfollow2(0)}>
+                      <Unfollow user={unfollowed} />
+                    </Modal>
+                  )}
+                </>
+              ) : (
                 <>
                   {user.id !== main.id ? (
                     following.find((f) => f.id === user.id) === undefined ? (
