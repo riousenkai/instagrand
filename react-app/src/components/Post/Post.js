@@ -31,6 +31,7 @@ const Post = () => {
   const [src, setSrc] = useState("");
   const post = useSelector((state) => state.post?.specific);
   const userPosts = useSelector((state) => state.post[post?.user?.id]?.posts);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const user = useSelector((state) => state.session.user);
   const following = useSelector((state) => state.follow[user?.id]?.following);
   const load = useSelector((state) => state.post.following);
@@ -59,6 +60,11 @@ const Post = () => {
     const arr = new Array(post?.comments.length).fill(true);
     setHidden(arr);
   }, [post?.comments]);
+
+  useEffect(() => {
+    const filtered = userPosts?.filter((post) => post.post.id !== +postId);
+    setFilteredPosts(filtered);
+  }, [userPosts]);
 
   const RemoveOutside = (ref) => {
     useEffect(() => {
@@ -382,7 +388,7 @@ const Post = () => {
       {post?.user?.id !== user?.id ? (
         <div className="p-bot">
           <div className="p-bot-desc">
-            {userPosts?.length > 1
+            {filteredPosts?.length > 1
               ? "More posts from "
               : "No additional posts from "}
             <span
@@ -393,8 +399,8 @@ const Post = () => {
             </span>
           </div>
           <div className="pp-prof-bot">
-            {userPosts?.length > 0
-              ? userPosts?.slice(0, 6).map((post, i) => (
+            {filteredPosts?.length > 0
+              ? filteredPosts?.slice(0, 6).map((post, i) => (
                   <>
                     {post.post.id !== +postId ? (
                       <div
