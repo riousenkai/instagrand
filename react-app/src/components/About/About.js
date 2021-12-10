@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { aboutIcon } from "../Likes/LikeIcons";
 
 const About = () => {
   useEffect(() => {
@@ -49,6 +50,8 @@ const About = () => {
           </div>
         </div>
       </div>
+      <div className="prof-line"></div>
+      <div className="prof-posts-img">{aboutIcon} LINKS</div>
       <div className="prof-bot">
         <a
           className="post-c"
@@ -75,10 +78,7 @@ const About = () => {
           href="http://gundam-hunt.herokuapp.com/"
           target="_blank"
         >
-          <img
-            className="p-img"
-            src="https://i.imgur.com/4iWhnub.png"
-          />
+          <img className="p-img" src="https://i.imgur.com/4iWhnub.png" />
           <div className="p-hover">
             <div className="p-like-ct">Gundam Hunt</div>
           </div>
@@ -88,10 +88,7 @@ const About = () => {
           href="http://coinffflip.herokuapp.com/"
           target="_blank"
         >
-          <img
-            className="p-img"
-            src="https://i.imgur.com/LWVvsFG.jpg"
-          />
+          <img className="p-img" src="https://i.imgur.com/LWVvsFG.jpg" />
           <div className="p-hover">
             <div className="p-like-ct">Coin Flip</div>
           </div>
