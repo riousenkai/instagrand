@@ -1,7 +1,6 @@
 export const close = (
   <svg
     aria-label="Close"
-    class="_8-yf5 "
     color="#262626"
     fill="#262626"
     height="24"
@@ -20,7 +19,6 @@ export const close = (
 export const postsIcon = (
   <svg
     aria-label=""
-    class="_8-yf5 "
     color="#262626"
     fill="#262626"
     height="12"
@@ -89,7 +87,6 @@ export const postsIcon = (
 export const aboutIcon = (
   <svg
     aria-label=""
-    class="_8-yf5 "
     color="#8e8e8e"
     fill="#8e8e8e"
     height="12"

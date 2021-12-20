@@ -137,7 +137,7 @@ export default function reducer(state = initialState, action) {
     case GET_SINGLE_POST:
       return { ...state, ...action.payload };
     case GET_EXPLORE_POSTS:
-      return { ...state, explore: action.payload };
+      return { ...state, ...action.payload };
     default:
       return state;
   }
