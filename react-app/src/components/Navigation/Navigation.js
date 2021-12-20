@@ -7,7 +7,14 @@ import "./Navigation.css";
 import { searchUsers } from "../../store/search.js";
 import PostModal from "../PostModal/PostModal";
 import NavModal from "../NavModal/NavModal";
-import { msgIcon, msgIconActive, homeActive, homeIcon } from "./NavIcons";
+import {
+  msgIcon,
+  msgIconActive,
+  homeActive,
+  homeIcon,
+  exploreIcon,
+  exploreIconActive,
+} from "./NavIcons";
 import NotificationsModal from "../Notifications/NotificationsModal";
 
 const Navigation = () => {
@@ -26,8 +33,8 @@ const Navigation = () => {
   }, [input]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [path])
+    window.scrollTo(0, 0);
+  }, [path]);
 
   useEffect(() => {
     setPick(null);
@@ -60,6 +67,7 @@ const Navigation = () => {
           alt="grand-hotel-font"
           border="0"
         />
+
         <div className="search-container" onBlur={(e) => hide(e)}>
           <input
             value={input}
@@ -88,6 +96,7 @@ const Navigation = () => {
             )}
           </div>
         </div>
+
         <div className="nav-right">
           {path === "/" && num === 0 ? (
             <div onClick={() => history.push("/")} className="nav-icons">
@@ -99,21 +108,36 @@ const Navigation = () => {
             </div>
           )}
           {path === "/messages" && num === 0 ? (
-            <span
+            <div
               className="nav-msg-icon"
               onClick={() => history.push("/messages")}
             >
               {msgIconActive}
-            </span>
+            </div>
           ) : (
-            <span
+            <div
               className="nav-msg-icon"
               onClick={() => history.push("/messages")}
             >
               {msgIcon}
-            </span>
+            </div>
           )}
           <PostModal />
+          {path === "/explore" && num === 0 ? (
+            <div
+              className="nav-msg-icon"
+              onClick={() => history.push("/explore")}
+            >
+              {exploreIconActive}
+            </div>
+          ) : (
+            <div
+              className="nav-msg-icon"
+              onClick={() => history.push("/explore")}
+            >
+              {exploreIcon}
+            </div>
+          )}
           <NotificationsModal />
           <NavModal user={user} path={path} />
         </div>
