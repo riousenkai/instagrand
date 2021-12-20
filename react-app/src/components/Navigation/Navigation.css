@@ -27,6 +27,10 @@
   background-color: #ffffff;
 }
 
+.search-container {
+  padding-left: 150px;
+}
+
 .search-bar {
   width: 268px;
   height: 36px;
@@ -45,11 +49,13 @@
 .nav-right {
   align-items: center !important;
   display: flex;
-  gap: 20px;
+  gap: 22px;
   background-color: #ffffff;
   white-space: nowrap;
   padding-left: 24px;
-  padding-right: 5px;
+  /* padding-right: 5px; */
+  width: 278px;
+  font-stretch: 100%;
 }
 
 .nav-icons {
