@@ -150,3 +150,44 @@ def edit_post(post_id):
     db.session.commit()
 
     return following_posts()
+
+@post_routes.route('/explore')
+@login_required
+def get_explore():
+    not_following = []
+    following = []
+    unfollowed_posts = []
+
+    follows = Follow.query.filter_by(follower_id=current_user.id)
+
+    for follow in follows:
+        follow_info = User.query.get(follow.following_id)
+        following.append(follow_info)
+
+    # users = User.query.filter(User.id.not_in(follows))
+
+    users = Follow.query.filter(Follow.follower_id!=current_user.id).all()
+
+    for user in users:
+        user_info = User.query.get(user.follower_id)
+        not_following.append(user_info)
+
+    user_set = set(not_following)
+    following_set = set(following)
+
+    user_list = list(user_set - following_set)
+
+    not_following = [user.to_dict() for user in user_list]
+
+    for poster in not_following:
+        user_posts = Post.query.filter_by(user_id=poster['id']).all()
+        for post in user_posts:
+            comments = Comment.query.filter_by(post_id=post.id).order_by(Comment.id.desc()).all()
+            likes = Like.query.filter_by(post_id=post.id).all()
+            unfollowed_posts.append({'post': post.to_dict(), 'user': poster, 'comments': len(comments), 'likes': len(likes)})
+
+    sorter = sorted(unfollowed_posts, key=lambda x:x['post']['id'], reverse=True)
+
+    return {'explore': [post for post in sorter]}
+
+    # return 'ok'

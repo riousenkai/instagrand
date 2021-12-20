@@ -46,7 +46,7 @@ const Home = () => {
   }, [count]);
 
   useEffect(() => {
-    document.title = 'Instagrand'
+    document.title = "Instagrand";
     dispatch(findFollows(user?.id));
     dispatch(findPosts(user?.id));
     dispatch(findSuggestions());
