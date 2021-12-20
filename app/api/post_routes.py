@@ -164,8 +164,6 @@ def get_explore():
         follow_info = User.query.get(follow.following_id)
         following.append(follow_info)
 
-    # users = User.query.filter(User.id.not_in(follows))
-
     users = Follow.query.filter(Follow.follower_id!=current_user.id).all()
 
     for user in users:
@@ -189,5 +187,3 @@ def get_explore():
     sorter = sorted(unfollowed_posts, key=lambda x:x['post']['id'], reverse=True)
 
     return {'explore': [post for post in sorter]}
-
-    # return 'ok'

@@ -1,6 +1,7 @@
 const GET_POSTS = "post/GET_POSTS";
 const GET_SINGLE_POST = "post/GET_SINGLE_POST";
 const GET_FOLLOWING_POSTS = "post/GET_FOLLOWER_POSTS";
+const GET_EXPLORE_POSTS = "post/GET_EXPLORE_POSTS";
 
 const getFollowingPosts = (posts) => ({
   type: GET_FOLLOWING_POSTS,
@@ -15,6 +16,11 @@ const getPosts = (posts, userId) => ({
 
 const getInfo = (posts) => ({
   type: GET_SINGLE_POST,
+  payload: posts,
+});
+
+const getExplore = (posts) => ({
+  type: GET_EXPLORE_POSTS,
   payload: posts,
 });
 
@@ -112,6 +118,14 @@ export const findFollowingPosts = () => async (dispatch) => {
   }
 };
 
+export const populateExplore = () => async (dispatch) => {
+  const res = await fetch("/api/posts/explore");
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(getExplore(data));
+  }
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -122,6 +136,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, following: action.payload.following };
     case GET_SINGLE_POST:
       return { ...state, ...action.payload };
+    case GET_EXPLORE_POSTS:
+      return { ...state, explore: action.payload };
     default:
       return state;
   }
