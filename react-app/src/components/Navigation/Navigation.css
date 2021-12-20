@@ -28,7 +28,7 @@
 }
 
 .search-container {
-  padding-left: 150px;
+  padding-left: 175px;
 }
 
 .search-bar {
@@ -93,10 +93,10 @@
   position: absolute;
   background-color: rgb(255, 255, 255);
   width: 375px;
-  height: 437px;
+  height: 450px;
   overflow-y: auto;
   margin-top: 14px;
-  margin-left: -85px;
+  margin-left: -53px;
   border-radius: 4px;
   font-size: 14px;
   padding: 12px 0px;

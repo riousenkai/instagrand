@@ -378,7 +378,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="h-suggestions">
-                <div className="suggestions-title">Suggestions for You</div>
+                <div className="suggestions-title">Suggestions For You</div>
                 <div className="suggestions-list">
                   {suggestions?.length > 0 ? (
                     suggestions?.slice(0, 5).map((s) => (
