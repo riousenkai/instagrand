@@ -14,6 +14,7 @@ const Explore = () => {
 
   useEffect(() => {
     dispatch(populateExplore());
+    document.title = "Instagrand";
   }, []);
 
   const loadIt = (i) => {
