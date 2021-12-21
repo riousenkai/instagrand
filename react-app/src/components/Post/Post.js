@@ -388,7 +388,7 @@ const Post = () => {
       {post?.user?.id !== user?.id ? (
         <div className="p-bot">
           <div className="p-bot-desc">
-            {filteredPosts?.length > 1
+            {filteredPosts?.length > 0
               ? "More posts from "
               : "No additional posts from "}
             <span
