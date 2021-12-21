@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { populateExplore } from "../../store/post";
@@ -7,6 +7,8 @@ import "./Explore.css";
 const Explore = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const postLoad = useRef([]);
+  const postCard = useRef([]);
   const explorePosts = useSelector((state) => state.post.explore);
 
   useEffect(() => {
@@ -14,8 +16,8 @@ const Explore = () => {
   }, []);
 
   const loadIt = (i) => {
-    document.querySelector(`.pl-img-${i}`).classList.add("hidden");
-    document.querySelector(`.p-img-${i}`).classList.remove("hidden");
+    postLoad.current[i].classList.add("hidden");
+    postCard.current[i].classList.remove("hidden");
   };
 
   return (
@@ -28,12 +30,14 @@ const Explore = () => {
               onClick={() => history.push(`/posts/${post.post.id}`)}
             >
               <img
-                className={`p-img-loading pl-img-${i} `}
+                className="p-img-loading"
+                ref={(el) => (postLoad.current[i] = el)}
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
               />
               <img
-                className={`p-img p-img-${i} hidden`}
+                className="p-img hidden"
                 onLoad={() => loadIt(i)}
+                ref={(el) => (postCard.current[i] = el)}
                 src={post.post.media_url}
               />
               <div className="p-hover">
