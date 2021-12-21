@@ -1,0 +1,17 @@
+.explore-main {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  margin: 0 auto;
+  width: 975px;
+}
+
+.explore-card {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin-bottom: 40px;
+}
