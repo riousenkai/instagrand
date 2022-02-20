@@ -169,7 +169,7 @@ const Home = () => {
           <div className="home-left">
             <div className="home-posts">
               {followingPosts?.slice(0, 20).map((post, i) => (
-                <div className="post-card">
+                <div key={post + i} className="post-card">
                   <div className="post-top">
                     <div className="post-top-left">
                       <img
@@ -285,8 +285,8 @@ const Home = () => {
                   </div>
                   <div className="post-comments">
                     {post.comments.length > 0 &&
-                      post.comments.slice(0, 1).map((comment) => (
-                        <div className="post-test">
+                      post.comments.slice(0, 1).map((comment, i) => (
+                        <div key={comment + i} className="post-test">
                           <div
                             className="post-commenter-name"
                             onClick={() =>
@@ -381,14 +381,14 @@ const Home = () => {
                 <div className="suggestions-title">Suggestions For You</div>
                 <div className="suggestions-list">
                   {suggestions?.length > 0 ? (
-                    suggestions?.slice(0, 5).map((s) => (
+                    suggestions?.slice(0, 5).map((s, i) => (
                       <>
                         {unfollow === s.id && (
                           <Modal onClose={() => setUnfollow(0)}>
                             <Unfollow user={unfollowed} />
                           </Modal>
                         )}
-                        <div className="suggestion-card">
+                        <div key={s + i} className="suggestion-card">
                           <img
                             onClick={() => history.push(`/users/${s.id}`)}
                             className="suggestion-img"
