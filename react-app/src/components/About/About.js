@@ -11,7 +11,7 @@ const About = () => {
       <div className="prof-top">
         <a
           style={{ height: "150px" }}
-          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          href="https://www.linkedin.com/in/revanf/"
           target="_blank"
         >
           <img
@@ -65,7 +65,7 @@ const About = () => {
         </a>
         <a
           className="post-c"
-          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          href="https://www.linkedin.com/in/revanf/"
           target="_blank"
         >
           <img className="p-img" src="https://i.imgur.com/Z9M0KmM.jpg" />

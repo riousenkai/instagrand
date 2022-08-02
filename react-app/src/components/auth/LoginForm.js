@@ -122,7 +122,7 @@ const LoginForm = () => {
         <div className="about-dot">{" • "}</div>
         <a
           className="h-linkedin"
-          href="https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3/"
+          href="https://www.linkedin.com/in/revanf/"
           target="_blank"
         >
           Linkedin

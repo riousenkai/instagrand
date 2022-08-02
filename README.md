@@ -39,4 +39,4 @@
   * Page about the creator of the project.
 
 
-### A project by [Revan Fajardo](https://www.linkedin.com/in/john-elijah-revan-fajardo-33a189a3)
+### A project by [Revan Fajardo](https://www.linkedin.com/in/revanf/)
