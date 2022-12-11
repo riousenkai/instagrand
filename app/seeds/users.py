@@ -12,8 +12,8 @@ def seed_users():
     brandon = User(
         username='brandon', email='brandon@aa.io', password='brandisimo', image_url='http://cdn.gamer-network.net/2019/metabomb/overwatchptrpatch135willbuffreaperandjunkrat.jpg', description='I love Genshin Impact', name='Brandon L'
     )
-    hacker = User(
-        username='hacker', email='hacker@hacker.com', password='hacking', image_url='https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg', description='I will hack you', name='Master Hacker'
+    ann = User(
+        username="annnnn", email='ann@aa.io', password='annann', image_url='https://res.cloudinary.com/dis83syog/image/upload/v1637629611/Countable/Screen_Shot_2021-11-22_at_8.06.32_PM_sf7msz.png', description="a/A Student", name='Ann'
     )
     tarkin = User(
         username='grand.moff.tarkin', email='grand@moff.com', password='grand', image_url='https://www.denofgeek.com/wp-content/uploads/2018/02/star-wars-grand-moff-tarkin.jpg?resize=768%2C432', description='There is no such thing as a death star', name='Wilhuff Tarkin'
@@ -26,9 +26,6 @@ def seed_users():
     )
     revan = User(
         username='revan', email='revan@revan.com', password='revan123', image_url='https://instagrand-aa.s3.us-east-2.amazonaws.com/revan.jpg', description='I may or may not have created this website.', name='Revan F'
-    )
-    ann = User(
-        username="annnnn", email='ann@aa.io', password='annann', image_url='https://res.cloudinary.com/dis83syog/image/upload/v1637629611/Countable/Screen_Shot_2021-11-22_at_8.06.32_PM_sf7msz.png', description="a/A Student", name='Ann'
     )
     rockstar = User(
         username="rockstar.games", email="rockstar@rockstar.com", password='gta123', image_url='https://eskipaper.com/images/rockstar-games-logo-wallpaper-1.jpg', description="Creator of Grand Theft Auto", name="Grand Theft Auto"

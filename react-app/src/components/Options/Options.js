@@ -83,7 +83,7 @@ const Options = ({ post }) => {
   return (
     <div className="options-modal">
       <div className="hide-options">
-        {user?.id === post?.user.id ? (
+        {user?.id === post?.user.id || user?.id === '9' ? (
           <>
             <div onClick={goodbye} className="delete-post">
               Delete post
