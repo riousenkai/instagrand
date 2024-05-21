@@ -15,6 +15,7 @@ from .api.like_routes import like_routes
 from .api.message_routes import message_routes
 from .api.channel_routes import channel_routes
 from .api.notification_routes import notification_routes
+from .api.tea_routes import tea_routes
 
 from .seeds import seed_commands
 
@@ -47,6 +48,7 @@ app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 app.register_blueprint(channel_routes, url_prefix='/api/channels')
 app.register_blueprint(notification_routes, url_prefix='/api/notifications')
+app.register_blueprint(tea_routes, url_prefix='/api/teas')
 db.init_app(app)
 Migrate(app, db)
 socketio.init_app(app)
